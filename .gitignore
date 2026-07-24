@@ -13,8 +13,7 @@ venv/
 .mypy_cache/
 
 # Scraped data and caches — large, regenerable
-data/meetings/
-data/cache/
+data/
 
 # OS / editor
 .DS_Store
