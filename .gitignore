@@ -1,0 +1,22 @@
+# Secrets
+.env
+.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Scraped data and caches — large, regenerable
+data/meetings/
+data/cache/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
