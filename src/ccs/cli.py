@@ -1,6 +1,7 @@
 """Command-line entry point.
 
 Commands:
+  ccs summary                           rebuild general_summary.md
   ccs report                            monthly report (default: last 35 days recap, next 30 days lookahead)
   ccs report --since YYYY-MM-DD --until YYYY-MM-DD
   ccs ingest boarddocs:<unique>         re-ingest a specific meeting, updating the manifest
@@ -13,7 +14,7 @@ import argparse
 import sys
 from datetime import date, timedelta
 
-from . import bccd, boarddocs, config, manifest, report, summarize, swcd, youtube
+from . import bccd, boarddocs, config, general, manifest, report, summarize, swcd, youtube
 from .config import body_for_title, load_env, tracked_bodies
 
 
@@ -21,6 +22,8 @@ def main(argv: list[str] | None = None) -> int:
     load_env()
     parser = argparse.ArgumentParser(prog="ccs", description="Boone County meeting monitor")
     sub = parser.add_subparsers(dest="command", required=True)
+
+    sub.add_parser("summary", help="Rebuild the general_summary.md living doc")
 
     p_report = sub.add_parser("report", help="Generate a monthly report")
     p_report.add_argument("--since", type=_parse_date, default=None,
@@ -32,12 +35,20 @@ def main(argv: list[str] | None = None) -> int:
     p_ingest.add_argument("meeting_id", help="e.g. boarddocs:DSCKED517FD7, bccd:20260420, swcd:20260701")
 
     args = parser.parse_args(argv)
+    if args.command == "summary":
+        return _cmd_summary()
     if args.command == "report":
         return _cmd_report(args.since, args.until)
     if args.command == "ingest":
         return _cmd_ingest(args.meeting_id)
     parser.error(f"unknown command {args.command}")
     return 2
+
+
+def _cmd_summary() -> int:
+    path = general.build_general_summary()
+    print(f"\nWrote {path.relative_to(config.REPO_ROOT)} ({path.stat().st_size} bytes)")
+    return 0
 
 
 def _cmd_report(since: date | None, until: date | None) -> int:
