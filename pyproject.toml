@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ccs"
+version = "0.1.0"
+description = "Boone County, IL government meeting monitor"
+requires-python = ">=3.9"
+dependencies = [
+    "anthropic>=0.40",
+    "beautifulsoup4>=4.12",
+    "pdfplumber>=0.11",
+    "python-dotenv>=1.0",
+    "requests>=2.32",
+    "yt-dlp>=2025.1",
+]
+
+[project.scripts]
+ccs = "ccs.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
