@@ -2,13 +2,14 @@
 
 Questions that come up while using `ccs`. Add new entries at the bottom.
 
-## If I run `ccs report` more than once in the same month, does it overwrite the existing report or make a new one?
+## If I run `ccs report` more than once, does it overwrite the existing report or make a new one?
 
-**Same file, overwritten.** The report filename is derived from today's
-month: `reports/{today YYYY-MM}.md`. If you re-run today, tomorrow, or any
-day still in the current month, any newly-available meetings get folded
-into the same file — replacing what was there. If you re-run in a new
-month, you'd get a fresh `reports/YYYY-MM.md`.
+**Depends on the window.** The filename is derived from the recap and
+lookahead dates: `reports/{since}_to_{until}.md`. Re-running with the
+same `--since` and `--until` overwrites the same file. Different dates
+produce different filenames — including the default behavior, where
+`--since` (`today - 35`) and `--until` (`today + 30`) shift by a day
+each day, so daily runs each produce a new file.
 
 **Why meetings that have already happened might still be missing:** the
 recap only lists meetings that BoardDocs has published. The county's

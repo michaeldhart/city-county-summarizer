@@ -10,7 +10,7 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
-from . import bccd, boarddocs, config, manifest, summarize, swcd, youtube
+from . import bccd, boarddocs, config, manifest, summarize, swcd, templates, youtube
 from .config import REPO_ROOT, Body, body_for_title, is_cancelled, tracked_bodies
 
 REPORTS_DIR = REPO_ROOT / "reports"
@@ -37,7 +37,7 @@ def build_report(since: date, until: date, today: date | None = None) -> Path:
     lookahead = _collect_lookahead(bd_meetings, tracked, today, until)
 
     md = _render(since, until, today, recap, lookahead)
-    out = REPORTS_DIR / f"{today.strftime('%Y-%m')}.md"
+    out = REPORTS_DIR / f"{since.isoformat()}_to_{until.isoformat()}.md"
     out.write_text(md)
     return out
 
@@ -135,56 +135,52 @@ def _collect_lookahead(bd_meetings: list[boarddocs.MeetingRef],
 
 def _render(since: date, until: date, today: date,
             recap: list[SectionEntry], lookahead: list[SectionEntry]) -> str:
-    out: list[str] = [
-        f"# Boone County Government Report — {today.strftime('%B %Y')}",
-        "",
-        f"Generated: {today.isoformat()}",
-        f"Recap window: {since.isoformat()} → {today.isoformat()}",
-        f"Lookahead window: {today.isoformat()} → {until.isoformat()}",
-        "",
-        "---",
-        "",
-        "## Recap",
+    parts: list[str] = [
+        templates.REPORT_HEADER.format(
+            start=templates.fmt_date(since),
+            end=templates.fmt_date(until),
+            generated=today.isoformat(),
+            recap_start=since.isoformat(),
+            recap_end=today.isoformat(),
+            lookahead_start=today.isoformat(),
+            lookahead_end=until.isoformat(),
+        ),
+        templates.SECTION_SEPARATOR,
+        templates.RECAP_HEADING,
+        _render_section(recap, empty=templates.RECAP_EMPTY),
+        templates.SECTION_SEPARATOR,
+        templates.LOOKAHEAD_HEADING,
+        _render_section(lookahead, empty=templates.LOOKAHEAD_EMPTY),
+    ]
+    return "\n".join(parts).rstrip() + "\n"
+
+
+def _render_section(entries: list[SectionEntry], *, empty: str) -> str:
+    if not entries:
+        return empty
+    return "\n".join(_render_entry(e) for e in entries)
+
+
+def _render_entry(e: SectionEntry) -> str:
+    header_tpl = templates.ENTRY_HEADER_CANCELLED if e.cancelled else templates.ENTRY_HEADER
+    lines: list[str] = [
+        header_tpl.format(date=templates.fmt_date(e.meeting_date), body=e.body.display_name),
         "",
     ]
-    if not recap:
-        out.append("_No meetings found in the recap window._")
-    else:
-        for e in recap:
-            out.extend(_render_entry(e))
-    out.extend(["", "---", "", "## Lookahead", ""])
-    if not lookahead:
-        out.append("_No upcoming meetings scheduled in the lookahead window._")
-    else:
-        for e in lookahead:
-            out.extend(_render_entry(e))
-    return "\n".join(out) + "\n"
-
-
-def _render_entry(e: SectionEntry) -> list[str]:
-    header = f"### {e.meeting_date.isoformat()} — {e.body.display_name}"
-    if e.cancelled:
-        header += " (CANCELLED)"
-    lines = [header, ""]
     if e.record.url:
-        lines.append(f"[Source]({e.record.url})")
+        lines.append(templates.ENTRY_SOURCE_LINK.format(url=e.record.url))
         lines.append("")
     if e.cancelled or not e.record.summary_path:
-        lines.append("_No summary — meeting was cancelled or has no materials yet._")
-        lines.append("")
-        return lines
+        lines.append(templates.ENTRY_NO_SUMMARY)
+        return "\n".join(lines)
     summary_path = REPO_ROOT / e.record.summary_path
     if summary_path.exists():
-        # Indent one level so the summary's own H1 becomes H2, etc.
+        # Bump heading levels so the summary's own H1 becomes H2, etc.
         for ln in summary_path.read_text().splitlines():
-            if ln.startswith("#"):
-                lines.append("#" + ln)  # bump heading level
-            else:
-                lines.append(ln)
+            lines.append("#" + ln if ln.startswith("#") else ln)
     else:
-        lines.append(f"_Summary file missing: {e.record.summary_path}_")
-    lines.append("")
-    return lines
+        lines.append(templates.ENTRY_SUMMARY_MISSING.format(path=e.record.summary_path))
+    return "\n".join(lines)
 
 
 def _try_list_youtube_streams() -> list[youtube.YouTubeVideo] | None:
