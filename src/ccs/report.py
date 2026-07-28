@@ -25,6 +25,51 @@ class SectionEntry:
     cancelled: bool = False
 
 
+def check_sources(since: date, until: date) -> list[tuple[str, bool]]:
+    """For each tracked body, return whether at least one record exists in [since, until].
+
+    Cheap: no Claude calls, no per-item fetches — just the meeting-list endpoints.
+    'Record' means an on-BoardDocs, non-cancelled meeting, or a CD/SWCD entry with
+    at least one PDF (agenda or minutes) published.
+    """
+    tracked = tracked_bodies()
+    bd_meetings = boarddocs.list_meetings()
+
+    cd_cache: dict[str, list] = {}
+    def cd_list(source: str, lister):
+        if source not in cd_cache:
+            try:
+                cd_cache[source] = lister()
+            except Exception:
+                cd_cache[source] = []
+        return cd_cache[source]
+
+    results: list[tuple[str, bool]] = []
+    for body in tracked:
+        if body.source == "boarddocs":
+            has = any(
+                since <= m.date <= until
+                and not is_cancelled(m.title)
+                and (bt := body_for_title(m.title)) is not None
+                and bt.id == body.id
+                for m in bd_meetings
+            )
+        elif body.source == "bccd":
+            has = any(
+                since <= m.date <= until and (m.agenda_url or m.minutes_url)
+                for m in cd_list("bccd", bccd.list_meetings)
+            )
+        elif body.source == "swcd":
+            has = any(
+                since <= m.date <= until and (m.agenda_url or m.minutes_url)
+                for m in cd_list("swcd", swcd.list_meetings)
+            )
+        else:
+            has = False
+        results.append((body.display_name, has))
+    return results
+
+
 def build_report(since: date, until: date, today: date | None = None) -> Path:
     today = today or date.today()
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)

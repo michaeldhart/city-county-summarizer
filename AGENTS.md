@@ -13,6 +13,8 @@ I'll actually trip on" digest.
   pipeline, either (a) use a narrow window that yields zero meetings, or (b)
   pre-seed `data/manifest.json` with a `MeetingRecord` pointing at an already-
   summarized meeting on disk, so the render short-circuits.
+- `ccs check` is free (only hits meeting-list endpoints, no Claude). Use it
+  to preview which bodies have records in a window before spending on report.
 - `ccs summary` is one Claude call, ~$0.10 — safer to run, but still not free.
 - If you're debugging prompts, edit the raw materials in `data/meetings/<id>/`
   and call `summarize._call_claude()` directly with a hand-built prompt rather
@@ -87,7 +89,7 @@ src/ccs/
   summarize.py  three ingest entry points (BD recap, BD lookahead, CD)
   report.py     discovery + Markdown rendering for monthly reports
   general.py    `ccs summary` generator
-  cli.py        argparse entry (`ccs summary` / `report` / `ingest`)
+  cli.py        argparse entry (`ccs summary` / `check` / `report` / `ingest`)
 ```
 
 - `summarize.py` is the per-meeting ingest; `report.py` is the

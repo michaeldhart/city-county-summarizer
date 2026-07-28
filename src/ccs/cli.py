@@ -2,6 +2,7 @@
 
 Commands:
   ccs summary                           rebuild general_summary.md
+  ccs check                             show which tracked bodies have records in a window (no Claude calls)
   ccs report                            monthly report (default: last 35 days recap, next 30 days lookahead)
   ccs report --since YYYY-MM-DD --until YYYY-MM-DD
   ccs ingest boarddocs:<unique>         re-ingest a specific meeting, updating the manifest
@@ -25,6 +26,12 @@ def main(argv: list[str] | None = None) -> int:
 
     sub.add_parser("summary", help="Rebuild the general_summary.md living doc")
 
+    p_check = sub.add_parser("check", help="Preview which bodies have records in a window (no Claude calls)")
+    p_check.add_argument("--since", type=_parse_date, default=None,
+                         help="Window start (default: 35 days ago)")
+    p_check.add_argument("--until", type=_parse_date, default=None,
+                         help="Window end (default: today + 30 days)")
+
     p_report = sub.add_parser("report", help="Generate a monthly report")
     p_report.add_argument("--since", type=_parse_date, default=None,
                           help="Recap window start (default: 35 days ago)")
@@ -37,6 +44,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.command == "summary":
         return _cmd_summary()
+    if args.command == "check":
+        return _cmd_check(args.since, args.until)
     if args.command == "report":
         return _cmd_report(args.since, args.until)
     if args.command == "ingest":
@@ -49,6 +58,32 @@ def _cmd_summary() -> int:
     path = general.build_general_summary()
     print(f"\nWrote {path.relative_to(config.REPO_ROOT)} ({path.stat().st_size} bytes)")
     return 0
+
+
+def _cmd_check(since: date | None, until: date | None) -> int:
+    today = date.today()
+    since = since or (today - timedelta(days=35))
+    until = until or (today + timedelta(days=30))
+    print(f"Checking sources for {since} → {until}...\n")
+    rows = report.check_sources(since, until)
+    _print_check_table(rows)
+    have = sum(1 for _, ok in rows if ok)
+    print(f"\n{have} of {len(rows)} tracked bodies have records in this window.")
+    return 0
+
+
+def _print_check_table(rows: list[tuple[str, bool]]) -> None:
+    header = ("Source", "Records")
+    name_w = max(len(header[0]), max((len(name) for name, _ in rows), default=0))
+    status_w = max(len(header[1]), 3)
+    border = "+" + "-" * (name_w + 2) + "+" + "-" * (status_w + 2) + "+"
+    print(border)
+    print(f"| {header[0]:<{name_w}} | {header[1]:<{status_w}} |")
+    print(border)
+    for name, has in rows:
+        icon = "✅" if has else "❌"
+        print(f"| {name:<{name_w}} | {icon:<{status_w}} |")
+    print(border)
 
 
 def _cmd_report(since: date | None, until: date | None) -> int:

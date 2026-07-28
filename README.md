@@ -46,6 +46,32 @@ ccs summary
 
 Cost: ~$0.10 per rebuild.
 
+### `ccs check`
+
+Dry-run preview — no Claude calls. Prints an ASCII table of which tracked
+bodies have any records in the given window. Useful to run before `ccs report`
+to see whether the run will produce anything worth paying for.
+
+```bash
+ccs check                                   # default window: last 35 days + next 30 days
+ccs check --since 2026-04-01 --until 2026-05-31
+```
+
+Sample output:
+
+```
++-----------------------------------------------+---------+
+| Source                                        | Records |
++-----------------------------------------------+---------+
+| Boone County Board                            | ✅       |
+| Regional Planning Commission                  | ❌       |
+| Board of Health                               | ✅       |
+...
++-----------------------------------------------+---------+
+```
+
+Cost: free — hits only the meeting-list endpoints.
+
 ### `ccs report`
 
 Discovers meetings since the last report, ingests any that aren't already in
