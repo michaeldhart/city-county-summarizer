@@ -67,8 +67,10 @@ I'll actually trip on" digest.
 
 - `data/` is fully gitignored (cached scraped materials, transcripts,
   summaries, manifest). Don't `git add` anything under it.
-- `reports/*.md` and `general_summary.md` ARE tracked. Regenerating them
-  produces small diffs each time — that's intentional.
+- `reports/` is gitignored (per-run monthly reports are regenerable from
+  `data/manifest.json` + sources).
+- `general_summary.md` IS tracked. Regenerating it produces small diffs
+  each time — that's intentional.
 - `.env` is gitignored; `.env.example` is not.
 
 ## Package layout

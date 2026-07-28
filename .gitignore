@@ -16,6 +16,9 @@ venv/
 # Scraped data and caches — large, regenerable
 data/
 
+# Generated monthly reports — regenerable from data/manifest.json + sources
+reports/
+
 # OS / editor
 .DS_Store
 .idea/
