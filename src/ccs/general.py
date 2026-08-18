@@ -1,8 +1,8 @@
 """General summary generator — the living source-of-truth doc about Boone County government.
 
 Pulls structural pages from the county site, the current board roster from the
-most recent Board meeting on BoardDocs, and one-time grounding from Wikipedia.
-Synthesizes into `general_summary.md` at the repo root.
+most recent Board meeting on the Diligent portal, and one-time grounding from
+Wikipedia. Synthesizes into `general_summary.md` at the repo root.
 """
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ import anthropic
 import requests
 from bs4 import BeautifulSoup
 
-from . import boarddocs
+from . import diligent
 from .config import (
     CLAUDE_MODEL,
     DOCS_DIR,
@@ -51,8 +51,8 @@ def build_general_summary() -> Path:
     print("Fetching structural sources...")
     source_texts = _fetch_sources()
 
-    print("Fetching current board roster from BoardDocs...")
-    roster_text = _latest_board_meeting_description()
+    print("Fetching current board roster from Diligent...")
+    roster_text = _latest_board_roster()
 
     scope_md = (DOCS_DIR / "SCOPE.md").read_text()
 
@@ -80,27 +80,30 @@ def _fetch_sources() -> dict[str, str]:
     return out
 
 
-def _latest_board_meeting_description() -> str:
-    """BoardDocs meeting descriptions list the full current board roster with roles."""
-    try:
-        meetings = boarddocs.list_meetings()
-    except Exception as e:
-        return f"[Failed to list BoardDocs meetings: {e}]"
+def _latest_board_roster() -> str:
+    """Pull the roster from the most recent past Board meeting on Diligent."""
     today = date.today()
-    board = [
-        m for m in meetings
-        if m.title.strip().lower() == "boone county board meeting" and m.date <= today
-    ]
+    try:
+        meetings = diligent.list_meetings(
+            from_date=date(today.year - 1, 1, 1), to_date=today,
+        )
+    except Exception as e:
+        return f"[Failed to list Diligent meetings: {e}]"
+    board = [m for m in meetings if m.type_id == 22 and m.date <= today]
     if not board:
-        return "[No recent Boone County Board meeting found on BoardDocs.]"
+        return "[No recent Boone County Board meeting found on Diligent.]"
+    board.sort(key=lambda m: m.date, reverse=True)
     latest = board[0]
     try:
-        parsed = boarddocs.parse_meeting(boarddocs.get_meeting_html(latest.unique))
+        data = diligent.get_meeting_data(latest.id)
     except Exception as e:
-        return f"[Failed to fetch meeting {latest.unique}: {e}]"
+        return f"[Failed to fetch meeting {latest.id}: {e}]"
+    members = "\n".join(f"- {name}" for name in data.members) if data.members else "(no members listed)"
     return (
-        f"Source: {latest.date.isoformat()} Board meeting description\n"
-        f"{parsed.get('description', '')}"
+        f"Source: {latest.date.isoformat()} Board meeting ({latest.title})\n"
+        f"Location: {data.location}\n"
+        f"Time: {data.time}\n"
+        f"Members:\n{members}"
     )
 
 
@@ -123,8 +126,8 @@ This document has two audiences: (1) a human trying to learn how the county work
 clear prose for the human, well-labeled facts for the AI.
 
 Use only the sources provided below. If a fact appears in multiple sources, prefer the
-county's own site or the current BoardDocs meeting description over Wikipedia/Ballotpedia,
-which may be stale. Do not invent details.
+county's own site or the current Board meeting roster (from Diligent) over Wikipedia/
+Ballotpedia, which may be stale. Do not invent details.
 
 Produce a Markdown document with this structure:
 
@@ -142,7 +145,7 @@ _Generated {date.today().isoformat()} by `ccs summary`. Regenerate with the same
 - The Committee of the Whole model — how it works, when it's used
 
 ## Current members
-(Table or list — name, role/title, district if known. Use the BoardDocs meeting description as
+(Table or list — name, role/title, district if known. Use the Diligent Board meeting roster as
 the authoritative current roster; supplement with anything from the county site.)
 
 ## Standing committees (COTWs)
@@ -170,7 +173,7 @@ Keep it factual and dense. Prefer bullet points over prose except in the Overvie
 ===== SCOPE (statuses set by the user) =====
 {scope_md}
 
-===== CURRENT BOARD ROSTER (from BoardDocs meeting description) =====
+===== CURRENT BOARD ROSTER (from Diligent Board meeting) =====
 {roster_text}
 
 ===== SOURCES =====

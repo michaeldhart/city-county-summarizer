@@ -29,19 +29,29 @@ I'll actually trip on" digest.
 - Do NOT use pipe syntax at runtime (e.g., `isinstance(x, int | str)`) — that
   needs 3.10+.
 
-## BoardDocs quirks
+## Diligent platform (current source; replaced BoardDocs in May 2026)
 
-- All BoardDocs endpoints require `Content-Type: application/x-www-form-urlencoded`
-  POSTs with realistic browser headers (see `config.BOARDDOCS_HEADERS`).
-  CloudFront returns 403 for bare curl / missing `Origin` + `Referer`.
-- The `id=` parameter on `BD-GetMeeting`, `BD-GetAgenda`, `BD-GetAgendaItem`,
-  `BD-GetPublicFiles` takes the SHORT `unique` (e.g., `DSCKED517FD7`), not the
-  long `unid`. Using `unid` returns `"No Access"` — silent failure mode.
-- All Boone County meetings live under a single `current_committee_id`
-  (`AAL6YS173AC9` — "Main Governing Board"). Sub-bodies (ZBA, Health, etc.)
-  do NOT have separate committee IDs — they're differentiated by meeting title.
-- `boonecountyil.gov` and BoardDocs both lag reality. Recent meetings often
-  don't have their agendas published for weeks after the meeting occurs.
+- Base URL: `https://boonecountyil.community.diligentoneplatform.com` — public
+  REST API, no auth, no session, just a normal User-Agent.
+- Key endpoints:
+  - `GET /Services/MeetingsService.svc/meetings?from=YYYY-MM-DD&to=YYYY-MM-DD&loadall=false`
+  - `GET /Services/MeetingsService.svc/meetings/{id}/meetingData`
+  - `GET /Services/MeetingsService.svc/meetings/{id}/meetingDocuments`
+  - `GET /document/{guid}` — download an attachment PDF referenced in the agenda HTML
+- The whole agenda comes back as one HTML blob (rendered from a `.docx`) —
+  there are no per-item detail calls. Attachments are `<a href="/document/{guid}">`
+  inside that HTML; use `diligent.extract_attachments(html)` to get them.
+- Body identification uses `MeetingTypeId` (int). See `config.BODIES_BY_TYPE_ID`.
+  Known: 18=COTW-Admin, 19=COTW-Finance, 20=Health, 22=Board, 23=ZBA,
+  29=Planning, 31=Ag Easement, 32=Enterprise Zone.
+- LEPC and Veteran's Assistance have `type_id=None` — no agendas on Diligent
+  yet. They stay tracked but won't match. If you find where they publish, wire it.
+- The old BoardDocs URL (`go.boarddocs.com/il/boone`) still returns cached
+  historical data through May 4, 2026 but no new meetings will ever appear.
+  See [docs/DILIGENT_MIGRATION.md](docs/DILIGENT_MIGRATION.md) for full recon.
+- The county doesn't always publish agendas in advance — a meeting can be
+  on YouTube before it's on Diligent. That's NOT the old "BoardDocs lag" myth
+  (which was actually a dead platform); it's a normal short publishing delay.
 
 ## yt-dlp
 
@@ -59,10 +69,10 @@ I'll actually trip on" digest.
   `DATA_DIR`. Read as `REPO_ROOT / record.summary_path`. This bit me once —
   a bad path fix is in the git history if you need context.
 - Meeting IDs are `<source>:<key>`:
-  - `boarddocs:<short_unique>` — recap
-  - `boarddocs-preview:<short_unique>` — lookahead (kept separate so a preview
+  - `diligent:<numeric_id>` — recap
+  - `diligent-preview:<numeric_id>` — lookahead (kept separate so a preview
     doesn't block a later recap of the same meeting)
-  - `boarddocs-cancelled:<short_unique>` — cancelled meeting, no Claude call
+  - `diligent-cancelled:<numeric_id>` — cancelled meeting, no Claude call
   - `bccd:YYYYMMDD`, `swcd:YYYYMMDD` — CD sites, date-keyed
 
 ## Files vs. git
@@ -79,8 +89,8 @@ I'll actually trip on" digest.
 
 ```
 src/ccs/
-  config.py     canonical body registry, SCOPE.md parsing, HTTP headers
-  boarddocs.py  meetings list, agenda, item detail, attached files
+  config.py     canonical body registry (type_id → body), SCOPE.md parsing, HTTP headers
+  diligent.py   meetings list, meeting data, agenda HTML, attachment discovery
   youtube.py    channel enumeration, video matching, VTT cleanup
   bccd.py       Boone Conservation District WP scraper
   swcd.py       Soil & Water Conservation District WP scraper

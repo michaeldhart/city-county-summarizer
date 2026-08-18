@@ -6,8 +6,9 @@ What the app reads from. Update as we discover new ones or retire dead links.
 
 | Source | URL | Used for |
 |--------|-----|----------|
-| BoardDocs (Boone County) | https://go.boarddocs.com/il/boone/Board.nsf/Public | Agendas, minutes, packets for Board and most sub-bodies. Structured. |
-| County Board Minutes archive | https://www.boonecountyil.gov/government/county_board/county_board_minutes/cb_minutes.php | Backup if BoardDocs is missing something. |
+| Diligent Community (Boone County) | https://boonecountyil.community.diligentoneplatform.com | Agendas, packets, member rosters for Board, COTWs, and most sub-bodies. Structured JSON API. |
+| BoardDocs (frozen archive) | https://go.boarddocs.com/il/boone/Board.nsf/Public | Historical data 2011 → May 4, 2026. Not used by the app; may be useful for one-off backfill. |
+| County Board Minutes archive | https://www.boonecountyil.gov/government/county_board/county_board_minutes/cb_minutes.php | Backup if Diligent is missing something. |
 | YouTube — Boone County Government | https://www.youtube.com/channel/UCJd8c3sZs98mx9vznx9nsOg/videos | Meeting video and captions. |
 
 ## Primary — structural info (for general summary)
@@ -30,9 +31,9 @@ Used only when rebuilding `general_summary.md`. Not pulled monthly.
 - Illinois State Archives (IRAD) — https://www.ilsos.gov/departments/archives/irad/boone.html
 - 55 ILCS 5 (Illinois Counties Code) — statutory powers of county boards
 
-## Additional bodies (separate from BoardDocs)
+## Additional bodies (separate from Diligent)
 
-These are `tracked` in `SCOPE.md` but live outside BoardDocs, so they need dedicated scrapers.
+These are `tracked` in `SCOPE.md` but live outside Diligent, so they need dedicated scrapers.
 
 | Source | URL | Used for |
 |--------|-----|----------|

@@ -9,7 +9,7 @@ Planning, Health, etc.), and the two Conservation Districts. Produces:
 - **`reports/{since}_to_{until}.md`** — a monthly recap of meetings that happened plus
   a lookahead at what's on upcoming agendas.
 
-Meeting materials are pulled from [BoardDocs](https://go.boarddocs.com/il/boone/Board.nsf/Public),
+Meeting materials are pulled from the county's [Diligent Community portal](https://boonecountyil.community.diligentoneplatform.com),
 the Conservation District websites, and YouTube auto-captions where the
 meeting is streamed. Summaries are written by Claude Sonnet 4.5.
 
@@ -78,7 +78,7 @@ Discovers meetings since the last report, ingests any that aren't already in
 the manifest, and writes `reports/{since}_to_{until}.md` covering:
 
 - **Recap**: past meetings in the window with full per-meeting summaries.
-- **Lookahead**: upcoming BoardDocs agendas summarized before the meeting.
+- **Lookahead**: upcoming Diligent agendas summarized before the meeting.
 
 ```bash
 ccs report                                  # default window: last 35 days + next 30 days
@@ -94,7 +94,7 @@ repeat runs are near-free.
 Force-ingest one specific meeting, ignoring the manifest.
 
 ```bash
-ccs ingest boarddocs:DSCKED517FD7   # short 'unique' id from BoardDocs
+ccs ingest diligent:1622            # numeric meeting id from the Diligent portal
 ccs ingest bccd:20260420            # Boone County Conservation District, by date
 ccs ingest swcd:20260701            # Soil & Water Conservation District, by date
 ```
@@ -129,19 +129,20 @@ docs/
   SCOPE.md                      # tracked bodies (edit to re-scope)
   SOURCES.md                    # every URL the app pulls from
   PLAN.md                       # architecture notes
-  SPIKE_NOTES.md                # findings from the v1 spike
+  SPIKE_NOTES.md                # findings from the v1 spike (BoardDocs era)
+  DILIGENT_MIGRATION.md         # findings from the Aug 2026 Diligent migration
 src/ccs/                        # the package
 ```
 
 ## What Claude sees for a meeting
 
 For a **County Board or COTW meeting**:
-- Meeting metadata (name, date, description, member list)
-- Agenda with every item's category, subject, type, and recommended-action text
+- Meeting metadata (name, date, location, time, member roster)
+- Full agenda as text (rendered from the Diligent HTML)
 - Full YouTube auto-caption transcript (~13k words for a 90-min meeting)
 
-For a **sub-body meeting** (Zoning, Planning, Health, LEPC, Veterans, Ag Easement):
-- Same BoardDocs materials as above
+For a **sub-body meeting** (Zoning, Planning, Health, Ag Easement):
+- Same Diligent materials as above
 - No transcript — sub-body meetings aren't recorded
 
 For a **Conservation District meeting** (BCCD, SWCD):
@@ -150,13 +151,15 @@ For a **Conservation District meeting** (BCCD, SWCD):
 
 ## Limitations worth knowing
 
-- **BoardDocs lags YouTube.** The county's BoardDocs "active meetings" view
-  tends to be a couple of months behind the actual meeting schedule; the
-  YouTube channel usually has the video first. If a meeting has aired but
-  BoardDocs hasn't published the agenda yet, it won't be summarized.
+- **Agendas aren't always published in advance.** The county sometimes
+  doesn't post an agenda to Diligent until close to (or right after) the
+  meeting. If a meeting is on YouTube but missing from the report, wait a
+  few days and re-run.
+- **LEPC and Veteran's Assistance aren't on Diligent.** Those bodies stay
+  in the tracked list but never produce records. If we find where they
+  publish, we'll add a scraper.
 - **Sub-body meetings have no video.** Only Board and the two COTWs are
-  streamed. Sub-body summaries work off agenda and previous-meeting minutes
-  only.
+  streamed. Sub-body summaries work off the agenda only.
 - **Auto-caption typos.** YouTube's auto-captions get most of it right but
   garble proper nouns; Claude corrects the obvious ones. Numbers and dollar
   amounts come through cleanly.

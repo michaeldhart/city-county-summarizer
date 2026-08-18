@@ -12,11 +12,12 @@ produce different filenames — including the default behavior, where
 each day, so daily runs each produce a new file.
 
 **Why meetings that have already happened might still be missing:** the
-recap only lists meetings that BoardDocs has published. The county's
-BoardDocs "active meetings" tends to lag YouTube by ~2 months — so even
-though a recent meeting was streamed live and is on the YouTube channel,
-its agenda may not be posted on BoardDocs yet. The report has no way to
-summarize a video without an agenda to pair it with.
+recap only lists meetings whose agendas have been published on the
+Diligent Community portal. The county sometimes doesn't publish an agenda
+until close to (or right after) the meeting date. The report has no way
+to summarize a video without an agenda to pair it with. If a meeting
+appears on YouTube but not in the report, wait a few days for the agenda
+to be published, then re-run.
 
 **Once a meeting is summarized** (found in BoardDocs, ingested, added to
 `data/manifest.json`), the manifest short-circuits future runs — Claude

@@ -24,7 +24,7 @@ Manifest makes monthly runs incremental — we only summarize meetings not yet i
 ## Sources (per docs/SOURCES.md)
 
 Primary:
-- **BoardDocs** (`go.boarddocs.com/il/boone`) — structured agendas, minutes, packets for the Board and most sub-bodies.
+- **Diligent Community** (`boonecountyil.community.diligentoneplatform.com`) — structured JSON API for agendas, packets, member rosters. Replaced BoardDocs in May 2026; see `docs/DILIGENT_MIGRATION.md`.
 - **boonecountyil.gov** — fallback minutes archive, department/member info.
 - **YouTube** — meeting videos and captions (channel `UCJd8c3sZs98mx9vznx9nsOg` — Boone County Government).
 
@@ -35,8 +35,8 @@ Secondary (general summary only, one-time):
 
 ## Pipeline per meeting
 
-1. Discover from BoardDocs (list of meetings for tracked bodies per `SCOPE.md`).
-2. Download agenda + minutes (PDF or HTML).
+1. Discover from Diligent (list of meetings for tracked bodies per `SCOPE.md`).
+2. Download agenda HTML + attached PDFs.
 3. Find matching YouTube video by title/date heuristic.
 4. Pull captions with `yt-dlp --write-auto-sub --sub-lang en --skip-download`.
    - If no captions: log it. Whisper fallback is a v2 decision, not v1.
@@ -58,8 +58,9 @@ Rebuilt only when you run `ccs summary`.
 
 ## Stack
 
-- Python 3.12, single repo
-- `requests` + `beautifulsoup4` for scraping; `playwright` if BoardDocs needs JS
+- Python 3.9+ (developed on 3.9)
+- `requests` for HTTP; Diligent exposes a clean JSON API, no Playwright/JS needed
+- `beautifulsoup4` for HTML parsing on the CD/SWCD WordPress sites
 - `yt-dlp` for video metadata + captions
 - `pypdf` or `pdfplumber` for agenda/minutes PDFs
 - Anthropic SDK (claude-opus-4-7 or claude-sonnet-4-6) for summarization

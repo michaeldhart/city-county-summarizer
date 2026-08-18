@@ -10,8 +10,8 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
-from . import bccd, boarddocs, config, manifest, summarize, swcd, templates, youtube
-from .config import REPO_ROOT, Body, body_for_title, is_cancelled, tracked_bodies
+from . import bccd, diligent, manifest, summarize, swcd, templates, youtube
+from .config import REPO_ROOT, Body, body_for_type_id, is_cancelled, tracked_bodies
 
 REPORTS_DIR = REPO_ROOT / "reports"
 
@@ -29,11 +29,11 @@ def check_sources(since: date, until: date) -> list[tuple[str, bool]]:
     """For each tracked body, return whether at least one record exists in [since, until].
 
     Cheap: no Claude calls, no per-item fetches — just the meeting-list endpoints.
-    'Record' means an on-BoardDocs, non-cancelled meeting, or a CD/SWCD entry with
-    at least one PDF (agenda or minutes) published.
+    'Record' means a Diligent-listed, non-cancelled meeting, or a CD/SWCD entry
+    with at least one PDF published.
     """
     tracked = tracked_bodies()
-    bd_meetings = boarddocs.list_meetings()
+    dil_meetings = diligent.list_meetings(from_date=since, to_date=until)
 
     cd_cache: dict[str, list] = {}
     def cd_list(source: str, lister):
@@ -46,14 +46,14 @@ def check_sources(since: date, until: date) -> list[tuple[str, bool]]:
 
     results: list[tuple[str, bool]] = []
     for body in tracked:
-        if body.source == "boarddocs":
-            has = any(
-                since <= m.date <= until
-                and not is_cancelled(m.title)
-                and (bt := body_for_title(m.title)) is not None
-                and bt.id == body.id
-                for m in bd_meetings
-            )
+        if body.source == "diligent":
+            if body.type_id is None:
+                has = False
+            else:
+                has = any(
+                    m.type_id == body.type_id and not is_cancelled(m.title)
+                    for m in dil_meetings
+                )
         elif body.source == "bccd":
             has = any(
                 since <= m.date <= until and (m.agenda_url or m.minutes_url)
@@ -75,11 +75,11 @@ def build_report(since: date, until: date, today: date | None = None) -> Path:
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
     tracked = {b.id: b for b in tracked_bodies()}
-    bd_meetings = boarddocs.list_meetings()
+    dil_meetings = diligent.list_meetings(from_date=since, to_date=until)
     youtube_videos = _try_list_youtube_streams()
 
-    recap = _collect_recap(bd_meetings, youtube_videos, tracked, since, today)
-    lookahead = _collect_lookahead(bd_meetings, tracked, today, until)
+    recap = _collect_recap(dil_meetings, youtube_videos, tracked, since, today)
+    lookahead = _collect_lookahead(dil_meetings, tracked, today, until)
 
     md = _render(since, until, today, recap, lookahead)
     out = REPORTS_DIR / f"{since.isoformat()}_to_{until.isoformat()}.md"
@@ -87,34 +87,30 @@ def build_report(since: date, until: date, today: date | None = None) -> Path:
     return out
 
 
-# ---------- recap ----------
-
-def _collect_recap(bd_meetings: list[boarddocs.MeetingRef],
+def _collect_recap(dil_meetings: list[diligent.MeetingRef],
                    videos: list[youtube.YouTubeVideo] | None,
                    tracked: dict[str, Body],
                    since: date, today: date) -> list[SectionEntry]:
     already = manifest.load()
     entries: list[SectionEntry] = []
 
-    # BoardDocs sources (Board, COTWs, sub-bodies)
-    for m in bd_meetings:
+    for m in dil_meetings:
         if not (since <= m.date <= today):
             continue
         if is_cancelled(m.title):
             continue
-        body = body_for_title(m.title)
+        body = body_for_type_id(m.type_id)
         if body is None or body.id not in tracked:
             continue
-        mid = manifest.make_id("boarddocs", m.unique)
+        mid = manifest.make_id("diligent", str(m.id))
         if mid in already:
             entries.append(SectionEntry(body, m.date, m.title, already[mid]))
             continue
-        print(f"  ingesting boarddocs: {m.date} {m.title[:60]}")
-        record = summarize.ingest_boarddocs(m, body, videos=videos)
+        print(f"  ingesting diligent: {m.date} {m.title[:60]}")
+        record = summarize.ingest_diligent(m, body, videos=videos)
         manifest.upsert(record)
         entries.append(SectionEntry(body, m.date, m.title, record))
 
-    # CD sources (external sites)
     for source_id, lister in (("bccd", bccd.list_meetings), ("swcd", swcd.list_meetings)):
         body = tracked.get(source_id)
         if body is None:
@@ -127,7 +123,6 @@ def _collect_recap(bd_meetings: list[boarddocs.MeetingRef],
         for m in meetings:
             if not (since <= m.date <= today):
                 continue
-            # skip meetings whose materials aren't published yet
             if not (m.agenda_url or m.minutes_url):
                 continue
             mid = manifest.make_id(source_id, m.date.strftime("%Y%m%d"))
@@ -143,40 +138,32 @@ def _collect_recap(bd_meetings: list[boarddocs.MeetingRef],
     return entries
 
 
-# ---------- lookahead ----------
-
-def _collect_lookahead(bd_meetings: list[boarddocs.MeetingRef],
+def _collect_lookahead(dil_meetings: list[diligent.MeetingRef],
                        tracked: dict[str, Body],
                        today: date, until: date) -> list[SectionEntry]:
-    """Agenda-only previews for BoardDocs meetings in the coming window.
-
-    Skips CD/SWCD sites — their pages don't reliably preview future agendas.
-    """
+    """Agenda-only previews for Diligent meetings in the coming window."""
     entries: list[SectionEntry] = []
-    for m in bd_meetings:
+    for m in dil_meetings:
         if not (today < m.date <= until):
             continue
-        body = body_for_title(m.title)
+        body = body_for_type_id(m.type_id)
         if body is None or body.id not in tracked:
             continue
         cancelled = is_cancelled(m.title)
         if cancelled:
-            # Note cancellation without spending an LLM call
             record = manifest.MeetingRecord(
-                id=manifest.make_id("boarddocs-cancelled", m.unique),
-                body_id=body.id, source="boarddocs",
+                id=manifest.make_id("diligent-cancelled", str(m.id)),
+                body_id=body.id, source="diligent",
                 date=m.date.isoformat(), title=m.title,
-                url=boarddocs.public_url_for_meeting(m.unique),
+                url=diligent.public_url_for_meeting(m.id),
             )
         else:
             print(f"  previewing: {m.date} {m.title[:60]}")
-            record = summarize.summarize_boarddocs_lookahead(m, body)
+            record = summarize.summarize_diligent_lookahead(m, body)
         entries.append(SectionEntry(body, m.date, m.title, record, cancelled=cancelled))
     entries.sort(key=lambda e: (e.meeting_date, e.body.id))
     return entries
 
-
-# ---------- rendering ----------
 
 def _render(since: date, until: date, today: date,
             recap: list[SectionEntry], lookahead: list[SectionEntry]) -> str:

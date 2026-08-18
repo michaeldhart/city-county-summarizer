@@ -14,24 +14,16 @@ MEETINGS_DIR = DATA_DIR / "meetings"
 CACHE_DIR = DATA_DIR / "cache"
 MANIFEST_PATH = DATA_DIR / "manifest.json"
 
-BOARDDOCS_BASE = "https://go.boarddocs.com/il/boone/Board.nsf"
-BOARDDOCS_COMMITTEE_ID = "AAL6YS173AC9"
+DILIGENT_BASE = "https://boonecountyil.community.diligentoneplatform.com"
 YOUTUBE_CHANNEL_ID = "UCJd8c3sZs98mx9vznx9nsOg"
 
-# Realistic browser headers — BoardDocs' CloudFront rejects bare curl.
 HTTP_HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
         "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
     ),
-    "Accept": "text/html,application/json,*/*",
+    "Accept": "application/json, text/html, */*",
     "Accept-Language": "en-US,en;q=0.9",
-}
-BOARDDOCS_HEADERS = {
-    **HTTP_HEADERS,
-    "Origin": "https://go.boarddocs.com",
-    "Referer": f"{BOARDDOCS_BASE}/Public",
-    "Content-Type": "application/x-www-form-urlencoded",
 }
 
 CLAUDE_MODEL = "claude-sonnet-4-5"
@@ -41,42 +33,33 @@ CLAUDE_MODEL = "claude-sonnet-4-5"
 class Body:
     id: str                    # short slug (e.g. "board", "cotw-finance")
     display_name: str          # human name shown in SCOPE.md
-    source: str                # "boarddocs" | "bccd" | "swcd"
+    source: str                # "diligent" | "bccd" | "swcd"
     scope_name: str            # exact string as it appears in SCOPE.md rows
-    title_patterns: tuple[str, ...] = ()  # regex patterns matching BoardDocs meeting titles
+    type_id: int | None = None  # Diligent MeetingTypeId (None for non-diligent sources)
 
 
-# Canonical registry. `title_patterns` come from real observed titles in the spike.
-# Sub-body meetings on BoardDocs share the same committee_id as Board meetings —
-# we distinguish them by matching the meeting title.
+# Canonical registry. `type_id` values from Diligent recon in Aug 2026.
+# LEPC and Veteran's Assistance don't appear on Diligent — no id known — they
+# stay in scope but won't be matched until we find where their agendas live.
 BODIES: tuple[Body, ...] = (
-    Body("board", "Boone County Board", "boarddocs",
-         "Boone County Board (12 members, 3 districts)",
-         (r"^boone county board meeting$",)),
-    Body("cotw-admin", "COTW – Administrative & Legislative", "boarddocs",
-         "COTW – Administrative & Legislative",
-         (r"committee of the whole.*admin",)),
-    Body("cotw-finance", "COTW – Finance, Taxation & Salaries", "boarddocs",
-         "COTW – Finance, Taxation & Salaries",
-         (r"committee of the whole.*finance",)),
-    Body("planning", "Regional Planning Commission", "boarddocs",
-         "Regional Planning Commission",
-         (r"regional planning commission",)),
-    Body("zba", "Zoning Board of Appeals", "boarddocs",
-         "Zoning Board of Appeals",
-         (r"zoning board of appeals",)),
-    Body("ag-easement", "Agricultural Conservation Easement Commission", "boarddocs",
-         "Agricultural Conservation Easement & Farmland Protection Commission",
-         (r"agricultural conservation easement", r"farmland protection")),
-    Body("health", "Board of Health", "boarddocs",
-         "Board of Health",
-         (r"board of health",)),
-    Body("lepc", "Local Emergency Planning Committee", "boarddocs",
-         "Local Emergency Planning Committee (LEPC)",
-         (r"local emergency planning", r"\blepc\b")),
-    Body("veterans", "Veteran's Assistance Commission", "boarddocs",
-         "Veteran's Assistance Commission",
-         (r"veteran'?s? assistance",)),
+    Body("board", "Boone County Board", "diligent",
+         "Boone County Board (12 members, 3 districts)", type_id=22),
+    Body("cotw-admin", "COTW – Administrative & Legislative", "diligent",
+         "COTW – Administrative & Legislative", type_id=18),
+    Body("cotw-finance", "COTW – Finance, Taxation & Salaries", "diligent",
+         "COTW – Finance, Taxation & Salaries", type_id=19),
+    Body("planning", "Regional Planning Commission", "diligent",
+         "Regional Planning Commission", type_id=29),
+    Body("zba", "Zoning Board of Appeals", "diligent",
+         "Zoning Board of Appeals", type_id=23),
+    Body("ag-easement", "Agricultural Conservation Easement Commission", "diligent",
+         "Agricultural Conservation Easement & Farmland Protection Commission", type_id=31),
+    Body("health", "Board of Health", "diligent",
+         "Board of Health", type_id=20),
+    Body("lepc", "Local Emergency Planning Committee", "diligent",
+         "Local Emergency Planning Committee (LEPC)", type_id=None),
+    Body("veterans", "Veteran's Assistance Commission", "diligent",
+         "Veteran's Assistance Commission", type_id=None),
     Body("bccd", "Boone County Conservation District", "bccd",
          "Boone County Conservation District"),
     Body("swcd", "Soil & Water Conservation District", "swcd",
@@ -84,6 +67,7 @@ BODIES: tuple[Body, ...] = (
 )
 
 BODIES_BY_ID: dict[str, Body] = {b.id: b for b in BODIES}
+BODIES_BY_TYPE_ID: dict[int, Body] = {b.type_id: b for b in BODIES if b.type_id is not None}
 
 
 def load_env() -> None:
@@ -120,24 +104,8 @@ def tracked_bodies() -> list[Body]:
     return [b for b in BODIES if statuses.get(b.scope_name) == "tracked"]
 
 
-def body_for_title(title: str) -> Body | None:
-    """Match a BoardDocs meeting title to a body via its regex patterns.
-
-    Strips 'CANCELLED' / 'CANCELLED/RESCHEDULED' prefixes first.
-    """
-    cleaned = re.sub(
-        r"^\s*(cancelled(?:\s*/\s*rescheduled)?)\s*",
-        "",
-        title.strip(),
-        flags=re.IGNORECASE,
-    ).strip().lower()
-    for body in BODIES:
-        if body.source != "boarddocs":
-            continue
-        for pat in body.title_patterns:
-            if re.search(pat, cleaned, flags=re.IGNORECASE):
-                return body
-    return None
+def body_for_type_id(type_id: int) -> Body | None:
+    return BODIES_BY_TYPE_ID.get(type_id)
 
 
 def is_cancelled(title: str) -> bool:

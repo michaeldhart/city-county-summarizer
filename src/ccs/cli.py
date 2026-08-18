@@ -5,7 +5,7 @@ Commands:
   ccs check                             show which tracked bodies have records in a window (no Claude calls)
   ccs report                            monthly report (default: last 35 days recap, next 30 days lookahead)
   ccs report --since YYYY-MM-DD --until YYYY-MM-DD
-  ccs ingest boarddocs:<unique>         re-ingest a specific meeting, updating the manifest
+  ccs ingest diligent:<id>              re-ingest a specific meeting, updating the manifest
   ccs ingest bccd:YYYYMMDD
   ccs ingest swcd:YYYYMMDD
 """
@@ -15,8 +15,8 @@ import argparse
 import sys
 from datetime import date, timedelta
 
-from . import bccd, boarddocs, config, general, manifest, report, summarize, swcd, youtube
-from .config import body_for_title, load_env, tracked_bodies
+from . import bccd, config, diligent, general, manifest, report, summarize, swcd, youtube
+from .config import body_for_type_id, load_env, tracked_bodies
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -39,7 +39,7 @@ def main(argv: list[str] | None = None) -> int:
                           help="Lookahead window end (default: today + 30 days)")
 
     p_ingest = sub.add_parser("ingest", help="Force-ingest a specific meeting")
-    p_ingest.add_argument("meeting_id", help="e.g. boarddocs:DSCKED517FD7, bccd:20260420, swcd:20260701")
+    p_ingest.add_argument("meeting_id", help="e.g. diligent:1622, bccd:20260420, swcd:20260701")
 
     args = parser.parse_args(argv)
     if args.command == "summary":
@@ -108,33 +108,37 @@ def _cmd_report(since: date | None, until: date | None) -> int:
 
 def _cmd_ingest(meeting_id: str) -> int:
     if ":" not in meeting_id:
-        print("error: meeting_id must be like source:key (e.g. boarddocs:DSCKED517FD7)", file=sys.stderr)
+        print("error: meeting_id must be like source:key (e.g. diligent:1622)", file=sys.stderr)
         return 2
     source, key = meeting_id.split(":", 1)
 
-    if source == "boarddocs":
-        return _ingest_boarddocs(key)
+    if source == "diligent":
+        return _ingest_diligent(key)
     if source == "bccd":
         return _ingest_cd("bccd", key, bccd.list_meetings)
     if source == "swcd":
         return _ingest_cd("swcd", key, swcd.list_meetings)
-    print(f"error: unknown source '{source}' (expected boarddocs, bccd, swcd)", file=sys.stderr)
+    print(f"error: unknown source '{source}' (expected diligent, bccd, swcd)", file=sys.stderr)
     return 2
 
 
-def _ingest_boarddocs(unique: str) -> int:
-    meetings = boarddocs.list_meetings()
-    ref = next((m for m in meetings if m.unique == unique), None)
+def _ingest_diligent(key: str) -> int:
+    if not key.isdigit():
+        print(f"error: diligent key must be a numeric meeting id, got '{key}'", file=sys.stderr)
+        return 2
+    target_id = int(key)
+    meetings = diligent.list_meetings()
+    ref = next((m for m in meetings if m.id == target_id), None)
     if ref is None:
-        print(f"error: no BoardDocs meeting with unique={unique}", file=sys.stderr)
+        print(f"error: no Diligent meeting with id={target_id}", file=sys.stderr)
         return 1
-    body = body_for_title(ref.title)
+    body = body_for_type_id(ref.type_id)
     if body is None:
-        print(f"error: title '{ref.title}' didn't match any body", file=sys.stderr)
+        print(f"error: type_id {ref.type_id} ('{ref.type_name}') isn't in the body registry", file=sys.stderr)
         return 1
     print(f"Ingesting {ref.date} {ref.title} (body={body.id})")
     videos = report._try_list_youtube_streams()
-    record = summarize.ingest_boarddocs(ref, body, videos=videos)
+    record = summarize.ingest_diligent(ref, body, videos=videos)
     manifest.upsert(record)
     print(f"OK  transcript={record.has_transcript}  summary={record.summary_path}")
     return 0

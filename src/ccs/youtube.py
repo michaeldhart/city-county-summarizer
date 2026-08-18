@@ -48,8 +48,8 @@ def list_streams(limit: int = 200) -> list[YouTubeVideo]:
     return videos
 
 
-# Meeting-type keywords in a YouTube title (looser than BoardDocs title regexes —
-# YouTube titles are informal, e.g. "Boone County COTW-Finance 6/12/2025").
+# Meeting-type keywords in a YouTube title — YouTube titles are informal
+# (e.g. "Boone County COTW-Finance 6/12/2025"), separate from Diligent's clean type IDs.
 _TITLE_HINTS: dict[str, tuple[str, ...]] = {
     "board":         (r"boone county board(?!\s*of\s*health)",),
     "cotw-admin":    (r"cotw[- ]*admin", r"committee of the whole.*admin"),

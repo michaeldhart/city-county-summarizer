@@ -4,6 +4,15 @@ End-to-end validation of the pipeline on the April 16, 2026 Boone County Board M
 
 Artifacts: `data/spike/board-20260416/` and `data/spike/zba-20260428/`.
 
+> **Historical note (Aug 2026):** The county migrated off BoardDocs to the
+> Diligent Community platform around May 4, 2026 — the old
+> `go.boarddocs.com/il/boone` URL still serves cached historical data
+> (2011 → May 4, 2026) but no new meetings appear there. The v1 pipeline
+> now uses [`src/ccs/diligent.py`](../src/ccs/diligent.py) instead. See
+> [DILIGENT_MIGRATION.md](DILIGENT_MIGRATION.md) for the new-platform recon.
+> The BoardDocs notes below remain accurate for that platform's shape and
+> are kept for context.
+
 ## What worked
 
 ### BoardDocs is fully scrapable with plain HTTP

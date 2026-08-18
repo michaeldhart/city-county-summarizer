@@ -11,9 +11,9 @@ from .config import MANIFEST_PATH
 
 @dataclass
 class MeetingRecord:
-    id: str                       # globally unique: e.g. "boarddocs:DSCKED517FD7"
+    id: str                       # globally unique: e.g. "diligent:1622"
     body_id: str
-    source: str                   # "boarddocs" | "bccd" | "swcd"
+    source: str                   # "diligent" | "bccd" | "swcd"
     date: str                     # ISO YYYY-MM-DD
     title: str
     url: str | None = None

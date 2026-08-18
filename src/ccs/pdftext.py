@@ -1,4 +1,4 @@
-"""PDF download + text extraction helpers used by BCCD/SWCD and BoardDocs attachments."""
+"""PDF download + text extraction helpers used by BCCD/SWCD and Diligent attachments."""
 from __future__ import annotations
 
 from pathlib import Path
