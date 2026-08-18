@@ -28,6 +28,8 @@ OUTPUT_PATH = REPO_ROOT / "general_summary.md"
 _SOURCES: dict[str, str] = {
     "County Board (site)":
         "https://www.boonecountyil.gov/government/county_board/index.php",
+    "County Board Members":
+        "https://www.boonecountyil.gov/government/county_board_members.php",
     "County Board Duties":
         "https://www.boonecountyil.gov/government/county_board/county_board_duties.php",
     "Departments index":

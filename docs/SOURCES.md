@@ -15,7 +15,8 @@ What the app reads from. Update as we discover new ones or retire dead links.
 
 | Source | URL | Used for |
 |--------|-----|----------|
-| County Board page | https://www.boonecountyil.gov/government/county_board/index.php | Members, districts, COTW structure. |
+| County Board page | https://www.boonecountyil.gov/government/county_board/index.php | Board composition + COTW structure. |
+| County Board Members page | https://www.boonecountyil.gov/government/county_board_members.php | Authoritative current roster: name, district, term end, role, contact. |
 | County Board Duties | https://www.boonecountyil.gov/government/county_board/county_board_duties.php | What the Board is responsible for. |
 | Departments index | https://www.boonecountyil.gov/government/departments/index.php | Department directory. |
 | Clerk & Recorder | https://www.boonecountyil.gov/government/departments/clerk___recorder/index.php | Clerk's role and current officeholder. |
