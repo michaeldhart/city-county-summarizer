@@ -16,9 +16,6 @@ venv/
 # Scraped data and caches — large, regenerable
 data/
 
-# Generated monthly reports — regenerable from data/manifest.json + sources
-reports/
-
 # Jekyll build output/caches — regenerable; committed source is website/_bodies,
 # website/_meetings, layouts, config
 website/_site/

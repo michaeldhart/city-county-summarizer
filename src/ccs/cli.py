@@ -3,8 +3,8 @@
 Commands:
   ccs summary                           rebuild general_summary.md
   ccs check                             show which tracked bodies have records in a window (no Claude calls)
-  ccs report                            recap report (default: last 35 days)
-  ccs report --since YYYY-MM-DD
+  ccs sync                              discover + ingest new meetings into the manifest (default: last 35 days)
+  ccs sync --since YYYY-MM-DD
   ccs ingest diligent:<id>              re-ingest a specific meeting, updating the manifest
   ccs ingest bccd:YYYYMMDD
   ccs ingest swcd:YYYYMMDD
@@ -31,9 +31,9 @@ def main(argv: list[str] | None = None) -> int:
     p_check.add_argument("--since", type=_parse_date, default=None,
                          help="Window start (default: 35 days ago)")
 
-    p_report = sub.add_parser("report", help="Generate a recap report")
-    p_report.add_argument("--since", type=_parse_date, default=None,
-                          help="Recap window start (default: 35 days ago)")
+    p_sync = sub.add_parser("sync", help="Discover and ingest new meetings into the manifest")
+    p_sync.add_argument("--since", type=_parse_date, default=None,
+                        help="Window start (default: 35 days ago)")
 
     p_ingest = sub.add_parser("ingest", help="Force-ingest a specific meeting")
     p_ingest.add_argument("meeting_id", help="e.g. diligent:1622, bccd:20260420, swcd:20260701")
@@ -45,8 +45,8 @@ def main(argv: list[str] | None = None) -> int:
         return _cmd_summary()
     if args.command == "check":
         return _cmd_check(args.since)
-    if args.command == "report":
-        return _cmd_report(args.since)
+    if args.command == "sync":
+        return _cmd_sync(args.since)
     if args.command == "ingest":
         return _cmd_ingest(args.meeting_id)
     if args.command == "build-site":
@@ -86,18 +86,18 @@ def _print_check_table(rows: list[tuple[str, bool]]) -> None:
     print(border)
 
 
-def _cmd_report(since: date | None) -> int:
+def _cmd_sync(since: date | None) -> int:
     today = date.today()
     since = since or (today - timedelta(days=35))
     if since > today:
         print(f"error: --since {since} is in the future", file=sys.stderr)
         return 2
 
-    print(f"Recap: {since} → {today}")
+    print(f"Syncing: {since} → {today}")
     print(f"Tracked bodies: {[b.id for b in tracked_bodies()]}")
 
-    path = report.build_report(since=since, today=today)
-    print(f"\nReport written: {path.relative_to(config.REPO_ROOT)}")
+    entries = report.sync_meetings(since=since, today=today)
+    print(f"\n{len(entries)} meeting(s) in window. Run `ccs build-site` to refresh the site.")
     return 0
 
 

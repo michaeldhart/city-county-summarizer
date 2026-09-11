@@ -1,19 +1,14 @@
-"""Discovery + monthly-report orchestration.
-
-Assembles a report covering meetings between `since` and today that aren't
-already in the manifest.
+"""Discovery + ingestion: finds meetings between `since` and today that
+aren't already in the manifest, summarizes them, and records them.
 """
 from __future__ import annotations
 
 import re
 from dataclasses import dataclass
 from datetime import date
-from pathlib import Path
 
-from . import bccd, diligent, manifest, summarize, swcd, templates, youtube
-from .config import REPO_ROOT, Body, body_for_type_id, is_cancelled, tracked_bodies
-
-REPORTS_DIR = REPO_ROOT / "reports"
+from . import bccd, diligent, manifest, summarize, swcd, youtube
+from .config import Body, body_for_type_id, is_cancelled, tracked_bodies
 
 _TRAILING_DATE_RE = re.compile(
     r"\s*[-—]\s*(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|"
@@ -84,20 +79,13 @@ def check_sources(since: date, today: date | None = None) -> list[tuple[str, boo
     return results
 
 
-def build_report(since: date, today: date | None = None) -> Path:
+def sync_meetings(since: date, today: date | None = None) -> list[SectionEntry]:
+    """Discover and ingest meetings between `since` and today, updating the manifest."""
     today = today or date.today()
-    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-
     tracked = {b.id: b for b in tracked_bodies()}
     dil_meetings = diligent.list_meetings(from_date=since, to_date=today)
     youtube_videos = _try_list_youtube_streams()
-
-    recap = _collect_recap(dil_meetings, youtube_videos, tracked, since, today)
-
-    md = _render(since, today, recap)
-    out = REPORTS_DIR / f"{since.isoformat()}_to_{today.isoformat()}.md"
-    out.write_text(md)
-    return out
+    return _collect_recap(dil_meetings, youtube_videos, tracked, since, today)
 
 
 def _collect_recap(dil_meetings: list[diligent.MeetingRef],
@@ -149,116 +137,6 @@ def _collect_recap(dil_meetings: list[diligent.MeetingRef],
 
     entries.sort(key=lambda e: (e.meeting_date, e.body.id), reverse=True)
     return entries
-
-
-def _render(since: date, today: date, recap: list[SectionEntry]) -> str:
-    parts: list[str] = [
-        templates.REPORT_HEADER.format(
-            start=templates.fmt_date(since),
-            end=templates.fmt_date(today),
-            generated=today.isoformat(),
-            recap_start=since.isoformat(),
-            recap_end=today.isoformat(),
-        ),
-    ]
-    toc = _render_toc(recap)
-    if toc:
-        parts.append(toc)
-    parts.extend([
-        templates.SECTION_SEPARATOR,
-        templates.RECAP_HEADING,
-        _render_section(recap, empty=templates.RECAP_EMPTY),
-    ])
-    return "\n".join(parts).rstrip() + "\n"
-
-
-def _render_toc(recap: list[SectionEntry]) -> str:
-    if not recap:
-        return ""
-    seen: dict[str, int] = {}
-    noun = "meeting" if len(recap) == 1 else "meetings"
-    lines = [
-        templates.TOC_HEADING,
-        templates.TOC_GROUP_HEADING.format(group="Recap", count=len(recap), noun=noun),
-    ]
-    for e in recap:
-        text = _entry_link_text(e)
-        lines.append(templates.TOC_ENTRY_LINE.format(text=text, anchor=_unique_slug(text, seen)))
-    return "\n".join(lines)
-
-
-def _entry_link_text(e: SectionEntry) -> str:
-    body_label = clean_meeting_title(e.title) or e.body.display_name
-    return f"{templates.fmt_date(e.meeting_date)} — {body_label}"
-
-
-# GitHub anchor rules: lowercase; drop chars that are not word/space/hyphen
-# (so punctuation like — , ( ) : & disappears rather than becoming a hyphen);
-# then swap spaces for hyphens without collapsing runs, so double spaces
-# survive as double hyphens — matching how GitHub itself slugs headings.
-_SLUG_STRIP_RE = re.compile(r"[^\w\s-]", re.UNICODE)
-
-
-def _slugify(text: str) -> str:
-    s = _SLUG_STRIP_RE.sub("", text.lower())
-    s = s.replace(" ", "-")
-    return s.strip("-")
-
-
-def _unique_slug(text: str, seen: dict[str, int]) -> str:
-    base = _slugify(text)
-    count = seen.get(base, 0)
-    seen[base] = count + 1
-    return base if count == 0 else f"{base}-{count}"
-
-
-def _render_section(entries: list[SectionEntry], *, empty: str) -> str:
-    if not entries:
-        return empty
-    return "\n".join(_render_entry(e) for e in entries)
-
-
-def _render_entry(e: SectionEntry) -> str:
-    body_label = clean_meeting_title(e.title) or e.body.display_name
-    lines: list[str] = [
-        templates.ENTRY_HEADER.format(date=templates.fmt_date(e.meeting_date), body=body_label),
-        "",
-    ]
-    if e.record.url:
-        lines.append(templates.ENTRY_SOURCE_LINK.format(url=e.record.url))
-        lines.append("")
-    if not e.record.summary_path:
-        lines.append(templates.ENTRY_NO_SUMMARY)
-        return "\n".join(lines)
-    summary_path = REPO_ROOT / e.record.summary_path
-    if summary_path.exists():
-        lines.extend(_bump_summary_headers(summary_path.read_text()))
-    else:
-        lines.append(templates.ENTRY_SUMMARY_MISSING.format(path=e.record.summary_path))
-    return "\n".join(lines)
-
-
-def _bump_summary_headers(summary: str) -> list[str]:
-    """Nest a cached per-meeting summary under the entry wrapper.
-
-    - Drop any leading '# ...' meeting-title header (legacy summaries wrote one;
-      current prompts skip it because the wrapper already identifies the meeting).
-    - Bump all remaining '#' headings by 2 so the summary's '## TL;DR' becomes
-      '#### TL;DR' — one level below the '### entry header' wrapper.
-    """
-    raw_lines = summary.splitlines()
-    out: list[str] = []
-    header_stripped = False
-    for ln in raw_lines:
-        stripped = ln.lstrip()
-        if not header_stripped and stripped.startswith("# ") and not stripped.startswith("## "):
-            header_stripped = True
-            continue
-        out.append("##" + ln if ln.startswith("#") else ln)
-    # Drop the blank line that usually follows the removed header
-    while out and not out[0].strip():
-        out.pop(0)
-    return out
 
 
 def _try_list_youtube_streams() -> list[youtube.YouTubeVideo] | None:
