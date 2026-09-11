@@ -1,0 +1,29 @@
+# minima: chosen in Phase 5 after comparing against just-the-docs locally.
+# just-the-docs' sidebar/search only work with its own hand-authored
+# parent/nav_order front matter, which our manifest-driven body/meeting
+# hierarchy doesn't use — it rendered an empty sidebar and non-functional
+# search. minima has no such assumptions and renders our content cleanly.
+theme: minima
+
+title: Boone County Government Watch
+description: >-
+  Meeting recaps for the Boone County, IL government bodies tracked by
+  city-county-summarizer.
+
+collections:
+  bodies:
+    output: true
+  meetings:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "bodies"
+    values:
+      layout: body
+  - scope:
+      path: ""
+      type: "meetings"
+    values:
+      layout: meeting

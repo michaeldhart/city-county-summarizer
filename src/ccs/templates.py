@@ -23,22 +23,25 @@ def fmt_date(d: date) -> str:
 REPORT_HEADER = """# Boone County Government Report: {start} - {end}
 
 Generated: {generated}
+
 Recap window: {recap_start} → {recap_end}
-Lookahead window: {lookahead_start} → {lookahead_end}
 """
 
 SECTION_SEPARATOR = "\n---\n"
 
 RECAP_HEADING = "## Recap\n"
-LOOKAHEAD_HEADING = "## Lookahead\n"
 
 RECAP_EMPTY = "_No meetings found in the recap window._"
-LOOKAHEAD_EMPTY = "_No upcoming meetings scheduled in the lookahead window._"
+
+# ---- table of contents ----
+
+TOC_HEADING = "## Contents"
+TOC_GROUP_HEADING = "**{group}** ({count} {noun})"
+TOC_ENTRY_LINE = "- [{text}](#{anchor})"
 
 # ---- per-entry ----
 
 ENTRY_HEADER = "### {date} — {body}"
-ENTRY_HEADER_CANCELLED = "### {date} — {body} (CANCELLED)"
 ENTRY_SOURCE_LINK = "[Source]({url})"
-ENTRY_NO_SUMMARY = "_No summary — meeting was cancelled or has no materials yet._"
+ENTRY_NO_SUMMARY = "_No summary — meeting has no materials yet._"
 ENTRY_SUMMARY_MISSING = "_Summary file missing: {path}_"

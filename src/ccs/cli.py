@@ -3,11 +3,12 @@
 Commands:
   ccs summary                           rebuild general_summary.md
   ccs check                             show which tracked bodies have records in a window (no Claude calls)
-  ccs report                            monthly report (default: last 35 days recap, next 30 days lookahead)
-  ccs report --since YYYY-MM-DD --until YYYY-MM-DD
+  ccs report                            recap report (default: last 35 days)
+  ccs report --since YYYY-MM-DD
   ccs ingest diligent:<id>              re-ingest a specific meeting, updating the manifest
   ccs ingest bccd:YYYYMMDD
   ccs ingest swcd:YYYYMMDD
+  ccs build-site                        regenerate website/_bodies and website/_meetings from the manifest
 """
 from __future__ import annotations
 
@@ -15,7 +16,7 @@ import argparse
 import sys
 from datetime import date, timedelta
 
-from . import bccd, config, diligent, general, manifest, report, summarize, swcd, youtube
+from . import bccd, config, diligent, general, manifest, report, sitegen, summarize, swcd, youtube
 from .config import body_for_type_id, load_env, tracked_bodies
 
 
@@ -29,27 +30,27 @@ def main(argv: list[str] | None = None) -> int:
     p_check = sub.add_parser("check", help="Preview which bodies have records in a window (no Claude calls)")
     p_check.add_argument("--since", type=_parse_date, default=None,
                          help="Window start (default: 35 days ago)")
-    p_check.add_argument("--until", type=_parse_date, default=None,
-                         help="Window end (default: today + 30 days)")
 
-    p_report = sub.add_parser("report", help="Generate a monthly report")
+    p_report = sub.add_parser("report", help="Generate a recap report")
     p_report.add_argument("--since", type=_parse_date, default=None,
                           help="Recap window start (default: 35 days ago)")
-    p_report.add_argument("--until", type=_parse_date, default=None,
-                          help="Lookahead window end (default: today + 30 days)")
 
     p_ingest = sub.add_parser("ingest", help="Force-ingest a specific meeting")
     p_ingest.add_argument("meeting_id", help="e.g. diligent:1622, bccd:20260420, swcd:20260701")
+
+    sub.add_parser("build-site", help="Regenerate the Jekyll site's content from the manifest")
 
     args = parser.parse_args(argv)
     if args.command == "summary":
         return _cmd_summary()
     if args.command == "check":
-        return _cmd_check(args.since, args.until)
+        return _cmd_check(args.since)
     if args.command == "report":
-        return _cmd_report(args.since, args.until)
+        return _cmd_report(args.since)
     if args.command == "ingest":
         return _cmd_ingest(args.meeting_id)
+    if args.command == "build-site":
+        return _cmd_build_site()
     parser.error(f"unknown command {args.command}")
     return 2
 
@@ -60,12 +61,11 @@ def _cmd_summary() -> int:
     return 0
 
 
-def _cmd_check(since: date | None, until: date | None) -> int:
+def _cmd_check(since: date | None) -> int:
     today = date.today()
     since = since or (today - timedelta(days=35))
-    until = until or (today + timedelta(days=30))
-    print(f"Checking sources for {since} → {until}...\n")
-    rows = report.check_sources(since, until)
+    print(f"Checking sources for {since} → {today}...\n")
+    rows = report.check_sources(since, today)
     _print_check_table(rows)
     have = sum(1 for _, ok in rows if ok)
     print(f"\n{have} of {len(rows)} tracked bodies have records in this window.")
@@ -86,22 +86,17 @@ def _print_check_table(rows: list[tuple[str, bool]]) -> None:
     print(border)
 
 
-def _cmd_report(since: date | None, until: date | None) -> int:
+def _cmd_report(since: date | None) -> int:
     today = date.today()
     since = since or (today - timedelta(days=35))
-    until = until or (today + timedelta(days=30))
     if since > today:
         print(f"error: --since {since} is in the future", file=sys.stderr)
         return 2
-    if until < today:
-        print(f"error: --until {until} is in the past", file=sys.stderr)
-        return 2
 
     print(f"Recap: {since} → {today}")
-    print(f"Lookahead: {today} → {until}")
     print(f"Tracked bodies: {[b.id for b in tracked_bodies()]}")
 
-    path = report.build_report(since=since, until=until, today=today)
+    path = report.build_report(since=since, today=today)
     print(f"\nReport written: {path.relative_to(config.REPO_ROOT)}")
     return 0
 
@@ -161,6 +156,13 @@ def _ingest_cd(source: str, key: str, lister) -> int:
     record = summarize.ingest_cd(source, meeting, body)
     manifest.upsert(record)
     print(f"OK  summary={record.summary_path}")
+    return 0
+
+
+def _cmd_build_site() -> int:
+    n_bodies, n_meetings = sitegen.build_site_content()
+    print(f"Wrote {n_bodies} body page(s) and {n_meetings} meeting page(s) "
+          f"to {sitegen.WEBSITE_DIR.relative_to(config.REPO_ROOT)}/")
     return 0
 
 

@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+<p>{{ page.date | date: "%b %-d, %Y" }}</p>
+{% if page.source_url %}
+<p><a href="{{ page.source_url }}">Source</a></p>
+{% endif %}
+
+{{ content }}
+
+{% assign parent_body = site.bodies | where: "body_id", page.body_id | first %}
+{% if parent_body %}
+<p><a href="{{ parent_body.url | relative_url }}">&larr; Back to {{ parent_body.title }}</a></p>
+{% endif %}

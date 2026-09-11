@@ -51,7 +51,7 @@ def ingest_diligent(ref: diligent.MeetingRef, body: Body,
                 transcript = youtube.vtt_to_text(vtt)
                 (outdir / "transcript.txt").write_text(transcript)
 
-    prompt = _build_diligent_prompt(body, meeting_data, ref, agenda_text, transcript, lookahead=False)
+    prompt = _build_diligent_prompt(body, meeting_data, ref, agenda_text, transcript)
     summary = _call_claude(prompt)
     (outdir / "summary.md").write_text(summary)
 
@@ -64,36 +64,6 @@ def ingest_diligent(ref: diligent.MeetingRef, body: Body,
         url=diligent.public_url_for_meeting(ref.id),
         video_id=video_id,
         has_transcript=bool(transcript),
-        summary_path=str((outdir / "summary.md").relative_to(REPO_ROOT)),
-    )
-
-
-def summarize_diligent_lookahead(ref: diligent.MeetingRef, body: Body) -> manifest.MeetingRecord:
-    """Agenda-only summary for an upcoming meeting."""
-    meeting_id = manifest.make_id("diligent-preview", str(ref.id))
-    outdir = _meeting_dir(meeting_id)
-
-    meeting_data = diligent.get_meeting_data(ref.id)
-    documents = diligent.get_meeting_documents(ref.id)
-    (outdir / "meeting_data.json").write_text(json.dumps(_dataclass_to_dict(meeting_data), indent=2))
-    for doc in documents:
-        if doc.html:
-            (outdir / f"document_{doc.id}.html").write_text(doc.html)
-
-    agenda_doc = next((d for d in documents if d.document_type == 1 and d.html), None)
-    agenda_text = diligent.agenda_html_to_text(agenda_doc.html) if agenda_doc else ""
-
-    prompt = _build_diligent_prompt(body, meeting_data, ref, agenda_text, transcript="", lookahead=True)
-    summary = _call_claude(prompt)
-    (outdir / "summary.md").write_text(summary)
-
-    return manifest.MeetingRecord(
-        id=meeting_id,
-        body_id=body.id,
-        source="diligent",
-        date=ref.date.isoformat(),
-        title=ref.title,
-        url=diligent.public_url_for_meeting(ref.id),
         summary_path=str((outdir / "summary.md").relative_to(REPO_ROOT)),
     )
 
@@ -117,7 +87,7 @@ def ingest_cd(source: str, meeting: bccd.BccdMeeting | swcd.SwcdMeeting,
         body_id=body.id,
         source=source,
         date=meeting.date.isoformat(),
-        title=f"{body.display_name} — {meeting.date.strftime('%B %-d, %Y')}",
+        title=body.display_name,
         url=meeting.agenda_url or meeting.minutes_url,
         summary_path=str((outdir / "summary.md").relative_to(REPO_ROOT)),
     )
@@ -137,26 +107,18 @@ def _download_and_extract(url: str | None, pdf_dest: Path, txt_dest: Path) -> st
 
 def _build_diligent_prompt(body: Body, data: diligent.MeetingData,
                            ref: diligent.MeetingRef, agenda_text: str,
-                           transcript: str, lookahead: bool) -> str:
-    mode = "upcoming agenda" if lookahead else "meeting recap"
-    header = f"# {body.display_name} — {ref.date.strftime('%A, %B %-d, %Y')}"
-
-    if lookahead:
-        instructions = (
-            "This is an UPCOMING meeting. Summarize what's on the agenda so the reader knows "
-            "what to expect. Group by category. Flag items that look consequential (large "
-            "dollar amounts, zoning changes, appointments, ordinances)."
-        )
-    else:
-        instructions = (
-            "This meeting has already occurred. Produce a Markdown recap with these sections:\n"
-            "## TL;DR (3–5 bullets: most important decisions and discussions)\n"
-            "## Attendance & housekeeping\n"
-            "## Decisions & votes (each with vote count and notable discussion or dissent)\n"
-            "## Discussion items (no vote)\n"
-            "## Public comment\n"
-            "## Notable moments (anything colorful, tense, or unusual)\n"
-        )
+                           transcript: str) -> str:
+    instructions = (
+        "This meeting has already occurred. Produce a Markdown recap with these sections:\n"
+        "## TL;DR (3–5 bullets: most important decisions and discussions)\n"
+        "## Attendance & housekeeping\n"
+        "## Decisions & votes (each with vote count and notable discussion or dissent)\n"
+        "## Discussion items (no vote)\n"
+        "## Public comment\n"
+        "## Notable moments (anything colorful, tense, or unusual)\n"
+        "For any section where nothing applies to this meeting, keep the header and write "
+        "`_No content._` on a single line beneath it — do not omit sections or leave them empty."
+    )
 
     transcript_block = f"\n===== TRANSCRIPT =====\n{transcript}" if transcript else ""
     transcript_note = "" if transcript else (
@@ -169,12 +131,12 @@ def _build_diligent_prompt(body: Body, data: diligent.MeetingData,
         f"Body: {body.display_name}\n"
         f"Meeting: {ref.title}\n"
         f"Date/Time: {ref.date.isoformat()} {ref.time}  Location: {ref.location or data.location}\n"
-        f"Members of record: {members_line}\n"
-        f"Mode: {mode}\n\n"
+        f"Members of record: {members_line}\n\n"
         f"{instructions}\n"
+        f"IMPORTANT: Do NOT start with a meeting-title header — the report wrapper already "
+        f"identifies the meeting. Start directly with the '## TL;DR' section.\n"
         f"Do not invent details not in the source. If the transcript has typos "
         f"(auto-captions), silently correct obvious ones; quote sparingly.\n"
-        f"Start the response with:\n{header}\n"
         f"{transcript_note}"
         f"\n===== AGENDA =====\n{agenda_text}\n"
         f"{transcript_block}\n"
@@ -182,7 +144,6 @@ def _build_diligent_prompt(body: Body, data: diligent.MeetingData,
 
 
 def _build_cd_prompt(body: Body, meeting_date, agenda: str, minutes: str) -> str:
-    header = f"# {body.display_name} — {meeting_date.strftime('%B %-d, %Y')}"
     return (
         f"You are summarizing a Boone County, IL Conservation District meeting for a personal briefing.\n"
         f"Body: {body.display_name}\n"
@@ -192,9 +153,12 @@ def _build_cd_prompt(body: Body, meeting_date, agenda: str, minutes: str) -> str
         f"## Decisions & votes\n"
         f"## Discussion items\n"
         f"## Financial / operational notes\n\n"
+        f"For any section where nothing applies to this meeting, keep the header and write "
+        f"`_No content._` on a single line beneath it — do not omit sections or leave them empty.\n"
         f"If minutes are missing, work from the agenda only and label the summary '## Agenda preview'.\n"
+        f"IMPORTANT: Do NOT start with a meeting-title header — the report wrapper already "
+        f"identifies the meeting. Start directly with '## TL;DR' (or '## Agenda preview').\n"
         f"Do not invent details.\n"
-        f"Start the response with:\n{header}\n"
         f"\n===== AGENDA (PDF text) =====\n{agenda or '[no agenda available]'}\n"
         f"\n===== MINUTES (PDF text) =====\n{minutes or '[no minutes available]'}\n"
     )

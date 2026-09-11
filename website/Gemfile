@@ -1,0 +1,13 @@
+source "https://rubygems.org"
+
+gem "jekyll", "~> 4.3"
+gem "minima", "~> 2.5"
+
+# Pin transitive deps compatible with the system Ruby used for local preview
+# (2.6). CI/production can use a newer Ruby without these pins.
+gem "ffi", "1.15.5"
+gem "jekyll-sass-converter", "~> 2.0"
+
+# Ruby 3+ dropped webrick from the standard library; `jekyll serve` needs it
+# for local preview.
+gem "webrick", "~> 1.8"
