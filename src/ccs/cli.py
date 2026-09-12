@@ -1,7 +1,7 @@
 """Command-line entry point.
 
 Commands:
-  ccs summary                           rebuild general_summary.md
+  ccs summary                           rebuild the site's About page (website/about.md)
   ccs check                             show which tracked bodies have records in a window (no Claude calls)
   ccs sync                              discover + ingest new meetings into the manifest (default: last 35 days)
   ccs sync --since YYYY-MM-DD
@@ -25,7 +25,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="ccs", description="Boone County meeting monitor")
     sub = parser.add_subparsers(dest="command", required=True)
 
-    sub.add_parser("summary", help="Rebuild the general_summary.md living doc")
+    sub.add_parser("summary", help="Rebuild the site's About page")
 
     p_check = sub.add_parser("check", help="Preview which bodies have records in a window (no Claude calls)")
     p_check.add_argument("--since", type=_parse_date, default=None,

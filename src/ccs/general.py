@@ -2,7 +2,7 @@
 
 Pulls structural pages from the county site, the current board roster from the
 most recent Board meeting on the Diligent portal, and one-time grounding from
-Wikipedia. Synthesizes into `general_summary.md` at the repo root.
+Wikipedia. Synthesizes into the site's About page (`website/about.md`).
 """
 from __future__ import annotations
 
@@ -22,7 +22,14 @@ from .config import (
     load_env,
 )
 
-OUTPUT_PATH = REPO_ROOT / "general_summary.md"
+OUTPUT_PATH = REPO_ROOT / "website" / "about.md"
+
+_FRONT_MATTER = """---
+title: About
+permalink: /about/
+---
+
+"""
 
 # Named for readability in the prompt; label appears above each source block.
 _SOURCES: dict[str, str] = {
@@ -64,7 +71,7 @@ def build_general_summary() -> Path:
     print(f"Calling Claude ({CLAUDE_MODEL})...")
     summary = _call_claude(prompt)
 
-    OUTPUT_PATH.write_text(summary)
+    OUTPUT_PATH.write_text(_FRONT_MATTER + summary)
     return OUTPUT_PATH
 
 

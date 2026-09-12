@@ -25,7 +25,7 @@ What the app reads from. Update as we discover new ones or retire dead links.
 
 ## Secondary — one-time grounding
 
-Used only when rebuilding `general_summary.md`. Not pulled monthly.
+Used only when rebuilding the site's About page (`ccs summary`). Not pulled monthly.
 
 - Wikipedia — Boone County, IL
 - Ballotpedia — Boone County, IL elected officials
