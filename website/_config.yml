@@ -5,6 +5,12 @@
 # search. minima has no such assumptions and renders our content cleanly.
 theme: minima
 
+# Set explicitly (rather than relying on GitHub Pages' build-time
+# auto-detection) so absolute URLs — e.g. jekyll-feed's <link>/<id>
+# elements — are correct in local preview too, not just CI.
+url: "https://michaeldhart.github.io"
+baseurl: "/city-county-summarizer"
+
 title: Boone County Government Watch
 description: >-
   Meeting recaps for the Boone County, IL government bodies tracked by
@@ -27,3 +33,9 @@ defaults:
       type: "meetings"
     values:
       layout: meeting
+
+# Publishes an Atom feed of all meeting pages at /feed/meetings.xml
+# (jekyll-feed ships as a minima dependency already).
+feed:
+  collections:
+    - meetings
