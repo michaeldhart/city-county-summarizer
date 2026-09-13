@@ -28,6 +28,10 @@ class SwcdMeeting:
         return self.date.strftime("%Y%m%d")
 
     @property
+    def body_id(self):
+        return None   # single-body source
+
+    @property
     def name(self) -> str:
         return ""   # one body, one meeting per date — the body name is enough
 

@@ -63,6 +63,31 @@ These exist in Boone County but are governed independently. Flip to `tracked` if
 | Municipalities (Belvidere, Poplar Grove, etc.) | `excluded` | City-level. Belvidere itself is tracked below. |
 | School districts | `excluded` | Independent. BCUSD 100 is tracked below; no other district is. |
 
+## City of Belvidere
+
+Mayor–council city, five wards, ten aldermen. Agendas and minutes are posted as
+PDFs on belvidereil.gov; Council and Committee of the Whole meetings are streamed
+to YouTube. Most current documents are scanned images and require OCR.
+
+The Committee of the Whole publishes agendas and packets but **never minutes**, so
+its video transcript is the only record of what was actually discussed.
+
+| Body | Status | Notes |
+|------|--------|-------|
+| Belvidere City Council | `tracked` | 1st & 3rd Monday, 6:00 PM, City Hall. Streamed. |
+| Belvidere Committee of the Whole | `tracked` | 2nd & 4th Monday, 6:00 PM. Agendas only — no minutes. Streamed. |
+| Belvidere Planning & Zoning Commission | `tracked` | 2nd Tuesday, 6:00 PM. Also sits as the Zoning Board of Appeals. |
+| Belvidere Historic Preservation Commission | `tracked` | 4th Tuesday, 5:30 PM. |
+| Belvidere Board of Fire & Police Commissioners | `tracked` | Irregular. |
+
+Named for context but not ingested — these publish no agendas or minutes, only
+meeting dates and rosters: Firefighters' Pension Board, Police Pension Board,
+Library Board (Ida Public Library), Boone County Council on Aging Board,
+Community Building Complex of Boone County Board, and the Fire Department #2
+Foreign Fire Insurance Fund. There is no separate Zoning Board of Appeals, no
+Liquor Commission (licensing is handled by the City Clerk), and economic
+development sits with Growth Dimensions, a separate organization.
+
 ## Belvidere Township Park District
 
 Independently elected five-member Board of Commissioners covering Belvidere

@@ -53,9 +53,14 @@ def list_videos(channel_id: str, tab: str = "streams", limit: int = 200) -> list
 # Meeting-type keywords in a YouTube title — YouTube titles are informal
 # (e.g. "Boone County COTW-Finance 6/12/2025"), separate from Diligent's clean type IDs.
 _TITLE_HINTS: dict[str, tuple[str, ...]] = {
-    "board":         (r"boone county board(?!\s*of\s*health)",),
-    "cotw-admin":    (r"cotw[- ]*admin", r"committee of the whole.*admin"),
-    "cotw-finance":  (r"cotw[- ]*finance", r"committee of the whole.*finance"),
+    "board":             (r"boone county board(?!\s*of\s*health)",),
+    "cotw-admin":        (r"cotw[- ]*admin", r"committee of the whole.*admin"),
+    "cotw-finance":      (r"cotw[- ]*finance", r"committee of the whole.*finance"),
+    # Belvidere streams only these two. Titles are typo-prone ("CIty Council",
+    # a stray "of", doubled spaces), but lowercasing handles the capitalization
+    # and the untitled "Live Stream" placeholder carries no date, so it can't match.
+    "belvidere-council": (r"\bcity council\b",),
+    "belvidere-cow":     (r"committee of the whole",),
 }
 
 
@@ -66,7 +71,7 @@ def find_video(videos: list[YouTubeVideo], meeting_date: date, body_id: str) -> 
         return None
     date_patterns = _date_patterns(meeting_date)
     for v in videos:
-        t = v.title.lower()
+        t = _normalize(v.title)
         if not any(re.search(h, t) for h in hints):
             continue
         if any(dp in t for dp in date_patterns):
@@ -74,13 +79,21 @@ def find_video(videos: list[YouTubeVideo], meeting_date: date, body_id: str) -> 
     return None
 
 
+def _normalize(title: str) -> str:
+    """Lowercase, drop commas, collapse runs of spaces — Belvidere's titles have
+    all three ("Committee of the Whole Feb  23  2026")."""
+    return re.sub(r"\s+", " ", title.lower().replace(",", "")).strip()
+
+
 def _date_patterns(d: date) -> list[str]:
-    """YouTube titles use several date formats — normalize to lowercase substrings."""
+    """Titles use several date formats; match against a normalized title."""
     return [
-        f"{d.month}/{d.day}/{d.year}",           # 4/16/2026
-        f"{d.month:02d}/{d.day:02d}/{d.year}",   # 04/16/2026
-        f"{d.month:02d}{d.day:02d}{d.year}",     # 04162026
-        f"{d.month}-{d.day}-{d.year}",           # 4-16-2026
+        f"{d.month}/{d.day}/{d.year}",                    # 4/16/2026
+        f"{d.month:02d}/{d.day:02d}/{d.year}",            # 04/16/2026
+        f"{d.month:02d}{d.day:02d}{d.year}",              # 04162026
+        f"{d.month}-{d.day}-{d.year}",                    # 4-16-2026
+        f"{d.strftime('%B').lower()} {d.day} {d.year}",   # september 8 2026
+        f"{d.strftime('%b').lower()} {d.day} {d.year}",   # sep 8 2026
     ]
 
 

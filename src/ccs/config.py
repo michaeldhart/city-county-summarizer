@@ -43,6 +43,8 @@ JURISDICTIONS: tuple[Jurisdiction, ...] = (
                  youtube_channel_id="UCJd8c3sZs98mx9vznx9nsOg"),
     Jurisdiction("d100", "Belvidere Community Unit School District 100",
                  youtube_channel_id="UCS3r7OLVDHpE9DroeciYCow", youtube_tab="videos"),
+    Jurisdiction("belvidere", "City of Belvidere",
+                 youtube_channel_id="UCotr1ZcGCImOF33lrGH2x3A", youtube_tab="videos"),
     Jurisdiction("bpd", "Belvidere Township Park District"),
     Jurisdiction("bccd", "Boone County Conservation District"),
     Jurisdiction("swcd", "Boone County Soil & Water Conservation District"),
@@ -103,6 +105,19 @@ BODIES: tuple[Body, ...] = (
          "BCUSD 100 Parent Teacher Advisory Committee", type_ids=(16,)),
     Body("bpd-board", "Board of Commissioners", "bpd", "bpd",
          "Belvidere Township Park District Board"),
+    # One WordPress site serves all five city bodies, so they share a source and
+    # their meetings carry their own body_id. The Planning & Zoning Commission
+    # also sits as the Zoning Board of Appeals — there is no separate ZBA.
+    Body("belvidere-council", "City Council", "belvidere", "belvidere",
+         "Belvidere City Council"),
+    Body("belvidere-cow", "Committee of the Whole", "belvidere", "belvidere",
+         "Belvidere Committee of the Whole"),
+    Body("belvidere-pzc", "Planning & Zoning Commission", "belvidere", "belvidere",
+         "Belvidere Planning & Zoning Commission"),
+    Body("belvidere-hpc", "Historic Preservation Commission", "belvidere", "belvidere",
+         "Belvidere Historic Preservation Commission"),
+    Body("belvidere-fpc", "Board of Fire & Police Commissioners", "belvidere", "belvidere",
+         "Belvidere Board of Fire & Police Commissioners"),
 )
 
 BODIES_BY_ID: dict[str, Body] = {b.id: b for b in BODIES}

@@ -18,6 +18,26 @@ from .config import (
 )
 
 
+# Claude's context is 200K tokens. Budget in characters per source rather than
+# trusting a token estimate: OCR'd scans tokenize far worse than clean text —
+# broken words push Belvidere's packets to ~2 chars/token against the usual ~4,
+# so one 559K-char packet came to 286K tokens on its own. Minutes and transcript
+# get the smaller cuts because they're the actual record; a packet is mostly
+# supporting attachments behind the agenda, which sits at the front.
+MAX_AGENDA_CHARS = 120_000
+MAX_MINUTES_CHARS = 60_000
+MAX_TRANSCRIPT_CHARS = 120_000
+
+
+def _clip(text: str, limit: int, what: str) -> str:
+    if len(text) <= limit:
+        return text
+    return (
+        text[:limit]
+        + f"\n\n[... {what} truncated: {len(text):,} chars total, first {limit:,} shown ...]"
+    )
+
+
 def _meeting_dir(meeting_id: str) -> Path:
     ensure_data_dirs()
     d = MEETINGS_DIR / meeting_id.replace(":", "_")
@@ -72,7 +92,8 @@ def ingest_diligent(base: str, source: str, ref: diligent.MeetingRef, body: Body
     )
 
 
-def ingest_pdf_meeting(source: str, meeting, body: Body) -> manifest.MeetingRecord:
+def ingest_pdf_meeting(source: str, meeting, body: Body,
+                       videos: list[youtube.YouTubeVideo] | None = None) -> manifest.MeetingRecord:
     """Recap for a site that posts agenda/minutes PDFs: download, extract, summarize.
 
     `meeting` is any object exposing `.date`, `.key`, `.name`, `.agenda_url`
@@ -84,7 +105,20 @@ def ingest_pdf_meeting(source: str, meeting, body: Body) -> manifest.MeetingReco
     agenda_text = _download_and_extract(meeting.agenda_url, outdir / "agenda.pdf", outdir / "agenda.txt")
     minutes_text = _download_and_extract(meeting.minutes_url, outdir / "minutes.pdf", outdir / "minutes.txt")
 
-    prompt = _build_pdf_meeting_prompt(body, meeting.date, agenda_text, minutes_text)
+    # Belvidere's Committee of the Whole never publishes minutes, so for those
+    # meetings the transcript is the only record of what was actually said.
+    transcript = ""
+    video_id: str | None = None
+    if videos is not None:
+        match = youtube.find_video(videos, meeting.date, body.id)
+        if match is not None:
+            video_id = match.video_id
+            vtt = youtube.download_captions(video_id, outdir)
+            if vtt is not None:
+                transcript = youtube.vtt_to_text(vtt)
+                (outdir / "transcript.txt").write_text(transcript)
+
+    prompt = _build_pdf_meeting_prompt(body, meeting.date, agenda_text, minutes_text, transcript)
     summary = _call_claude(prompt)
     (outdir / "summary.md").write_text(summary)
 
@@ -95,6 +129,8 @@ def ingest_pdf_meeting(source: str, meeting, body: Body) -> manifest.MeetingReco
         date=meeting.date.isoformat(),
         title=meeting.name or body.display_name,
         url=meeting.agenda_url or meeting.minutes_url,
+        video_id=video_id,
+        has_transcript=bool(transcript),
         summary_path=str((outdir / "summary.md").relative_to(REPO_ROOT)),
     )
 
@@ -126,7 +162,10 @@ def _build_diligent_prompt(body: Body, data: diligent.MeetingData,
         "`_No content._` on a single line beneath it — do not omit sections or leave them empty."
     )
 
-    transcript_block = f"\n===== TRANSCRIPT =====\n{transcript}" if transcript else ""
+    transcript_block = (
+        f"\n===== TRANSCRIPT =====\n{_clip(transcript, MAX_TRANSCRIPT_CHARS, 'transcript')}"
+        if transcript else ""
+    )
     transcript_note = "" if transcript else (
         "\nNote: no video transcript is available for this meeting — work from the agenda only.\n"
     )
@@ -146,12 +185,39 @@ def _build_diligent_prompt(body: Body, data: diligent.MeetingData,
         f"Do not invent details not in the source. If the transcript has typos "
         f"(auto-captions), silently correct obvious ones; quote sparingly.\n"
         f"{transcript_note}"
-        f"\n===== AGENDA =====\n{agenda_text}\n"
+        f"\n===== AGENDA =====\n{_clip(agenda_text, MAX_AGENDA_CHARS, 'agenda')}\n"
         f"{transcript_block}\n"
     )
 
 
-def _build_pdf_meeting_prompt(body: Body, meeting_date, agenda: str, minutes: str) -> str:
+def _build_pdf_meeting_prompt(body: Body, meeting_date, agenda: str, minutes: str,
+                              transcript: str = "") -> str:
+    has_record = bool(minutes.strip() or transcript.strip())
+    sections = (
+        "## TL;DR (3–5 bullets)\n"
+        "## Decisions & votes\n"
+        "## Discussion items\n"
+        "## Financial / operational notes\n"
+    )
+    if transcript:
+        sections += "## Public comment\n## Notable moments\n"
+
+    if has_record:
+        mode = (
+            "Start directly with the '## TL;DR' section.\n"
+        )
+    else:
+        mode = (
+            "Only the agenda is available — no minutes and no transcript. Label the "
+            "summary '## Agenda preview' and start directly with that header, and do "
+            "not describe anything as having been decided.\n"
+        )
+
+    transcript_block = (
+        f"\n===== TRANSCRIPT =====\n{_clip(transcript, MAX_TRANSCRIPT_CHARS, 'transcript')}"
+        if transcript else ""
+    )
+
     return (
         f"You are summarizing a local government meeting in Boone County, IL "
         f"for a personal briefing.\n"
@@ -159,18 +225,21 @@ def _build_pdf_meeting_prompt(body: Body, meeting_date, agenda: str, minutes: st
         f"Body: {body.display_name}\n"
         f"Date: {meeting_date.isoformat()}\n\n"
         f"Produce a Markdown recap with these sections:\n"
-        f"## TL;DR (3–5 bullets)\n"
-        f"## Decisions & votes\n"
-        f"## Discussion items\n"
-        f"## Financial / operational notes\n\n"
+        f"{sections}\n"
         f"For any section where nothing applies to this meeting, keep the header and write "
         f"`_No content._` on a single line beneath it — do not omit sections or leave them empty.\n"
-        f"If minutes are missing, work from the agenda only and label the summary '## Agenda preview'.\n"
+        f"A source marked truncated is cut for length; summarize what is there and do "
+        f"not guess at the rest.\n"
+        f"{mode}"
         f"IMPORTANT: Do NOT start with a meeting-title header — the meeting page already "
-        f"identifies the meeting. Start directly with '## TL;DR' (or '## Agenda preview').\n"
-        f"Do not invent details.\n"
-        f"\n===== AGENDA (PDF text) =====\n{agenda or '[no agenda available]'}\n"
-        f"\n===== MINUTES (PDF text) =====\n{minutes or '[no minutes available]'}\n"
+        f"identifies the meeting.\n"
+        f"Do not invent details. If the transcript has typos (auto-captions), silently "
+        f"correct obvious ones; quote sparingly.\n"
+        f"\n===== AGENDA (PDF text) =====\n"
+        f"{_clip(agenda, MAX_AGENDA_CHARS, 'agenda') or '[no agenda available]'}\n"
+        f"\n===== MINUTES (PDF text) =====\n"
+        f"{_clip(minutes, MAX_MINUTES_CHARS, 'minutes') or '[no minutes available]'}\n"
+        f"{transcript_block}\n"
     )
 
 

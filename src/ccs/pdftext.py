@@ -54,9 +54,20 @@ def ensure_text_layer(path: Path) -> Path | None:
         capture_output=True, text=True, check=False,
     )
     if proc.returncode != 0 or not dest.exists():
-        print(f"  WARN: OCR failed for {path.name}: {proc.stderr.strip()[:200]}")
+        # A failed run can still leave a partial or structurally invalid PDF
+        # behind (one Belvidere packet has a corrupt embedded JPEG). Drop it, or
+        # the cache check above would hand it back as good on the next run.
+        if dest.exists():
+            dest.unlink()
+        print(f"  WARN: OCR failed for {path.name}: {_last_error_line(proc.stderr)}")
         return None
     return dest
+
+
+def _last_error_line(stderr: str) -> str:
+    """ocrmypdf leads with a Ghostscript banner; the useful line is at the end."""
+    lines = [ln.strip() for ln in stderr.splitlines() if ln.strip()]
+    return lines[-1][:200] if lines else "(no stderr)"
 
 
 def _extract(path: Path) -> Tuple[str, int]:

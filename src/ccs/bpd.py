@@ -36,6 +36,10 @@ class BpdMeeting:
     minutes_url: str | None
 
     @property
+    def body_id(self):
+        return None   # single-body source
+
+    @property
     def key(self) -> str:
         """Date alone isn't unique here — a Regular meeting and a Public Hearing
         can share both a date and a start time (Oct 28 and Nov 10, 2025), and a

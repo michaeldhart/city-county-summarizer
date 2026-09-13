@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Callable, List, Union
 
-from . import bccd, bpd, swcd
+from . import bccd, belvidere, bpd, swcd
 from .config import BOONE_DILIGENT_BASE, D100_DILIGENT_BASE
 
 
@@ -25,8 +25,9 @@ class PdfIndexSource:
 
     `list_meetings` returns objects exposing `.date`, `.agenda_url` and
     `.minutes_url`, plus `.key` (the manifest id suffix, unique within the
-    source) and `.name` (the meeting's own name, or "" to fall back to the
-    body's display name).
+    source), `.name` (the meeting's own name, or "" to fall back to the body's
+    display name), and `.body_id` (None when the source serves a single body,
+    otherwise the body this meeting belongs to).
     """
     list_meetings: Callable[[], List]
 
@@ -39,6 +40,7 @@ SOURCES: dict[str, Source] = {
     "bccd": PdfIndexSource(bccd.list_meetings),
     "swcd": PdfIndexSource(swcd.list_meetings),
     "bpd": PdfIndexSource(bpd.list_meetings),
+    "belvidere": PdfIndexSource(belvidere.list_meetings),
 }
 
 

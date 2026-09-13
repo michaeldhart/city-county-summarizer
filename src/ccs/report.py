@@ -75,7 +75,8 @@ def check_sources(since: date, today: date | None = None,
             )
         elif isinstance(src, sources.PdfIndexSource):
             has = any(
-                since <= m.date <= today and (m.agenda_url or m.minutes_url)
+                m.body_id in (None, body.id)
+                and since <= m.date <= today and (m.agenda_url or m.minutes_url)
                 for m in pdf_by_source.get(body.source, [])
             )
         else:
@@ -157,6 +158,8 @@ def _collect_recap(dil_by_source: dict[str, list[diligent.MeetingRef]],
         if not isinstance(sources.SOURCES.get(body.source), sources.PdfIndexSource):
             continue
         for m in pdf_by_source.get(body.source, []):
+            if m.body_id is not None and m.body_id != body.id:
+                continue      # one site, several bodies
             if not (since <= m.date <= today):
                 continue
             if not (m.agenda_url or m.minutes_url):
@@ -166,7 +169,10 @@ def _collect_recap(dil_by_source: dict[str, list[diligent.MeetingRef]],
                 entries.append(SectionEntry(body, m.date, already[mid].title, already[mid]))
                 continue
             print(f"  ingesting {body.source}: {m.date}")
-            record = summarize.ingest_pdf_meeting(body.source, m, body)
+            record = summarize.ingest_pdf_meeting(
+                body.source, m, body,
+                videos=videos_by_jurisdiction.get(body.jurisdiction_id),
+            )
             manifest.upsert(record)
             entries.append(SectionEntry(body, m.date, record.title, record))
 
@@ -184,7 +190,9 @@ def list_videos_by_jurisdiction(
         if j.youtube_channel_id is None:
             continue
         try:
-            out[jid] = youtube.list_videos(j.youtube_channel_id, j.youtube_tab, limit=100)
+            # Belvidere's channel holds 419 videos back to 2018; a low cap
+            # silently truncates the archive and drops older matches.
+            out[jid] = youtube.list_videos(j.youtube_channel_id, j.youtube_tab, limit=500)
         except Exception as e:
             print(f"  WARN: YouTube listing for {j.display_name} failed: {e}. "
                   f"Continuing without transcripts.")
