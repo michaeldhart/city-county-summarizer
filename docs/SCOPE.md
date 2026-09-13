@@ -63,6 +63,19 @@ These exist in Boone County but are governed independently. Flip to `tracked` if
 | Municipalities (Belvidere, Poplar Grove, etc.) | `excluded` | City-level. Belvidere itself is tracked below. |
 | School districts | `excluded` | Independent. BCUSD 100 is tracked below; no other district is. |
 
+## Belvidere Township Park District
+
+Independently elected five-member Board of Commissioners covering Belvidere
+Township, including land outside the city limits. Formed by referendum in 1919.
+Agendas and minutes at belviderepark.org; no meeting video is published.
+
+The board does all its business itself — there are no standing committees. The
+Parks & Conservation Foundation is a separate 501(c)(3) and publishes nothing.
+
+| Body | Status | Notes |
+|------|--------|-------|
+| Belvidere Township Park District Board | `tracked` | 2nd Tuesday, 5:00 PM, Baltic Mill Annex. Occasional 4th-Tuesday and special meetings. |
+
 ## Belvidere Community Unit School District 100
 
 Independently elected seven-member Board of Education covering Boone, McHenry and

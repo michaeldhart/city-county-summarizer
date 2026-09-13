@@ -23,6 +23,14 @@ class BccdMeeting:
     agenda_url: str | None
     minutes_url: str | None
 
+    @property
+    def key(self) -> str:
+        return self.date.strftime("%Y%m%d")
+
+    @property
+    def name(self) -> str:
+        return ""   # one body, one meeting per date — the body name is enough
+
 
 def _fetch_html() -> str:
     r = requests.get(URL, headers=HTTP_HEADERS, timeout=30)

@@ -43,6 +43,7 @@ JURISDICTIONS: tuple[Jurisdiction, ...] = (
                  youtube_channel_id="UCJd8c3sZs98mx9vznx9nsOg"),
     Jurisdiction("d100", "Belvidere Community Unit School District 100",
                  youtube_channel_id="UCS3r7OLVDHpE9DroeciYCow", youtube_tab="videos"),
+    Jurisdiction("bpd", "Belvidere Township Park District"),
     Jurisdiction("bccd", "Boone County Conservation District"),
     Jurisdiction("swcd", "Boone County Soil & Water Conservation District"),
 )
@@ -100,6 +101,8 @@ BODIES: tuple[Body, ...] = (
          "BCUSD 100 Policy & Personnel Committee", type_ids=(51,)),
     Body("d100-ptac", "Parent Teacher Advisory Committee", "d100", "d100",
          "BCUSD 100 Parent Teacher Advisory Committee", type_ids=(16,)),
+    Body("bpd-board", "Board of Commissioners", "bpd", "bpd",
+         "Belvidere Township Park District Board"),
 )
 
 BODIES_BY_ID: dict[str, Body] = {b.id: b for b in BODIES}
