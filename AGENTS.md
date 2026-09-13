@@ -24,13 +24,21 @@ I'll actually trip on" digest.
 
 ## Python 3.9 constraint
 
-- The user's system Python is 3.9 (`/usr/bin/python3`). `pyproject.toml` says `>=3.9`.
-- **Homebrew Python shadows it.** `brew install ocrmypdf` pulls Python 3.14 into
-  `/opt/homebrew/bin`, which wins on PATH — but the project's deps and the
-  editable `ccs` install live in 3.9, so a bare `python3 -m ccs.cli` then fails
-  with ModuleNotFoundError. Invoke the `ccs` console script (its shebang points
-  at 3.9) or `/usr/bin/python3 -m ccs.cli`. Subprocess calls inside the package
-  must use `sys.executable`, never the string "python3".
+- The user's system Python is 3.9 (`/usr/bin/python3`). `pyproject.toml` says
+  `>=3.9`. The deps and the editable `ccs` install live there, in
+  `~/Library/Python/3.9`. Note 3.9 went EOL in Oct 2025 — a move to a supported
+  interpreter is worth doing eventually, but it's a migration, not a chore.
+- **Homebrew Python can shadow it.** `brew install ocrmypdf` pulls `python@3.14`
+  as a dependency and links `/opt/homebrew/bin/python3`, which wins on PATH via
+  `brew shellenv` in `.zshrc` — a bare `python3 -m ccs.cli` then dies with
+  ModuleNotFoundError. Resolved by `brew unlink python@3.14`: ocrmypdf and
+  img2pdf don't use that symlink (both ship private libexec venvs with absolute
+  Cellar shebangs) and resolve through `/opt/homebrew/opt/python@3.14`, which
+  unlink leaves in place. `brew doctor` will warn about an unlinked keg — that's
+  expected, not a problem. A `brew upgrade` may re-link it; if `python3` is
+  suddenly 3.14 again, unlink again.
+- Subprocess calls inside the package must use `sys.executable`, never the
+  string "python3" — otherwise they follow PATH to whatever interpreter wins.
 - Every module MUST start with `from __future__ import annotations` — pipe
   union syntax (`X | None`) in annotations only parses under 3.9 with that
   import. Adding a new module without it will break imports.
