@@ -1,4 +1,4 @@
-"""Config, paths, and the canonical body registry."""
+"""Config, paths, and the canonical jurisdiction + body registries."""
 from __future__ import annotations
 
 import re
@@ -14,8 +14,7 @@ MEETINGS_DIR = DATA_DIR / "meetings"
 CACHE_DIR = DATA_DIR / "cache"
 MANIFEST_PATH = DATA_DIR / "manifest.json"
 
-DILIGENT_BASE = "https://boonecountyil.community.diligentoneplatform.com"
-YOUTUBE_CHANNEL_ID = "UCJd8c3sZs98mx9vznx9nsOg"
+BOONE_DILIGENT_BASE = "https://boonecountyil.community.diligentoneplatform.com"
 
 HTTP_HEADERS = {
     "User-Agent": (
@@ -30,10 +29,30 @@ CLAUDE_MODEL = "claude-sonnet-4-5"
 
 
 @dataclass(frozen=True)
+class Jurisdiction:
+    """A government whose bodies we track. Owns the video channel, if any."""
+    id: str
+    display_name: str
+    youtube_channel_id: str | None = None
+    youtube_tab: str = "streams"   # county meetings are archived live streams
+
+
+JURISDICTIONS: tuple[Jurisdiction, ...] = (
+    Jurisdiction("boone-county", "Boone County",
+                 youtube_channel_id="UCJd8c3sZs98mx9vznx9nsOg"),
+    Jurisdiction("bccd", "Boone County Conservation District"),
+    Jurisdiction("swcd", "Boone County Soil & Water Conservation District"),
+)
+
+JURISDICTIONS_BY_ID: dict[str, Jurisdiction] = {j.id: j for j in JURISDICTIONS}
+
+
+@dataclass(frozen=True)
 class Body:
     id: str                    # short slug (e.g. "board", "cotw-finance")
     display_name: str          # human name shown in SCOPE.md
-    source: str                # "diligent" | "bccd" | "swcd"
+    jurisdiction_id: str       # key into JURISDICTIONS_BY_ID
+    source: str                # manifest id namespace; key into sources.SOURCES
     scope_name: str            # exact string as it appears in SCOPE.md rows
     type_id: int | None = None  # Diligent MeetingTypeId (None for non-diligent sources)
 
@@ -42,32 +61,43 @@ class Body:
 # LEPC and Veteran's Assistance don't appear on Diligent — no id known — they
 # stay in scope but won't be matched until we find where their agendas live.
 BODIES: tuple[Body, ...] = (
-    Body("board", "Boone County Board", "diligent",
+    Body("board", "Boone County Board", "boone-county", "diligent",
          "Boone County Board (12 members, 3 districts)", type_id=22),
-    Body("cotw-admin", "COTW – Administrative & Legislative", "diligent",
+    Body("cotw-admin", "COTW – Administrative & Legislative", "boone-county", "diligent",
          "COTW – Administrative & Legislative", type_id=18),
-    Body("cotw-finance", "COTW – Finance, Taxation & Salaries", "diligent",
+    Body("cotw-finance", "COTW – Finance, Taxation & Salaries", "boone-county", "diligent",
          "COTW – Finance, Taxation & Salaries", type_id=19),
-    Body("planning", "Regional Planning Commission", "diligent",
+    Body("planning", "Regional Planning Commission", "boone-county", "diligent",
          "Regional Planning Commission", type_id=29),
-    Body("zba", "Zoning Board of Appeals", "diligent",
+    Body("zba", "Zoning Board of Appeals", "boone-county", "diligent",
          "Zoning Board of Appeals", type_id=23),
-    Body("ag-easement", "Agricultural Conservation Easement Commission", "diligent",
+    Body("ag-easement", "Agricultural Conservation Easement Commission", "boone-county", "diligent",
          "Agricultural Conservation Easement & Farmland Protection Commission", type_id=31),
-    Body("health", "Board of Health", "diligent",
+    Body("health", "Board of Health", "boone-county", "diligent",
          "Board of Health", type_id=20),
-    Body("lepc", "Local Emergency Planning Committee", "diligent",
+    Body("lepc", "Local Emergency Planning Committee", "boone-county", "diligent",
          "Local Emergency Planning Committee (LEPC)", type_id=None),
-    Body("veterans", "Veteran's Assistance Commission", "diligent",
+    Body("veterans", "Veteran's Assistance Commission", "boone-county", "diligent",
          "Veteran's Assistance Commission", type_id=None),
-    Body("bccd", "Boone County Conservation District", "bccd",
+    Body("bccd", "Boone County Conservation District", "bccd", "bccd",
          "Boone County Conservation District"),
-    Body("swcd", "Soil & Water Conservation District", "swcd",
+    Body("swcd", "Soil & Water Conservation District", "swcd", "swcd",
          "Boone County Soil & Water Conservation District"),
 )
 
 BODIES_BY_ID: dict[str, Body] = {b.id: b for b in BODIES}
-BODIES_BY_TYPE_ID: dict[int, Body] = {b.type_id: b for b in BODIES if b.type_id is not None}
+
+
+def jurisdiction_for(body: Body) -> Jurisdiction:
+    return JURISDICTIONS_BY_ID[body.jurisdiction_id]
+
+
+def body_for_type_id(source: str, type_id: int) -> Body | None:
+    """Diligent MeetingTypeIds are only unique within one tenant — match on both."""
+    for b in BODIES:
+        if b.source == source and b.type_id == type_id:
+            return b
+    return None
 
 
 def load_env() -> None:
@@ -102,10 +132,6 @@ def tracked_bodies() -> list[Body]:
     """Bodies currently marked `tracked` in SCOPE.md."""
     statuses = load_scope_statuses()
     return [b for b in BODIES if statuses.get(b.scope_name) == "tracked"]
-
-
-def body_for_type_id(type_id: int) -> Body | None:
-    return BODIES_BY_TYPE_ID.get(type_id)
 
 
 def is_cancelled(title: str) -> bool:

@@ -6,13 +6,14 @@ from pathlib import Path
 
 import anthropic
 
-from . import bccd, diligent, manifest, pdftext, swcd, youtube
+from . import diligent, manifest, pdftext, youtube
 from .config import (
     CLAUDE_MODEL,
     MEETINGS_DIR,
     REPO_ROOT,
     Body,
     ensure_data_dirs,
+    jurisdiction_for,
     load_env,
 )
 
@@ -24,14 +25,14 @@ def _meeting_dir(meeting_id: str) -> Path:
     return d
 
 
-def ingest_diligent(ref: diligent.MeetingRef, body: Body,
+def ingest_diligent(base: str, source: str, ref: diligent.MeetingRef, body: Body,
                     videos: list[youtube.YouTubeVideo] | None = None) -> manifest.MeetingRecord:
     """Full recap pipeline: metadata, agenda HTML, video captions (if any), summary."""
-    meeting_id = manifest.make_id("diligent", str(ref.id))
+    meeting_id = manifest.make_id(source, str(ref.id))
     outdir = _meeting_dir(meeting_id)
 
-    meeting_data = diligent.get_meeting_data(ref.id)
-    documents = diligent.get_meeting_documents(ref.id)
+    meeting_data = diligent.get_meeting_data(base, ref.id)
+    documents = diligent.get_meeting_documents(base, ref.id)
     (outdir / "meeting_data.json").write_text(json.dumps(_dataclass_to_dict(meeting_data), indent=2))
     for doc in documents:
         if doc.html:
@@ -58,19 +59,21 @@ def ingest_diligent(ref: diligent.MeetingRef, body: Body,
     return manifest.MeetingRecord(
         id=meeting_id,
         body_id=body.id,
-        source="diligent",
+        source=source,
         date=ref.date.isoformat(),
         title=ref.title,
-        url=diligent.public_url_for_meeting(ref.id),
+        url=diligent.public_url_for_meeting(base, ref.id),
         video_id=video_id,
         has_transcript=bool(transcript),
         summary_path=str((outdir / "summary.md").relative_to(REPO_ROOT)),
     )
 
 
-def ingest_cd(source: str, meeting: bccd.BccdMeeting | swcd.SwcdMeeting,
-              body: Body) -> manifest.MeetingRecord:
-    """Recap for a Conservation District meeting: download PDFs, extract, summarize."""
+def ingest_pdf_meeting(source: str, meeting, body: Body) -> manifest.MeetingRecord:
+    """Recap for a site that posts agenda/minutes PDFs: download, extract, summarize.
+
+    `meeting` is any object exposing `.date`, `.agenda_url` and `.minutes_url`.
+    """
     date_key = meeting.date.strftime("%Y%m%d")
     meeting_id = manifest.make_id(source, date_key)
     outdir = _meeting_dir(meeting_id)
@@ -78,7 +81,7 @@ def ingest_cd(source: str, meeting: bccd.BccdMeeting | swcd.SwcdMeeting,
     agenda_text = _download_and_extract(meeting.agenda_url, outdir / "agenda.pdf", outdir / "agenda.txt")
     minutes_text = _download_and_extract(meeting.minutes_url, outdir / "minutes.pdf", outdir / "minutes.txt")
 
-    prompt = _build_cd_prompt(body, meeting.date, agenda_text, minutes_text)
+    prompt = _build_pdf_meeting_prompt(body, meeting.date, agenda_text, minutes_text)
     summary = _call_claude(prompt)
     (outdir / "summary.md").write_text(summary)
 
@@ -127,7 +130,9 @@ def _build_diligent_prompt(body: Body, data: diligent.MeetingData,
     members_line = ", ".join(data.members) if data.members else "(not listed)"
 
     return (
-        f"You are summarizing a Boone County, IL government meeting for a personal briefing.\n"
+        f"You are summarizing a local government meeting in Boone County, IL "
+        f"for a personal briefing.\n"
+        f"Government: {jurisdiction_for(body).display_name}\n"
         f"Body: {body.display_name}\n"
         f"Meeting: {ref.title}\n"
         f"Date/Time: {ref.date.isoformat()} {ref.time}  Location: {ref.location or data.location}\n"
@@ -143,9 +148,11 @@ def _build_diligent_prompt(body: Body, data: diligent.MeetingData,
     )
 
 
-def _build_cd_prompt(body: Body, meeting_date, agenda: str, minutes: str) -> str:
+def _build_pdf_meeting_prompt(body: Body, meeting_date, agenda: str, minutes: str) -> str:
     return (
-        f"You are summarizing a Boone County, IL Conservation District meeting for a personal briefing.\n"
+        f"You are summarizing a local government meeting in Boone County, IL "
+        f"for a personal briefing.\n"
+        f"Government: {jurisdiction_for(body).display_name}\n"
         f"Body: {body.display_name}\n"
         f"Date: {meeting_date.isoformat()}\n\n"
         f"Produce a Markdown recap with these sections:\n"

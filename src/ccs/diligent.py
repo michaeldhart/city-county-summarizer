@@ -3,6 +3,10 @@
 Public REST API — no auth, no session, just a User-Agent header. Meeting list is
 one call with a date range; each meeting's agenda comes back as one HTML blob
 (rendered from the source .docx) rather than as individually-fetchable items.
+
+Every call takes the tenant's `base` URL. The same product is served under
+several hostname families (*.diligentoneplatform.com, *.highbond.com), so one
+client serves every tenant — but meeting ids are only unique within a tenant.
 """
 from __future__ import annotations
 
@@ -14,7 +18,7 @@ from pathlib import Path
 
 import requests
 
-from .config import DILIGENT_BASE, HTTP_HEADERS
+from .config import HTTP_HEADERS
 
 
 @dataclass(frozen=True)
@@ -63,20 +67,22 @@ class Attachment:
     url: str
 
 
-def _get(path: str, **params) -> requests.Response:
-    url = f"{DILIGENT_BASE}{path}"
+def _get(base: str, path: str, **params) -> requests.Response:
+    url = f"{base}{path}"
     r = requests.get(url, headers=HTTP_HEADERS, params=params, timeout=30)
     r.raise_for_status()
     return r
 
 
-def list_meetings(from_date: date | None = None, to_date: date | None = None) -> list[MeetingRef]:
+def list_meetings(base: str, from_date: date | None = None,
+                  to_date: date | None = None) -> list[MeetingRef]:
     """Meetings in [from_date, to_date] inclusive. Wide open by default."""
     if from_date is None:
         from_date = date(2010, 1, 1)
     if to_date is None:
         to_date = date(9999, 12, 31)
     r = _get(
+        base,
         "/Services/MeetingsService.svc/meetings",
         **{"from": from_date.isoformat(), "to": to_date.isoformat(), "loadall": "false"},
     )
@@ -101,8 +107,8 @@ def list_meetings(from_date: date | None = None, to_date: date | None = None) ->
     return out
 
 
-def get_meeting_data(meeting_id: int) -> MeetingData:
-    r = _get(f"/Services/MeetingsService.svc/meetings/{meeting_id}/meetingData")
+def get_meeting_data(base: str, meeting_id: int) -> MeetingData:
+    r = _get(base, f"/Services/MeetingsService.svc/meetings/{meeting_id}/meetingData")
     d = r.json()
     return MeetingData(
         id=int(d.get("Id", meeting_id)),
@@ -117,8 +123,8 @@ def get_meeting_data(meeting_id: int) -> MeetingData:
     )
 
 
-def get_meeting_documents(meeting_id: int) -> list[MeetingDocument]:
-    r = _get(f"/Services/MeetingsService.svc/meetings/{meeting_id}/meetingDocuments")
+def get_meeting_documents(base: str, meeting_id: int) -> list[MeetingDocument]:
+    r = _get(base, f"/Services/MeetingsService.svc/meetings/{meeting_id}/meetingDocuments")
     raw = r.json().get("Documents", [])
     return [
         MeetingDocument(
@@ -133,15 +139,15 @@ def get_meeting_documents(meeting_id: int) -> list[MeetingDocument]:
     ]
 
 
-def get_video_link(meeting_id: int) -> str | None:
+def get_video_link(base: str, meeting_id: int) -> str | None:
     """Diligent's own video-link field. Usually empty for Boone County — falls
     through to youtube.find_video() by title+date."""
-    r = _get(f"/api/videolink/{meeting_id}")
+    r = _get(base, f"/api/videolink/{meeting_id}")
     val = r.json()
     return val if isinstance(val, str) and val else None
 
 
-def extract_attachments(agenda_html: str) -> list[Attachment]:
+def extract_attachments(base: str, agenda_html: str) -> list[Attachment]:
     """Pull /document/{guid} links out of the agenda HTML with their visible link text."""
     seen: set[str] = set()
     out: list[Attachment] = []
@@ -157,14 +163,14 @@ def extract_attachments(agenda_html: str) -> list[Attachment]:
         label = re.sub(r"<[^>]+>", " ", m.group(2))
         label = re.sub(r"\s+", " ", label).strip()
         guid = href.rsplit("/", 1)[-1]
-        out.append(Attachment(guid=guid, label=label, url=f"{DILIGENT_BASE}{href}"))
+        out.append(Attachment(guid=guid, label=label, url=f"{base}{href}"))
     return out
 
 
-def download_document(guid_or_id: str, dest: Path) -> Path:
+def download_document(base: str, guid_or_id: str, dest: Path) -> Path:
     """Download an attached document (PDF, docx-rendered, etc.) to dest."""
     dest.parent.mkdir(parents=True, exist_ok=True)
-    url = f"{DILIGENT_BASE}/document/{guid_or_id}"
+    url = f"{base}/document/{guid_or_id}"
     with requests.get(url, headers=HTTP_HEADERS, stream=True, timeout=60) as r:
         r.raise_for_status()
         with dest.open("wb") as f:
@@ -173,8 +179,10 @@ def download_document(guid_or_id: str, dest: Path) -> Path:
     return dest
 
 
-def public_url_for_meeting(meeting_id: int) -> str:
-    return f"{DILIGENT_BASE}/Portal/MeetingInformation.aspx?Org=Cal&Id={meeting_id}"
+def public_url_for_meeting(base: str, meeting_id: int) -> str:
+    # Org=Cal is redundant on some tenants but accepted everywhere; keeping it
+    # leaves already-published Boone County meeting URLs byte-identical.
+    return f"{base}/Portal/MeetingInformation.aspx?Org=Cal&Id={meeting_id}"
 
 
 def agenda_html_to_text(html: str) -> str:
