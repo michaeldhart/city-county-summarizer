@@ -89,7 +89,13 @@ afterward to publish newly-ingested meetings to the site.
 ```bash
 ccs sync                                    # default window: last 35 days
 ccs sync --since 2026-06-01
+ccs sync --only d100 --since 2026-01-01     # one jurisdiction, source, or body
 ```
+
+`--only` takes a comma-separated list of body ids, source names, or
+jurisdiction ids. Without it, a wide `--since` backfills every tracked
+government at once — which is rarely what you want, and never cheap.
+`ccs check` accepts the same flag for a free preview.
 
 Cost: ~$0.05–$0.15 per meeting summarized. A busy month with ~15 meetings
 runs ~$1–$2. Meetings already ingested are reused from the manifest —
@@ -101,6 +107,8 @@ Force-ingest one specific meeting, ignoring the manifest.
 
 ```bash
 ccs ingest diligent:1622            # numeric meeting id from the Diligent portal
+ccs ingest d100:993                 # District 100's portal is a separate tenant
+ccs ingest bpd:20260908             # PDF-index sources use the source's own key
 ccs ingest bccd:20260420            # Boone County Conservation District, by date
 ccs ingest swcd:20260701            # Soil & Water Conservation District, by date
 ```

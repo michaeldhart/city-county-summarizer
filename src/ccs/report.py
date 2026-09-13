@@ -161,7 +161,7 @@ def _collect_recap(dil_by_source: dict[str, list[diligent.MeetingRef]],
                 continue
             if not (m.agenda_url or m.minutes_url):
                 continue
-            mid = manifest.make_id(body.source, m.date.strftime("%Y%m%d"))
+            mid = manifest.make_id(body.source, m.key)
             if mid in already:
                 entries.append(SectionEntry(body, m.date, already[mid].title, already[mid]))
                 continue

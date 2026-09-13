@@ -148,19 +148,18 @@ def _ingest_diligent(source: str, base: str, key: str) -> int:
 
 
 def _ingest_pdf_meeting(source: str, key: str, lister) -> int:
-    if not (key.isdigit() and len(key) == 8):
-        print(f"error: {source} key must be YYYYMMDD", file=sys.stderr)
-        return 2
-    target = date(int(key[0:4]), int(key[4:6]), int(key[6:8]))
     body = next((b for b in tracked_bodies() if b.source == source), None)
     if body is None:
         print(f"error: no tracked body uses source '{source}' (check SCOPE.md)", file=sys.stderr)
         return 1
-    meeting = next((m for m in lister() if m.date == target), None)
+    meetings = lister()
+    meeting = next((m for m in meetings if m.key == key), None)
     if meeting is None:
-        print(f"error: no {source} meeting on {target}", file=sys.stderr)
+        recent = ", ".join(m.key for m in meetings[:5])
+        print(f"error: no {source} meeting with key '{key}'. Most recent: {recent}",
+              file=sys.stderr)
         return 1
-    print(f"Ingesting {source} meeting on {target}")
+    print(f"Ingesting {source} meeting on {meeting.date} ({meeting.name or body.display_name})")
     record = summarize.ingest_pdf_meeting(source, meeting, body)
     manifest.upsert(record)
     print(f"OK  summary={record.summary_path}")

@@ -15,6 +15,8 @@ I'll actually trip on" digest.
   summarized meeting on disk, so the render short-circuits.
 - `ccs check` is free (only hits meeting-list endpoints, no Claude). Use it
   to preview which bodies have records in a window before spending on report.
+- Scope any backfill with `--only <body|source|jurisdiction>`. A bare
+  `ccs sync --since 2026-01-01` ingests every government at once.
 - `ccs summary` is one Claude call, ~$0.10 — safer to run, but still not free.
 - If you're debugging prompts, edit the raw materials in `data/meetings/<id>/`
   and call `summarize._call_claude()` directly with a hand-built prompt rather
@@ -75,12 +77,19 @@ I'll actually trip on" digest.
 - `MeetingRecord.summary_path` is stored relative to `REPO_ROOT`, not
   `DATA_DIR`. Read as `REPO_ROOT / record.summary_path`. This bit me once —
   a bad path fix is in the git history if you need context.
-- Meeting IDs are `<source>:<key>`:
-  - `diligent:<numeric_id>` — recap
-  - `diligent-preview:<numeric_id>` — lookahead (kept separate so a preview
-    doesn't block a later recap of the same meeting)
-  - `diligent-cancelled:<numeric_id>` — cancelled meeting, no Claude call
-  - `bccd:YYYYMMDD`, `swcd:YYYYMMDD` — CD sites, date-keyed
+- Meeting IDs are `<source>:<key>`, where `key` comes from the source:
+  - `diligent:<numeric_id>` / `d100:<numeric_id>` — Diligent tenants. The
+    numeric ids collide between tenants, which is why each has its own source.
+  - `bccd:YYYYMMDD`, `swcd:YYYYMMDD` — one meeting per date, so date is enough.
+  - `bpd:YYYYMMDD` for the regular board, `bpd:YYYYMMDD-<slug>` otherwise —
+    the Park District runs a Regular meeting and a Public Hearing at the same
+    date *and* time, so date alone collides.
+  - PDF-index meetings supply their own `.key` and `.name`; don't rebuild the
+    id from `.date` at the call site.
+
+- **Never run two `ccs sync`/`ccs ingest` processes at once.** `manifest.upsert`
+  is load-mutate-save with no locking, so concurrent runs silently drop each
+  other's records.
 
 ## Files vs. git
 
@@ -102,6 +111,7 @@ src/ccs/
   youtube.py    channel enumeration, video matching, VTT cleanup
   bccd.py       Boone Conservation District WP scraper
   swcd.py       Soil & Water Conservation District WP scraper
+  bpd.py        Belvidere Township Park District WP scraper
   pdftext.py    shared PDF download + text extraction, OCR fallback
   manifest.py   MeetingRecord + JSON persistence
   summarize.py  per-meeting ingest (ingest_diligent, ingest_pdf_meeting)

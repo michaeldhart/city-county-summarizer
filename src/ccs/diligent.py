@@ -67,6 +67,17 @@ class Attachment:
     url: str
 
 
+def _s(value) -> str:
+    """Diligent sends null rather than "" on some records, so dict.get's default
+    never fires — a meeting with no set time has Time: null, not a missing key.
+    """
+    return (value or "").strip()
+
+
+def _i(value, default: int = 0) -> int:
+    return default if value is None else int(value)
+
+
 def _get(base: str, path: str, **params) -> requests.Response:
     url = f"{base}{path}"
     r = requests.get(url, headers=HTTP_HEADERS, params=params, timeout=30)
@@ -89,20 +100,19 @@ def list_meetings(base: str, from_date: date | None = None,
     raw = r.json()
     out: list[MeetingRef] = []
     for m in raw:
-        d = m.get("MeetingDate", "")
         try:
-            parsed = datetime.strptime(d, "%Y-%m-%d").date()
+            parsed = datetime.strptime(_s(m.get("MeetingDate")), "%Y-%m-%d").date()
         except ValueError:
             continue
         out.append(MeetingRef(
             id=int(m["Id"]),
-            title=m.get("Name", "").strip(),
+            title=_s(m.get("Name")),
             date=parsed,
-            type_id=int(m.get("MeetingTypeId", 0)),
-            type_name=m.get("MeetingTypeName", "").strip(),
+            type_id=_i(m.get("MeetingTypeId")),
+            type_name=_s(m.get("MeetingTypeName")),
             published=bool(m.get("Published", False)),
-            location=m.get("MeetingLocation", "").strip(),
-            time=m.get("MeetingTime", "").strip(),
+            location=_s(m.get("MeetingLocation")),
+            time=_s(m.get("MeetingTime")),
         ))
     return out
 
@@ -111,11 +121,11 @@ def get_meeting_data(base: str, meeting_id: int) -> MeetingData:
     r = _get(base, f"/Services/MeetingsService.svc/meetings/{meeting_id}/meetingData")
     d = r.json()
     return MeetingData(
-        id=int(d.get("Id", meeting_id)),
-        name=d.get("Name", "").strip(),
-        location=d.get("Location", "").strip(),
-        time=d.get("Time", "").strip(),
-        type_id=int(d.get("TypeId", 0)),
+        id=_i(d.get("Id"), meeting_id),
+        name=_s(d.get("Name")),
+        location=_s(d.get("Location")),
+        time=_s(d.get("Time")),
+        type_id=_i(d.get("TypeId")),
         members=list(d.get("Members", [])),
         in_past=bool(d.get("InPast", False)),
         live=bool(d.get("Live", False)),
@@ -125,15 +135,15 @@ def get_meeting_data(base: str, meeting_id: int) -> MeetingData:
 
 def get_meeting_documents(base: str, meeting_id: int) -> list[MeetingDocument]:
     r = _get(base, f"/Services/MeetingsService.svc/meetings/{meeting_id}/meetingDocuments")
-    raw = r.json().get("Documents", [])
+    raw = r.json().get("Documents") or []
     return [
         MeetingDocument(
-            id=int(d.get("Id", 0)),
-            name=d.get("Name", "").strip(),
-            document_type=int(d.get("DocumentType", 0)),
-            format=d.get("Format", "").strip(),
-            html=d.get("Html", ""),
-            agenda_cover=d.get("AgendaCover", ""),
+            id=_i(d.get("Id")),
+            name=_s(d.get("Name")),
+            document_type=_i(d.get("DocumentType")),
+            format=_s(d.get("Format")),
+            html=d.get("Html") or "",
+            agenda_cover=d.get("AgendaCover") or "",
         )
         for d in raw
     ]

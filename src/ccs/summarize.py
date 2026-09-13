@@ -75,10 +75,10 @@ def ingest_diligent(base: str, source: str, ref: diligent.MeetingRef, body: Body
 def ingest_pdf_meeting(source: str, meeting, body: Body) -> manifest.MeetingRecord:
     """Recap for a site that posts agenda/minutes PDFs: download, extract, summarize.
 
-    `meeting` is any object exposing `.date`, `.agenda_url` and `.minutes_url`.
+    `meeting` is any object exposing `.date`, `.key`, `.name`, `.agenda_url`
+    and `.minutes_url` — see sources.PdfIndexSource.
     """
-    date_key = meeting.date.strftime("%Y%m%d")
-    meeting_id = manifest.make_id(source, date_key)
+    meeting_id = manifest.make_id(source, meeting.key)
     outdir = _meeting_dir(meeting_id)
 
     agenda_text = _download_and_extract(meeting.agenda_url, outdir / "agenda.pdf", outdir / "agenda.txt")
@@ -93,7 +93,7 @@ def ingest_pdf_meeting(source: str, meeting, body: Body) -> manifest.MeetingReco
         body_id=body.id,
         source=source,
         date=meeting.date.isoformat(),
-        title=body.display_name,
+        title=meeting.name or body.display_name,
         url=meeting.agenda_url or meeting.minutes_url,
         summary_path=str((outdir / "summary.md").relative_to(REPO_ROOT)),
     )
