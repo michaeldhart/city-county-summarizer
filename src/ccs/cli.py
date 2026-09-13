@@ -5,9 +5,8 @@ Commands:
   ccs check                             show which tracked bodies have records in a window (no Claude calls)
   ccs sync                              discover + ingest new meetings into the manifest (default: last 35 days)
   ccs sync --since YYYY-MM-DD
-  ccs ingest diligent:<id>              re-ingest a specific meeting, updating the manifest
-  ccs ingest bccd:YYYYMMDD
-  ccs ingest swcd:YYYYMMDD
+  ccs ingest <source>:<key>             re-ingest a specific meeting, updating the manifest
+                                        diligent:<numeric id>, bccd:YYYYMMDD, swcd:YYYYMMDD
   ccs build-site                        regenerate website/_bodies and website/_meetings from the manifest
 """
 from __future__ import annotations
@@ -16,7 +15,7 @@ import argparse
 import sys
 from datetime import date, timedelta
 
-from . import bccd, config, diligent, general, manifest, report, sitegen, summarize, swcd, youtube
+from . import config, diligent, general, manifest, report, sitegen, sources, summarize
 from .config import body_for_type_id, load_env, tracked_bodies
 
 
@@ -107,53 +106,53 @@ def _cmd_ingest(meeting_id: str) -> int:
         return 2
     source, key = meeting_id.split(":", 1)
 
-    if source == "diligent":
-        return _ingest_diligent(key)
-    if source == "bccd":
-        return _ingest_cd("bccd", key, bccd.list_meetings)
-    if source == "swcd":
-        return _ingest_cd("swcd", key, swcd.list_meetings)
-    print(f"error: unknown source '{source}' (expected diligent, bccd, swcd)", file=sys.stderr)
+    src = sources.SOURCES.get(source)
+    if isinstance(src, sources.DiligentSource):
+        return _ingest_diligent(source, src.base, key)
+    if isinstance(src, sources.PdfIndexSource):
+        return _ingest_pdf_meeting(source, key, src.list_meetings)
+    known = ", ".join(sorted(sources.SOURCES))
+    print(f"error: unknown source '{source}' (expected one of: {known})", file=sys.stderr)
     return 2
 
 
-def _ingest_diligent(key: str) -> int:
+def _ingest_diligent(source: str, base: str, key: str) -> int:
     if not key.isdigit():
-        print(f"error: diligent key must be a numeric meeting id, got '{key}'", file=sys.stderr)
+        print(f"error: {source} key must be a numeric meeting id, got '{key}'", file=sys.stderr)
         return 2
     target_id = int(key)
-    meetings = diligent.list_meetings()
-    ref = next((m for m in meetings if m.id == target_id), None)
+    ref = next((m for m in diligent.list_meetings(base) if m.id == target_id), None)
     if ref is None:
-        print(f"error: no Diligent meeting with id={target_id}", file=sys.stderr)
+        print(f"error: no {source} meeting with id={target_id}", file=sys.stderr)
         return 1
-    body = body_for_type_id(ref.type_id)
+    body = body_for_type_id(source, ref.type_id)
     if body is None:
-        print(f"error: type_id {ref.type_id} ('{ref.type_name}') isn't in the body registry", file=sys.stderr)
+        print(f"error: {source} type_id {ref.type_id} ('{ref.type_name}') isn't in the body registry",
+              file=sys.stderr)
         return 1
     print(f"Ingesting {ref.date} {ref.title} (body={body.id})")
-    videos = report._try_list_youtube_streams()
-    record = summarize.ingest_diligent(ref, body, videos=videos)
+    videos = report.list_videos_by_jurisdiction([body]).get(body.jurisdiction_id)
+    record = summarize.ingest_diligent(base, source, ref, body, videos=videos)
     manifest.upsert(record)
     print(f"OK  transcript={record.has_transcript}  summary={record.summary_path}")
     return 0
 
 
-def _ingest_cd(source: str, key: str, lister) -> int:
+def _ingest_pdf_meeting(source: str, key: str, lister) -> int:
     if not (key.isdigit() and len(key) == 8):
         print(f"error: {source} key must be YYYYMMDD", file=sys.stderr)
         return 2
     target = date(int(key[0:4]), int(key[4:6]), int(key[6:8]))
-    body = next((b for b in tracked_bodies() if b.id == source), None)
+    body = next((b for b in tracked_bodies() if b.source == source), None)
     if body is None:
-        print(f"error: {source} is not currently tracked in SCOPE.md", file=sys.stderr)
+        print(f"error: no tracked body uses source '{source}' (check SCOPE.md)", file=sys.stderr)
         return 1
     meeting = next((m for m in lister() if m.date == target), None)
     if meeting is None:
         print(f"error: no {source} meeting on {target}", file=sys.stderr)
         return 1
     print(f"Ingesting {source} meeting on {target}")
-    record = summarize.ingest_cd(source, meeting, body)
+    record = summarize.ingest_pdf_meeting(source, meeting, body)
     manifest.upsert(record)
     print(f"OK  summary={record.summary_path}")
     return 0

@@ -31,8 +31,12 @@ I'll actually trip on" digest.
 
 ## Diligent platform (current source; replaced BoardDocs in May 2026)
 
-- Base URL: `https://boonecountyil.community.diligentoneplatform.com` — public
-  REST API, no auth, no session, just a normal User-Agent.
+- Boone County base URL: `https://boonecountyil.community.diligentoneplatform.com`
+  — public REST API, no auth, no session, just a normal User-Agent.
+- Every `diligent.py` function takes the tenant `base` as its first argument.
+  There is no module-level base URL: the same product is served under several
+  hostname families and numeric meeting ids collide between tenants, so each
+  tenant gets its own `source` namespace in `sources.SOURCES`.
 - Key endpoints:
   - `GET /Services/MeetingsService.svc/meetings?from=YYYY-MM-DD&to=YYYY-MM-DD&loadall=false`
   - `GET /Services/MeetingsService.svc/meetings/{id}/meetingData`
@@ -40,8 +44,9 @@ I'll actually trip on" digest.
   - `GET /document/{guid}` — download an attachment PDF referenced in the agenda HTML
 - The whole agenda comes back as one HTML blob (rendered from a `.docx`) —
   there are no per-item detail calls. Attachments are `<a href="/document/{guid}">`
-  inside that HTML; use `diligent.extract_attachments(html)` to get them.
-- Body identification uses `MeetingTypeId` (int). See `config.BODIES_BY_TYPE_ID`.
+  inside that HTML; use `diligent.extract_attachments(base, html)` to get them.
+- Body identification uses `(source, MeetingTypeId)` — type ids are only
+  unique within a tenant. See `config.body_for_type_id(source, type_id)`.
   Known: 18=COTW-Admin, 19=COTW-Finance, 20=Health, 22=Board, 23=ZBA,
   29=Planning, 31=Ag Easement, 32=Enterprise Zone.
 - LEPC and Veteran's Assistance have `type_id=None` — no agendas on Diligent
@@ -58,7 +63,9 @@ I'll actually trip on" digest.
 - Always pass `--extractor-args 'youtube:player_client=android'`. Without it,
   yt-dlp errors with "The page needs to be reloaded" on captioned videos.
 - County meeting videos live on the channel's `/streams` tab (archived live
-  streams), not `/videos`. `list_streams()` handles this — don't switch it.
+  streams), not `/videos`. Other channels upload to `/videos` instead — the
+  tab is per-jurisdiction (`Jurisdiction.youtube_tab`), passed to
+  `youtube.list_videos(channel_id, tab)`. Don't change Boone's.
 - Only Board and the two COTWs are streamed. Sub-body meetings (Zoning,
   Planning, Health, LEPC, Veterans, Ag Easement) have no video. Don't add
   a Whisper fallback expecting to find them.
@@ -89,18 +96,24 @@ I'll actually trip on" digest.
 
 ```
 src/ccs/
-  config.py     canonical body registry (type_id → body), SCOPE.md parsing, HTTP headers
+  config.py     jurisdiction + body registries, SCOPE.md parsing, HTTP headers
+  sources.py    source namespace → client (DiligentSource / PdfIndexSource)
   diligent.py   meetings list, meeting data, agenda HTML, attachment discovery
   youtube.py    channel enumeration, video matching, VTT cleanup
   bccd.py       Boone Conservation District WP scraper
   swcd.py       Soil & Water Conservation District WP scraper
-  pdftext.py    shared PDF download + text extraction
+  pdftext.py    shared PDF download + text extraction, OCR fallback
   manifest.py   MeetingRecord + JSON persistence
-  summarize.py  three ingest entry points (BD recap, BD lookahead, CD)
-  report.py     discovery + Markdown rendering for monthly reports
+  summarize.py  per-meeting ingest (ingest_diligent, ingest_pdf_meeting)
+  report.py     cross-source discovery + ingestion orchestration
+  sitegen.py    manifest → Jekyll _bodies/_meetings collections
   general.py    `ccs summary` generator
-  cli.py        argparse entry (`ccs summary` / `check` / `report` / `ingest`)
+  cli.py        argparse entry (`summary` / `check` / `sync` / `ingest` / `build-site`)
 ```
+
+- Adding a government means three things: a `Jurisdiction` (owns the YouTube
+  channel), a `sources.SOURCES` entry (owns the base URL or the lister), and
+  `Body` rows pointing at both. Nothing else should learn a new hostname.
 
 - `summarize.py` is the per-meeting ingest; `report.py` is the
   cross-source orchestration. Don't cross those wires.
@@ -117,8 +130,10 @@ src/ccs/
 - No dedup across "boarddocs-preview" and "boarddocs" for the same meeting.
   Preview stays in `data/meetings/boarddocs-preview_<unique>/` after the
   recap version is written. Not a bug, just an untidied artifact.
-- No OCR. If a CD site posts a scanned image PDF, `pdfplumber` returns
-  nothing and the summary notes "no agenda available."
+- OCR is a soft dependency. `pdftext.pdf_to_text` routes anything under
+  `MIN_CHARS_PER_PAGE` (150) through `ocrmypdf` and caches `*.ocr.pdf`
+  beside the original. If the binary is missing it warns and returns the
+  thin text rather than crashing.
 
 ## Style rules
 

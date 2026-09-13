@@ -13,8 +13,9 @@ import anthropic
 import requests
 from bs4 import BeautifulSoup
 
-from . import diligent
+from . import diligent, sources
 from .config import (
+    BODIES_BY_ID,
     CLAUDE_MODEL,
     DOCS_DIR,
     HTTP_HEADERS,
@@ -92,19 +93,21 @@ def _fetch_sources() -> dict[str, str]:
 def _latest_board_roster() -> str:
     """Pull the roster from the most recent past Board meeting on Diligent."""
     today = date.today()
+    board_body = BODIES_BY_ID["board"]
+    base = sources.diligent_base(board_body.source)
     try:
         meetings = diligent.list_meetings(
-            from_date=date(today.year - 1, 1, 1), to_date=today,
+            base, from_date=date(today.year - 1, 1, 1), to_date=today,
         )
     except Exception as e:
         return f"[Failed to list Diligent meetings: {e}]"
-    board = [m for m in meetings if m.type_id == 22 and m.date <= today]
+    board = [m for m in meetings if m.type_id == board_body.type_id and m.date <= today]
     if not board:
         return "[No recent Boone County Board meeting found on Diligent.]"
     board.sort(key=lambda m: m.date, reverse=True)
     latest = board[0]
     try:
-        data = diligent.get_meeting_data(latest.id)
+        data = diligent.get_meeting_data(base, latest.id)
     except Exception as e:
         return f"[Failed to fetch meeting {latest.id}: {e}]"
     members = "\n".join(f"- {name}" for name in data.members) if data.members else "(no members listed)"

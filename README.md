@@ -21,6 +21,9 @@ meeting is streamed. Summaries are written by Claude Sonnet 4.5.
 
 - Python 3.9+ (developed on 3.9; type annotations use `from __future__ import annotations`)
 - An Anthropic API key — get one at <https://console.anthropic.com/>
+- `ocrmypdf` (optional, `brew install ocrmypdf`) — only needed for sources
+  that post scanned PDFs. Without it those meetings summarize from whatever
+  text is extractable.
 
 ## Install
 
@@ -194,21 +197,28 @@ the site — only Claude's summary is.
 - **Auto-caption typos.** YouTube's auto-captions get most of it right but
   garble proper nouns; Claude corrects the obvious ones. Numbers and dollar
   amounts come through cleanly.
-- **PDFs aren't OCR'd.** If a Conservation District posts a scanned image
-  PDF, `pdfplumber` returns nothing and the summary will note "no agenda
-  available."
+- **Scanned PDFs need OCR.** Documents thinner than 150 chars/page are
+  routed through `ocrmypdf`, which caches a searchable `*.ocr.pdf` beside
+  the original. Without that binary installed the run warns and summarizes
+  from whatever text it could extract.
 - **The manifest is authoritative for "did we ingest this?"** — deleting
   `data/manifest.json` forces the next `ccs sync` to re-ingest everything
   in the window (and re-spend on Claude).
 
 ## Extending it
 
-- To watch a new body: add a `Body` entry in [`src/ccs/config.py`](src/ccs/config.py)
-  with title-match regex, add it to `SCOPE.md`, set status to `tracked`.
+- To watch a new body on an existing source: add a `Body` entry in
+  [`src/ccs/config.py`](src/ccs/config.py), add it to `SCOPE.md`, set
+  status to `tracked`.
+- To add a whole new government: add a `Jurisdiction` (it owns the YouTube
+  channel, if any), then register its source in
+  [`src/ccs/sources.py`](src/ccs/sources.py) — `DiligentSource(base_url)`
+  for a Diligent tenant, or `PdfIndexSource(lister)` for a site that posts
+  agenda/minutes PDFs.
 - To try a different summarization model: change `CLAUDE_MODEL` in
   [`src/ccs/config.py`](src/ccs/config.py).
-- To retune prompts: `summarize._build_boarddocs_prompt`,
-  `summarize._build_cd_prompt`, and `general._build_prompt`.
+- To retune prompts: `summarize._build_diligent_prompt`,
+  `summarize._build_pdf_meeting_prompt`, and `general._build_prompt`.
 
 For deeper background, [`docs/SPIKE_NOTES.md`](docs/SPIKE_NOTES.md) has the
 end-to-end validation notes from the initial build, including the

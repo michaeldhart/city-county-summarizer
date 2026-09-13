@@ -1,7 +1,8 @@
 """YouTube channel + captions via yt-dlp.
 
-The county's meeting videos live on the /streams tab (archived live streams),
-not /videos. Only Board and the two COTWs are recorded.
+Which tab holds the meetings varies by channel: the county archives live
+streams (/streams), other channels upload to /videos. Jurisdiction.youtube_tab
+picks it.
 """
 from __future__ import annotations
 
@@ -10,8 +11,6 @@ import subprocess
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
-
-from .config import YOUTUBE_CHANNEL_ID
 
 
 @dataclass(frozen=True)
@@ -30,9 +29,9 @@ def _run_ytdlp(*args: str) -> str:
     return proc.stdout
 
 
-def list_streams(limit: int = 200) -> list[YouTubeVideo]:
-    """Enumerate the channel's archived live streams, newest first."""
-    url = f"https://www.youtube.com/channel/{YOUTUBE_CHANNEL_ID}/streams"
+def list_videos(channel_id: str, tab: str = "streams", limit: int = 200) -> list[YouTubeVideo]:
+    """Enumerate a channel tab's videos, newest first."""
+    url = f"https://www.youtube.com/channel/{channel_id}/{tab}"
     out = _run_ytdlp(
         "--flat-playlist",
         "--playlist-end", str(limit),
