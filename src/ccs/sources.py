@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from typing import Callable, List, Union
 
 from . import bccd, swcd
-from .config import BOONE_DILIGENT_BASE
+from .config import BOONE_DILIGENT_BASE, D100_DILIGENT_BASE
 
 
 @dataclass(frozen=True)
@@ -32,6 +32,7 @@ Source = Union[DiligentSource, PdfIndexSource]
 
 SOURCES: dict[str, Source] = {
     "diligent": DiligentSource(BOONE_DILIGENT_BASE),
+    "d100": DiligentSource(D100_DILIGENT_BASE),
     "bccd": PdfIndexSource(bccd.list_meetings),
     "swcd": PdfIndexSource(swcd.list_meetings),
 }

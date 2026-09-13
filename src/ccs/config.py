@@ -15,6 +15,7 @@ CACHE_DIR = DATA_DIR / "cache"
 MANIFEST_PATH = DATA_DIR / "manifest.json"
 
 BOONE_DILIGENT_BASE = "https://boonecountyil.community.diligentoneplatform.com"
+D100_DILIGENT_BASE = "https://district100.community.highbond.com"
 
 HTTP_HEADERS = {
     "User-Agent": (
@@ -40,6 +41,8 @@ class Jurisdiction:
 JURISDICTIONS: tuple[Jurisdiction, ...] = (
     Jurisdiction("boone-county", "Boone County",
                  youtube_channel_id="UCJd8c3sZs98mx9vznx9nsOg"),
+    Jurisdiction("d100", "Belvidere Community Unit School District 100",
+                 youtube_channel_id="UCS3r7OLVDHpE9DroeciYCow", youtube_tab="videos"),
     Jurisdiction("bccd", "Boone County Conservation District"),
     Jurisdiction("swcd", "Boone County Soil & Water Conservation District"),
 )
@@ -54,7 +57,7 @@ class Body:
     jurisdiction_id: str       # key into JURISDICTIONS_BY_ID
     source: str                # manifest id namespace; key into sources.SOURCES
     scope_name: str            # exact string as it appears in SCOPE.md rows
-    type_id: int | None = None  # Diligent MeetingTypeId (None for non-diligent sources)
+    type_ids: tuple = ()       # Diligent MeetingTypeIds; empty for non-Diligent sources
 
 
 # Canonical registry. `type_id` values from Diligent recon in Aug 2026.
@@ -62,27 +65,41 @@ class Body:
 # stay in scope but won't be matched until we find where their agendas live.
 BODIES: tuple[Body, ...] = (
     Body("board", "Boone County Board", "boone-county", "diligent",
-         "Boone County Board (12 members, 3 districts)", type_id=22),
+         "Boone County Board (12 members, 3 districts)", type_ids=(22,)),
     Body("cotw-admin", "COTW – Administrative & Legislative", "boone-county", "diligent",
-         "COTW – Administrative & Legislative", type_id=18),
+         "COTW – Administrative & Legislative", type_ids=(18,)),
     Body("cotw-finance", "COTW – Finance, Taxation & Salaries", "boone-county", "diligent",
-         "COTW – Finance, Taxation & Salaries", type_id=19),
+         "COTW – Finance, Taxation & Salaries", type_ids=(19,)),
     Body("planning", "Regional Planning Commission", "boone-county", "diligent",
-         "Regional Planning Commission", type_id=29),
+         "Regional Planning Commission", type_ids=(29,)),
     Body("zba", "Zoning Board of Appeals", "boone-county", "diligent",
-         "Zoning Board of Appeals", type_id=23),
+         "Zoning Board of Appeals", type_ids=(23,)),
     Body("ag-easement", "Agricultural Conservation Easement Commission", "boone-county", "diligent",
-         "Agricultural Conservation Easement & Farmland Protection Commission", type_id=31),
+         "Agricultural Conservation Easement & Farmland Protection Commission", type_ids=(31,)),
     Body("health", "Board of Health", "boone-county", "diligent",
-         "Board of Health", type_id=20),
+         "Board of Health", type_ids=(20,)),
     Body("lepc", "Local Emergency Planning Committee", "boone-county", "diligent",
-         "Local Emergency Planning Committee (LEPC)", type_id=None),
+         "Local Emergency Planning Committee (LEPC)"),
     Body("veterans", "Veteran's Assistance Commission", "boone-county", "diligent",
-         "Veteran's Assistance Commission", type_id=None),
+         "Veteran's Assistance Commission"),
     Body("bccd", "Boone County Conservation District", "bccd", "bccd",
          "Boone County Conservation District"),
     Body("swcd", "Soil & Water Conservation District", "swcd", "swcd",
          "Boone County Soil & Water Conservation District"),
+    # District 100 runs the same Diligent product as the county on its own
+    # tenant. Workshops (158), retreats (150), town halls (153), hearings (157)
+    # and special meetings (156) are all the Board of Education meeting under a
+    # different label, so they share one body rather than fragmenting the page.
+    Body("d100-board", "Board of Education", "d100", "d100",
+         "BCUSD 100 Board of Education", type_ids=(15, 150, 153, 156, 157, 158)),
+    Body("d100-business", "Business Services Committee", "d100", "d100",
+         "BCUSD 100 Business Services Committee", type_ids=(10,)),
+    Body("d100-education", "Educational Services Committee", "d100", "d100",
+         "BCUSD 100 Educational Services Committee", type_ids=(50,)),
+    Body("d100-policy", "Policy & Personnel Committee", "d100", "d100",
+         "BCUSD 100 Policy & Personnel Committee", type_ids=(51,)),
+    Body("d100-ptac", "Parent Teacher Advisory Committee", "d100", "d100",
+         "BCUSD 100 Parent Teacher Advisory Committee", type_ids=(16,)),
 )
 
 BODIES_BY_ID: dict[str, Body] = {b.id: b for b in BODIES}
@@ -93,9 +110,14 @@ def jurisdiction_for(body: Body) -> Jurisdiction:
 
 
 def body_for_type_id(source: str, type_id: int) -> Body | None:
-    """Diligent MeetingTypeIds are only unique within one tenant — match on both."""
+    """Diligent MeetingTypeIds are only unique within one tenant — match on both.
+
+    A body can claim several type ids: District 100 files workshops, retreats,
+    town halls and hearings as their own types, but they're all meetings of the
+    same Board of Education.
+    """
     for b in BODIES:
-        if b.source == source and b.type_id == type_id:
+        if b.source == source and type_id in b.type_ids:
             return b
     return None
 

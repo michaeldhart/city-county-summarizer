@@ -5,6 +5,7 @@ Commands:
   ccs check                             show which tracked bodies have records in a window (no Claude calls)
   ccs sync                              discover + ingest new meetings into the manifest (default: last 35 days)
   ccs sync --since YYYY-MM-DD
+  ccs sync --only d100 --since ...      limit to one jurisdiction, source, or body
   ccs ingest <source>:<key>             re-ingest a specific meeting, updating the manifest
                                         diligent:<numeric id>, bccd:YYYYMMDD, swcd:YYYYMMDD
   ccs build-site                        regenerate website/_bodies and website/_meetings from the manifest
@@ -29,10 +30,14 @@ def main(argv: list[str] | None = None) -> int:
     p_check = sub.add_parser("check", help="Preview which bodies have records in a window (no Claude calls)")
     p_check.add_argument("--since", type=_parse_date, default=None,
                          help="Window start (default: 35 days ago)")
+    p_check.add_argument("--only", default=None,
+                         help="Comma-separated body ids, sources, or jurisdictions")
 
     p_sync = sub.add_parser("sync", help="Discover and ingest new meetings into the manifest")
     p_sync.add_argument("--since", type=_parse_date, default=None,
                         help="Window start (default: 35 days ago)")
+    p_sync.add_argument("--only", default=None,
+                        help="Comma-separated body ids, sources, or jurisdictions")
 
     p_ingest = sub.add_parser("ingest", help="Force-ingest a specific meeting")
     p_ingest.add_argument("meeting_id", help="e.g. diligent:1622, bccd:20260420, swcd:20260701")
@@ -43,9 +48,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "summary":
         return _cmd_summary()
     if args.command == "check":
-        return _cmd_check(args.since)
+        return _cmd_check(args.since, _parse_only(args.only))
     if args.command == "sync":
-        return _cmd_sync(args.since)
+        return _cmd_sync(args.since, _parse_only(args.only))
     if args.command == "ingest":
         return _cmd_ingest(args.meeting_id)
     if args.command == "build-site":
@@ -60,11 +65,13 @@ def _cmd_summary() -> int:
     return 0
 
 
-def _cmd_check(since: date | None) -> int:
+def _cmd_check(since: date | None, only: set | None) -> int:
     today = date.today()
     since = since or (today - timedelta(days=35))
+    if _no_match(only):
+        return 2
     print(f"Checking sources for {since} → {today}...\n")
-    rows = report.check_sources(since, today)
+    rows = report.check_sources(since, today, only=only)
     _print_check_table(rows)
     have = sum(1 for _, ok in rows if ok)
     print(f"\n{have} of {len(rows)} tracked bodies have records in this window.")
@@ -85,17 +92,19 @@ def _print_check_table(rows: list[tuple[str, bool]]) -> None:
     print(border)
 
 
-def _cmd_sync(since: date | None) -> int:
+def _cmd_sync(since: date | None, only: set | None) -> int:
     today = date.today()
     since = since or (today - timedelta(days=35))
     if since > today:
         print(f"error: --since {since} is in the future", file=sys.stderr)
         return 2
+    if _no_match(only):
+        return 2
 
     print(f"Syncing: {since} → {today}")
-    print(f"Tracked bodies: {[b.id for b in tracked_bodies()]}")
+    print(f"Tracked bodies: {[b.id for b in report.select_bodies(only)]}")
 
-    entries = report.sync_meetings(since=since, today=today)
+    entries = report.sync_meetings(since=since, today=today, only=only)
     print(f"\n{len(entries)} meeting(s) in window. Run `ccs build-site` to refresh the site.")
     return 0
 
@@ -163,6 +172,23 @@ def _cmd_build_site() -> int:
     print(f"Wrote {n_bodies} body page(s) and {n_meetings} meeting page(s) "
           f"to {sitegen.WEBSITE_DIR.relative_to(config.REPO_ROOT)}/")
     return 0
+
+
+def _parse_only(value: str | None) -> set | None:
+    if not value:
+        return None
+    return {part.strip() for part in value.split(",") if part.strip()}
+
+
+def _no_match(only: set | None) -> bool:
+    """True (after printing) when a --only filter selects nothing — a silent
+    no-op here looks identical to 'nothing new to ingest'."""
+    if only and not report.select_bodies(only):
+        print(f"error: --only {sorted(only)} matched no tracked body. "
+              f"Known: {sorted({b.id for b in tracked_bodies()} | {b.source for b in tracked_bodies()})}",
+              file=sys.stderr)
+        return True
+    return False
 
 
 def _parse_date(s: str) -> date:

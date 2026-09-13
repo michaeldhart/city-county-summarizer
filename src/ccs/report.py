@@ -39,7 +39,21 @@ class SectionEntry:
     record: manifest.MeetingRecord
 
 
-def check_sources(since: date, today: date | None = None) -> list[tuple[str, bool]]:
+def select_bodies(only: set | None = None) -> list[Body]:
+    """Tracked bodies, optionally narrowed by body id, source, or jurisdiction.
+
+    Phase catch-up runs need this: a bare `--since 2026-01-01` would backfill
+    every government at once rather than just the one being added.
+    """
+    tracked = tracked_bodies()
+    if not only:
+        return tracked
+    return [b for b in tracked
+            if b.id in only or b.source in only or b.jurisdiction_id in only]
+
+
+def check_sources(since: date, today: date | None = None,
+                  only: set | None = None) -> list[tuple[str, bool]]:
     """For each tracked body, return whether at least one record exists in [since, today].
 
     Cheap: no Claude calls, no per-item fetches — just the meeting-list endpoints.
@@ -47,7 +61,7 @@ def check_sources(since: date, today: date | None = None) -> list[tuple[str, boo
     with at least one document published.
     """
     today = today or date.today()
-    tracked = tracked_bodies()
+    tracked = select_bodies(only)
     dil_by_source = _diligent_meetings(tracked, since, today)
     pdf_by_source = _pdf_index_meetings(tracked)
 
@@ -55,8 +69,8 @@ def check_sources(since: date, today: date | None = None) -> list[tuple[str, boo
     for body in tracked:
         src = sources.SOURCES.get(body.source)
         if isinstance(src, sources.DiligentSource):
-            has = body.type_id is not None and any(
-                m.type_id == body.type_id and not is_cancelled(m.title)
+            has = any(
+                m.type_id in body.type_ids and not is_cancelled(m.title)
                 for m in dil_by_source.get(body.source, [])
             )
         elif isinstance(src, sources.PdfIndexSource):
@@ -70,10 +84,11 @@ def check_sources(since: date, today: date | None = None) -> list[tuple[str, boo
     return results
 
 
-def sync_meetings(since: date, today: date | None = None) -> list[SectionEntry]:
+def sync_meetings(since: date, today: date | None = None,
+                  only: set | None = None) -> list[SectionEntry]:
     """Discover and ingest meetings between `since` and today, updating the manifest."""
     today = today or date.today()
-    tracked = tracked_bodies()
+    tracked = select_bodies(only)
     dil_by_source = _diligent_meetings(tracked, since, today)
     videos = list_videos_by_jurisdiction(tracked)
     return _collect_recap(dil_by_source, videos, tracked, since, today)
