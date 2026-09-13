@@ -41,16 +41,19 @@ def ingest_diligent(base: str, source: str, ref: diligent.MeetingRef, body: Body
     agenda_doc = next((d for d in documents if d.document_type == 1 and d.html), None)
     agenda_text = diligent.agenda_html_to_text(agenda_doc.html) if agenda_doc else ""
 
-    transcript = ""
-    video_id: str | None = None
-    if videos is not None:
+    # Prefer the tenant's own video link; only guess from titles when it's empty.
+    video_id = diligent.get_video_id(base, ref.id)
+    if video_id is None and videos is not None:
         match = youtube.find_video(videos, ref.date, body.id)
         if match is not None:
             video_id = match.video_id
-            vtt = youtube.download_captions(match.video_id, outdir)
-            if vtt is not None:
-                transcript = youtube.vtt_to_text(vtt)
-                (outdir / "transcript.txt").write_text(transcript)
+
+    transcript = ""
+    if video_id is not None:
+        vtt = youtube.download_captions(video_id, outdir)
+        if vtt is not None:
+            transcript = youtube.vtt_to_text(vtt)
+            (outdir / "transcript.txt").write_text(transcript)
 
     prompt = _build_diligent_prompt(body, meeting_data, ref, agenda_text, transcript)
     summary = _call_claude(prompt)

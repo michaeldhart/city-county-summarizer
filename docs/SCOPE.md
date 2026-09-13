@@ -60,5 +60,27 @@ These exist in Boone County but are governed independently. Flip to `tracked` if
 |------|--------|-------|
 | Boone County Conservation District | `tracked` | Separate elected board. Own site: bccdil.org. |
 | Boone County Soil & Water Conservation District | `tracked` | Separate body. Own site: boonecountyswcd.org. |
-| Municipalities (Belvidere, Poplar Grove, etc.) | `excluded` | City-level, not county. |
-| School districts | `excluded` | Independent. |
+| Municipalities (Belvidere, Poplar Grove, etc.) | `excluded` | City-level. Belvidere itself is tracked below. |
+| School districts | `excluded` | Independent. BCUSD 100 is tracked below; no other district is. |
+
+## Belvidere Community Unit School District 100
+
+Independently elected seven-member Board of Education covering Boone, McHenry and
+DeKalb counties. Publishes to its own Diligent Community tenant
+(`district100.community.highbond.com`) — the same platform the county uses.
+
+Workshops, retreats, town halls, hearings and special meetings are filed as separate
+Diligent meeting types but are all the Board of Education meeting under a different
+label, so they roll up into the Board's page rather than getting pages of their own.
+
+| Body | Status | Notes |
+|------|--------|-------|
+| BCUSD 100 Board of Education | `tracked` | 3rd Monday, 6:00 PM, 1201 5th Ave. Includes specials, workshops, retreats, town halls, hearings. |
+| BCUSD 100 Business Services Committee | `tracked` | Roughly monthly, 4:00 PM. |
+| BCUSD 100 Educational Services Committee | `tracked` | Roughly monthly, 4:00 PM. |
+| BCUSD 100 Policy & Personnel Committee | `tracked` | Roughly monthly, 4:30 PM. |
+| BCUSD 100 Parent Teacher Advisory Committee | `tracked` | Intermittent. |
+
+Not tracked: the `Main Governing Board - Archive` meeting type (560 pre-March-2025
+meetings imported from BoardDocs). It lumps every body type under one id and would
+need title-parsing to attribute correctly — out of scope while the window is 2026.

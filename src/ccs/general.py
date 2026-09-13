@@ -101,7 +101,7 @@ def _latest_board_roster() -> str:
         )
     except Exception as e:
         return f"[Failed to list Diligent meetings: {e}]"
-    board = [m for m in meetings if m.type_id == board_body.type_id and m.date <= today]
+    board = [m for m in meetings if m.type_id in board_body.type_ids and m.date <= today]
     if not board:
         return "[No recent Boone County Board meeting found on Diligent.]"
     board.sort(key=lambda m: m.date, reverse=True)

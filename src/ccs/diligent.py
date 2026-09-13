@@ -139,12 +139,30 @@ def get_meeting_documents(base: str, meeting_id: int) -> list[MeetingDocument]:
     ]
 
 
-def get_video_link(base: str, meeting_id: int) -> str | None:
-    """Diligent's own video-link field. Usually empty for Boone County — falls
-    through to youtube.find_video() by title+date."""
-    r = _get(base, f"/api/videolink/{meeting_id}")
-    val = r.json()
-    return val if isinstance(val, str) and val else None
+def get_video_id(base: str, meeting_id: int) -> str | None:
+    """The tenant's own YouTube id for a meeting, if it publishes one.
+
+    District 100 populates this; Boone County leaves it empty and has to fall
+    through to youtube.find_video() by title+date. The payload is JSON encoded
+    *inside* a JSON string, so it needs decoding twice.
+    """
+    try:
+        payload = _get(base, f"/api/videolink/{meeting_id}").json()
+    except Exception:
+        return None
+    if isinstance(payload, str):
+        try:
+            payload = json.loads(payload)
+        except ValueError:
+            return payload or None
+    if isinstance(payload, dict):
+        payload = [payload]
+    if not isinstance(payload, list):
+        return None
+    for entry in payload:
+        if isinstance(entry, dict) and entry.get("YouTubeEventId"):
+            return entry["YouTubeEventId"]
+    return None
 
 
 def extract_attachments(base: str, agenda_html: str) -> list[Attachment]:
