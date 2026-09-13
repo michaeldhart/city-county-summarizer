@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import re
 import subprocess
+import sys
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -20,8 +21,10 @@ class YouTubeVideo:
 
 
 def _run_ytdlp(*args: str) -> str:
+    # sys.executable, not "python3": a brewed Python can shadow the interpreter
+    # this package is installed into, and yt_dlp would vanish from under us.
     proc = subprocess.run(
-        ["python3", "-m", "yt_dlp", *args],
+        [sys.executable, "-m", "yt_dlp", *args],
         capture_output=True, text=True, check=False,
     )
     if proc.returncode != 0:
