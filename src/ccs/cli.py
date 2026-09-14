@@ -1,7 +1,8 @@
 """Command-line entry point.
 
 Commands:
-  ccs summary                           rebuild the site's About page (website/about.md)
+  ccs summary                           rebuild every government's About page
+  ccs summary belvidere                 rebuild just one
   ccs check                             show which tracked bodies have records in a window (no Claude calls)
   ccs sync                              discover + ingest new meetings into the manifest (default: last 35 days)
   ccs sync --since YYYY-MM-DD
@@ -25,7 +26,9 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="ccs", description="Boone County meeting monitor")
     sub = parser.add_subparsers(dest="command", required=True)
 
-    sub.add_parser("summary", help="Rebuild the site's About page")
+    p_summary = sub.add_parser("summary", help="Rebuild About pages")
+    p_summary.add_argument("jurisdiction", nargs="?", default=None,
+                           help="Limit to one government (default: all)")
 
     p_check = sub.add_parser("check", help="Preview which bodies have records in a window (no Claude calls)")
     p_check.add_argument("--since", type=_parse_date, default=None,
@@ -46,7 +49,7 @@ def main(argv: list[str] | None = None) -> int:
 
     args = parser.parse_args(argv)
     if args.command == "summary":
-        return _cmd_summary()
+        return _cmd_summary(args.jurisdiction)
     if args.command == "check":
         return _cmd_check(args.since, _parse_only(args.only))
     if args.command == "sync":
@@ -59,9 +62,17 @@ def main(argv: list[str] | None = None) -> int:
     return 2
 
 
-def _cmd_summary() -> int:
-    path = general.build_general_summary()
-    print(f"\nWrote {path.relative_to(config.REPO_ROOT)} ({path.stat().st_size} bytes)")
+def _cmd_summary(jurisdiction: str | None) -> int:
+    if jurisdiction is not None and jurisdiction not in general.SPECS_BY_ID:
+        print(f"error: no About page for '{jurisdiction}'. "
+              f"Known: {', '.join(sorted(general.SPECS_BY_ID))}", file=sys.stderr)
+        return 2
+    index = general.write_about_index()
+    paths = ([general.build_about_page(jurisdiction)] if jurisdiction
+             else general.build_all())
+    print()
+    for path in [index] + paths:
+        print(f"Wrote {path.relative_to(config.REPO_ROOT)} ({path.stat().st_size} bytes)")
     return 0
 
 

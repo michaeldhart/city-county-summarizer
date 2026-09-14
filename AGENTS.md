@@ -7,12 +7,15 @@ I'll actually trip on" digest.
 
 ## Cost discipline
 
-- Every `ccs report` on a fresh manifest costs real money. A busy month with
-  ~15 new meetings is ~$1–$2 at Sonnet 4.5 rates.
-- Never run `ccs report` "just to test." If you need to smoke-test the report
-  pipeline, either (a) use a narrow window that yields zero meetings, or (b)
-  pre-seed `data/manifest.json` with a `MeetingRecord` pointing at an already-
-  summarized meeting on disk, so the render short-circuits.
+- Every `ccs sync` on a fresh manifest costs real money. A busy month with
+  ~15 new meetings is ~$1–$2 at Sonnet 4.5 rates; a full-year backfill across
+  all five governments ran ~$25.
+- Never run `ccs sync` "just to test." If you need to smoke-test the pipeline,
+  either (a) use a narrow window that yields zero meetings, or (b) pre-seed
+  `data/manifest.json` with a `MeetingRecord` pointing at an already-summarized
+  meeting on disk, so the render short-circuits.
+- To smoke-test one source end-to-end, `ccs ingest <source>:<key>` on a single
+  meeting is ~$0.10 and exercises the whole path. Do that before any backfill.
 - `ccs check` is free (only hits meeting-list endpoints, no Claude). Use it
   to preview which bodies have records in a window before spending on report.
 - Scope any backfill with `--only <body|source|jurisdiction>`. A bare
@@ -111,8 +114,10 @@ I'll actually trip on" digest.
   summaries, manifest). Don't `git add` anything under it.
 - `reports/` is gitignored (per-run monthly reports are regenerable from
   `data/manifest.json` + sources).
-- `general_summary.md` IS tracked. Regenerating it produces small diffs
-  each time — that's intentional.
+- `website/` IS tracked, including the generated `_bodies/`, `_meetings/` and
+  `about/` content. Regenerating produces diffs each time — that's intentional,
+  since the site is the durable archive: the Park District page drops a year
+  each January and only the manifest and the published site keep it.
 - `.env` is gitignored; `.env.example` is not.
 
 ## Package layout

@@ -11,10 +11,11 @@ theme: minima
 url: "https://michaeldhart.github.io"
 baseurl: "/city-county-summarizer"
 
-title: Boone County Government Watch
+title: Boone County & Belvidere Government Watch
 description: >-
-  Meeting recaps for the Boone County, IL government bodies tracked by
-  city-county-summarizer.
+  Meeting recaps for local government in Boone County, Illinois — the county
+  board and its committees, the City of Belvidere, School District 100, the
+  park district, and the two conservation districts.
 
 collections:
   bodies:

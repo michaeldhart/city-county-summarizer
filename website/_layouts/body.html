@@ -1,7 +1,10 @@
 ---
 layout: default
 ---
+<p class="breadcrumb"><a href="{{ '/' | relative_url }}">All bodies</a> &rsaquo; {{ page.jurisdiction }}</p>
+
 <h1>{{ page.title }}</h1>
+<p class="jurisdiction">{{ page.jurisdiction }} &middot; <a href="{{ page.about_url | relative_url }}">About this government</a></p>
 
 {% assign meetings = site.meetings | where: "body_id", page.body_id | sort: "date" | reverse %}
 

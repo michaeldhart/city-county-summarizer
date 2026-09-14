@@ -1,21 +1,27 @@
 # city-county-summarizer (`ccs`)
 
-Personal CLI that watches **Boone County, IL** government activity — the
-County Board, its two Committees of the Whole, appointed sub-bodies (Zoning,
-Planning, Health, etc.), and the two Conservation Districts. Produces:
+Personal CLI that watches local government activity in **Boone County, IL**
+across five separate governments and 22 bodies:
 
-- **[Boone County Government Watch](https://michaeldhart.github.io/city-county-summarizer/)**
-  — a static site with one page per tracked body listing its past meetings,
-  one page per meeting with its full summary, and an
-  [About](https://michaeldhart.github.io/city-county-summarizer/about/) page
-  covering how the county government works, its current members, committees,
-  and departments. Published to GitHub Pages; the body/meeting pages are
-  regenerated from the manifest by `ccs build-site`, and the About page by
-  `ccs summary`.
+| Government | Bodies tracked |
+|---|---|
+| Boone County | County Board, two Committees of the Whole, and appointed sub-bodies (Zoning, Planning, Health, Ag Easement, LEPC, Veterans) |
+| City of Belvidere | City Council, Committee of the Whole, Planning & Zoning, Historic Preservation, Fire & Police Commission |
+| Belvidere CUSD 100 | Board of Education and its four committees |
+| Belvidere Township Park District | Board of Commissioners |
+| The two conservation districts | BCCD and Soil & Water, each an independent elected board |
 
-Meeting materials are pulled from the county's [Diligent Community portal](https://boonecountyil.community.diligentoneplatform.com),
-the Conservation District websites, and YouTube auto-captions where the
-meeting is streamed. Summaries are written by Claude Sonnet 4.5.
+It produces **[Boone County & Belvidere Government Watch](https://michaeldhart.github.io/city-county-summarizer/)**
+— a static site with one page per body listing its past meetings, one page per
+meeting with its full summary, and an
+[About](https://michaeldhart.github.io/city-county-summarizer/about/) page per
+government covering how it works, who currently serves, and when its bodies
+meet. Published to GitHub Pages; body and meeting pages are regenerated from
+the manifest by `ccs build-site`, About pages by `ccs summary`.
+
+Materials come from two Diligent Community portals (the county's and the school
+district's), four WordPress sites, and YouTube auto-captions where a meeting is
+streamed. Scanned PDFs are OCR'd. Summaries are written by Claude Sonnet 4.5.
 
 ## Prerequisites
 
@@ -42,17 +48,18 @@ invoke as `python3 -m ccs.cli …` instead of plain `ccs`.
 
 ### `ccs summary`
 
-Rebuilds the site's About page (`website/about.md`) from scratch. Fetches
-the county's public pages (board, departments, clerk, health board, planning
-commissions), grabs the current member roster from the latest Board meeting
-on Diligent, and pulls Wikipedia and Ballotpedia for grounding. One Claude
-call per run.
+Rebuilds the About page for each government under `website/about/`, plus the
+`/about/` index. Fetches that government's own public pages and, where the body
+publishes to a Diligent portal, takes the current roster from its most recent
+meeting record — more reliable than a web page, which lags reorganizations.
+One Claude call per government.
 
 ```bash
-ccs summary
+ccs summary                 # all four
+ccs summary belvidere       # just one
 ```
 
-Cost: ~$0.10 per rebuild.
+Cost: ~$0.10 per government, so ~$0.40 for a full rebuild.
 
 ### `ccs check`
 

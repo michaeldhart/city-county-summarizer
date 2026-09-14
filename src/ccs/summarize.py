@@ -150,17 +150,34 @@ def _download_and_extract(url: str | None, pdf_dest: Path, txt_dest: Path) -> st
 def _build_diligent_prompt(body: Body, data: diligent.MeetingData,
                            ref: diligent.MeetingRef, agenda_text: str,
                            transcript: str) -> str:
-    instructions = (
-        "This meeting has already occurred. Produce a Markdown recap with these sections:\n"
-        "## TL;DR (3–5 bullets: most important decisions and discussions)\n"
-        "## Attendance & housekeeping\n"
-        "## Decisions & votes (each with vote count and notable discussion or dissent)\n"
-        "## Discussion items (no vote)\n"
-        "## Public comment\n"
-        "## Notable moments (anything colorful, tense, or unusual)\n"
-        "For any section where nothing applies to this meeting, keep the header and write "
-        "`_No content._` on a single line beneath it — do not omit sections or leave them empty."
-    )
+    # Without a transcript there is no record of what was said — only what was
+    # scheduled. Asking for votes and attendance then just yields a page of
+    # "_No content._", which reads as a failed recap rather than an agenda.
+    if transcript:
+        instructions = (
+            "This meeting has already occurred. Produce a Markdown recap with these sections:\n"
+            "## TL;DR (3–5 bullets: most important decisions and discussions)\n"
+            "## Attendance & housekeeping\n"
+            "## Decisions & votes (each with vote count and notable discussion or dissent)\n"
+            "## Discussion items (no vote)\n"
+            "## Public comment\n"
+            "## Notable moments (anything colorful, tense, or unusual)\n"
+            "For any section where nothing applies to this meeting, keep the header and write "
+            "`_No content._` on a single line beneath it — do not omit sections or leave them "
+            "empty.\nStart directly with the '## TL;DR' section."
+        )
+    else:
+        instructions = (
+            "Only the agenda is available for this meeting — there is no transcript and no "
+            "minutes, so there is no record of what was actually said or decided.\n"
+            "Produce a Markdown agenda preview with these sections:\n"
+            "## Agenda preview (3–5 bullets: what this body is set to take up)\n"
+            "## Items for decision\n"
+            "## Other business\n"
+            "Describe what is scheduled, never what was decided. Do not write that anything "
+            "was approved, passed, or discussed.\n"
+            "Start directly with the '## Agenda preview' section."
+        )
 
     transcript_block = (
         f"\n===== TRANSCRIPT =====\n{_clip(transcript, MAX_TRANSCRIPT_CHARS, 'transcript')}"
@@ -181,7 +198,7 @@ def _build_diligent_prompt(body: Body, data: diligent.MeetingData,
         f"Members of record: {members_line}\n\n"
         f"{instructions}\n"
         f"IMPORTANT: Do NOT start with a meeting-title header — the meeting page already "
-        f"identifies the meeting. Start directly with the '## TL;DR' section.\n"
+        f"identifies the meeting.\n"
         f"Do not invent details not in the source. If the transcript has typos "
         f"(auto-captions), silently correct obvious ones; quote sparingly.\n"
         f"{transcript_note}"
