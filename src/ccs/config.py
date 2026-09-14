@@ -38,17 +38,21 @@ class Jurisdiction:
     youtube_tab: str = "streams"   # county meetings are archived live streams
 
 
+# Order here is the order jurisdictions appear on the site.
 JURISDICTIONS: tuple[Jurisdiction, ...] = (
     Jurisdiction("boone-county", "Boone County",
                  youtube_channel_id="UCJd8c3sZs98mx9vznx9nsOg"),
-    Jurisdiction("d100", "Belvidere Community Unit School District 100",
-                 youtube_channel_id="UCS3r7OLVDHpE9DroeciYCow", youtube_tab="videos"),
     Jurisdiction("belvidere", "City of Belvidere",
                  youtube_channel_id="UCotr1ZcGCImOF33lrGH2x3A", youtube_tab="videos"),
+    Jurisdiction("d100", "Belvidere Community Unit School District 100",
+                 youtube_channel_id="UCS3r7OLVDHpE9DroeciYCow", youtube_tab="videos"),
     Jurisdiction("bpd", "Belvidere Township Park District"),
     Jurisdiction("bccd", "Boone County Conservation District"),
     Jurisdiction("swcd", "Boone County Soil & Water Conservation District"),
 )
+
+JURISDICTION_ORDER: dict = {j.id: i for i, j in enumerate(JURISDICTIONS)}
+BODY_ORDER: dict = {}   # filled below, once BODIES exists
 
 JURISDICTIONS_BY_ID: dict[str, Jurisdiction] = {j.id: j for j in JURISDICTIONS}
 
@@ -121,10 +125,20 @@ BODIES: tuple[Body, ...] = (
 )
 
 BODIES_BY_ID: dict[str, Body] = {b.id: b for b in BODIES}
+BODY_ORDER.update({b.id: i for i, b in enumerate(BODIES)})
+
+
+# The conservation districts are one-body governments already covered inside the
+# county's About page; they don't need pages of their own.
+ABOUT_PAGE_FOR: dict = {"bccd": "boone-county", "swcd": "boone-county"}
 
 
 def jurisdiction_for(body: Body) -> Jurisdiction:
     return JURISDICTIONS_BY_ID[body.jurisdiction_id]
+
+
+def about_url_for(jurisdiction_id: str) -> str:
+    return "/about/{}/".format(ABOUT_PAGE_FOR.get(jurisdiction_id, jurisdiction_id))
 
 
 def body_for_type_id(source: str, type_id: int) -> Body | None:

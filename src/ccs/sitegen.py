@@ -11,7 +11,15 @@ from pathlib import Path
 import yaml
 
 from . import manifest
-from .config import REPO_ROOT, Body, tracked_bodies
+from .config import (
+    BODY_ORDER,
+    JURISDICTION_ORDER,
+    REPO_ROOT,
+    Body,
+    about_url_for,
+    jurisdiction_for,
+    tracked_bodies,
+)
 from .report import clean_meeting_title
 
 WEBSITE_DIR = REPO_ROOT / "website"
@@ -48,9 +56,18 @@ def _clear_dir(d: Path) -> None:
 
 
 def _write_body_doc(body: Body) -> None:
+    jurisdiction = jurisdiction_for(body)
     front_matter = {
         "title": body.display_name,
         "body_id": body.id,
+        "jurisdiction": jurisdiction.display_name,
+        "jurisdiction_id": jurisdiction.id,
+        "about_url": about_url_for(jurisdiction.id),
+        # Liquid can't sort groups by an external order, so bake one in: the
+        # index sorts on this and starts a new heading when jurisdiction changes.
+        "sort_key": "{:02d}-{:03d}".format(
+            JURISDICTION_ORDER[jurisdiction.id], BODY_ORDER[body.id]
+        ),
         "permalink": f"/bodies/{body.id}/",
     }
     _write_doc(BODIES_DIR / f"{body.id}.md", front_matter, "")
