@@ -4,6 +4,127 @@ body_id: cotw-finance
 date: '2026-09-10'
 permalink: /bodies/cotw-finance/meetings/diligent-1633/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1633
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1633
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=CieLb7qeDgM
+- kind: attachment
+  label: 2026-08 Treas Report Corrected.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/09a35b33-a200-4b16-87d8-7be87f2a39ed
+- kind: attachment
+  label: August 2026 Financial Report.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/a1fa9d34-b6d7-4b9f-b3dd-bfd2dc83b69e
+- kind: attachment
+  label: Detail vs Budget Report (50).pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/2ce858a0-2415-4d1d-bc03-df3381787b89
+- kind: attachment
+  label: Ordinance 26-34 Planning Fee Schedule 2026 August Update.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/256bd9ae-f653-4e6c-ab89-292fb8dd0e34
+- kind: attachment
+  label: BCG-2026-05 County Farmland Cash Rent Lease.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/cca5552e-0af5-4fc0-bfd5-7a879fcb637f
+- kind: attachment
+  label: Bid Opening.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/ab9cf382-fc2d-4268-b4b4-a8e760d45911
+- kind: attachment
+  label: IGA_Boone-Belvidere-Flora_Irene Road over I-90 _For Signature_07.20.2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/68cc251a-ffd2-4325-a299-dde2ee9ef81b
+- kind: attachment
+  label: local entity IGA.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/49a5cf4c-f7e7-4353-b65c-f1fae0cf1ecb
+- kind: attachment
+  label: Treasurer Auto Fund FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/b75856be-dd7d-4843-95c4-1a8f8650aa39
+- kind: attachment
+  label: Treasurer FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/09399851-137f-48ca-b4ae-2a3582e7f70c
+- kind: attachment
+  label: Assessment and BOR FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/13a27fd7-d316-468b-a361-aab9ea8d4da0
+- kind: attachment
+  label: FY 2027 Capital Outlay Request Form.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6677ab91-1468-4351-8f6f-629b0669fdd6
+- kind: attachment
+  label: 59 Capital Request FY26-27.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/dceb56cf-ef60-4cfd-9aad-24572da67d8a
+- kind: attachment
+  label: County Clerk FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/9235545f-6b50-4ad6-9556-a2dbf31a641e
+- kind: attachment
+  label: Elections FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/5874cb58-0eeb-4d68-b55b-c46d295ab802
+- kind: attachment
+  label: Recorder Automation FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/36c46a05-2755-4ce5-97ed-288c41985a93
+- kind: attachment
+  label: Vital Records FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/9d0e5e2d-af0f-48d9-a22c-ab26d9455b64
+- kind: attachment
+  label: Sheriff 073 FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/4932ec28-c153-487c-8986-91c6d755443c
+- kind: attachment
+  label: Sheriff Budget Increase Information.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/00dc724d-836c-4d9b-bb59-8bda5402d671
+- kind: attachment
+  label: Sheriff Capital Requests 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/af72a9d1-1784-470e-8ea4-1d7261cd610f
+- kind: attachment
+  label: Command Staff New Initiative 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/1288c392-59c0-456d-8125-2d9343d0b9e7
+- kind: attachment
+  label: Sheriff FY27 Capital Improvement Request Master List.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/90b7a3e9-a19e-4fd1-8b78-0cd6edfaee38
+- kind: attachment
+  label: Sheriff FY27 New Initiatives Master List.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/8fc2ffd1-fd6e-40b1-8089-8b055754da7c
+- kind: attachment
+  label: Corrections 071 FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/496658ed-2793-4b13-9aff-80d0f2ee6310
+- kind: attachment
+  label: Corrections Budget Increase Information.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/0acf7980-6a4e-4c33-b6c5-e13f8760f8a8
+- kind: attachment
+  label: Corrections Capital Requests 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/c8e04a4f-da89-4d2b-b5b8-0b871974a8e2
+- kind: attachment
+  label: Corrections New Initiatives 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/b086294f-32ab-4134-87a4-5df289af9bd9
+- kind: attachment
+  label: Live Scan Machine 2027 request.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/0451110a-5a40-4a9a-ada8-085eb202c517
+- kind: attachment
+  label: Corrections Capital Requests 2028.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/5c6b4571-ce8f-4117-b3cc-16a273e286b9
+- kind: attachment
+  label: PSB Budget 070 FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/771fa6fa-7ba9-41eb-a40b-4668009b42fc
+- kind: attachment
+  label: PSB Budget Increase Information.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/ec53cce6-b932-4daa-a06c-6ff0fab53d44
+- kind: attachment
+  label: PSB Capital Requests 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e4d49134-33ec-4bab-bf6b-f36a847fdbe6
+- kind: attachment
+  label: County Buildings 058 FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/5b1dfe98-911c-4ea6-a0da-770edff3b687
+- kind: attachment
+  label: County Buildings Budget Increase Information.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/fe2171ef-9e2c-4eba-ab63-1e282f0ed22d
+- kind: attachment
+  label: EMA 061 FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/4461cd47-8d03-4e1f-ac08-cc2dc10eb236
+- kind: attachment
+  label: EMA breakdown.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/ca3c8cbf-aa44-45da-be15-2f1c495be355
+- kind: attachment
+  label: McKinley 088 FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6d2ac772-be2a-464f-817e-6b3928b35943
+- kind: attachment
+  label: McKinley expense breakdown.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/3a20ee29-fdb8-4019-9592-75505a202c41
 ---
 
 ## TL;DR

@@ -6,6 +6,7 @@ against or prune stale docs.
 """
 from __future__ import annotations
 
+from dataclasses import asdict
 from pathlib import Path
 
 import yaml
@@ -83,6 +84,8 @@ def _write_meeting_doc(record: manifest.MeetingRecord) -> None:
     }
     if record.url:
         front_matter["source_url"] = record.url
+    if record.resources:
+        front_matter["resources"] = [asdict(r) for r in record.resources]
     _write_doc(MEETINGS_DIR / f"{slug}.md", front_matter, _meeting_body_content(record))
 
 

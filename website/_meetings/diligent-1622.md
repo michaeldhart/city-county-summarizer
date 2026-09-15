@@ -4,6 +4,99 @@ body_id: board
 date: '2026-07-16'
 permalink: /bodies/board/meetings/diligent-1622/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1622
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1622
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=Sx_KPELIbqY
+- kind: attachment
+  label: Consent Agenda - July 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/cf0feb5e-8f10-4cf6-bc02-e218438fc612
+- kind: attachment
+  label: '23010.00_BCCH_PCO #28 Narratives 07-16-2026.pdf'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/0ad598e7-28e4-4e6a-9319-51f69d0aded4
+- kind: attachment
+  label: Resolution 26-18 Appointment of Election Judges.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f674df0b-4c19-4de4-b7a9-94a7446c7826
+- kind: attachment
+  label: List of Election Judges- Resolution 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/fe1bba19-6217-4f5b-9192-159f7abdab2c
+- kind: attachment
+  label: 20260716 Combined claims report.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/b66fceda-a18b-4ee7-8af0-b1ed42f5211a
+- kind: attachment
+  label: Boone County, MOU with Luminace Solar Project Owners, 7.6.26 clean execution
+    version.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/7e334527-7edf-4180-861c-588084d10cc9
+- kind: attachment
+  label: _HEI Phase I &amp; II Bridge Bundle Piscasaw Creek.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/8903d27a-daf3-4dde-a84d-fa5aadfa98b2
+- kind: attachment
+  label: Boone Co. Hwy - 3 Bridge Bundle SOQ - WHA.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/4a92baa8-a2ee-41ac-ab19-f027d3a8c248
+- kind: attachment
+  label: FINAL_Chastain_QBS Boone County Bridge Bundle.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f360ba4c-0891-4dc9-8647-7ea0ecf1da96
+- kind: attachment
+  label: imeg_phase i-ii three bridge bundle piscasaw creek_boone county highway department.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/2649abd3-a8b3-4124-865d-8315e78f519c
+- kind: attachment
+  label: Call for Submittals - QBS for Phase I &amp; Phase II 3- Bridge Bundle (Piscasaw
+    Creek, Bonus Township).pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/14dc0368-210d-40ec-9f6e-e8fe2b33ebf3
+- kind: attachment
+  label: Hunter Road CrossRoad Culvert Extension Proposal July 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/70849323-c258-4df7-bfdc-c5b723646c2b
+- kind: attachment
+  label: BID TAB Hunter Rd Cross Road Culvert Extension Project.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/ff682b25-7039-434d-8292-4a9f36eaa2c0
+- kind: attachment
+  label: resolution 26-22.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/28581243-e92d-4d5f-b9cc-4aa38b122980
+- kind: attachment
+  label: Certification of Advisory Public Question - Resolution 26-22.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/54e1cb8a-3f71-4d39-bae5-0c116fa067d4
+- kind: attachment
+  label: resolution 26-23.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/339a7311-71cf-4a42-9447-f6f8e67b62c6
+- kind: attachment
+  label: Solar Advisory Question - Resolution 26-23.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/3b5d1edc-92c9-4233-bd1e-fcce7e48fae3
+- kind: attachment
+  label: Resolution 26-24.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e107d3ac-bea5-4a84-9c51-c618899dd546
+- kind: attachment
+  label: School District Administration Spending resolution 26-24.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/a48cb5ab-9419-4a62-b6c9-7d9e3c503aeb
+- kind: attachment
+  label: Resolution 26-19 State Attorney COLA.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/d7d52352-66fa-439a-996b-c7b863883970
+- kind: attachment
+  label: State Attorney, Public Defender, Sheriff SFY 27 COLA Memo_.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f59a4323-2d6b-4622-8426-2f302d0c2a31
+- kind: attachment
+  label: Resolution 26-20 Public Defender COLA.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/fc065e3c-9f31-49f7-a6d4-b77fff1a432e
+- kind: attachment
+  label: State Attorney, Public Defender, Sheriff SFY 27 COLA Memo_.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/1e9c0c39-643f-4684-a13b-9c54b87b5d9d
+- kind: attachment
+  label: Resolution 26-21 Sheriff COLA.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/3cd81bec-ece1-47d4-a12d-6f991bb6ecbc
+- kind: attachment
+  label: State Attorney, Public Defender, Sheriff SFY 27 COLA Memo_.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/30477dfe-ac0d-483b-bfc1-96ab53e348d6
+- kind: attachment
+  label: land Bank rep 07162026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/4f928d07-2c8e-4855-94bd-55f5161bc3d5
+- kind: attachment
+  label: LB Properties 07162026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/060a4984-70bf-4f9b-b2f0-197ddb5e0d11
+- kind: attachment
+  label: Formal Application Withdraw Letter.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/c59fd670-468e-4686-aedc-f3e649c0e1ec
 ---
 
 ## TL;DR

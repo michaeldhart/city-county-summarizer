@@ -4,6 +4,10 @@ body_id: belvidere-hpc
 date: '2026-08-25'
 permalink: /bodies/belvidere-hpc/meetings/belvidere-hpc-20260825/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/08/08-25-26-HPC-Agenda-1.pdf
+resources:
+- kind: agenda
+  label: Agenda (PDF)
+  url: https://www.belvidereil.gov/wp-content/uploads/2026/08/08-25-26-HPC-Agenda-1.pdf
 ---
 
 ## Agenda preview

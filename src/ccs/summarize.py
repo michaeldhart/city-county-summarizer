@@ -6,7 +6,7 @@ from pathlib import Path
 
 import anthropic
 
-from . import diligent, manifest, pdftext, youtube
+from . import diligent, manifest, pdftext, resources, youtube
 from .config import (
     CLAUDE_MODEL,
     MEETINGS_DIR,
@@ -89,6 +89,10 @@ def ingest_diligent(base: str, source: str, ref: diligent.MeetingRef, body: Body
         video_id=video_id,
         has_transcript=bool(transcript),
         summary_path=str((outdir / "summary.md").relative_to(REPO_ROOT)),
+        resources=resources.for_diligent(
+            base, ref.id, agenda_doc.html if agenda_doc else "",
+            video_id, bool(transcript),
+        ),
     )
 
 
@@ -132,6 +136,9 @@ def ingest_pdf_meeting(source: str, meeting, body: Body,
         video_id=video_id,
         has_transcript=bool(transcript),
         summary_path=str((outdir / "summary.md").relative_to(REPO_ROOT)),
+        resources=resources.for_pdf_meeting(
+            meeting.agenda_url, meeting.minutes_url, video_id, bool(transcript),
+        ),
     )
 
 

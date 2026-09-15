@@ -8,6 +8,7 @@ Personal CLI app that monitors Boone County, IL government meetings. Run manuall
 ccs summary           # rebuild general_summary.md from sources
 ccs report            # generate reports/YYYY-MM.md (recap + lookahead)
 ccs ingest <meeting>  # one-off: pull a specific meeting's docs + transcript
+ccs backfill-resources  # fill the Resources list on older records (no Claude calls)
 ```
 
 ## Outputs

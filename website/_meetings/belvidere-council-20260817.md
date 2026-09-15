@@ -4,6 +4,13 @@ body_id: belvidere-council
 date: '2026-08-17'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260817/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/08/08-17-26-City-Council-Agenda-Packet.pdf
+resources:
+- kind: agenda
+  label: Agenda (PDF)
+  url: https://www.belvidereil.gov/wp-content/uploads/2026/08/08-17-26-City-Council-Agenda-Packet.pdf
+- kind: minutes
+  label: Minutes (PDF)
+  url: https://www.belvidereil.gov/wp-content/uploads/2026/09/08-17-26-City-Council-Regular-Meeting-Minutes.pdf
 ---
 
 - **Expenditures Approved**: $1,976,030.91 for General & Special Funds and $1,592,343.99 for Water & Sewer Fund approved unanimously.

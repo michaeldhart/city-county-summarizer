@@ -4,6 +4,10 @@ body_id: board
 date: '2026-05-04'
 permalink: /bodies/board/meetings/diligent-1567/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1567
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1567
 ---
 
 ## TL;DR

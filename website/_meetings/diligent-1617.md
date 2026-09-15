@@ -4,6 +4,81 @@ body_id: cotw-finance
 date: '2026-07-09'
 permalink: /bodies/cotw-finance/meetings/diligent-1617/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1617
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1617
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=VJxJIkE62Z0
+- kind: attachment
+  label: 2026-06 Treas Report.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/d8c656e1-40c1-497e-bab0-3b245fe16bbf
+- kind: attachment
+  label: Detail vs Budget Report (45).pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/0c909da0-f7b8-4ac9-be44-9e31095e65d4
+- kind: attachment
+  label: June 2026 Financial Report.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/8d4f16b4-8cf7-4bf5-bb23-b9ce57ed80b5
+- kind: attachment
+  label: Boone County, MOU with Luminace Solar Project Owners, 7.6.26 clean execution
+    version.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/aa6d1901-285e-4e5e-8719-ca88f75c1f44
+- kind: attachment
+  label: _HEI Phase I &amp; II Bridge Bundle Piscasaw Creek.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/0b418535-77f3-42d7-9419-6898732a1df1
+- kind: attachment
+  label: Boone Co. Hwy - 3 Bridge Bundle SOQ - WHA.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/524ea3b7-bd6b-417f-a3b3-997ac24413c7
+- kind: attachment
+  label: FINAL_Chastain_QBS Boone County Bridge Bundle.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/002d55a3-136d-4fa6-be88-7d9c209903f2
+- kind: attachment
+  label: imeg_phase i-ii three bridge bundle piscasaw creek_boone county highway department.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6de92a72-07da-4e7d-98b1-1f6ecd46e902
+- kind: attachment
+  label: Call for Submittals - QBS for Phase I &amp; Phase II 3- Bridge Bundle (Piscasaw
+    Creek, Bonus Township).pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/655b39e7-0fbf-4447-b47f-283b04d98757
+- kind: attachment
+  label: Hunter Road CrossRoad Culvert Extension Proposal July 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/10e43d0b-36da-4a14-9b83-cd295eb2c2a5
+- kind: attachment
+  label: BID TAB Hunter Rd Cross Road Culvert Extension Project.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/4ed51a34-8101-4747-816c-8333740a36b2
+- kind: attachment
+  label: Boone County Property Tax Relief Referendum.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/c3f29679-4ab7-4295-96eb-f26a28063e8f
+- kind: attachment
+  label: Boone County Solar Advisory Question.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/d6003dc0-fc35-4f16-8df1-2357cfc3049f
+- kind: attachment
+  label: SCHOOL ADMINISTRATIVE SPENDING ADVISORY QUESTION.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/3ba264fa-c470-4cdb-b6a6-5bbb127493cc
+- kind: attachment
+  label: Resolution 26-19 State Attorney COLA.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/0941a637-abf7-4139-893d-753ce82cacd4
+- kind: attachment
+  label: State Attorney, Public Defender, Sheriff SFY 27 COLA Memo_.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/820c4b4d-313f-4b38-bbfa-799ce8890900
+- kind: attachment
+  label: Resolution 26-20 Public Defender COLA.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/5ae44695-bf3c-454d-a1eb-f6d562855227
+- kind: attachment
+  label: State Attorney, Public Defender, Sheriff SFY 27 COLA Memo_.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e13758d5-a9a9-46b0-8d50-a561015ba30b
+- kind: attachment
+  label: Resolution 26-21 Sheriff COLA.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/0e8cc378-e9ea-40a6-86e8-4ba52c4f8c0d
+- kind: attachment
+  label: State Attorney, Public Defender, Sheriff SFY 27 COLA Memo_.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/696b7c09-77e0-4fe4-b18d-120f2aa5c46b
+- kind: attachment
+  label: Tobin.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/2167ad8f-4385-4f4b-b74e-c7325fc607de
+- kind: attachment
+  label: Agency Contact Map.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6af7ce46-1a9c-42b4-a0bc-58ef71f652fb
 ---
 
 ## TL;DR

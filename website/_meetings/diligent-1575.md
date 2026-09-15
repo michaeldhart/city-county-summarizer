@@ -4,6 +4,22 @@ body_id: board
 date: '2026-03-24'
 permalink: /bodies/board/meetings/diligent-1575/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1575
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1575
+- kind: attachment
+  label: RPC 11.25.2025 draft.pdf (169 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/722f367f-8eaa-43cc-a3a8-425505c32c3c
+- kind: attachment
+  label: RPC and ZBA memo 15xx Spring.pdf (905 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/0113b5d2-668f-4ef8-b7f5-91024478e245
+- kind: attachment
+  label: AC100 SITE PLAN 01-09-26.pdf (1,437 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/8e1a459f-d511-4bee-ae14-b7d4003c3091
+- kind: attachment
+  label: Rezoning – Map Amendment Application - 01.pdf (1,342 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/16720a0a-bcd2-49f5-811b-f6c602e199f9
 ---
 
 ## TL;DR

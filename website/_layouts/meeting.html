@@ -1,13 +1,41 @@
 ---
 layout: default
 ---
-<h1>{{ page.title }}</h1>
-<p>{{ page.date | date: "%b %-d, %Y" }}</p>
-{% if page.source_url %}
-<p><a href="{{ page.source_url }}">Source</a></p>
-{% endif %}
+{%- assign summarized = page.resources | where_exp: "r", "r.kind != 'attachment'" -%}
+{%- assign attachments = page.resources | where: "kind", "attachment" -%}
 
-{{ content }}
+<div class="meeting-grid">
+  <div class="meeting-main">
+    <h1>{{ page.title }}</h1>
+    <p class="meeting-date">{{ page.date | date: "%b %-d, %Y" }}</p>
+
+    {{ content }}
+  </div>
+
+  {% if page.resources %}
+  <aside class="meeting-resources">
+    <h2>Resources</h2>
+    {% if summarized.size > 0 %}
+    <ul>
+      {% for r in summarized %}
+      <li class="resource-{{ r.kind }}"><a href="{{ r.url }}">{{ r.label }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if attachments.size > 0 %}
+    <h3>Also linked from the agenda</h3>
+    <p class="resource-note">Backup documents published with the agenda. These
+    were not read when writing the summary above.</p>
+    <ul>
+      {% for r in attachments %}
+      <li class="resource-attachment"><a href="{{ r.url }}">{{ r.label }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </aside>
+  {% endif %}
+</div>
 
 {% assign parent_body = site.bodies | where: "body_id", page.body_id | first %}
 {% if parent_body %}

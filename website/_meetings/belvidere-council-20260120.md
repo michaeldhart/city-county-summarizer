@@ -4,6 +4,16 @@ body_id: belvidere-council
 date: '2026-01-20'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260120/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/01/01-20-26-City-Council-Agenda-Packet-Website.pdf
+resources:
+- kind: agenda
+  label: Agenda (PDF)
+  url: https://www.belvidereil.gov/wp-content/uploads/2026/01/01-20-26-City-Council-Agenda-Packet-Website.pdf
+- kind: minutes
+  label: Minutes (PDF)
+  url: https://www.belvidereil.gov/wp-content/uploads/2026/02/01-20-26-City-Council-Regular-Meeting-Minutes.pdf
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=D4cNzqW4dbk
 ---
 
 ## TL;DR

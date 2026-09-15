@@ -4,6 +4,10 @@ body_id: health
 date: '2026-08-03'
 permalink: /bodies/health/meetings/diligent-1630/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1630
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1630
 ---
 
 ## TL;DR

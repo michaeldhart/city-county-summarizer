@@ -4,6 +4,107 @@ body_id: cotw-admin
 date: '2026-08-06'
 permalink: /bodies/cotw-admin/meetings/diligent-1623/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1623
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1623
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=pwfcVivlT8U
+- kind: attachment
+  label: Boone County Veterans' Club
+  url: https://boonecountyil.community.diligentoneplatform.com/document/7e13e566-a6ff-4b1a-84b5-cb4e3b18b83b
+- kind: attachment
+  label: Institute of Christ the King Sovereign Priest/St. Mary Oratory - 1
+  url: https://boonecountyil.community.diligentoneplatform.com/document/7f0e4d53-81ab-4c59-ab11-91db6ecbbabc
+- kind: attachment
+  label: Institute of Christ the King Sovereign Priest/St. Mary Oratory - 2
+  url: https://boonecountyil.community.diligentoneplatform.com/document/b68e7a6c-18f4-4905-8b2f-95127ff53f9d
+- kind: attachment
+  label: Boone County Historical Society
+  url: https://boonecountyil.community.diligentoneplatform.com/document/75525565-bf4b-4982-b8e6-1c3c90d52735
+- kind: attachment
+  label: Northern IL Vintage Tractor &amp; Engine Association
+  url: https://boonecountyil.community.diligentoneplatform.com/document/94778743-d3d5-4a8d-96f5-647723cbf815
+- kind: attachment
+  label: Blue Thunder Boosters Inc
+  url: https://boonecountyil.community.diligentoneplatform.com/document/3552f486-aff6-4e53-a68f-25a195cd52f5
+- kind: attachment
+  label: National Wild Turkey Federation, Boone County Long Beards
+  url: https://boonecountyil.community.diligentoneplatform.com/document/21b65d7a-5f09-4e44-ae34-164eee49d98f
+- kind: attachment
+  label: Detail vs Budget Report- Sheriff's Dept..pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/eaedd5da-772c-4295-94b5-2cf45f1ecdfc
+- kind: attachment
+  label: Corrections August.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/4c8d77bf-116d-4856-b427-d87e31cad262
+- kind: attachment
+  label: sharp@boonecountysheriff.com_20260806_095011.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/c524141d-7c38-4402-938e-6271a53cb06d
+- kind: attachment
+  label: sharp@boonecountysheriff.com_20260806_095103.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/7bd1e363-4877-4dac-8d23-f42da7514336
+- kind: attachment
+  label: Monthly Boone County Highway UPDATE August 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/9fff5189-8cf5-4b6a-9ee8-5ff7ef8fee04
+- kind: attachment
+  label: ==Claims for July paid in August.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/86b3b3d2-a15b-4bc6-a329-961e8fb7678f
+- kind: attachment
+  label: 2026 MONTHS - August.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/2257b66c-d138-46d0-816e-3f1b92d6d232
+- kind: attachment
+  label: Board Agenda Narrative August 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/59ca87e6-50ac-44ab-9888-361fc8e1f71d
+- kind: attachment
+  label: 08-06-2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/61f04c5d-c20f-421d-b23f-896321d9346c
+- kind: attachment
+  label: Admin Office Report August 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/d3c22236-5f5b-413d-aa43-3779390b6b0f
+- kind: attachment
+  label: July 2026-Permits Issued.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/12d4dee3-7cbd-4e16-a730-809ac85039f7
+- kind: attachment
+  label: Coroner Report July 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/427e5a73-3ca2-4724-8c5d-ef3bf820ef73
+- kind: attachment
+  label: 20260807 Combined claims report.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/c582caf6-ddf5-4d4c-aed4-454dc7da684e
+- kind: attachment
+  label: _Board Narrative Manchester Township Rockton Road McCurry Road Grade School
+    Road proposed altered speed zones Aug 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/2d6c2259-7dfd-43b4-b026-611f9879ecd2
+- kind: attachment
+  label: ordinace 26-33 altered speed zone.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/af07ab40-1b44-4d21-ac30-85a4572e8584
+- kind: attachment
+  label: Manchester Township proposed altered speed zone Aug 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6da0a180-9696-4ca8-9f6e-568fbca151dd
+- kind: attachment
+  label: ORD 26-31 Regional Planning Chapter 2 Article VII.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/3ae7587b-5e2f-4036-858f-e6613b1105f2
+- kind: attachment
+  label: ARTICLE_VII___REGIONAL_PLANNING_COMMISSION DRAFT.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e2e05498-cfd3-4f87-92f1-97c8dcc33cc7
+- kind: attachment
+  label: ORD 26-32 Zoning Board of Appeals Chapter 2 Article VIII.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/0b0dbc25-4164-4bf4-93c2-b74724b7aba6
+- kind: attachment
+  label: ARTICLE VIII__ZONING_BOARD_OF_APPEALS DRAFT.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/7b810faf-5369-4adb-bbd2-ee8cfee39ac3
+- kind: attachment
+  label: ORD 26-29 Stormwater protection and npdes permits draft ordinance updated.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/556ef569-3d7d-4045-b168-9311a2803986
+- kind: attachment
+  label: 12-02.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/627b2e92-9ba3-49cd-b7a1-9042c2e46c3b
+- kind: attachment
+  label: ORD 26-30 Floodplain DRAFT UPDATED.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/aaf5a6fd-3252-4aa7-b70f-57efa5032bfc
+- kind: attachment
+  label: Floodplain Regulations 8.26.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/5fc710ab-c825-49ee-b7db-da287187e4da
 ---
 
 ## TL;DR

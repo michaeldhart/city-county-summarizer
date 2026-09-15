@@ -4,6 +4,124 @@ body_id: cotw-admin
 date: '2026-09-03'
 permalink: /bodies/cotw-admin/meetings/diligent-1632/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1632
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1632
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=0j1xPgjKBq0
+- kind: attachment
+  label: Detail vs Budget Report - Sept.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/caeee1a0-c3f0-4f98-b93c-285c088c3c84
+- kind: attachment
+  label: August 2026-Permits Issued.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f3512a5e-8178-4560-abf8-2224727bda9d
+- kind: attachment
+  label: Coroner Report August 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/b87de189-bff0-4608-9df7-7142272dabdf
+- kind: attachment
+  label: 08-31-2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/7a1b3c5c-e916-4f44-87be-6aba74bd1c62
+- kind: attachment
+  label: Boone County Board of Health Meeting - Aug 31 2026 - Agenda - Pdf.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/225df112-fcf6-4913-a004-8a33758a2363
+- kind: attachment
+  label: 2026 MONTHS - Sept.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/d37d5889-1855-4758-8e42-a431ef9043b5
+- kind: attachment
+  label: Board Agenda Narrative September 2026 - 2.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/89753a0b-9772-44e4-9e0e-8b65e0ea3836
+- kind: attachment
+  label: ==Claims for August paid in September.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/1019a831-b27e-447b-acc8-e14a1fb60401
+- kind: attachment
+  label: BCPD Services Rendered July 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/d7706876-a17a-466a-95eb-81b23a626c10
+- kind: attachment
+  label: BCPD Services Rendered June 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/92cf401e-ebe3-477d-8dd2-6d5d4c702e9f
+- kind: attachment
+  label: 20260903 Combined claims report.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e9a27520-723d-4a2e-9084-842c965a3773
+- kind: attachment
+  label: Resolution 26-25.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/9e47bc39-0cb2-4005-b5b8-abfd4c84a48f
+- kind: attachment
+  label: Resolution 26-27 Establishing Salary of the Interim Public Defender.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6ac3ebf0-6151-48eb-ae8b-361d1edea3d7
+- kind: attachment
+  label: Draft Off System Bridge IGA 8.18.26.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e78f8b4c-6f8d-4e4f-b34d-fa1077e7db75
+- kind: attachment
+  label: WHA Boone Co Sec. 26-02127-00-BR PH1 and 2 Agreement.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/28e8781f-beda-4e38-af3a-dde93cd5948d
+- kind: attachment
+  label: 1406_001.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/a21046e0-15a3-4b22-bf02-78e44e9ee992
+- kind: attachment
+  label: Case SUP-08-2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/242a0405-15b0-4137-a373-a03545023c28
+- kind: attachment
+  label: Capon Building.png
+  url: https://boonecountyil.community.diligentoneplatform.com/document/ba1b943c-ceed-442e-8ea4-c13e9b9f9d76
+- kind: attachment
+  label: NRI 1827.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/be18f54d-9df8-46df-994b-16debae5181f
+- kind: attachment
+  label: WANGE ROAD SURVEY.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/42d42c55-2f0b-44c1-8b72-c5236b117568
+- kind: attachment
+  label: ZBA Memo SUP-08-2026 Wange Road.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/ef60e0d1-b36c-44e6-8952-4752d66db94b
+- kind: attachment
+  label: COW Memo 11635 Wange Road.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/95bf43e0-c5ea-4b97-8620-88afd375656b
+- kind: attachment
+  label: Zoning Board of Appeals August 25, 2026 PP.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/a2f6bcf3-b542-4f81-b00b-650b6f73c952
+- kind: attachment
+  label: MOU for Rosecrance Addiction Counselor 6-16-26.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/5db84e85-9f61-4641-9fa2-ece02b448da2
+- kind: attachment
+  label: Animal Services Budget 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/21ddf7d4-4272-432a-8caa-597f4ee197b7
+- kind: attachment
+  label: GIS Budget FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/05b5f6ae-4522-426a-9ec2-23eb1be29b83
+- kind: attachment
+  label: GIS FY 2027 New Initiatives Request Form.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/9520b81c-d898-438e-9e2f-dcc33c90553f
+- kind: attachment
+  label: Highway 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/679ec00b-0d3f-4883-8a26-9e3d58a7add7
+- kind: attachment
+  label: Highway Capital Outlay 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/1a5c3f13-0317-4bee-9063-2554a1ce07b9
+- kind: attachment
+  label: Highway New Initiative 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/1daf816d-2208-4bcd-912d-7ea4d7161c10
+- kind: attachment
+  label: Health Budget FY 2027.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/d9fb340e-3178-4625-9c68-140a3a7f0013
+- kind: attachment
+  label: BCHD FY 27 Budget Presentation COTW.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/5556fa0d-d2cb-411d-9514-18b5ff64d266
+- kind: attachment
+  label: Boone County Admin - 2026 - Belvidere Municipal Landfill - Budgetary Proposal.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/868fd13f-ef58-4a0a-acab-5a9be2cac9c1
+- kind: attachment
+  label: Super Hero Center for Autism
+  url: https://boonecountyil.community.diligentoneplatform.com/document/70dd08d3-e59b-4d12-96bc-8be020e3e0f5
+- kind: attachment
+  label: Belvidere TYFC
+  url: https://boonecountyil.community.diligentoneplatform.com/document/8df12371-105a-48d7-862b-5320e67da760
+- kind: attachment
+  label: 'Belvidere TYFC #1'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/46f1527b-af28-4377-af5f-52ba5808ff62
+- kind: attachment
+  label: Prairie Riders Snowmobile Club
+  url: https://boonecountyil.community.diligentoneplatform.com/document/53314c24-2693-41d9-93b8-234eae1d5ad5
 ---
 
 ## TL;DR

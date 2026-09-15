@@ -5,6 +5,13 @@ body_id: board
 date: '2026-02-24'
 permalink: /bodies/board/meetings/diligent-1583/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1583
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1583
+- kind: attachment
+  label: Ag Committee Minutes_11.25.25.pdf (136 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/017a2d52-8a58-482c-9822-687b9d51140d
 ---
 
 ## TL;DR

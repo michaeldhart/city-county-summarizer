@@ -4,6 +4,28 @@ body_id: health
 date: '2026-06-01'
 permalink: /bodies/health/meetings/diligent-1613/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1613
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1613
+- kind: attachment
+  label: May 4, 2026 BoH Minutes.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/cd227dd4-5f28-4a68-8ef3-2501a69973ec
+- kind: attachment
+  label: 02 Admin Report May.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/2f179b54-d33c-461b-8ca0-0231ac93ab57
+- kind: attachment
+  label: 03 BCHD Farmer's Market Flyer.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6af4ce23-f134-4a53-9b11-7c65dc53ece9
+- kind: attachment
+  label: 04 Local Health Protection Grant.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/8d76c4bc-5346-4e9c-9ac7-bd0e4fd68d21
+- kind: attachment
+  label: 05 Empower Boone Food Pantry Fundraiser.jpg
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e59f2912-02b9-4654-adc8-158faab49d73
+- kind: attachment
+  label: 10 Walkability and Food Access Survey Spring 2026 Report.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f9eae43a-6302-4f19-90a4-9b895f088a9f
 ---
 
 ## TL;DR
