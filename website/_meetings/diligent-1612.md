@@ -4,6 +4,94 @@ body_id: board
 date: '2026-06-18'
 permalink: /bodies/board/meetings/diligent-1612/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1612
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1612
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=qmbyXNy5w5Q
+- kind: attachment
+  label: Consent Agenda - June 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/a544b0b6-39e5-4b7c-b6c9-0977fb20a07f
+- kind: attachment
+  label: 25-8100 Final Audit - Boone County.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/63e0f605-c460-40aa-a30d-423910795fb4
+- kind: attachment
+  label: 25-8700 Final Single Audit - Boone County.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6e1b6de2-20aa-4b7c-84c6-984da49d9926
+- kind: attachment
+  label: resolution-sale of Maple crest 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/dbc51328-650d-46f9-b8b0-4261ade883f4
+- kind: attachment
+  label: Purchase Agreement - fully executed.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/ff84a009-5650-4171-a54f-780713e7dd33
+- kind: attachment
+  label: resolution-maple crest 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f9b0d462-fd60-4bc2-ab11-32dda0b25110
+- kind: attachment
+  label: Purchase Agreement - fully executed.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/62fc74aa-6ed8-4eb4-9425-299301142c0f
+- kind: attachment
+  label: 1763301 2026 B EXHIBIT FOR TENTATIVE.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/2f7d0498-e583-4e8c-b56c-c38dd3428028
+- kind: attachment
+  label: 1763301 2026 CONCEPT B.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/68ccc6e3-fc1d-408f-8b32-85892210119e
+- kind: attachment
+  label: HAMMER REV.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/8c9f4b03-0012-4bd0-ba12-c1ead40522fd
+- kind: attachment
+  label: SIGNED-Application for Special Use.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/10ded786-8a71-49ea-b8ab-8c366025c9a9
+- kind: attachment
+  label: ZBA Memo 3100 US Route 20.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/cd6207bc-c375-414e-b18f-38cac8beab2a
+- kind: attachment
+  label: COW June 4 SUP-0 7-2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/80ad4288-fe22-465d-9908-1e57049f8a8c
+- kind: attachment
+  label: Ord 26-26 SUP-07-2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/a52aa497-772e-42fe-ac68-fe1aca0c46cb
+- kind: attachment
+  label: Poplar Grove Rd Bike Lanes - Boone County IGA Village of Poplar Grove 5.27.26.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/544ad3df-50ef-44de-bbdf-cbee20fcc8ca
+- kind: attachment
+  label: 20260618 Combined claims.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/ddd2492b-9856-4749-8bbb-790b12a443e8
+- kind: attachment
+  label: 2026.06.04 Marco Probation Proposal.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/74e9e4a9-1ee5-41a0-8f5e-d66b2b61204c
+- kind: attachment
+  label: Memo Draft 2026 UDO and Zoning Map.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f2cf1e16-cac8-41d1-853b-0fa78e21b8bd
+- kind: attachment
+  label: Farm Bureau - UDO.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/41d6cc0e-cc0a-4294-84ff-177759fb6bae
+- kind: attachment
+  label: FPP UDO comments COTW Finance Jun 2026 (1).pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/7efa8b2b-24fe-4438-a558-511b20bdd23d
+- kind: attachment
+  label: ORD 26-27 UDO.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/43262307-4028-4a8d-831c-15bdf8d6248c
+- kind: attachment
+  label: Boone UDO Clean June 17. 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/c0adbe58-5109-4072-817e-9cb9189cfe2c
+- kind: attachment
+  label: Memo Draft 2026 Zoning Map ZBA.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/50b089d1-a9b8-49d9-8d63-03832f021934
+- kind: attachment
+  label: Memo Draft 2026 UDO and Zoning Map.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/58e8adcd-810b-4145-b6b9-da84c4512b8f
+- kind: attachment
+  label: Boone County Zoning Map 24x36 2026 Version v04.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/654016ec-62e9-4211-9558-0276c3686224
+- kind: attachment
+  label: ORD 26-28 2026 ZONING MAP.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/685af7aa-ef4e-4a4b-a76c-40d00c6d0e6b
+- kind: attachment
+  label: Board Meeting - Memo-June2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e464e109-04be-4c5f-9762-499c20b84fd0
 ---
 
 ## TL;DR

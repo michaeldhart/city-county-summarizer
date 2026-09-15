@@ -123,13 +123,33 @@ ccs ingest swcd:20260701            # Soil & Water Conservation District, by dat
 Useful when you want to re-summarize after prompt tuning, or pull a meeting
 outside the default sync window.
 
+### `ccs backfill-resources`
+
+Every meeting page carries a Resources column listing the raw materials
+behind its summary — the Diligent meeting page, agenda and minutes PDFs,
+the YouTube recording, and any documents linked from the agenda. Records
+ingested before that column existed have nothing to show; this fills them
+in. Free, no Claude calls: Diligent meetings rebuild from the agenda HTML
+already cached on disk, and PDF sources re-read their public index to
+recover the minutes link.
+
+```bash
+ccs backfill-resources
+ccs backfill-resources --only belvidere
+```
+
+Only records with an empty list are touched, so it's safe to re-run. Some
+meetings come back partly reconstructed — the park district and Belvidere
+index pages only show a year or two, so anything older has dropped off the
+public site and keeps just the one link already on record.
+
 ### `ccs build-site`
 
 Regenerates `website/_bodies/` and `website/_meetings/` — the Jekyll
 collections behind the published site — from the current manifest. One
 page per tracked body (with a "Past meetings" list) and one page per
-ingested meeting (its cached summary). Fully rewrites both collections
-each run; free, no Claude calls.
+ingested meeting (its cached summary plus its Resources column). Fully
+rewrites both collections each run; free, no Claude calls.
 
 ```bash
 ccs build-site

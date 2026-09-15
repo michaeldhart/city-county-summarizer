@@ -4,6 +4,133 @@ body_id: cotw-admin
 date: '2026-06-04'
 permalink: /bodies/cotw-admin/meetings/diligent-1607/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1607
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1607
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=jVntlvTEmZ0
+- kind: attachment
+  label: county buildings 58 may 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/43017b71-2502-44c9-a9de-ae2edafd42b6
+- kind: attachment
+  label: ema 61 may 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/8b0f2430-d8ee-412e-8221-c6724b67facb
+- kind: attachment
+  label: mckinley 88 may 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/5008895b-c26a-41e8-8c0a-5da80fd8f829
+- kind: attachment
+  label: corrections 71 may 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/3a56ec7e-abe3-47e0-9aca-c101af4b16ba
+- kind: attachment
+  label: psb 70 may 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/61e1bf05-f725-4cf3-8046-e6dfb2145782
+- kind: attachment
+  label: sheriff 73 - May 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/fa683294-f175-4aba-996a-eed69b8defe2
+- kind: attachment
+  label: hill.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/89406d6a-3cef-4a02-bae4-957e854bb25b
+- kind: attachment
+  label: whitmer.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/664ce933-452e-4460-a240-26850d80f091
+- kind: attachment
+  label: Department Report June 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/8c3f69f8-d8fd-4b43-8521-64c1eb9ff465
+- kind: attachment
+  label: Coroner's May 2026 Report.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e3d4d8d8-49c8-4370-a867-a71a468047ef
+- kind: attachment
+  label: Boone County Board of Health Meeting - Jun 01 2026 - Agenda - Pdf.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/d734510d-1a1a-4be6-9c0d-1b01414d17e5
+- kind: attachment
+  label: Admin Office Report June 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/12cf84a1-9fc7-44a0-9706-79bc5ad45e4c
+- kind: attachment
+  label: May 2026-Permits Issued.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/9e249164-c3bf-4e3d-9738-ca01b0332fdb
+- kind: attachment
+  label: 06-04-26.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/1066d160-a1e1-4277-b37d-f4caacdee34f
+- kind: attachment
+  label: 2026 MONTHS June 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/7a5bc4d9-a703-4154-8479-fe017c42d62a
+- kind: attachment
+  label: ==Claims for May paid in June.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/a9adf577-753b-4eea-a47b-9da03fa8f267
+- kind: attachment
+  label: Board Agenda Narrative June 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f52c24d3-1376-4109-847b-11eab9e4fe6f
+- kind: attachment
+  label: corrections June 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/c273396f-ee3e-4e2b-b52a-f77addd3ddf0
+- kind: attachment
+  label: 20260604 Combined Claims.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e475b200-60bb-4749-ab84-4953bdbd9a9f
+- kind: attachment
+  label: '23010.00_BCCH_PCO #26 Narratives 06-04-2026_Updated.pdf'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/75d31392-89e8-4670-91ed-29680377f44e
+- kind: attachment
+  label: 1763301 2026 B EXHIBIT FOR TENTATIVE.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/8b6ad918-992d-4c8d-91dc-3b091fd44d2f
+- kind: attachment
+  label: 1763301 2026 CONCEPT B.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/d3d5a518-2030-44f8-98b9-170829357b03
+- kind: attachment
+  label: HAMMER REV.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/dc2ee054-ef80-462c-9c16-87199550f8b4
+- kind: attachment
+  label: SIGNED-Application for Special Use.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/4bc22740-0944-4657-9c71-e8e2b2fb2969
+- kind: attachment
+  label: ZBA Memo 3100 US Route 20.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/5a96ee59-3bfb-41a7-bed5-7009a99d50fc
+- kind: attachment
+  label: COW June 4 SUP-0 7-2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6f521e80-ea84-40f5-b059-40571518073b
+- kind: attachment
+  label: Memo Draft 2026 UDO and Zoning Map.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e4286a09-afae-4efd-b0c0-c12283858946
+- kind: attachment
+  label: Boone UDO Clean May 29,2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/8a1e25a5-6641-4caf-a820-f37d478dc696
+- kind: attachment
+  label: Memo Draft 2026 Zoning Map ZBA.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e39a96f4-7a55-4af3-8e75-b2891fdd1535
+- kind: attachment
+  label: Boone County Zoning Map 24x36 2026 Version v03.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/2fd9b8bb-4a71-4302-affa-438d2725ee6f
+- kind: attachment
+  label: Memo Draft 2026 UDO and Zoning Map.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f80ea387-7ab4-409f-a0c5-05b4ae35f11e
+- kind: attachment
+  label: Poplar Grove Rd Bike Lanes - Boone County IGA Village of Poplar Grove 5.27.26.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/7cd1d0e9-9309-45d4-8724-1f9cc0ccadbb
+- kind: attachment
+  label: meeting memo-meeting minutes.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/d34b680c-694d-4e51-a836-931972245c68
+- kind: attachment
+  label: Belvidere East - Cable Tray Damage Photo.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f137d5fe-6a66-4bf7-a5c8-35553f6902ea
+- kind: attachment
+  label: Belvidere East Feeder Replacement_R1.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e0da6bbd-ee27-4421-b581-9009880c1c2e
+- kind: attachment
+  label: Shooting Range Improvements.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/4f16ee83-2150-44a5-9e80-bffd3a7c1e3f
+- kind: attachment
+  label: UAW Local 2056
+  url: https://boonecountyil.community.diligentoneplatform.com/document/2a9635ae-1d48-4715-9251-6154a54bcf1d
+- kind: attachment
+  label: Elev815
+  url: https://boonecountyil.community.diligentoneplatform.com/document/b2db9463-6c86-44c9-b26f-cf16a286fbcd
+- kind: attachment
+  label: Poplar Grove Lions Charities Inc
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6a3cc10a-d529-4300-9007-01c0134fd870
+- kind: attachment
+  label: Senior Connections
+  url: https://boonecountyil.community.diligentoneplatform.com/document/fbfd0cdc-e787-4105-a466-98ae9b5fe6fe
 ---
 
 ## TL;DR

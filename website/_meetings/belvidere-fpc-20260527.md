@@ -4,6 +4,13 @@ body_id: belvidere-fpc
 date: '2026-05-27'
 permalink: /bodies/belvidere-fpc/meetings/belvidere-fpc-20260527/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/05/5-27-26-Special-FP-Meeting-Agenda.pdf
+resources:
+- kind: agenda
+  label: Agenda (PDF)
+  url: https://www.belvidereil.gov/wp-content/uploads/2026/05/5-27-26-Special-FP-Meeting-Agenda.pdf
+- kind: minutes
+  label: Minutes (PDF)
+  url: https://www.belvidereil.gov/wp-content/uploads/2026/06/05-27-26-Special-FP-Meeting-Minutes.pdf
 ---
 
 ## TL;DR

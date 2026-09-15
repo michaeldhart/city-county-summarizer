@@ -4,6 +4,13 @@ body_id: ag-easement
 date: '2026-05-26'
 permalink: /bodies/ag-easement/meetings/diligent-1610/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1610
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1610
+- kind: attachment
+  label: Ag Committee Minutes_02.24.26.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6eb26c3e-9c23-4ad0-ae7e-7f74f2676c93
 ---
 
 ## TL;DR

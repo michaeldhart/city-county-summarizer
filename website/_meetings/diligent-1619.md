@@ -4,6 +4,10 @@ body_id: zba
 date: '2026-06-18'
 permalink: /bodies/zba/meetings/diligent-1619/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1619
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1619
 ---
 
 ## TL;DR

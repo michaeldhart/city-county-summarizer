@@ -4,6 +4,123 @@ body_id: cotw-finance
 date: '2026-05-14'
 permalink: /bodies/cotw-finance/meetings/diligent-1556/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1556
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1556
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=RDRzcyKgIWE
+- kind: attachment
+  label: 2026-04 Treas Report.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f59451e2-84e6-4d84-8f0b-52dbc55ce9c9
+- kind: attachment
+  label: April 2026 Financial Report.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e6a08ec7-1ca1-4107-8c18-8dc821231bc0
+- kind: attachment
+  label: Project Expenses May 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/711c7164-a2cf-46d9-8ab8-8ef8b8615c76
+- kind: attachment
+  label: Advertisement.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/379b84a4-82ec-4271-aa25-cb31f4b4482b
+- kind: attachment
+  label: 24-00119-00-BR Approved Plans.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f177fdda-22db-407f-892b-5ede6918593e
+- kind: attachment
+  label: 24-00119-00-BR Approved Proposal.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/d2174a99-2f35-4e31-9cc1-7b9c1588bbc3
+- kind: attachment
+  label: Sign in sheet.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/b9e6e6b1-1045-46fd-a745-c12ee3520bfc
+- kind: attachment
+  label: Bid Tab blr-12315 24-00119-00-BR May 4 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/00f0f538-c37c-42fb-8cb9-f25ed3592316
+- kind: attachment
+  label: Apparent Low Bid 24-00119-00-BR 05052026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/de85ac0a-787f-45a5-af0f-8c1fa43988c3
+- kind: attachment
+  label: _Board Narrative Stone Quarry Rd Structure Replacement 24-00119-00-BR May
+    21 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6276821b-555f-482e-9657-03c71d36beb6
+- kind: attachment
+  label: Contract 24-00119-00-BR.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/07881a8a-58af-4382-bbca-983ead812c90
+- kind: attachment
+  label: Contract Bond 24-00119-00-BR.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/4bbe6320-de6d-406e-8e96-172d0afca5d1
+- kind: attachment
+  label: Planning Fee Schedule 2026 ESS.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/189f0cda-6f34-4fc2-88e1-71e23c140d8c
+- kind: attachment
+  label: Building Fee Schedule 2026 ESS.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/9278bb85-dd10-4e13-8d82-3f2f47647a88
+- kind: attachment
+  label: '23010.00_BCCH_PCO #23 Narratives 05-14-2026.pdf'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6aba2f82-669a-46c6-9cb2-2d7950342fb8
+- kind: attachment
+  label: RE_ BCCH - Tuckpointing.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/d8d1a2f5-0f0e-4827-b1c3-c09922890838
+- kind: attachment
+  label: 24230-Boone_County_Courthouse_Addition_Remodeling-086-Tuckpointing-2026-05-14
+    (2).pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/3e9701bb-9789-4195-a43b-4e8c4ca1bbc1
+- kind: attachment
+  label: 1.jpg
+  url: https://boonecountyil.community.diligentoneplatform.com/document/73d84c49-3497-4eb4-a66d-c9ca1ee00868
+- kind: attachment
+  label: 2.jpg
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6457b561-7059-4d0e-b5bd-10ec5b78fd32
+- kind: attachment
+  label: 3.jpg
+  url: https://boonecountyil.community.diligentoneplatform.com/document/9b397ee3-90b0-4e6f-a9be-247efa1ef893
+- kind: attachment
+  label: 4.jpg
+  url: https://boonecountyil.community.diligentoneplatform.com/document/026af0e9-bfda-4a22-b22f-93b27dab38c1
+- kind: attachment
+  label: McKinley Water Line.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/39231991-5cf5-4aa8-9b5c-962aec3a15c3
+- kind: attachment
+  label: BCG-2026-03 RFP Jail Cooling System Replacement.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/bcc05237-a4f6-4b32-9249-145cf2605b0a
+- kind: attachment
+  label: Bid Opening AC Replacement for Jail.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/0aab929b-48ba-41ab-9d8d-21ea8bc673ad
+- kind: attachment
+  label: Boone-County_RTA_Grant_Agreement.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/3b214467-5fa4-47cb-899d-33c138c1468f
+- kind: attachment
+  label: 2026_Boone County Award Letter.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/ad4bf4e1-8655-44f9-a5a6-f483b25ae185
+- kind: attachment
+  label: Resolution 26-15 of Support TARP Hunter Road &amp; Poplar Grove Rd.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/7e896b6b-f111-4d26-befb-abd4cf9bbf9d
+- kind: attachment
+  label: User Fee Adjustment Ordinance Form 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/d6d9d03e-c8f4-4a9e-b46d-42d0882a519a
+- kind: attachment
+  label: FINAL Fee Analysis Septic 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/bc43da9f-27b0-4604-8cf6-40a51c18f5b0
+- kind: attachment
+  label: FINAL Fee Analysis Food 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/02053ad2-a860-4f6a-9a9a-c66dc5e720d5
+- kind: attachment
+  label: BCHD EH Fee Proposal 2026 FINAL.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/ea8f3b94-af78-4c94-8dcd-3e4928678fa0
+- kind: attachment
+  label: BCHD EH Fee Proposal 2026 Finance 5.14.26.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/54b72f12-c40c-47cb-8703-76c874fb3c61
+- kind: attachment
+  label: IL250.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f989fe01-c78f-4248-8515-3944087174a5
+- kind: attachment
+  label: 202605 Membership Meeting Printables.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/a9ca3956-c0a6-431f-b91c-1b3345913260
+- kind: attachment
+  label: UCCI Mid-Year Events Preview.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/cdcae0ee-f56e-4138-8055-006d2093e095
+- kind: attachment
+  label: 2026 NACo Annual Conference Attendance Stipend.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/29c49368-4463-44e6-aa27-1815d126eaf1
 ---
 
 ## TL;DR

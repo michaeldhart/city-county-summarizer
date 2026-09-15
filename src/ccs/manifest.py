@@ -10,6 +10,19 @@ from .config import MANIFEST_PATH
 
 
 @dataclass
+class Resource:
+    """One raw material behind a summary, linked from the meeting page.
+
+    `kind` is "portal" | "agenda" | "minutes" | "attachment" | "video".
+    An "attachment" is linked from a Diligent agenda but never fetched or
+    summarized — see resources.py.
+    """
+    kind: str
+    label: str
+    url: str
+
+
+@dataclass
 class MeetingRecord:
     id: str                       # globally unique: e.g. "diligent:1622"
     body_id: str
@@ -21,13 +34,20 @@ class MeetingRecord:
     has_transcript: bool = False
     summary_path: str | None = None
     ingested_at: str | None = None
+    resources: list[Resource] = field(default_factory=list)
 
 
 def load() -> dict[str, MeetingRecord]:
     if not MANIFEST_PATH.exists():
         return {}
     raw = json.loads(MANIFEST_PATH.read_text())
-    return {mid: MeetingRecord(**m) for mid, m in raw.get("meetings", {}).items()}
+    return {mid: _record(m) for mid, m in raw.get("meetings", {}).items()}
+
+
+def _record(m: dict) -> MeetingRecord:
+    fields = dict(m)
+    fields["resources"] = [Resource(**r) for r in m.get("resources") or []]
+    return MeetingRecord(**fields)
 
 
 def save(records: dict[str, MeetingRecord]) -> None:

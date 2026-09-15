@@ -4,6 +4,97 @@ body_id: cotw-admin
 date: '2026-07-02'
 permalink: /bodies/cotw-admin/meetings/diligent-1615/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1615
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1615
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=fxlRqaRhaEA
+- kind: attachment
+  label: Detail vs Budget Report (44).pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/52af1163-ab5c-4f28-9be9-3fc4b10b09fd
+- kind: attachment
+  label: sharp@boonecountysheriff.com_20260702_085438.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/40ad76c9-48f1-4c9d-808b-c676ee91aa35
+- kind: attachment
+  label: Admin Office Report July 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/784613ca-2e4f-45eb-9918-abeba36a1643
+- kind: attachment
+  label: June 2026-Permits Issued.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/c2d1f27b-375f-4dda-a2c8-556c290c8179
+- kind: attachment
+  label: Quarterly Report Q2 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/29c15fec-9a0a-4359-a02f-359fa2d9e09a
+- kind: attachment
+  label: GIS Monthly Report July 2026 .pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/2d7d7f44-5e2c-45b3-8e18-a03f768c22fc
+- kind: attachment
+  label: 07-02-26.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/58090473-c538-4edf-bb9b-46d8486d3f16
+- kind: attachment
+  label: Coroner's Report June 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/29c85adc-164b-4ffe-9723-0211d47afe54
+- kind: attachment
+  label: ==Claims for June paid in July.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/a807059c-8300-4f93-a4c2-d5329a91b6c6
+- kind: attachment
+  label: 2026 MONTHS - July.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/15a9e13c-2bb7-444e-9511-e7b53d04afa5
+- kind: attachment
+  label: Board Agenda Narrative July 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/88bc2a43-acc0-465a-a59d-2da68e1d9f39
+- kind: attachment
+  label: BCPD Services Rendered May 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/b4c469e9-0918-45ae-8f59-5a86ca048198
+- kind: attachment
+  label: BCPD Services Rendered April 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/9929266c-5eed-484f-a0e3-66fb5c60bca1
+- kind: attachment
+  label: 20260702 Combined claims report.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/3bb62f16-383b-4f87-a400-11e349b52ca6
+- kind: attachment
+  label: Resolution 26-18 Appointment of Election Judges.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/5690ebb5-50c7-4a1b-8fd1-91fc59a536b3
+- kind: attachment
+  label: List of Election Judges- Resolution 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/83e12b1d-d191-46b2-9e83-c8f3056ff6e9
+- kind: attachment
+  label: 23010#27 Narratives 07-02-2026_Updated.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/134de209-dcc3-4547-84ac-c61161c29d44
+- kind: attachment
+  label: BCCH - Central Office_Higher Ceiling.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/4c9884e6-0f63-4e28-a438-8373195c8b05
+- kind: attachment
+  label: BCCH - Central Office_Lower Ceiling.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f8aafd19-80a4-4f4b-bcf9-f359b21f8ebb
+- kind: attachment
+  label: Logan Narrative 7-2-26.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/fbe0ee98-5d01-4e9a-8d54-1155d006871a
+- kind: attachment
+  label: 'For Review PCO #027 - ASI #015.pdf'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/ed6f7d82-a72e-4f4b-a48b-fc8a99ad4c0e
+- kind: attachment
+  label: 'For Review - PCO #026 - RFI#71 - Doors 127 &amp; 128.pdf'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/ec43c712-4d12-4723-b43e-094ddc56fc64
+- kind: attachment
+  label: 1544 - Change Order - 012 - Signed GC, AOR.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/9fb1e130-ecbd-4c6b-aca2-1c15a6f07493
+- kind: attachment
+  label: Belvidere Municipal Landfills Groundwater Monitoring RFP 2026-2028.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/fb936a83-01b7-4a30-b040-f7a9167c5401
+- kind: attachment
+  label: Friends of the Ida Public Library
+  url: https://boonecountyil.community.diligentoneplatform.com/document/c6984d1d-a723-4c67-ba3d-d1abe0975bd6
+- kind: attachment
+  label: Northern Illinois Chapter of Delta Waterfowl Foundation
+  url: https://boonecountyil.community.diligentoneplatform.com/document/983aadc5-4011-4296-9375-d28f91ecee42
+- kind: attachment
+  label: 'BraveHearts at the Bergmann Centre #1'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/91fbf701-f33f-4ee7-9fa8-82a62c0beb1b
+- kind: attachment
+  label: 'BraveHearts at the Bergmann Centre #2'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e517a08a-b26a-4ca9-bcca-596bb9efe2dd
 ---
 
 ## TL;DR

@@ -104,6 +104,27 @@ I'll actually trip on" digest.
   - PDF-index meetings supply their own `.key` and `.name`; don't rebuild the
     id from `.date` at the call site.
 
+## Resources (the meeting page's right-hand column)
+
+- `MeetingRecord.resources` is a list of `manifest.Resource(kind, label, url)`,
+  built in `resources.py` at ingest and rendered by `_layouts/meeting.html`.
+  Kinds: `portal`, `agenda`, `minutes`, `attachment`, `video`.
+- **`attachment` is the odd one out: it never reaches Claude.** Diligent agendas
+  link backup PDFs as `/document/{guid}`; nothing downloads them, so only the
+  agenda HTML and the caption transcript are actually summarized. The layout
+  lists them under a separate "Also linked from the agenda" heading that says
+  so. If you ever wire those PDFs into the prompt, move them into the main
+  group and delete the disclaimer — don't leave the page lying.
+- Older records predate the field. `ccs backfill-resources` fills them in with
+  **no Claude calls**: Diligent rebuilds offline from the cached
+  `data/meetings/<id>/document_*.html`, PDF sources re-scrape their index to
+  recover the minutes URL that `MeetingRecord.url` never kept. It only touches
+  records with an empty list, so it can't downgrade a properly-ingested one.
+- It reports a "partial" count: BPD and Belvidere index pages only show a year
+  or two, so meetings older than that no longer appear and fall back to the
+  single url already on the record. Re-ingesting is the only way to do better,
+  and that costs money.
+
 - **Never run two `ccs sync`/`ccs ingest` processes at once.** `manifest.upsert`
   is load-mutate-save with no locking, so concurrent runs silently drop each
   other's records.
@@ -114,6 +135,10 @@ I'll actually trip on" digest.
   summaries, manifest). Don't `git add` anything under it.
 - `reports/` is gitignored (per-run monthly reports are regenerable from
   `data/manifest.json` + sources).
+- `website/assets/main.scss` is the site's only stylesheet. It overrides the
+  copy minima ships at the same path and `@import "minima"` pulls the theme in
+  first, so everything in it is additive. Note `.breadcrumb`, `.jurisdiction`
+  and `.count` appear in the templates but have no rules yet.
 - `website/` IS tracked, including the generated `_bodies/`, `_meetings/` and
   `about/` content. Regenerating produces diffs each time — that's intentional,
   since the site is the durable archive: the Park District page drops a year
@@ -132,12 +157,14 @@ src/ccs/
   swcd.py       Soil & Water Conservation District WP scraper
   bpd.py        Belvidere Township Park District WP scraper
   pdftext.py    shared PDF download + text extraction, OCR fallback
-  manifest.py   MeetingRecord + JSON persistence
+  manifest.py   MeetingRecord + Resource + JSON persistence
+  resources.py  per-meeting source lists (portal/agenda/minutes/attachment/video)
   summarize.py  per-meeting ingest (ingest_diligent, ingest_pdf_meeting)
   report.py     cross-source discovery + ingestion orchestration
   sitegen.py    manifest → Jekyll _bodies/_meetings collections
   general.py    `ccs summary` generator
-  cli.py        argparse entry (`summary` / `check` / `sync` / `ingest` / `build-site`)
+  cli.py        argparse entry (`summary` / `check` / `sync` / `ingest` /
+                `backfill-resources` / `build-site`)
 ```
 
 - Adding a government means three things: a `Jurisdiction` (owns the YouTube

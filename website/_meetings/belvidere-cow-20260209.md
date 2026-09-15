@@ -4,6 +4,10 @@ body_id: belvidere-cow
 date: '2026-02-09'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260209/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/02/02-09-26-Committee-of-the-Whole-Packet-2.pdf
+resources:
+- kind: agenda
+  label: Agenda (PDF)
+  url: https://www.belvidereil.gov/wp-content/uploads/2026/02/02-09-26-Committee-of-the-Whole-Packet-2.pdf
 ---
 
 ## Agenda preview

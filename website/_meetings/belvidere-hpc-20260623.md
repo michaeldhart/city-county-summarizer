@@ -4,6 +4,13 @@ body_id: belvidere-hpc
 date: '2026-06-23'
 permalink: /bodies/belvidere-hpc/meetings/belvidere-hpc-20260623/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/06/06-23-26-HPC-Agenda-1.pdf
+resources:
+- kind: agenda
+  label: Agenda (PDF)
+  url: https://www.belvidereil.gov/wp-content/uploads/2026/06/06-23-26-HPC-Agenda-1.pdf
+- kind: minutes
+  label: Minutes (PDF)
+  url: https://www.belvidereil.gov/wp-content/uploads/2026/08/06-23-26-HPC-Minutes.pdf
 ---
 
 ## TL;DR

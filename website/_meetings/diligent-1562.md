@@ -4,6 +4,13 @@ body_id: health
 date: '2026-05-04'
 permalink: /bodies/health/meetings/diligent-1562/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1562
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1562
+- kind: attachment
+  label: March 30, 2026 BoH minutes.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/3fbc379d-d96e-469c-8512-74ee30a8d0e3
 ---
 
 ## TL;DR

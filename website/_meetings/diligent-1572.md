@@ -5,6 +5,13 @@ body_id: board
 date: '2026-04-09'
 permalink: /bodies/board/meetings/diligent-1572/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1572
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1572
+- kind: attachment
+  label: EZ Advisory Committee Minutes_04.13.2023.docx (20 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/483f4f76-2589-4897-ba6c-b28ce8b7c22f
 ---
 
 ## TL;DR

@@ -4,6 +4,13 @@ body_id: board
 date: '2026-03-02'
 permalink: /bodies/board/meetings/diligent-1581/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1581
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1581
+- kind: attachment
+  label: February 2, 2026 Approved BoH minutes.pdf (162 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/51438441-b480-42be-b49d-48c254bf4819
 ---
 
 ## TL;DR

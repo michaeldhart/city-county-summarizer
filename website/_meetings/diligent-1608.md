@@ -4,6 +4,25 @@ body_id: planning
 date: '2026-05-19'
 permalink: /bodies/planning/meetings/diligent-1608/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1608
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1608
+- kind: attachment
+  label: RPC Minutes 03.24.2026 DRAFT.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/c789404f-0ef8-4aff-895f-db59807ed524
+- kind: attachment
+  label: 1763301 2026 B EXHIBIT FOR TENTATIVE.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/7e982a45-4e43-49c4-a434-76ccd3808866
+- kind: attachment
+  label: 3100 US Route 20 SUP-07-2026 Planning Commission.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/68f3f0a9-2296-407c-a7b3-fdada150d2a9
+- kind: attachment
+  label: Memo Draft 2026 Zoning Map Planning Commission.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/1c619b88-67f3-4bb1-8737-7c9175f7b548
+- kind: attachment
+  label: Boone County Zoning Map 24x36 2026 Version v03.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/c22fc885-6161-482e-8dbd-e08d760400ea
 ---
 
 ## TL;DR

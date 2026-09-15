@@ -4,6 +4,13 @@ body_id: belvidere-pzc
 date: '2026-05-12'
 permalink: /bodies/belvidere-pzc/meetings/belvidere-pzc-20260512/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/05/05.12.26-PZC-Mtg-Packet-1.pdf
+resources:
+- kind: agenda
+  label: Agenda (PDF)
+  url: https://www.belvidereil.gov/wp-content/uploads/2026/05/05.12.26-PZC-Mtg-Packet-1.pdf
+- kind: minutes
+  label: Minutes (PDF)
+  url: https://www.belvidereil.gov/wp-content/uploads/2026/06/05-12-26-PZC-Minutes.pdf
 ---
 
 ## TL;DR

@@ -4,6 +4,40 @@ body_id: board
 date: '2026-01-15'
 permalink: /bodies/board/meetings/diligent-1592/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1592
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1592
+- kind: attachment
+  label: 2025-12 Treas Report.pdf (324 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/14573e50-e4e7-41a6-8b7b-f805b67be9c7
+- kind: attachment
+  label: FY 2025 Budget Summary.pdf (118 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/b24da28b-5848-4674-b8d3-0686b58bc2bc
+- kind: attachment
+  label: Detail vs Budget Report December 2025.pdf (405 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/70128762-3f8a-4522-a7dc-d323ab7bb138
+- kind: attachment
+  label: Dec 2025 ARPA Report.pdf (134 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/7d3603e5-da2a-41ac-85c6-c8af6ecbdd50
+- kind: attachment
+  label: Proposal Update January 2026 r2.docx (146 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/0e71f651-79f4-49af-bc50-ae06292d84d2
+- kind: attachment
+  label: Re_ Boone County Existing Panel issues.pdf (325 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/82e748e7-7024-4948-9921-e1942d3ea5cf
+- kind: attachment
+  label: Boone County Courthouse Panel F 2026.pdf (2,278 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/24e644bb-fba9-4243-98f4-3257d3afc2a5
+- kind: attachment
+  label: Boone County Courthouse Panel G 2026.pdf (2,275 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/de29be13-09cb-428a-a5f0-0714519e7ae8
+- kind: attachment
+  label: Animal Ordinance Update Draft.pdf (194 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/d9a45c35-1fca-451a-b5f1-0a3d2b1b6626
+- kind: attachment
+  label: LPC 0070050006 - 2H Groundwater Monitoring Report.pdf (18,985 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/08447354-4385-4ed9-8e18-9866adc92399
 ---
 
 ## TL;DR

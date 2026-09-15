@@ -4,6 +4,80 @@ body_id: board
 date: '2026-01-22'
 permalink: /bodies/board/meetings/diligent-1590/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1590
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1590
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=bk4SNB-RKRU
+- kind: attachment
+  label: Public Comment Rules and Procedures - Amended 08222024.pdf (115 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/8899f224-bb36-42bc-953d-efd02e4eef41
+- kind: attachment
+  label: Public Comment Speaker Slip.pdf (80 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/a6753ac4-88f5-4948-8c45-208523d0def2
+- kind: attachment
+  label: Consent Agenda - January 2026.pdf (257 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/45282848-cb3b-4879-b245-94225110b91c
+- kind: attachment
+  label: FINAL COPY Boone County CC Contract Dec 1 2025 through November 30th 2028
+    clean (002).pdf (601 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/c5c1f26f-9fc1-4286-bfb4-f6b5040ed0fd
+- kind: attachment
+  label: Ordinance 26-03.pdf (154 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/4d4efa1d-ea1f-47f8-8c92-b9abf018f874
+- kind: attachment
+  label: mostly clean Draft Agreement.pdf (129 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/9504ae86-ad24-40b4-b2a1-36fb9246d175
+- kind: attachment
+  label: 20260122 Combined Claims.pdf (476 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/e4814c00-bc22-4802-98d1-518d308f8e4e
+- kind: attachment
+  label: 'PCO #062.pdf (114 KB)'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/58e14d40-ff67-4c7b-96e9-f6e36ba0b76a
+- kind: attachment
+  label: 'PCO #061.pdf (113 KB)'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/5826e9f6-c185-4fed-b549-2fa70128071d
+- kind: attachment
+  label: 'PCO #063.pdf (115 KB)'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/b74c2e10-aef1-444b-a601-08ad521bed7d
+- kind: attachment
+  label: 'PCO #054.pdf (111 KB)'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/580c5169-6c7d-4865-bc4b-812d0e35f504
+- kind: attachment
+  label: 'For Review - PCO #012.1 SA Winter Conditions.pdf (453 KB)'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/fb633b8d-45b6-4649-815b-20d8a391ec85
+- kind: attachment
+  label: 04 - 1544 - Construction - Current Schedule.pdf (85 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/071f4894-8f62-4584-96d0-62242942a0c1
+- kind: attachment
+  label: 03 - 1544 - Construction - Proposed Schedule.pdf (77 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/4fa2cd29-8359-413b-a9dc-73fb06f9c7b3
+- kind: attachment
+  label: 2026.01.22 -LoganAve- WC East Add Schedule.pdf (92 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/1941af41-d882-4e98-985d-e662406d6d8c
+- kind: attachment
+  label: 2026.01.22 -LoganAve- WC South Add Schedule.pdf (92 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/eafae45f-5ace-455e-9e87-ebec11e9af60
+- kind: attachment
+  label: 'For Review - PCO #013.1 Winter Conditions East Addition.pdf (454 KB)'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/994d00e6-34f8-4ef2-8f76-b57d1053298e
+- kind: attachment
+  label: 'For Review - PCO #014 - ASI #005 Changes.pdf (8,897 KB)'
+  url: https://boonecountyil.community.diligentoneplatform.com/document/822ef73e-0c30-4ab0-b36f-f15c3e7af04e
+- kind: attachment
+  label: Health Department repairs.jpg (62 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/3f30bb24-dcc8-47c7-b428-113892b1bdcf
+- kind: attachment
+  label: Proposal Update January 2026 r2.docx (146 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/830b6e0f-e2ec-4697-940b-d4c232981ad7
+- kind: attachment
+  label: Animal Ordinance Update Draft.pdf (194 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/596bc96d-5aea-4e17-ac01-951315b2bb78
+- kind: attachment
+  label: Ordinance animal and fowl 26-05.pdf (232 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/0951af63-b0f5-418a-bcce-5bff585f58f7
 ---
 
 ## TL;DR

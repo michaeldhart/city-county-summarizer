@@ -4,6 +4,10 @@ body_id: belvidere-pzc
 date: '2026-09-08'
 permalink: /bodies/belvidere-pzc/meetings/belvidere-pzc-20260908/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/09/09-08-26-PZC-Agenda-and-Packet.pdf
+resources:
+- kind: agenda
+  label: Agenda (PDF)
+  url: https://www.belvidereil.gov/wp-content/uploads/2026/09/09-08-26-PZC-Agenda-and-Packet.pdf
 ---
 
 ## Agenda preview

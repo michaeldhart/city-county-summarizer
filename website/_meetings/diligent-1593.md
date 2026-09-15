@@ -4,6 +4,17 @@ body_id: board
 date: '2026-01-15'
 permalink: /bodies/board/meetings/diligent-1593/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1593
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1593
+- kind: attachment
+  label: Boone County - 2026 ARS - Supplemental Ordinance 4907-3143-0499 v.3.pdf (214
+    KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/568a088b-988c-42eb-b8c3-0ab25eeef477
+- kind: attachment
+  label: Boone County - GO (ARS) Series 2026 - Award Packet.pdf (2,264 KB)
+  url: https://boonecountyil.community.diligentoneplatform.com/document/20c3a424-a464-4c95-beff-d56920068c3f
 ---
 
 ## TL;DR

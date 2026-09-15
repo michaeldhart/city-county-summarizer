@@ -4,6 +4,46 @@ body_id: cotw-finance
 date: '2026-06-11'
 permalink: /bodies/cotw-finance/meetings/diligent-1609/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1609
+resources:
+- kind: portal
+  label: Diligent meeting page
+  url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1609
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=x8TLQrY-ROs
+- kind: attachment
+  label: 2026-05 Treas Report.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/f9b7283c-5058-402a-a9d8-f9843038a9d5
+- kind: attachment
+  label: Detail vs Budget Report Dec-May 2026.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/02a4d35d-8008-4dca-9348-3075af486984
+- kind: attachment
+  label: May 2026 Financial Report.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/1b607914-3c28-4feb-ad3c-7cbd478288c7
+- kind: attachment
+  label: Memo Draft 2026 UDO and Zoning Map.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/82b96800-064d-4255-9f2d-532fc3ab6a41
+- kind: attachment
+  label: Boone UDO Clean (004) June 9.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/69bd5420-ac17-4707-b844-18c449a09e9f
+- kind: attachment
+  label: Farm Bureau - UDO.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/6826a9a3-69a7-407c-a239-b35e4fffd42e
+- kind: attachment
+  label: FPP UDO comments COTW Finance Jun 2026 (1).pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/5d058e03-e611-4dbd-b98f-84fda591bf30
+- kind: attachment
+  label: Memo Draft 2026 Zoning Map ZBA.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/9dfa8526-4255-4a97-8d2c-9ec0397224e1
+- kind: attachment
+  label: Memo Draft 2026 UDO and Zoning Map.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/bcd523bc-e7b3-40dc-a209-b5d75142c929
+- kind: attachment
+  label: Boone County Zoning Map 24x36 2026 Version v04.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/1935a254-52e5-4e00-9f1c-4821c291b984
+- kind: attachment
+  label: FY 2027 Budget Schedule.pdf
+  url: https://boonecountyil.community.diligentoneplatform.com/document/062c1ef1-dd58-4bca-8634-18fa086db893
 ---
 
 ## TL;DR
