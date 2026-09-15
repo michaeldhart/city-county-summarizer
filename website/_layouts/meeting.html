@@ -3,17 +3,43 @@ layout: default
 ---
 {%- assign summarized = page.resources | where_exp: "r", "r.kind != 'attachment'" -%}
 {%- assign attachments = page.resources | where: "kind", "attachment" -%}
+{%- assign parent_body = site.bodies | where: "body_id", page.body_id | first -%}
 
 <div class="meeting-grid">
-  <div class="meeting-main">
-    <h1>{{ page.title }}</h1>
-    <p class="meeting-date">{{ page.date | date: "%b %-d, %Y" }}</p>
+  {%- comment -%}
+    data-pagefind-body scopes the search index to the summary. The date is
+    carried as metadata because every meeting of a body shares its h1 — without
+    it, twenty meetings of the same board are twenty identical search results.
+    The date goes into the result *title* rather than being rendered by a custom
+    <pagefind-results> template, because replacing that template would also drop
+    the per-heading sub-results the default one gives ("TL;DR", "Decisions &
+    votes"), which are worth keeping. The standalone `date` field stays indexed
+    for anyone who does write a template later.
+
+    One filter per element: inside a data-pagefind-filter an inline `key:value`
+    consumes the rest of the attribute, so two of them on one element silently
+    produce one filter with a garbled value.
+
+    The body filter uses the parent body's title rather than this page's, which
+    is the meeting's own name and varies ("... , 4:30 PM", "Special Meeting:
+    Board Vacancy Interviews"). Filtering on those would offer 35 choices for
+    22 bodies, several of which are not bodies at all.
+  {%- endcomment -%}
+  <div class="meeting-main" data-pagefind-body data-pagefind-filter="type:Meeting"
+       data-pagefind-meta="title:{{ page.title }} — {{ page.date | date: '%b %-d, %Y' }}">
+    {%- if parent_body.jurisdiction -%}
+    <span hidden data-pagefind-filter="jurisdiction:{{ parent_body.jurisdiction }}"></span>
+    {%- endif -%}
+    <h1 data-pagefind-filter="body:{{ parent_body.title | default: page.title }}">{{ page.title }}</h1>
+    <p class="meeting-date"
+       data-pagefind-meta="date"
+       data-pagefind-filter="year:{{ page.date | date: '%Y' }}">{{ page.date | date: "%b %-d, %Y" }}</p>
 
     {{ content }}
   </div>
 
   {% if page.resources %}
-  <aside class="meeting-resources">
+  <aside class="meeting-resources" data-pagefind-ignore>
     <h2>Resources</h2>
     {% if summarized.size > 0 %}
     <ul>
@@ -37,7 +63,6 @@ layout: default
   {% endif %}
 </div>
 
-{% assign parent_body = site.bodies | where: "body_id", page.body_id | first %}
 {% if parent_body %}
 <p><a href="{{ parent_body.url | relative_url }}">&larr; Back to {{ parent_body.title }}</a></p>
 {% endif %}

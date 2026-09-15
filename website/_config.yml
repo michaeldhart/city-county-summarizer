@@ -24,6 +24,16 @@ collections:
     output: true
 
 defaults:
+  # Ordinary pages had no layout at all, so about.md and about/*.md were
+  # rendering as bare HTML with no head, stylesheet or nav. `page` supplies the
+  # site chrome and marks them for the search index. index.md sets its own
+  # layout, which wins over this, and so stays out of the index — right, since
+  # it is a list of links rather than content.
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: page
   - scope:
       path: ""
       type: "bodies"

@@ -155,6 +155,26 @@ rewrites both collections each run; free, no Claude calls.
 ccs build-site
 ```
 
+## Previewing the site locally
+
+The site builds with the Ruby recorded in `website/.ruby-version` — the same
+one CI uses. Search is a separate post-build step, so a plain `jekyll serve`
+serves the site without it:
+
+```bash
+cd website
+bundle exec jekyll build
+npx -y pagefind@1.5.2 --site _site
+bundle exec jekyll serve --skip-initial-build --no-watch
+```
+
+Then open <http://localhost:4000/city-county-summarizer/>.
+
+`--skip-initial-build` is what matters: without it `jekyll serve` regenerates
+`_site` and deletes the `_site/pagefind/` index that was just built, and the
+search page comes up empty. For ordinary content work where search does not
+matter, plain `bundle exec jekyll serve` is fine.
+
 ## Configuring what's tracked
 
 Edit [`docs/SCOPE.md`](docs/SCOPE.md) — every governmental body has a status:

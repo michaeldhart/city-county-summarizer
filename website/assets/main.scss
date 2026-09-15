@@ -97,3 +97,25 @@ $wide-wrapper: 1120px;
     margin-top: 0;
   }
 }
+
+// Pagefind's Component UI ships its own stylesheet and exposes --pf-* custom
+// properties for theming. Map them onto minima's palette so results read as
+// part of the site rather than a widget dropped onto it. The component CSS
+// loads on /search/ only, so these do nothing anywhere else.
+.search-ui {
+  --pf-accent: #{$brand-color};
+  --pf-text: #{$text-color};
+  --pf-text-dim: #{$grey-color};
+  --pf-background: #{$background-color};
+  --pf-border: #{$grey-color-light};
+  --pf-radius: 3px;
+
+  margin-top: $spacing-unit;
+}
+
+.search-filters {
+  display: flex;
+  flex-wrap: wrap;   // two dropdowns side by side, stacking on a phone
+  gap: math.div($spacing-unit, 2);
+  margin: math.div($spacing-unit, 2) 0;
+}

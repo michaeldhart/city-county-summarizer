@@ -1,0 +1,12 @@
+---
+layout: default
+---
+{%- comment -%}
+  Ordinary content pages: the About page and the per-government reference
+  pages under about/. The wrapper is what puts them in the search index —
+  Pagefind indexes only what is inside a data-pagefind-body, which also keeps
+  the site header, nav and footer out of every page's indexed text.
+{%- endcomment -%}
+<div data-pagefind-body data-pagefind-filter="type:Reference">
+  {{ content }}
+</div>

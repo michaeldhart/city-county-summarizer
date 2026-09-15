@@ -48,6 +48,14 @@ jobs:
           JEKYLL_ENV: production
         run: bundle exec jekyll build --destination _site
 
+      # Pagefind crawls the built HTML and writes a sharded index to
+      # _site/pagefind/. It runs after Jekyll, not as a plugin, so it is
+      # unaffected by what Jekyll can and cannot load. Pinned so the index
+      # format cannot shift under a deploy; ubuntu-latest ships Node already.
+      - name: Build search index
+        working-directory: website
+        run: npx -y pagefind@1.5.2 --site _site
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
