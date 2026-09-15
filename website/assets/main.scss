@@ -10,13 +10,19 @@
 // The meeting page is the only two-column layout on the site: summary left,
 // raw sources right.
 //
-// One breakpoint, not two. minima's .wrapper is 740px of content — enough for
-// one column, not two — so the second column is only worth having at a width
-// that can also afford the symmetric breakout below. Splitting any earlier
-// squeezes the summary to ~440px, which is *narrower* than it gets stacked.
-$two-column-above: 1100px;
-$aside-width: 15rem;
-$breakout: 8rem;
+// minima caps .wrapper at 740px of content, which is not enough for two
+// columns. Widen the wrapper on the pages that hold the grid rather than
+// letting the grid break out of it with negative margins: one container still
+// holds the title, the summary and the aside, nothing can overflow, and the
+// second column fits an ordinary laptop window instead of only a maximised
+// one. The first version of this broke out at a fixed -8rem, which needed a
+// 1100px viewport before it fit — below that the page silently stacked.
+//
+// :has() is what picks out those pages. If it ever fails to match, the wrapper
+// stays 740px and the summary column just gets narrower; nothing breaks.
+$two-column-above: 900px;
+$aside-width: 14rem;
+$wide-wrapper: 1120px;
 
 .meeting-main {
   min-width: 0;   // without this, long transcript quotes refuse to wrap
@@ -68,14 +74,16 @@ $breakout: 8rem;
 }
 
 @media screen and (min-width: $two-column-above) {
+  // Only widen while there are two columns to fill. Stacked, the summary
+  // should read at the same measure as every other page on the site.
+  .wrapper:has(.meeting-grid) {
+    max-width: calc(#{$wide-wrapper} - (#{$spacing-unit} * 2));
+  }
+
   .meeting-grid {
     display: flex;
     align-items: flex-start;
     gap: $spacing-unit;
-    // The h1 sits inside the grid, so pulling out symmetrically keeps the
-    // title aligned with the summary text beneath it.
-    margin-left: -$breakout;
-    margin-right: -$breakout;
   }
 
   .meeting-main {
