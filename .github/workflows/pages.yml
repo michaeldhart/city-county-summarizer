@@ -26,16 +26,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
+      # Build from website/Gemfile.lock rather than actions/jekyll-build-pages,
+      # which pins its own github-pages gem set (Jekyll 3.10) and would build
+      # the site with a different Jekyll major than local preview uses.
+      # The lockfile is the single source of truth for both.
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          source: website
-          destination: _site
+          # Reads website/.ruby-version, the same interpreter local preview
+          # uses, so there is one place to bump it.
+          ruby-version: .ruby-version
+          working-directory: website
+          bundler-cache: true
+
+      # JEKYLL_ENV is set explicitly: actions/jekyll-build-pages defaulted it to
+      # production, but `jekyll build` on its own defaults to development, which
+      # changes jekyll-seo-tag and minima output.
+      - name: Build with Jekyll
+        working-directory: website
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build --destination _site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: _site
+          path: website/_site
 
   deploy:
     needs: build

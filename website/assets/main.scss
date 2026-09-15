@@ -5,6 +5,8 @@
 # theme in first, so these rules are additions, not a replacement.
 ---
 
+@use "sass:math";
+
 @import "minima";
 
 // The meeting page is the only two-column layout on the site: summary left,
@@ -35,19 +37,19 @@ $wide-wrapper: 1120px;
 
 .meeting-resources {
   margin-top: $spacing-unit;
-  padding: $spacing-unit / 2;
+  padding: math.div($spacing-unit, 2);
   border: 1px solid $grey-color-light;
   border-radius: 3px;
   @include relative-font-size(0.875);
 
   h2 {
-    margin-bottom: $spacing-unit / 4;
+    margin-bottom: math.div($spacing-unit, 4);
     @include relative-font-size(1.125);
   }
 
   h3 {
-    margin-top: $spacing-unit / 2;
-    margin-bottom: $spacing-unit / 8;
+    margin-top: math.div($spacing-unit, 2);
+    margin-bottom: math.div($spacing-unit, 8);
     color: $grey-color-dark;
     @include relative-font-size(0.9375);
   }
@@ -60,7 +62,7 @@ $wide-wrapper: 1120px;
   }
 
   li {
-    margin-bottom: $spacing-unit / 6;
+    margin-bottom: math.div($spacing-unit, 6);
     // Attachment labels are the agenda's own link text — some are long file
     // names with no spaces to break on.
     overflow-wrap: break-word;
@@ -68,7 +70,7 @@ $wide-wrapper: 1120px;
 }
 
 .resource-note {
-  margin-bottom: $spacing-unit / 4;
+  margin-bottom: math.div($spacing-unit, 4);
   color: $grey-color;
   @include relative-font-size(0.8125);
 }

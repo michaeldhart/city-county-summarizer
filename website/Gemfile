@@ -1,12 +1,10 @@
 source "https://rubygems.org"
 
+# Local preview and CI build from this file and its lockfile, so both run the
+# same Jekyll. .ruby-version records the interpreter they share; raise it and
+# the pin in .github/workflows/pages.yml together.
 gem "jekyll", "~> 4.3"
 gem "minima", "~> 2.5"
-
-# Pin transitive deps compatible with the system Ruby used for local preview
-# (2.6). CI/production can use a newer Ruby without these pins.
-gem "ffi", "1.15.5"
-gem "jekyll-sass-converter", "~> 2.0"
 
 # Ruby 3+ dropped webrick from the standard library; `jekyll serve` needs it
 # for local preview.
