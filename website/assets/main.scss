@@ -47,9 +47,10 @@ $breakout: 8rem;
   }
 
   ul {
-    margin-left: 0;
+    // Keep the markers, but pull the indent in from minima's 30px — that's a
+    // lot of a 14rem column to spend on whitespace.
+    margin-left: 1.1em;
     margin-bottom: 0;
-    list-style: none;
   }
 
   li {

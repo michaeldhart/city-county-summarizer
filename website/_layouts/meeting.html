@@ -18,7 +18,7 @@ layout: default
     {% if summarized.size > 0 %}
     <ul>
       {% for r in summarized %}
-      <li class="resource-{{ r.kind }}"><a href="{{ r.url }}">{{ r.label }}</a></li>
+      <li class="resource-{{ r.kind }}"><a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.label }}</a></li>
       {% endfor %}
     </ul>
     {% endif %}
@@ -29,7 +29,7 @@ layout: default
     were not read when writing the summary above.</p>
     <ul>
       {% for r in attachments %}
-      <li class="resource-attachment"><a href="{{ r.url }}">{{ r.label }}</a></li>
+      <li class="resource-attachment"><a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.label }}</a></li>
       {% endfor %}
     </ul>
     {% endif %}
