@@ -17,6 +17,15 @@ description: >-
   board and its committees, the City of Belvidere, School District 100, the
   park district, and the two conservation districts.
 
+# minima builds its nav from every page carrying a title, in path order, which
+# swept in the four per-government About pages and left Home stranded after
+# them. Name the nav explicitly instead: the jurisdiction pages are still
+# reached from /about/ and from the per-government links on the home page.
+header_pages:
+  - index.md
+  - about.md
+  - search.md
+
 collections:
   bodies:
     output: true
