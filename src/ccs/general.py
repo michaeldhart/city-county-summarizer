@@ -252,7 +252,7 @@ SPECS_BY_ID: dict = {s.jurisdiction_id: s for s in SPECS}
 
 
 def build_about_page(jurisdiction_id: str) -> Path:
-    """Regenerate one government's About page. One Claude call."""
+    """Regenerate one government's backgrounder. One Claude call."""
     load_env()
     spec = SPECS_BY_ID[jurisdiction_id]
     name = JURISDICTIONS_BY_ID[jurisdiction_id].display_name
@@ -281,21 +281,33 @@ def build_all() -> list:
 
 
 def write_about_index() -> Path:
-    """Hand-written hub listing the per-government pages. No Claude call."""
+    """Hand-written hub listing the per-government backgrounders. No Claude call.
+
+    This rewrites website/about.md wholesale, so it is the only place the hub's
+    copy can live — anything edited into the file by hand is lost on the next
+    `ccs summary`. The links go through `relative_url` because the site is
+    served from a baseurl (/city-county-summarizer); a bare /about/<id>/ href
+    drops it and 404s in production while working fine in local preview.
+
+    The page is no longer in the site nav — /beats/ links to each backgrounder
+    directly — but the URL stays live and the four pages hang off it.
+    """
     lines = [
-        "---", "title: About", "permalink: /about/", "---", "",
-        "# About the governments tracked here", "",
-        "This site summarizes public meetings for local government in Boone County,",
-        "Illinois. Each government below has its own reference page covering how it",
-        "is organized, who currently serves, and when its bodies meet.", "",
+        "---", "title: Backgrounders", "permalink: /about/", "---", "",
+        "# Backgrounders", "",
+        "A backgrounder is the reference material a reporter keeps beside them on a",
+        "beat: how a government is organized, who currently serves, and when its",
+        "bodies meet. There is one here for each government on the wire.", "",
     ]
     for spec in SPECS:
         name = JURISDICTIONS_BY_ID[spec.jurisdiction_id].display_name
-        lines.append(f"- [{name}](/about/{spec.jurisdiction_id}/) - covers {spec.intro}.")
+        href = "{{ '/about/%s/' | relative_url }}" % spec.jurisdiction_id
+        lines.append(f"- [{name}]({href}) - covers {spec.intro}.")
     lines += [
         "",
-        "Pages are generated from each government's own published sources by",
-        "`ccs summary`, and carry the date they were last rebuilt.",
+        "These are compiled from each government's own published sources and carry",
+        "the date they were last rebuilt. For how the dispatches themselves are",
+        "written, see [How this is written]({{ '/method/' | relative_url }}).",
         "",
     ]
     out = REPO_ROOT / "website" / "about.md"
@@ -306,7 +318,7 @@ def write_about_index() -> Path:
 def _front_matter(name: str, jurisdiction_id: str) -> str:
     return (
         "---\n"
-        f"title: About {name}\n"
+        f'title: "Backgrounder: {name}"\n'
         f"permalink: /about/{jurisdiction_id}/\n"
         "---\n\n"
     )
@@ -387,7 +399,7 @@ published it.
 
 Produce a Markdown document with this structure:
 
-# {name} - Government Summary
+# {name} - Backgrounder
 
 _Generated {date.today().isoformat()} by `ccs summary`. Regenerate with the same command._
 

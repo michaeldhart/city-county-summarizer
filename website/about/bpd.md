@@ -1,9 +1,9 @@
 ---
-title: About Belvidere Township Park District
+title: "Backgrounder: Belvidere Township Park District"
 permalink: /about/bpd/
 ---
 
-# Belvidere Township Park District - Government Summary
+# Belvidere Township Park District - Backgrounder
 
 _Generated 2026-09-13 by `ccs summary`. Regenerate with the same command._
 

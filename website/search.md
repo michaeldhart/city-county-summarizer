@@ -37,6 +37,6 @@ written from are linked from the top of each one.</p>
 
 <noscript>
   <p><strong>Search needs JavaScript.</strong> Without it, browse by government
-  from the <a href="{{ '/' | relative_url }}">front page</a> — every dispatch is
-  listed under its beat.</p>
+  from the <a href="{{ '/beats/' | relative_url }}">beats page</a> — every
+  dispatch is listed under its beat.</p>
 </noscript>

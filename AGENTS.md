@@ -166,6 +166,22 @@ every cached record for nothing.
 | backgrounder | a per-government About page under `website/about/` |
 | the wire | the Atom feed at `/feed/meetings.xml` |
 
+- The nav is `index.md`, `beats.md`, `search.md`, `method.md`, named explicitly
+  in `_config.yml`. `/beats/` is the body index — it was the front page until
+  the masthead redesign and moved wholesale. `index.md` is a **placeholder**
+  pending a newspaper-style front page; it is thin on purpose, not unfinished
+  by accident.
+- `/about/` is deliberately out of the nav (every backgrounder is linked from
+  `/beats/`) but stays published, and the four per-government pages hang off it.
+- **`website/about.md` is generated.** `general.write_about_index()` rewrites it
+  on every `ccs summary`, so hand-edits to it are lost — change the copy in that
+  function. Its links must go through `relative_url`; a bare `/about/<id>/`
+  works in local preview and 404s in production, which is how the baseurl fix in
+  2424915 got silently reverted once already.
+- `general._front_matter` quotes the backgrounder title (`"Backgrounder: X"`).
+  Unquoted, the colon-space makes Jekyll read it as a nested mapping and the
+  build fails.
+
 - **Every dispatch carries a byline** (`_layouts/meeting.html`) naming the model
   and the sources it was written from, ending "No human reporter attended."
   Don't remove it and don't make it generic — for a site with no human editor

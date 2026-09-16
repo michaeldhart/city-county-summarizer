@@ -1,9 +1,9 @@
 ---
-title: About City of Belvidere
+title: "Backgrounder: City of Belvidere"
 permalink: /about/belvidere/
 ---
 
-# City of Belvidere - Government Summary
+# City of Belvidere - Backgrounder
 
 _Generated 2026-09-13 by `ccs summary`. Regenerate with the same command._
 

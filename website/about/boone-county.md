@@ -1,9 +1,9 @@
 ---
-title: About Boone County
+title: "Backgrounder: Boone County"
 permalink: /about/boone-county/
 ---
 
-# Boone County - Government Summary
+# Boone County - Backgrounder
 
 _Generated 2026-09-13 by `ccs summary`. Regenerate with the same command._
 

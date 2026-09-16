@@ -20,11 +20,15 @@ description: >-
 
 # minima builds its nav from every page carrying a title, in path order, which
 # swept in the four per-government backgrounders and left Home stranded after
-# them. Name the nav explicitly instead: the backgrounders are still reached
-# from /about/ and from the per-government links on the home page.
+# them. Name the nav explicitly instead.
+#
+# about.md (/about/) is deliberately absent: /beats/ links to each government's
+# backgrounder directly, so the hub page is no longer a destination anyone
+# needs to navigate to. The page itself stays published — the URL is live, the
+# four backgrounders hang off it, and `ccs summary` still rebuilds it.
 header_pages:
   - index.md
-  - about.md
+  - beats.md
   - search.md
   - method.md
 
