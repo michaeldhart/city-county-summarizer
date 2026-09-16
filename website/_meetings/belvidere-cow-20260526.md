@@ -4,6 +4,7 @@ body_id: belvidere-cow
 date: '2026-05-26'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260526/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/05/05-26-26-Committee-of-the-Whole-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -13,7 +14,7 @@ resources:
   url: https://www.youtube.com/watch?v=q_SyP7oDn08
 ---
 
-## TL;DR
+## The lede
 
 - City honored retiring Public Works Director Brent Anderson after 42 years of service; Deputy Director Jordan Keck appointed as his replacement effective June 8, 2026
 - Council approved $107,790 TIF grant to Dairy Farms of America for wastewater pre-treatment improvements to prevent continued problems at city treatment plant

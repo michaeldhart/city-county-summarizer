@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/07/04-28-26-HPC-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 
 - Commission approved two $1,500 property maintenance grants for window and door replacements at 105/107 Buchanan Street and 401 N. Main Street
 - Scavenger hunt fundraiser cancelled due to zero ticket sales; pivoting to $10 self-guided scavenger hunt kits to be sold at Museum gift shop

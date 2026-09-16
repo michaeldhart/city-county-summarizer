@@ -4,6 +4,7 @@ body_id: belvidere-cow
 date: '2026-07-27'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260727/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/07/07-27-26-Committee-of-the-Whole-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -13,7 +14,7 @@ resources:
   url: https://www.youtube.com/watch?v=tt9xtYzDmBQ
 ---
 
-## TL;DR
+## The lede
 - Council approved a new electric utility tax amendment to capture tax from businesses that generate their own power instead of purchasing from ComEd, ensuring equal treatment with other taxpayers
 - Approved hiring a full-time building inspector/plans examiner ($68,000-$78,000 salary range) to address staffing shortage and 4-week backlog in permit reviews
 - Rejected bids for landfill groundwater monitoring contracts and extended existing contracts with Pace Analytical Services for both Landfill #1 and #2, saving money

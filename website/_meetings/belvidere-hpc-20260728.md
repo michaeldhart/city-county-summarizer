@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/08/07-28-26-HPC-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 - Commission approved June 2026 minutes with full attendance (6-0 vote, one member arrived late)
 - Decided to create museum bags for cancelled and previous scavenger hunts; pricing set at $10 each or 3 for $25
 - Victorian Picnic scheduled for September 26, 2026 at Swift House

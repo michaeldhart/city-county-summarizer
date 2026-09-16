@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/07/06-09-26-PZC-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 
 - Commission recommended approval of four special use permits: a 1,052 sq. ft. residential garage, an impound yard, a restaurant with bar and video gaming, and a mural commemorating the 250th anniversary of the Declaration of Independence
 - All four cases approved unanimously (5-0-1 or 6-0) and forwarded to City Council for final approval

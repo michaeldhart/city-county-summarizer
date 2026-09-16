@@ -4,6 +4,7 @@ body_id: belvidere-cow
 date: '2026-08-10'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260810/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/08/08-10-26-Committee-of-the-Whole-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -13,7 +14,7 @@ resources:
   url: https://www.youtube.com/watch?v=N1Uq3RzNK5o
 ---
 
-## TL;DR
+## The lede
 - City approved purchases of two 1-ton dump trucks totaling ~$210K for water and street departments, plus equipment repairs and attachments using remaining capital budget funds
 - Union Pacific Railroad pipeline crossing agreement approved for $20K to install storm water pipes under tracks as part of $5.9M Fifth Avenue flood control project
 - City attorney explained township dissolution is not legally feasible without county action; discussion of vehicle parking enforcement challenges

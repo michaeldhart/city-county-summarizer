@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/06/05-12-26-PZC-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 - Commission approved two variances for a residential property at 915 Van Buren Street to allow construction of a new garage and driveway with reduced landscape surface ratio (45% vs. required 50%) and reduced driveway setback (1 foot vs. required 3 feet).
 - Commission approved a special use permit for Central Commodities grain elevator at 1140 W. Locust Street to construct a 112-foot-tall grain bin with 11.25-foot building separation (vs. 40-foot requirement).
 - Both cases will proceed to City Council with staff-recommended conditions.

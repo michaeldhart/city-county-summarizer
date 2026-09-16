@@ -77,7 +77,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/7887f209-783f-48b9-8d0d-9085c32d79de
 ---
 
-## TL;DR
+## The lede
 
 - County Board to consider a $64,210.63 change order for the ongoing Courthouse construction project
 - Multiple ordinances on agenda reorganizing county code structure, including moving Regional Planning Commission and Zoning Board of Appeals provisions, plus new stormwater and floodplain regulations

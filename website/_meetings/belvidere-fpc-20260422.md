@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/06/4-22-26-Special-FP-Meeting-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 - Board approved Seth Norris as a probationary police officer after passing psychological and medical evaluations, with appointment effective May 1, 2026
 - Two police officer candidates (Amundson and Drop) are graduating from training school on April 23, 2026
 - Police Officer Michelle Young is retiring effective May 1, 2026

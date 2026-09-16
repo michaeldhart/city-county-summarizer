@@ -22,7 +22,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/16720a0a-bcd2-49f5-811b-f6c602e199f9
 ---
 
-## TL;DR
+## The lede
 
 - Commission considered a map amendment (MA-03-2026) to rezone property at 15xx Spring Creek Road from A-1 (Agricultural) to RE (Residential Estate)
 - Staff recommended approval of the Spring Creek Road rezoning request

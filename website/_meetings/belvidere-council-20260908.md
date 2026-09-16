@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-09-08'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260908/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/09/09-08-26-City-Council-Agenda-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -13,7 +14,7 @@ resources:
   url: https://www.youtube.com/watch?v=VSzWMft9Sjc
 ---
 
-## TL;DR
+## The lede
 - City Council held first reading on ordinance to convert East Perry Street & Webster Street to 4-way stop after multiple residents requested it at previous meetings
 - Approved special use permit for 7-Eleven at 707 Logan Avenue to add video gaming area with alcohol consumption (6-0 with 2 abstentions)
 - Mayor addressed large crowd concerned about proposed data center project, clarifying no formal application has been submitted and no action is planned

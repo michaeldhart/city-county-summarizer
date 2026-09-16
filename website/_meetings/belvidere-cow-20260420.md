@@ -12,7 +12,7 @@ resources:
 
 ## Agenda preview
 
-### TL;DR
+## The lede
 - Police requesting vacation carryover approval for one officer and authorization to purchase firearms, ballistic vest plates, and policy management software totaling approximately $63,777
 - Fire Department seeking approval for third amendment to EMS staffing agreement (~$1.81M annually), purchase of SCBA fill station ($16,545), and church parade permit
 - Discussion items include Walmart SparkGood grant acceptance ($2,500), sewer rate increase ($0.52 per month), and Appleton Road Grade Separation engineering agreements

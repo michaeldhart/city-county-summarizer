@@ -14,7 +14,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/017a2d52-8a58-482c-9822-687b9d51140d
 ---
 
-## TL;DR
+## The lede
 - The Agricultural Conservation and Easement and Farmland Protection Commission convened for its quarterly meeting to discuss farmland protection initiatives
 - Agenda included reports on county soil health assessments being conducted by SWCD and IDOA
 - Commission reviewed 1992 Agricultural Areas notice and process, and discussed drainage and stormwater updates

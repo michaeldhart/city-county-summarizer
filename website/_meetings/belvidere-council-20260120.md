@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-01-20'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260120/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/01/01-20-26-City-Council-Agenda-Packet-Website.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -16,7 +17,7 @@ resources:
   url: https://www.youtube.com/watch?v=D4cNzqW4dbk
 ---
 
-## TL;DR
+## The lede
 
 - Approved FY2026 budget amendment adding $220K for two new Public Works positions as Director Brent Anderson retires after 57 years; Assistant Public Works Director at $114K and Street/Water/Sewer Superintendent at $106K
 - Approved two DCEO grants totaling $280,000 ($100K + $180K) for Kishwaukee Riverfront Path Extension Project

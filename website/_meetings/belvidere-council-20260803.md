@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/08/08-03-26-City-Council-Regular-Meeting-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 - Approved annexation and rezoning of 185-acre East Point Commons Subdivision south of US Route 20 for mixed commercial and industrial development
 - Authorized extending existing contracts for groundwater monitoring at both city landfills after rejecting all new bids
 - Postponed hiring decision for full-time building inspector position to allow budget amendment to pass first

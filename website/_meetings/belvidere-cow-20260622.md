@@ -4,6 +4,7 @@ body_id: belvidere-cow
 date: '2026-06-22'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260622/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/06/06-22-26-Committee-of-the-Whole-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -13,7 +14,7 @@ resources:
   url: https://www.youtube.com/watch?v=3SpbG7gYTsQ
 ---
 
-## TL;DR
+## The lede
 - Council approved reappointments to Fire & Police Commission and multiple library board appointments
 - Approved 6-year residential electric aggregation renewal providing $36,000 annual civic contribution while keeping rates neutral with ComEd
 - Authorized water department asset management plan ($50,000) and approved street overlay/striping bids totaling over $1 million

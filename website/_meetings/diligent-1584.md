@@ -113,7 +113,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/15d62271-001a-46bc-b1cc-1a06b5da28d7
 ---
 
-## TL;DR
+## The lede
 
 - Board approved sale of surplus county property at 706 Marquette Drive
 - Approved major infrastructure projects including North Boone School Road Bridge ($623,903) and multiple highway department equipment and construction contracts totaling over $900,000

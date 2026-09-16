@@ -13,7 +13,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/51438441-b480-42be-b49d-48c254bf4819
 ---
 
-## TL;DR
+## The lede
 - Board scheduled to consider revised artificial intelligence policy and request form for AI account usage
 - Annual report from Boone County Health Department scheduled for approval
 - Memorandum of Agreement for Community Law Enforcement Deputy on agenda for approval

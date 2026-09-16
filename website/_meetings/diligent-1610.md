@@ -13,7 +13,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/6eb26c3e-9c23-4ad0-ae7e-7f74f2676c93
 ---
 
-## TL;DR
+## The lede
 - Presentation by Rebecca Olson of A3E Environmental Consultants on working with NLI on easements in Boone County
 - Discussion of Draft Unified Development Ordinance and Zoning Map timeline
 - Minutes from February 24, 2026 meeting approved

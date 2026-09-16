@@ -100,7 +100,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/75e99d18-0248-4e7b-8311-52110348fe61
 ---
 
-## TL;DR
+## The lede
 
 - Committee considered multiple highway projects totaling over $900,000, including a bridge replacement ($623,903) and paved shoulder engineering ($132,772)
 - Approved $14,640.73 change order to correct roofing issues on the Logan Ave. project

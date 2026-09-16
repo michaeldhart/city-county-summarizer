@@ -86,7 +86,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/c39623d9-235b-4ddb-b085-6360ece1180b
 ---
 
-## TL;DR
+## The lede
 
 - Committee considered multiple action items including a $4,186.99 courthouse change order and public transportation grant agreements
 - Discussion items included County Clerk and Treasurer salary adjustments, Health Department fee structure updates, and employee health insurance renewal with Blue Cross Blue Shield

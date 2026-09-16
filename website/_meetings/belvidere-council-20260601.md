@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-06-01'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260601/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/05/06-01-26-City-Council-Agenda-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -16,7 +17,7 @@ resources:
   url: https://www.youtube.com/watch?v=-icvC-JFoMs
 ---
 
-## TL;DR
+## The lede
 - Council approved a special use permit for Central Grain to build a 112-foot grain bin with reduced separation at 1140 W. Locust Street
 - Approved TIF-funded redevelopment agreement providing $107,790 to DFA Dairy Brands (Dean's) for wastewater pretreatment improvements
 - Appointed Jordan Keck as new Director of Public Works effective June 8, 2026

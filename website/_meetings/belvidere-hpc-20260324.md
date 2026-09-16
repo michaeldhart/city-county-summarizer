@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/05/signed-hpc-minutes-32426.pdf
 ---
 
-## TL;DR
+## The lede
 
 - Commission scheduled four 2026 fundraising/promotional events: Scavenger Hunt (April 25), Friends of Preservation (May 21), Stained Glass Window Tour (July 18), and Victorian Picnic (September 19)
 - Two property maintenance grant applications received or expected (one submitted, St. John's preparing submission)

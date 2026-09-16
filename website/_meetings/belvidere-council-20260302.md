@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-03-02'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260302/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/02/03-02-26-City-Council-Agenda-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -16,7 +17,7 @@ resources:
   url: https://www.youtube.com/watch?v=9x69baR61sE
 ---
 
-## TL;DR
+## The lede
 
 - City Council unanimously approved street closures and event logistics for three major 2026 community events: Buchanan Street Markets (three dates), Downtown Business Trick or Treat (October 28), and Hometown Christmas (December 4)
 - Approved $34,390 contract with TSR Concrete Coatings for Fire Station 2 apparatus bay floor refinishing, funded from Capital Fund

@@ -84,20 +84,27 @@ def _write_meeting_doc(record: manifest.MeetingRecord) -> None:
     }
     if record.url:
         front_matter["source_url"] = record.url
+    # The byline on the meeting page names the sources this dispatch was
+    # actually written from. Agenda and minutes it can infer from `resources`,
+    # but a video resource is only a link we publish — it says nothing about
+    # whether captions existed to read. Carry the transcript flag through so
+    # the byline can only claim the video when the transcript was really used.
+    if record.has_transcript:
+        front_matter["has_transcript"] = True
     if record.resources:
         front_matter["resources"] = [asdict(r) for r in record.resources]
     _write_doc(MEETINGS_DIR / f"{slug}.md", front_matter, _meeting_body_content(record))
 
 
 def _meeting_body_content(record: manifest.MeetingRecord) -> str:
-    """The meeting page's markdown body: the cached per-meeting summary.
+    """The dispatch's markdown body: the cached per-meeting summary.
 
     Strips a leading '# ...' title header if present (legacy summaries wrote
     one; current prompts skip it) since the page's own layout already
     renders the title as an <h1>.
     """
     if not record.summary_path:
-        return "_No summary — meeting has no materials yet._\n"
+        return "_Nothing filed — this meeting has published no materials yet._\n"
     summary_path = REPO_ROOT / record.summary_path
     if not summary_path.exists():
         return f"_Summary file missing: {record.summary_path}_\n"

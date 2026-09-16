@@ -4,6 +4,7 @@ body_id: cotw-finance
 date: '2026-09-10'
 permalink: /bodies/cotw-finance/meetings/diligent-1633/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1633
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -127,7 +128,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/3a20ee29-fdb8-4019-9592-75505a202c41
 ---
 
-## TL;DR
+## The lede
 
 - **County Board approved farmland lease renewal** with current tenant Aaron Bronstead at increased rate after competitive RFP process
 - **Major capital requests presented**: Sheriff's office seeking 5 new squad cars ($383K), jail window replacement ($150K phase 1 of 4), and additional correctional officer; Assessor requesting $30K True Roll exemption verification software

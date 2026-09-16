@@ -4,6 +4,7 @@ body_id: belvidere-cow
 date: '2026-04-13'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260413/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/04/04-13-26-Committee-of-the-Whole-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -13,7 +14,7 @@ resources:
   url: https://www.youtube.com/watch?v=AaBctwwtzCg
 ---
 
-## TL;DR
+## The lede
 
 - Life-saving awards presented to police and fire department personnel for rescuing an unconscious resident from a March 7, 2026 apartment fire on Blit Road
 - Council approved engineering design work ($310,500) for the $5.9 million Fifth Avenue storm sewer overflow project to address chronic flooding issues

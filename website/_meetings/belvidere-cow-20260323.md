@@ -4,6 +4,7 @@ body_id: belvidere-cow
 date: '2026-03-23'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260323/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/03/03-23-26-Committee-of-the-Whole-Packet-1.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -13,7 +14,7 @@ resources:
   url: https://www.youtube.com/watch?v=fWJfrG9EVE4
 ---
 
-## TL;DR
+## The lede
 
 - City Council heard passionate public comment from Perry Elementary School staff and parents opposing potential school closure; speakers urged council support at upcoming District 100 hearings
 - Council approved $25,900 expenditure for window replacement at Public Safety Building (PSB), joining county's renovation project; city and county split PSB costs 50/50

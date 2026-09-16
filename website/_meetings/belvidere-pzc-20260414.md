@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/05/SKM_C451i26051309230.pdf
 ---
 
-## TL;DR
+## The lede
 
 - Approved text amendments cleaning up zoning ordinance definitions, numbering, and regulations for dwelling types, fencing, parking, and subdivision improvements
 - Approved special use for gaming machines and bar inside Citgo gas station at 717 N. State Street with 10 conditions including ADA compliance and health department approval

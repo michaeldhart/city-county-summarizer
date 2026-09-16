@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/07/06-25-26-Special-FP-Meeting-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 
 - The Board appointed Neil Rossi as a probationary Belvidere Police Officer after he successfully completed psychological and medical examinations.
 - The Board approved polygraph tests and interviews for two additional entry-level police candidates: Michael DeFrancisco and Esteban Castanon-Duran.

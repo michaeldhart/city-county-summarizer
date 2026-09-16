@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-04-20'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260420/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/04/04-20-26-City-Council-Agenda-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -16,7 +17,7 @@ resources:
   url: https://www.youtube.com/watch?v=RW8msgkQrTI
 ---
 
-## TL;DR (3–5 bullets)
+## The lede
 - **Ordinance 754H passed (8–1)** establishing inspection of non-residential and multi-family structures, limited to common areas (not individual tenant units); Northwest Illinois Alliance of Realtors raised concerns about clarity on Fourth Amendment rights and enforcement procedures
 - **Approved $310,500 engineering contract** for 5th Avenue storm sewer overflow reconstruction project to address chronic flooding
 - **Passed four resolutions** including America250 commemoration support, electrical/plumbing inspection contractor agreements, and State Line Narcotics Team interagency agreement

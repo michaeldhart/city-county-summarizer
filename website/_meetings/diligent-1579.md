@@ -128,7 +128,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/56e1f5f3-fb84-4852-9a57-b0a8478a664a
 ---
 
-## TL;DR
+## The lede
 
 - Committee considered multiple capital improvement projects including $43,180 for PSB office windows (with City of Belvidere reimbursing $25,900) and $29,855 for courthouse electrical panel upgrades
 - Major infrastructure bids reviewed: $801,760 for Shattuck Road Bridge project and $147,964 for Edgewood Storm Sewer project, both recommended to low bidders

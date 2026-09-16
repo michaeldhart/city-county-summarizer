@@ -10,7 +10,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1630
 ---
 
-## TL;DR
+## The lede
 - Special administrative hearing convened for property at 522 Bounty Dr. NE
 - Board entered executive session to discuss the matter
 - No transcript or minutes available; decisions and outcomes not documented in available materials

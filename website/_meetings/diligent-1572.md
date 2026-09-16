@@ -14,7 +14,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/483f4f76-2589-4897-ba6c-b28ce8b7c22f
 ---
 
-## TL;DR
+## The lede
 - The Advisory Committee for Administration of the Enterprise Zone met to discuss the enterprise zone renewal process and potential amendments.
 - Key discussion topics included geographical boundaries, local incentives (residential incentives and property tax abatements), and committee membership.
 - The committee approved minutes from their previous meeting held three years prior (April 13, 2023).

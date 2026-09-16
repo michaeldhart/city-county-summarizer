@@ -4,6 +4,7 @@ body_id: cotw-admin
 date: '2026-07-02'
 permalink: /bodies/cotw-admin/meetings/diligent-1615/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1615
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -97,7 +98,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/e517a08a-b26a-4ca9-bcca-596bb9efe2dd
 ---
 
-## TL;DR
+## The lede
 
 - Approved $437,856.39 in county claims with standard abstentions for conflict of interest
 - Approved two change orders for ongoing construction projects: $19,937.49 for courthouse renovations and $21,796.16 for Logan Avenue project (including $13,000 for hallway carpet replacement)

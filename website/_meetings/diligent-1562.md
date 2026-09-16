@@ -13,7 +13,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/3fbc379d-d96e-469c-8512-74ee30a8d0e3
 ---
 
-## TL;DR
+## The lede
 - Board expected to approve Annual PHAB (Public Health Accreditation Board) Service Fee of $5,600
 - Discussion scheduled on COAR Vehicle requiring motion/approval
 - Updates planned on respiratory illness trends and building status

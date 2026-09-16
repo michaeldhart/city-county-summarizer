@@ -16,11 +16,11 @@ permalink: /search/
 <script src="{{ '/pagefind/pagefind-component-ui.js' | relative_url }}" type="module"></script>
 <pagefind-config bundle-path="{{ '/pagefind/' | relative_url }}"></pagefind-config>
 
-<h1>Search</h1>
+<h1>Search the archive</h1>
 
-<p>Full text of every meeting summary on this site, plus the reference pages
-for each government. Summaries only — the agendas, minutes and transcripts
-they were written from are linked from each meeting page.</p>
+<p>Full text of every dispatch on the wire, plus the backgrounder for each
+government. Dispatches only — the agendas, minutes and transcripts they were
+written from are linked from the top of each one.</p>
 
 <div class="search-ui">
   <pagefind-input></pagefind-input>
@@ -37,6 +37,6 @@ they were written from are linked from each meeting page.</p>
 
 <noscript>
   <p><strong>Search needs JavaScript.</strong> Without it, browse by government
-  from the <a href="{{ '/' | relative_url }}">home page</a> — every meeting is
-  listed under its body.</p>
+  from the <a href="{{ '/' | relative_url }}">front page</a> — every dispatch is
+  listed under its beat.</p>
 </noscript>

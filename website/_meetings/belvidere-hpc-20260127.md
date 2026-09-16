@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/08/01-27-26-HPC-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 - Commission approved minutes from October 2025 meeting and reviewed the successful 2025 Awards Program, which raised $345 for the maintenance grant fund
 - Property Maintenance Grant notices sent to eligible property owners; two unused grants from last year make additional funds available for 2026
 - St. John's and at least one other property owner already expressed interest in applying for maintenance grants

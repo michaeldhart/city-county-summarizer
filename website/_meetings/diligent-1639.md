@@ -13,7 +13,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/1ddff477-2fad-49d7-b4a9-a69a8bab025f
 ---
 
-## TL;DR
+## The lede
 - Board scheduled to approve FY 2026 and FY 2027 budgets
 - Multiple policy updates on agenda: locker room/shower use, meeting room reservations, and updated IRS mileage reimbursement rate
 - Health Department preparing for flu shot season and 60th anniversary open house celebration

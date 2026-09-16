@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-07-20'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260720/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/07/07-20-26-City-Council-Agenda-Packet-1.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -16,7 +17,7 @@ resources:
   url: https://www.youtube.com/watch?v=QJH0AJqV3Dw
 ---
 
-## TL;DR
+## The lede
 
 - City Council approved second readings of electric aggregation program renewal (6-year with biennial review option) and repealed an outdated city vehicle sticker ordinance
 - First readings accepted for East Point Commons Subdivision development (annexation, zoning changes to Planned Business and Planned Industrial districts, and preliminary/final plats)

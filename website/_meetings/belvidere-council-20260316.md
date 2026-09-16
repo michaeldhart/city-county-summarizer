@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-03-16'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260316/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/03/03-16-26-City-Council-Agenda-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -16,7 +17,7 @@ resources:
   url: https://www.youtube.com/watch?v=SAsWnK1XMEQ
 ---
 
-## TL;DR
+## The lede
 - City Council approved general and special fund expenditures of $2.64 million and water/sewer expenditures of $528,000
 - Passed ordinance establishing handicap parking spaces on Garden Drive near old Pope Chiropractic Clinic
 - Adopted resolution joining Winnebago-Boone County Investigative Cooperative (renamed from Integrity Task Force)

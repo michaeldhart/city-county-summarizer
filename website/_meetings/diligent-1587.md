@@ -101,7 +101,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/2b9cb56c-361a-4b50-9f0f-4efead763d08
 ---
 
-## TL;DR
+## The lede
 
 - Committee scheduled to approve $256,886.87 in claims with specific abstentions by Chairman Johnson
 - Ordinance 26-06 to repeal Boone County Code Section 70-5 regarding Instant Assessment of Improvements on the agenda

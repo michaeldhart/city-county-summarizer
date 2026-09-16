@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-01-05'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260105/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/01/01-05-26-City-Council-Agenda-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -16,7 +17,7 @@ resources:
   url: https://www.youtube.com/watch?v=ZeSL6rYDiB0
 ---
 
-## TL;DR
+## The lede
 
 - Council unanimously approved two property replats in the Deer Woods II subdivision, combining adjacent lots to facilitate construction
 - A budget amendment for fiscal year 2026 received first reading, increasing salaries for Public Works positions to improve recruitment and retention

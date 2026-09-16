@@ -4,6 +4,7 @@ body_id: belvidere-cow
 date: '2026-05-11'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260511/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/05/05-11-26-Committee-of-the-Whole-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -13,7 +14,7 @@ resources:
   url: https://www.youtube.com/watch?v=JG_mddXUfQs
 ---
 
-## TL;DR
+## The lede
 - City Council approved reappointments to Planning & Zoning Commission and Historic Preservation Commission with five-year and three-year terms respectively
 - Council passed a resolution opposing state legislation that would strip local zoning and land-use authority, favoring municipal control over housing decisions
 - Public Works approved three equipment purchases (wheeled excavator, mini excavator) and material testing services; wells #5 and #7 repairs progressing

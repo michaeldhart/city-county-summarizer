@@ -11,20 +11,22 @@ theme: minima
 url: "https://michaeldhart.github.io"
 baseurl: "/city-county-summarizer"
 
-title: Boone County & Belvidere Government Watch
+title: The Belvidere Wire
+tagline: A first draft of the public record.
 description: >-
-  Meeting recaps for local government in Boone County, Illinois — the county
-  board and its committees, the City of Belvidere, School District 100, the
-  park district, and the two conservation districts.
+  Machine-written dispatches from every public meeting in Boone County,
+  Illinois — 22 beats across five governments, filed from the official
+  agenda, minutes and meeting video, with every source linked.
 
 # minima builds its nav from every page carrying a title, in path order, which
-# swept in the four per-government About pages and left Home stranded after
-# them. Name the nav explicitly instead: the jurisdiction pages are still
-# reached from /about/ and from the per-government links on the home page.
+# swept in the four per-government backgrounders and left Home stranded after
+# them. Name the nav explicitly instead: the backgrounders are still reached
+# from /about/ and from the per-government links on the home page.
 header_pages:
   - index.md
   - about.md
   - search.md
+  - method.md
 
 collections:
   bodies:
@@ -54,8 +56,9 @@ defaults:
     values:
       layout: meeting
 
-# Publishes an Atom feed of all meeting pages at /feed/meetings.xml
-# (jekyll-feed ships as a minima dependency already).
+# The wire itself: an Atom feed of every dispatch at /feed/meetings.xml
+# (jekyll-feed ships as a minima dependency already). The masthead and the
+# feed are the same metaphor — see method.md.
 feed:
   collections:
     - meetings

@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-02-16'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260216/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/02/02-16-26-City-Council-Agenda-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -16,7 +17,7 @@ resources:
   url: https://www.youtube.com/watch?v=EwPyIqGZ5Jk
 ---
 
-## TL;DR
+## The lede
 - City Council passed ordinance updating ward descriptions to reflect annexations since 2011
 - Council rejected private IT vendor proposals and approved intergovernmental agreement with Boone County for IT and VOIP services at $110,000/year with 3% annual escalator
 - Council approved concept of TIF redevelopment agreement with Dairy Farmers of America; final terms to be presented later

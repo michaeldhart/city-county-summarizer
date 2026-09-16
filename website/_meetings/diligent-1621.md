@@ -96,7 +96,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/5556b7c6-4773-453f-8dc8-43fb659dacec
 ---
 
-## TL;DR
+## The lede
 - Board conducted election of Chair and Vice Chair positions as unfinished business
 - Voted on SUP-04-2026 for Huber Road Assembly, a special use permit application with both support and opposition submitted
 - Approved variation Z-08-2026 for 11132 Woodstock Road property

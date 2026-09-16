@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-05-18'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260518/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/05/05-18-26-City-Council-Agenda-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -16,7 +17,7 @@ resources:
   url: https://www.youtube.com/watch?v=J69N-aE8C_E
 ---
 
-## TL;DR
+## The lede
 - Council approved a 6.5% sewer rate increase (Ord. #764H) and nearly $2.8M in expenditures split between General and Water/Sewer funds.
 - Council passed Resolution 2026-16 opposing the Illinois BUILD Act, which would strip local zoning and land-use authority from municipalities.
 - Craig Wilcox appointed Director of Buildings at $80,000 salary (down from $89,000 prior incumbent) with 8 weeks vacation; amendment to reduce to 4 weeks failed 2-8.

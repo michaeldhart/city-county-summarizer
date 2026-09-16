@@ -4,6 +4,7 @@ body_id: belvidere-cow
 date: '2026-08-24'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260824/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/08/08-24-26-Committee-of-the-Whole-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -13,7 +14,7 @@ resources:
   url: https://www.youtube.com/watch?v=W1MOXNVIYt4
 ---
 
-## TL;DR
+## The lede
 
 - Council unanimously approved waiving building permit fees for YMCA's $670,000 Phase 1 renovation (interior upgrades to fitness areas and programming spaces), with potential for future phases totaling $3.5 million
 - Four-way stop approved for East Perry Street & Webster Street intersection after residents raised serious safety concerns about speeding and visibility issues

@@ -4,6 +4,7 @@ body_id: cotw-admin
 date: '2026-09-03'
 permalink: /bodies/cotw-admin/meetings/diligent-1632/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1632
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -124,7 +125,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/53314c24-2693-41d9-93b8-234eae1d5ad5
 ---
 
-## TL;DR
+## The lede
 
 - **Approved FY2027 budgets** for Animal Services, GIS, Highway, and Health Department; no property tax funding for Animal Services (funded through fees/donations)
 - **Approved special use permit** for seasonal H-2A agricultural worker housing (up to 10 workers, March-May) at 11635 Wange Road for tree nursery operation

@@ -12,7 +12,7 @@ resources:
 
 ## Agenda preview
 
-## TL;DR
+## The lede
 - Commission will consider landmark designation application for Perry School at 633 W. Perry Street, built in 1897 and one of the oldest operational schools in Illinois
 - Property maintenance grant reimbursement will be reviewed for 401 N. Main Street (St. John's United Church of Christ) window replacement project
 - Victorian Picnic fundraiser scheduled for September 26, 2026 at Swift House

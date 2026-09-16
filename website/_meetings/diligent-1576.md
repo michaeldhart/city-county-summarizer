@@ -73,7 +73,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/8ca1e432-ed34-4020-82cc-19b433372e9f
 ---
 
-## TL;DR
+## The lede
 - Board considered rezoning application for property at 15xx Spring Creek Road from A-1 (Agricultural) to RE (Residential Estate)
 - Reviewed special use permit application (SUP-02-2026) for a solar energy facility at 114xx US Route 20
 - Discussed draft Unified Development Ordinance (UDO)

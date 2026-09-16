@@ -11,17 +11,38 @@ across five separate governments and 22 bodies:
 | Belvidere Township Park District | Board of Commissioners |
 | The two conservation districts | BCCD and Soil & Water, each an independent elected board |
 
-It produces **[Boone County & Belvidere Government Watch](https://michaeldhart.github.io/city-county-summarizer/)**
-— a static site with one page per body listing its past meetings, one page per
-meeting with its full summary, and an
-[About](https://michaeldhart.github.io/city-county-summarizer/about/) page per
-government covering how it works, who currently serves, and when its bodies
-meet. Published to GitHub Pages; body and meeting pages are regenerated from
-the manifest by `ccs build-site`, About pages by `ccs summary`.
+It publishes **[The Belvidere Wire](https://michaeldhart.github.io/city-county-summarizer/)**
+— *a first draft of the public record*. A static site with one page per body
+listing everything filed from it, one page per meeting carrying its full
+summary, and a reference page per government covering how it works, who
+currently serves, and when its bodies meet. Published to GitHub Pages; body and
+meeting pages are regenerated from the manifest by `ccs build-site`, reference
+pages by `ccs summary`.
+
+The site is framed as a publication, and its copy uses newsroom words for
+things the code names literally. The mapping is worth knowing before you edit
+either side:
+
+| On the site | In the code |
+|---|---|
+| beat | a tracked `Body` (`_bodies/`, `body_id`) |
+| dispatch | a meeting page (`_meetings/`, a `MeetingRecord`) |
+| the lede | the `## The lede` section each summary prompt asks for |
+| backgrounder | a per-government About page under `website/about/` |
+| the wire | the Atom feed at `/feed/meetings.xml` |
+| the byline | the disclosure block in `_layouts/meeting.html` |
+
+Identifiers were deliberately left alone — only reader-facing copy carries the
+publication vocabulary. The masthead's own explanation of how dispatches are
+written lives at
+[/method/](https://michaeldhart.github.io/city-county-summarizer/method/),
+which is generated from `website/method.md` and is the one page to update when
+the prompts or the sources change.
 
 Materials come from two Diligent Community portals (the county's and the school
 district's), four WordPress sites, and YouTube auto-captions where a meeting is
-streamed. Scanned PDFs are OCR'd. Summaries are written by Claude Sonnet 4.5.
+streamed. Scanned PDFs are OCR'd. Dispatches are written by Claude Sonnet 4.5,
+and every one of them carries a byline saying so.
 
 ## Prerequisites
 
@@ -48,7 +69,7 @@ invoke as `python3 -m ccs.cli …` instead of plain `ccs`.
 
 ### `ccs summary`
 
-Rebuilds the About page for each government under `website/about/`, plus the
+Rebuilds the backgrounder for each government under `website/about/`, plus the
 `/about/` index. Fetches that government's own public pages and, where the body
 publishes to a Diligent portal, takes the current roster from its most recent
 meeting record — more reliable than a web page, which lags reorganizations.
@@ -125,13 +146,14 @@ outside the default sync window.
 
 ### `ccs backfill-resources`
 
-Every meeting page carries a Resources column listing the raw materials
+Every dispatch carries a Resources column listing the raw materials
 behind its summary — the Diligent meeting page, agenda and minutes PDFs,
-the YouTube recording, and any documents linked from the agenda. Records
-ingested before that column existed have nothing to show; this fills them
-in. Free, no Claude calls: Diligent meetings rebuild from the agenda HTML
-already cached on disk, and PDF sources re-read their public index to
-recover the minutes link.
+the YouTube recording, and any documents linked from the agenda. It is
+also what the page's byline is built from, so a record with an empty
+column gets a vaguer byline. Records ingested before that column existed
+have nothing to show; this fills them in. Free, no Claude calls: Diligent
+meetings rebuild from the agenda HTML already cached on disk, and PDF
+sources re-read their public index to recover the minutes link.
 
 ```bash
 ccs backfill-resources
@@ -147,9 +169,10 @@ public site and keeps just the one link already on record.
 
 Regenerates `website/_bodies/` and `website/_meetings/` — the Jekyll
 collections behind the published site — from the current manifest. One
-page per tracked body (with a "Past meetings" list) and one page per
-ingested meeting (its cached summary plus its Resources column). Fully
-rewrites both collections each run; free, no Claude calls.
+page per tracked body (its beat page, listing every dispatch filed from
+it) and one page per ingested meeting (the dispatch: its cached summary,
+its byline, and its Resources column). Fully rewrites both collections
+each run; free, no Claude calls.
 
 ```bash
 ccs build-site
@@ -203,7 +226,8 @@ docs/
   SPIKE_NOTES.md                # findings from the v1 spike (BoardDocs era)
   DILIGENT_MIGRATION.md         # findings from the Aug 2026 Diligent migration
 website/                        # Jekyll site published to GitHub Pages
-  about.md                       #   About page; tracked in git, regenerated by `ccs summary`
+  method.md                      #   how dispatches are written; hand-authored
+  about.md                       #   backgrounder index; tracked in git, regenerated by `ccs summary`
   _bodies/<id>.md                #   one per tracked body; regenerated by `ccs build-site`
   _meetings/<record-id>.md       #   one per ingested meeting; regenerated by `ccs build-site`
 src/ccs/                        # the package

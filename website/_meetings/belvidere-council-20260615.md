@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-06-15'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260615/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/06/06-15-26-City-Council-Agenda-Packet-1.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -16,7 +17,7 @@ resources:
   url: https://www.youtube.com/watch?v=ZQd-dVogSr8
 ---
 
-## TL;DR
+## The lede
 
 - Approved approximately $3 million in expenditures ($1.76M General/Special Fund; $1.26M Water/Sewer Fund)
 - Passed ordinance transferring Santa Claus House to Belvidere Township Park District for permanent display at Dottie Park

@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/09/08.11.2026-Approved-PZC-minutes.pdf
 ---
 
-## TL;DR
+## The lede
 
 - Commission unanimously approved a variance to allow reconstruction of a garage at 410 Highland Street with a reduced side yard setback of 2.5 feet (3.5-foot variance) due to the property's substandard lot width.
 - Commission approved 6–1 a special use permit for video gaming and on-site alcohol consumption at a 7-Eleven at 707 Logan Avenue, with conditions including restricted gaming area, accessibility barriers, and parking lot improvements.

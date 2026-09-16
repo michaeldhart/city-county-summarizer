@@ -10,7 +10,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1567
 ---
 
-## TL;DR
+## The lede
 - Board scheduled to approve annual PHAB service fee of $5,600
 - Updates planned on building status and revisions to Boone County Code Chapter 38, Section 31
 - New business included behavioral health taskforce financial report, COAR vehicle discussion, and staff satisfaction survey results

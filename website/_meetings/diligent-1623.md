@@ -4,6 +4,7 @@ body_id: cotw-admin
 date: '2026-08-06'
 permalink: /bodies/cotw-admin/meetings/diligent-1623/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1623
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -107,7 +108,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/5fc710ab-c825-49ee-b7db-da287187e4da
 ---
 
-## TL;DR
+## The lede
 - **Ordinance 26-33 for speed limit reductions failed** after concerns about lack of speed studies; will go to full County Board
 - **License Plate Reader (LPR) program thoroughly explained** by Detective Shoots; 6 cameras have detected 3,590 suspended registrations and 11 stolen vehicles in past 30 days
 - **Four administrative ordinances passed** moving county code sections and updating stormwater/floodplain regulations

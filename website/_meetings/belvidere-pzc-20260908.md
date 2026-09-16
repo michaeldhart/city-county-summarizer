@@ -12,7 +12,7 @@ resources:
 
 ## Agenda preview
 
-### TL;DR
+## The lede
 - Public hearing scheduled for Build Holding Company to add drive-through lanes at a new BMO Bank branch at 1862 Crystal Parkway (approximately 1.2 acres in a Planned Business District)
 - Text amendment proposed to City Subdivision Ordinance covering State Plat Act compliance, inspection fees, and new Plats of Consolidation process
 - Both items received staff recommendations for approval

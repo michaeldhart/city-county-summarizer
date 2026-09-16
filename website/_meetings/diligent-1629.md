@@ -28,7 +28,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/7066afe2-8e67-4409-b06a-72c695f4755a
 ---
 
-## TL;DR
+## The lede
 - Welcomed new Board of Health member Tara Branom and recognized outgoing member Jermaine Pigee
 - Dr. Smetana presented on Ebola & Hantavirus
 - Multiple policy approvals expected, including temporary background check review, signature stamp use, shadowing program, professional conduct, and performance management system updates

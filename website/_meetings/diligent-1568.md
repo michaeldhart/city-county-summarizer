@@ -121,7 +121,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/3512d905-d68e-4e77-bcad-002d99b3631f
 ---
 
-## TL;DR
+## The lede
 
 - Board considered two Special Use Permit applications: a solar project on Cemetery Road (SUP-05-2026) and an assembly building at 8410 Huber Road (SUP-04-2026)
 - Reviewed text amendments updating county ordinances for solar, wind, and energy storage systems (TA-06-2026)

@@ -12,8 +12,8 @@ layout: default
     it, twenty meetings of the same board are twenty identical search results.
     The date goes into the result *title* rather than being rendered by a custom
     <pagefind-results> template, because replacing that template would also drop
-    the per-heading sub-results the default one gives ("TL;DR", "Decisions &
-    votes"), which are worth keeping. The standalone `date` field stays indexed
+    the per-heading sub-results the default one gives ("The lede", "Decisions
+    & votes"), which are worth keeping. The standalone `date` field stays indexed
     for anyone who does write a template later.
 
     One filter per element: inside a data-pagefind-filter an inline `key:value`
@@ -36,6 +36,50 @@ layout: default
        data-pagefind-filter="year:{{ page.date | date: '%Y' }}">{{ page.date | date: "%b %-d, %Y" }}</p>
 
     {{ content }}
+
+    {%- comment -%}
+      The byline. Every dispatch says who wrote it and from what, on the page
+      rather than once on /method/ — the disclosure is worth nothing if it only
+      appears where a sceptical reader would have to go looking for it.
+
+      The source list is built from what this meeting actually had, not from
+      boilerplate: an agenda-only sub-body dispatch must not claim minutes or
+      video it never saw. has_transcript, not the presence of a video resource,
+      is what licenses the "meeting video" clause — some meetings are streamed
+      but have no usable captions, and the video is then a link we publish, not
+      a source we read.
+
+      data-pagefind-ignore keeps this identical block from landing in the
+      search index 174 times over.
+    {%- endcomment -%}
+    {%- assign agenda_docs = page.resources | where: "kind", "agenda" -%}
+    {%- assign portal_docs = page.resources | where: "kind", "portal" -%}
+    {%- assign minutes_docs = page.resources | where: "kind", "minutes" -%}
+    {%- assign parts = "" -%}
+    {%- if agenda_docs.size > 0 or portal_docs.size > 0 -%}
+      {%- assign parts = parts | append: "|the agenda" -%}
+    {%- endif -%}
+    {%- if minutes_docs.size > 0 -%}
+      {%- assign parts = parts | append: "|the minutes" -%}
+    {%- endif -%}
+    {%- if page.has_transcript -%}
+      {%- assign parts = parts | append: "|the meeting video" -%}
+    {%- endif -%}
+    {%- assign srcs = parts | remove_first: "|" | split: "|" -%}
+    <p class="byline" data-pagefind-ignore>
+      Filed to the wire by machine — written by Claude from
+      {%- if srcs.size > 1 -%}
+        {%- assign last_i = srcs.size | minus: 1 -%}
+        {%- assign head = srcs | slice: 0, last_i -%}
+        {{ " " }}{{ head | join: ", " }} and {{ srcs[last_i] }}.
+      {%- elsif srcs.size == 1 -%}
+        {{ " " }}{{ srcs[0] }}.
+      {%- else -%}
+        {{ " " }}this body's published meeting materials.
+      {%- endif -%}
+      {{ " " }}No human reporter attended.
+      <a href="{{ '/method/' | relative_url }}">How this is written</a>
+    </p>
   </div>
 
   {% if page.resources %}
@@ -52,7 +96,7 @@ layout: default
     {% if attachments.size > 0 %}
     <h3>Also linked from the agenda</h3>
     <p class="resource-note">Backup documents published with the agenda. These
-    were not read when writing the summary above.</p>
+    were not read when writing the dispatch above.</p>
     <ul>
       {% for r in attachments %}
       <li class="resource-attachment"><a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.label }}</a></li>

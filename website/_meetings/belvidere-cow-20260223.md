@@ -4,6 +4,7 @@ body_id: belvidere-cow
 date: '2026-02-23'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260223/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/02/02-23-26-Committee-of-the-Whole-Packet-1.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -13,7 +14,7 @@ resources:
   url: https://www.youtube.com/watch?v=aPB6mellMlM
 ---
 
-## TL;DR
+## The lede
 
 - Police Department progressing well with new officer training; two officers completed FTO program and are now providing shift coverage
 - Fire Department apparatus bay floor to be refinished using higher bidder ($34,390) due to significantly shorter completion time (2 days vs. 10 days)

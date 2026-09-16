@@ -40,7 +40,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/08447354-4385-4ed9-8e18-9866adc92399
 ---
 
-## TL;DR
+## The lede
 
 - Committee considered contracts for 2026 owner's representative services and electrical panel replacements at the Courthouse totaling $15,826
 - Discussion of a three-year IT services agreement with the City of Belvidere for $110,000 annually with CPI or 3% increases (whichever is higher)

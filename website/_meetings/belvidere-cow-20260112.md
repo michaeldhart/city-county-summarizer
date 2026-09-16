@@ -4,6 +4,7 @@ body_id: belvidere-cow
 date: '2026-01-12'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260112/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/01/01-12-26-Committee-of-the-Whole-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -13,7 +14,7 @@ resources:
   url: https://www.youtube.com/watch?v=AqQt9ASRPCw
 ---
 
-## TL;DR
+## The lede
 
 - City appointed Carl Swanson to the Historic Preservation Commission to fill a vacancy through April 2028; Swanson brings extensive experience restoring historic properties including an 1840s farmhouse
 - Approved two state DCEO grants totaling $280,000 for the Kishwaukee Riverfront Path Extension in downtown Belvidere

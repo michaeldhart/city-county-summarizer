@@ -119,3 +119,47 @@ $wide-wrapper: 1120px;
   gap: math.div($spacing-unit, 2);
   margin: math.div($spacing-unit, 2) 0;
 }
+
+// ---------------------------------------------------------------------------
+// Masthead voice
+//
+// The front page reads as a publication rather than an index: an oversized
+// masthead, a standfirst under it, and the etymology set as a colophon at the
+// foot. None of these appear anywhere else, so they carry no layout risk.
+// ---------------------------------------------------------------------------
+
+.masthead {
+  margin-bottom: math.div($spacing-unit, 4);
+  letter-spacing: -0.02em;
+  @include relative-font-size(2.375);
+
+  @media screen and (max-width: $on-palm) {
+    @include relative-font-size(1.875);
+  }
+}
+
+.standfirst {
+  max-width: 34em;   // a measure, not the full wrapper — this is body copy
+  color: $grey-color-dark;
+  @include relative-font-size(1.0625);
+}
+
+.colophon {
+  margin-top: $spacing-unit;
+  padding-top: math.div($spacing-unit, 2);
+  border-top: 1px solid $grey-color-light;
+  color: $grey-color;
+  @include relative-font-size(0.875);
+}
+
+// The byline closes every dispatch. Rule above it so it reads as apparatus
+// rather than as the last paragraph of the summary — the distinction matters,
+// since the summary is machine-written and this sentence is the disclosure
+// that says so.
+.byline {
+  margin-top: $spacing-unit;
+  padding-top: math.div($spacing-unit, 2);
+  border-top: 1px solid $grey-color-light;
+  color: $grey-color;
+  @include relative-font-size(0.8125);
+}

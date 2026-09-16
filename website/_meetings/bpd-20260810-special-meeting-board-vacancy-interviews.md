@@ -13,7 +13,7 @@ resources:
   url: https://www.belviderepark.org/wp-content/uploads/2026/09/Special-Board-Meeting-8-10-26.pdf
 ---
 
-## TL;DR
+## The lede
 - Special meeting held at the Historic Baltic Mill to address a board vacancy
 - Board entered closed session for nearly two hours to discuss personnel matters related to filling a public office
 - Board unanimously appointed Carrie Lenzen as interim board member

@@ -34,7 +34,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/05dc6e0d-c290-4660-9371-2bd9daafa974
 ---
 
-## TL;DR
+## The lede
 
 - Board to consider Special Use Permit SUP-08-2026 for property at 11635 Wange Road
 - Review and approval of June 23, 2026 meeting minutes scheduled

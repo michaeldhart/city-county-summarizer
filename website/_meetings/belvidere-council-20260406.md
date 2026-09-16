@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-04-06'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260406/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/04/04-06-26-City-Council-Agenda-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -16,7 +17,7 @@ resources:
   url: https://www.youtube.com/watch?v=RUl_ZJIP-Dc
 ---
 
-## TL;DR (3–5 bullets)
+## The lede
 
 - Council unanimously approved the FY2026–2027 budget ordinance (Ord. 753H), which includes a $10.9 million operating transfer out of reserves for capital projects.
 - Approved emergency repairs to Well #7 (waiving bidding requirements) for a not-to-exceed amount of $200,000; Well #5 also went down last week.

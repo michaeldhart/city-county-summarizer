@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/05/4-7-26-Special-FP-Meeting-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 
 - The Commission amended prior meeting minutes to formalize two termination votes from March 25: one active police officer (Muhammad Rehman) and one training candidate (Jacob Sampson)
 - Entry-level candidate Seth Norris successfully passed polygraph and interview, was offered employment contingent on psychological and medical testing

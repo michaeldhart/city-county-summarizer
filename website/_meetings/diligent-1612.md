@@ -4,6 +4,7 @@ body_id: board
 date: '2026-06-18'
 permalink: /bodies/board/meetings/diligent-1612/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1612
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -94,7 +95,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/e464e109-04be-4c5f-9762-499c20b84fd0
 ---
 
-## TL;DR
+## The lede
 
 - **Maple Crest Care Centre sale approved**: Board authorized sale of county facility for $1.4 million to Maple Crest Care Centre, LLC; closing scheduled for June 30th
 - **Unified Development Ordinance (UDO) adopted**: Major overhaul of county zoning and subdivision regulations passed after extensive discussion, with amendments requiring livestock facility buffers be measured from property lines and protections for 300+ animal unit operations

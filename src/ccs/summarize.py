@@ -163,7 +163,7 @@ def _build_diligent_prompt(body: Body, data: diligent.MeetingData,
     if transcript:
         instructions = (
             "This meeting has already occurred. Produce a Markdown recap with these sections:\n"
-            "## TL;DR (3–5 bullets: most important decisions and discussions)\n"
+            "## The lede (3–5 bullets: most important decisions and discussions)\n"
             "## Attendance & housekeeping\n"
             "## Decisions & votes (each with vote count and notable discussion or dissent)\n"
             "## Discussion items (no vote)\n"
@@ -171,7 +171,7 @@ def _build_diligent_prompt(body: Body, data: diligent.MeetingData,
             "## Notable moments (anything colorful, tense, or unusual)\n"
             "For any section where nothing applies to this meeting, keep the header and write "
             "`_No content._` on a single line beneath it — do not omit sections or leave them "
-            "empty.\nStart directly with the '## TL;DR' section."
+            "empty.\nStart directly with the '## The lede' section."
         )
     else:
         instructions = (
@@ -196,8 +196,9 @@ def _build_diligent_prompt(body: Body, data: diligent.MeetingData,
     members_line = ", ".join(data.members) if data.members else "(not listed)"
 
     return (
-        f"You are summarizing a local government meeting in Boone County, IL "
-        f"for a personal briefing.\n"
+        f"You are filing a dispatch on a local government meeting in Boone County, "
+        f"IL for The Belvidere Wire, which publishes a recap of every public "
+        f"meeting in the county.\n"
         f"Government: {jurisdiction_for(body).display_name}\n"
         f"Body: {body.display_name}\n"
         f"Meeting: {ref.title}\n"
@@ -206,7 +207,11 @@ def _build_diligent_prompt(body: Body, data: diligent.MeetingData,
         f"{instructions}\n"
         f"IMPORTANT: Do NOT start with a meeting-title header — the meeting page already "
         f"identifies the meeting.\n"
-        f"Do not invent details not in the source. If the transcript has typos "
+        f"Report what happened; do not characterize motives, assign praise or blame, or read\n"
+        f"significance into a vote. Record the count and the discussion as they occurred.\n"
+        f"Prefer plain words to civic jargon — \"the board agreed to buy 34 acres\", not\n"
+        f"\"authorized acquisition of a parcel\" — since this is read by residents, not clerks.\n"
+        "Do not invent details not in the source. If the transcript has typos "
         f"(auto-captions), silently correct obvious ones; quote sparingly.\n"
         f"{transcript_note}"
         f"\n===== AGENDA =====\n{_clip(agenda_text, MAX_AGENDA_CHARS, 'agenda')}\n"
@@ -218,7 +223,7 @@ def _build_pdf_meeting_prompt(body: Body, meeting_date, agenda: str, minutes: st
                               transcript: str = "") -> str:
     has_record = bool(minutes.strip() or transcript.strip())
     sections = (
-        "## TL;DR (3–5 bullets)\n"
+        "## The lede (3–5 bullets)\n"
         "## Decisions & votes\n"
         "## Discussion items\n"
         "## Financial / operational notes\n"
@@ -228,7 +233,7 @@ def _build_pdf_meeting_prompt(body: Body, meeting_date, agenda: str, minutes: st
 
     if has_record:
         mode = (
-            "Start directly with the '## TL;DR' section.\n"
+            "Start directly with the '## The lede' section.\n"
         )
     else:
         mode = (
@@ -243,8 +248,9 @@ def _build_pdf_meeting_prompt(body: Body, meeting_date, agenda: str, minutes: st
     )
 
     return (
-        f"You are summarizing a local government meeting in Boone County, IL "
-        f"for a personal briefing.\n"
+        f"You are filing a dispatch on a local government meeting in Boone County, "
+        f"IL for The Belvidere Wire, which publishes a recap of every public "
+        f"meeting in the county.\n"
         f"Government: {jurisdiction_for(body).display_name}\n"
         f"Body: {body.display_name}\n"
         f"Date: {meeting_date.isoformat()}\n\n"
@@ -257,7 +263,11 @@ def _build_pdf_meeting_prompt(body: Body, meeting_date, agenda: str, minutes: st
         f"{mode}"
         f"IMPORTANT: Do NOT start with a meeting-title header — the meeting page already "
         f"identifies the meeting.\n"
-        f"Do not invent details. If the transcript has typos (auto-captions), silently "
+        f"Report what happened; do not characterize motives, assign praise or blame, or read\n"
+        f"significance into a vote. Record the count and the discussion as they occurred.\n"
+        f"Prefer plain words to civic jargon — \"the board agreed to buy 34 acres\", not\n"
+        f"\"authorized acquisition of a parcel\" — since this is read by residents, not clerks.\n"
+        "Do not invent details. If the transcript has typos (auto-captions), silently "
         f"correct obvious ones; quote sparingly.\n"
         f"\n===== AGENDA (PDF text) =====\n"
         f"{_clip(agenda, MAX_AGENDA_CHARS, 'agenda') or '[no agenda available]'}\n"

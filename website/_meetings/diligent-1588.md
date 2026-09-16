@@ -13,7 +13,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/3060f4ae-03ac-433a-bb0b-1c9b18f67d6d
 ---
 
-## TL;DR
+## The lede
 - Board scheduled to vote on updated 2026 IRS mileage rate reimbursement for employees
 - New policies up for approval: lunch hour coverage and computer/email/internet usage
 - Reports scheduled on respiratory illness updates and PHAB (Public Health Accreditation Board) domains

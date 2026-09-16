@@ -13,7 +13,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/730046e4-20ec-470f-aa68-6f2f4e35324c
 ---
 
-## TL;DR
+## The lede
 
 - Board considered multiple revised internal policies including bereavement leave, family medical leave, remote work, disability leave, and linguistic/cultural competency policies
 - Proposed Boone County Septic Code and amendments to County Code Chapter 38, Section 31 were on the agenda for action

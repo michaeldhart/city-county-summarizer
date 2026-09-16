@@ -4,6 +4,7 @@ body_id: board
 date: '2026-07-16'
 permalink: /bodies/board/meetings/diligent-1622/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1622
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -99,7 +100,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/c59fd670-468e-4686-aedc-f3e649c0e1ec
 ---
 
-## TL;DR
+## The lede
 - **Courthouse door debacle**: Approved $10,863 change order for missing jury room door that wasn't in original plans; passed 8-3 despite concerns about markup costs and who should pay for the oversight.
 - **Advisory ballot questions**: Approved three separate advisory questions for November ballot on property tax relief, local control of solar/data centers/ag land, and school district administrative spending.
 - **Bridge replacements moving forward**: Selected Willett Hofmann Associates for engineering on three bridge replacements (Squaw Prairie, Marengo, Lawrenceville Roads), 100% funded by RTA grant.

@@ -4,6 +4,7 @@ body_id: board
 date: '2026-05-21'
 permalink: /bodies/board/meetings/diligent-1558/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1558
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -239,7 +240,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/f10f66f0-8ea9-4b0a-ad1b-982c1c3c288f
 ---
 
-## TL;DR
+## The lede
 
 - **Cemetery Road Solar Project approved 7-4** despite strong public opposition; board cited state law stripping local control and threat of lawsuits
 - **Huber Road Assembly special use permit sent back to ZBA** (June 23) for further consideration rather than deciding tonight

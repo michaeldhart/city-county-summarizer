@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-02-02'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260202/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/01/02-02-26-City-Council-Agenda-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -16,7 +17,7 @@ resources:
   url: https://www.youtube.com/watch?v=7yUjfNYYmqI
 ---
 
-## TL;DR
+## The lede
 
 - Council approved electricity purchasing contract authorization through Northern Illinois Municipal Electric Collaborative for street lighting and commercial accounts
 - Approved $1.67 million Federal Railroad Administration grant for Phase I engineering of Appleton Road Grade Separation Project

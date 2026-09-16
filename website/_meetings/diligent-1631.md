@@ -10,7 +10,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1631
 ---
 
-## TL;DR
+## The lede
 - Special meeting called to address building move for the Boone County Health Department
 - Executive session was held (specific topic not disclosed in agenda)
 - No detailed information available on decisions or outcomes; meeting conducted via Zoom with in-person option

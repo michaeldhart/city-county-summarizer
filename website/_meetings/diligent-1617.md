@@ -4,6 +4,7 @@ body_id: cotw-finance
 date: '2026-07-09'
 permalink: /bodies/cotw-finance/meetings/diligent-1617/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1617
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -81,7 +82,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/6af7ce46-1a9c-42b4-a0bc-58ef71f652fb
 ---
 
-## TL;DR
+## The lede
 
 - **Highway paving and bridge work ramping up:** Roadway striping completed; paving starts July 10 on Irene Road and Shaw Road subdivisions; multiple bridge projects underway with North Brun School bridge opening in early August.
 - **Three bridge replacement engineering approved:** Willett Hofmann Associates selected for phase I & II design work on Squaw Prairie, Marengo, and Lawrenceville Road bridges, 100% funded by federal RTA grant (~$500,000-$600,000).

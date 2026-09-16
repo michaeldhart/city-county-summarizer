@@ -4,6 +4,7 @@ body_id: cotw-finance
 date: '2026-05-14'
 permalink: /bodies/cotw-finance/meetings/diligent-1556/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1556
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -123,7 +124,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/29c49368-4463-44e6-aa27-1815d126eaf1
 ---
 
-## TL;DR
+## The lede
 
 - **Highway Department successfully saved $380,000** (36%) on Stone Quarry Road bridge replacement by switching from design-build to traditional bidding method; project awarded at approximately $1.06 million
 - **Courthouse automatic door operators approved** ($25,814.61 change order) after city adopted new 2021 building code mid-project; board expressed frustration with lack of notice from City of Belvidere

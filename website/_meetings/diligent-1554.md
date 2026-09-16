@@ -4,6 +4,7 @@ body_id: cotw-admin
 date: '2026-05-07'
 permalink: /bodies/cotw-admin/meetings/diligent-1554/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1554
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -222,7 +223,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/02e93dda-833e-4ddc-b804-ad27d68958be
 ---
 
-## TL;DR
+## The lede
 
 - **Solar farm on Cemetery Road (SUP-05-2026) failed 6-3** after public opposition citing prime farmland concerns, stray voltage risks, and soil contamination; will go to full County Board
 - **Huber Road event venue (SUP-04-2026) failed 6-1** (one abstention) amid neighbor complaints about noise, parking, and past violations; applicant offered concessions but concerns remained about 52 annual events

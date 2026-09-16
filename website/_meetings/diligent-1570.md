@@ -4,6 +4,7 @@ body_id: board
 date: '2026-04-16'
 permalink: /bodies/board/meetings/diligent-1570/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1570
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -292,7 +293,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/7d42ed87-458d-411f-84b8-2197ebebc2c9
 ---
 
-## TL;DR
+## The lede
 
 - **Solar project failed on tie vote, reconsidered and approved**: A 5-megawatt solar facility at 114xx US Route 20 initially failed 5-5, but after procedural motions was reconsidered and passed 6-4.
 - **Six surplus properties approved for sale**: Board authorized sale of six tax-delinquent properties acquired through the trustee program.

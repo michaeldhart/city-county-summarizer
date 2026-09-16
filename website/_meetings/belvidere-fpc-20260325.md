@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/07/3-25-26-Special-FP-Meeting-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 
 - Board approved background investigation and polygraph examination for police applicant Seth Norris
 - Two police officers (Michelle Schwartz and Rob Kozlowski) announced retirements effective early May 2026

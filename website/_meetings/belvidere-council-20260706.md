@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-07-06'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260706/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/07/07-06-26-City-Council-Agenda-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -16,7 +17,7 @@ resources:
   url: https://www.youtube.com/watch?v=sXT-Y28wBV4
 ---
 
-## TL;DR
+## The lede
 
 - Council passed four special-use ordinances on second reading: a garage over 900 sq ft (330 W. Jackson), outdoor storage/impound yard (726 Columbia), indoor video gaming (336 W. Chrysler Drive), and a mural celebrating the 250th anniversary of the Declaration of Independence (314 S. State St).
 - Approved $968,888.93 MFT Street Overlay contract to Rock Road Companies and authorized $80,204 reimbursement to Belvidere Township for Shaw Road overlay.

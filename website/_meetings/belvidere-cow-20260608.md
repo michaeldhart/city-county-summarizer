@@ -4,6 +4,7 @@ body_id: belvidere-cow
 date: '2026-06-08'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260608/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/06/06-08-26-Committee-of-the-Whole-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -13,7 +14,7 @@ resources:
   url: https://www.youtube.com/watch?v=ZSLcTc3Q3i8
 ---
 
-## TL;DR
+## The lede
 
 - **Public Recognition:** Fire Chief Shawn Schadle honored for 20 years of service; Ed Buell recognized for his 98th birthday
 - **Equipment Purchases:** Council approved purchase of pavement saw ($21,132) and Bobcat utility vehicle ($80,195) for city departments

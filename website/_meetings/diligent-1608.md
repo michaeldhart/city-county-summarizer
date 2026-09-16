@@ -25,7 +25,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/c22fc885-6161-482e-8dbd-e08d760400ea
 ---
 
-## TL;DR
+## The lede
 - Commission reviewed a concept plan for a Planned Unit Development/Special Use Permit for self-service storage and outdoor storage at 3100 US Route 20
 - Considered updates to the 2026 Zoning Map for Boone County
 - Approved minutes from the March 24, 2026 meeting

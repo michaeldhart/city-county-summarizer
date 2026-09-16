@@ -17,7 +17,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/20c3a424-a464-4c95-beff-d56920068c3f
 ---
 
-## TL;DR
+## The lede
 - Special meeting called primarily to authorize issuance of General Obligation Bonds, Series 2026, with sales tax as alternate revenue source
 - Ordinance 26-04 was on the agenda for bond issuance authorization
 - Executive session topics included litigation, collective bargaining, personnel, and real estate matters

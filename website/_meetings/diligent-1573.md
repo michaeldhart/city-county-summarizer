@@ -220,7 +220,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/522706b0-fa1c-4b51-9001-bb3dad41ca08
 ---
 
-## TL;DR
+## The lede
 
 - **Major infrastructure spending approved:** County approved two significant road contracts totaling over $4.2 million, including $1.9M for Hunter Road earthwork and $2.3M for countywide road resurfacing
 - **Solar energy project approved:** Board approved a special use permit for a solar installation at 114xx US Route 20

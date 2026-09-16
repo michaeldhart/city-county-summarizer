@@ -4,6 +4,7 @@ body_id: board
 date: '2026-01-22'
 permalink: /bodies/board/meetings/diligent-1590/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1590
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -80,7 +81,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/0951af63-b0f5-418a-bcce-5bff585f58f7
 ---
 
-## TL;DR
+## The lede
 - County Board approved three change orders totaling $56,723 for courthouse/health department projects, including winter construction measures to accelerate completion by two months to August 2026
 - Board approved new three-year IT services agreement with City of Belvidere for $110,000 annually with annual increases of 3% or CPI (whichever is greater)
 - Residents urged immediate action on dangerous Orth and Calonia Roads intersection, requesting four-way stop after recent serious accident; matter referred to February 5 administration committee

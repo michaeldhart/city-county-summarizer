@@ -4,6 +4,7 @@ body_id: belvidere-cow
 date: '2026-07-13'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260713/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/07/07-13-26-Committee-of-the-Whole-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -13,7 +14,7 @@ resources:
   url: https://www.youtube.com/watch?v=IxDwY9x-ciE
 ---
 
-## TL;DR
+## The lede
 
 - Council approved purchase of a 2021 Ford F-150 pickup truck for Building Department to replace a 2005 Ranger ($35,000 from capital funds, including extended warranty and tonneau cover)
 - Approved $27,278 in Downtown Façade Improvement Grants to seven local property owners for building improvements (funded by video gaming revenue)

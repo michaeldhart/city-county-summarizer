@@ -4,6 +4,7 @@ body_id: belvidere-council
 date: '2026-05-04'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260504/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/05/05-04-26-City-Council-Agenda-Packet.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -16,7 +17,7 @@ resources:
   url: https://www.youtube.com/watch?v=yeVSzN9qvp8
 ---
 
-## TL;DR
+## The lede
 - Council approved annexation and zoning changes for Rush Power Systems property at Hawkeye Drive and Irene Road after public hearing with no public comment
 - Approved stop sign changes at two intersections after public testimony: four-way stop at 5th Avenue/West 6th Street, and amended Caswell Street/East 5th Street to two-way stop on Caswell (instead of on 5th Street as originally proposed)
 - Approved multiple police and fire equipment purchases, including body armor plates, handguns, and breathing air system for Fire Station 2

@@ -70,7 +70,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/a1126277-4cde-428a-94f7-437ad1f25917
 ---
 
-## TL;DR
+## The lede
 
 - The Zoning Board of Appeals reviewed a solar energy special use permit (SUP-01-2026) for a property on US Route 20, continued from previous meetings
 - The agenda recommended approval of the solar project, which had received opposition letters from the public

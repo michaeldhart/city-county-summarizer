@@ -3,12 +3,14 @@ layout: default
 title: Home
 ---
 
-# Boone County & Belvidere Government Watch
-
-<p>Meeting recaps for local government in Boone County, Illinois — the county
-board and its committees, the City of Belvidere, School District 100, the park
-district, and the two conservation districts. Each meeting page summarizes the
-agenda, the minutes, and where a meeting was streamed, its transcript.</p>
+<h1 class="masthead">The Belvidere Wire</h1>
+<p class="standfirst">A first draft of the public record — machine-written
+dispatches from every public meeting in Boone County, Illinois. Twenty-two
+beats across five governments: the county board and its committees, the City of
+Belvidere, School District 100, the park district, and the two conservation
+districts. Every dispatch is written from the official agenda, the minutes, and
+— where a meeting is streamed — the video, and every source is linked from the
+page.</p>
 
 {% assign ordered = site.bodies | sort: "sort_key" %}
 {% assign current = "" %}
@@ -18,19 +20,27 @@ agenda, the minutes, and where a meeting was streamed, its transcript.</p>
   </ul>
     {% endunless %}
   <h2>{{ body.jurisdiction }}</h2>
-  <p class="about-link"><a href="{{ body.about_url | relative_url }}">About {{ body.jurisdiction }}</a></p>
+  <p class="about-link"><a href="{{ body.about_url | relative_url }}">Backgrounder: {{ body.jurisdiction }}</a></p>
   <ul>
     {% assign current = body.jurisdiction %}
   {% endif %}
   {% assign count = site.meetings | where: "body_id", body.body_id | size %}
     <li>
       <a href="{{ body.url | relative_url }}">{{ body.title }}</a>
-      {% if count > 0 %}<span class="count">— {{ count }} meeting{% if count != 1 %}s{% endif %}</span>
-      {% else %}<span class="count">— no meetings recorded yet</span>{% endif %}
+      {% if count > 0 %}<span class="count">— {{ count }} dispatch{% if count != 1 %}es{% endif %}</span>
+      {% else %}<span class="count">— no dispatches filed yet</span>{% endif %}
     </li>
   {% if forloop.last %}
   </ul>
   {% endif %}
 {% endfor %}
 
-<p><a href="{{ '/feed/meetings.xml' | relative_url }}">Subscribe via RSS</a> — one entry per newly-ingested meeting, across every tracked body.</p>
+<h2>The wire</h2>
+
+<p><a href="{{ '/feed/meetings.xml' | relative_url }}">Subscribe to the wire</a>
+— one entry per dispatch as it is filed, across every beat. Or read
+<a href="{{ '/method/' | relative_url }}">how these are written</a>, which is
+the part most worth reading first.</p>
+
+<p class="colophon"><em>Belvidere, from</em> belvedere <em>— a structure built
+for the view.</em></p>

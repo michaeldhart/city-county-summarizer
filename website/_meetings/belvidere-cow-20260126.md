@@ -4,6 +4,7 @@ body_id: belvidere-cow
 date: '2026-01-26'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260126/
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/01/01-26-26-Committee-of-the-Whole-Packet-1.pdf
+has_transcript: true
 resources:
 - kind: agenda
   label: Agenda (PDF)
@@ -13,7 +14,7 @@ resources:
   url: https://www.youtube.com/watch?v=pyZ99ldTNN8
 ---
 
-## TL;DR
+## The lede
 
 - Fire Department to transition compliance reporting from Brycer to First Due software at no cost to the city; businesses pay $20 per submission
 - City accepted $1,000 donation from Midwest Refrigerated Services for Eagle Scout Santa Claus House project

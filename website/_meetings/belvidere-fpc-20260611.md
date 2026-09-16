@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/06/06-11-26-Special-FP-Meeting-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 
 - Commission processed multiple police officer candidates through various hiring stages including background investigations, polygraph tests, and interviews
 - Two candidates (Michael DeFrancisco and Esteban Castanon) passed background checks and were advanced to polygraph testing; two others (Jaleel Bobbitt and Carlee Fridley) failed background investigations

@@ -13,6 +13,8 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/09/08-17-26-City-Council-Regular-Meeting-Minutes.pdf
 ---
 
+## The lede
+
 - **Expenditures Approved**: $1,976,030.91 for General & Special Funds and $1,592,343.99 for Water & Sewer Fund approved unanimously.
 - **Ordinances Passed**: Ordinance #779H (electric utility tax on self-generated electricity) and Ordinance #780H (FY 2027 Budget revision for new full-time building inspector position) both passed 8-0.
 - **New Business**: Ordinances #781H (catering liquor license amendments) and #782H (special use for indoor commercial entertainment at 707 Logan Avenue / 7-Eleven) placed on file for first reading.

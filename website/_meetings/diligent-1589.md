@@ -52,7 +52,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/ff84262b-d661-4c18-a401-094595f0b064
 ---
 
-## TL;DR
+## The lede
 - The Zoning Board of Appeals considered a special use permit (SUP-01-2026) for a solar facility at 6xx US Route 20
 - The application included extensive documentation: decommissioning plans, construction plans, site plans, engineering certificates, and bonding information
 - Opposition letters were submitted regarding the solar project

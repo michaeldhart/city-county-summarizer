@@ -15,7 +15,7 @@ resources:
 
 ## Agenda preview
 
-## TL;DR
+## The lede
 - Council will consider the FY27 Budget Ordinance for the fiscal year beginning May 1, 2026
 - Public Works items include 2026 spring branch pickup, MFT street maintenance program across multiple wards, and wastewater treatment plant change order reducing costs by $82,393
 - Intergovernmental agreement with Boone County for jurisdictional transfer of Genoa Road to enable utility extensions for development

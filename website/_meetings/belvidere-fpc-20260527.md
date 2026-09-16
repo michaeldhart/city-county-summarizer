@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/06/05-27-26-Special-FP-Meeting-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 
 - Approved background check for police candidate Neal Rossi (ranked #1 on eligibility list) and authorized him to proceed to polygraph testing
 - Approved contract with Cops and Fire Testing Service for promotional examinations (following attorney review of language changes)

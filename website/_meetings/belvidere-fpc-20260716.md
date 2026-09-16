@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/08/07-16-26-Regular-FP-Meeting-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 
 - The Board approved promotional examination notices for Fire Captain and Lieutenant positions, with testing materials to be placed in stations by October 1, 2026
 - Two entry-level applicants (Michael DeFrancisco and Esteban Castanon-Duron) were approved and appointed as probationary police officers after passing psychological and medical exams

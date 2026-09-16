@@ -4,6 +4,7 @@ body_id: cotw-admin
 date: '2026-06-04'
 permalink: /bodies/cotw-admin/meetings/diligent-1607/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1607
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -133,7 +134,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/fbfd0cdc-e787-4105-a466-98ae9b5fe6fe
 ---
 
-## TL;DR
+## The lede
 
 - **Meeting minutes overhaul approved**: Board endorsed streamlining committee meeting minutes from detailed transcripts to brief summaries (motions and votes only), saving staff ~30-40 hours/month, with YouTube recordings serving as the detailed record
 - **Solar farm damage resolution**: County and Luminous Energy reached agreement on rifle range improvements ($66k) and solar panel damage repairs after bullets from county shooting range struck panels; Luminous will pay for berm upgrades, county will pay panel repairs using $25k escrow already held

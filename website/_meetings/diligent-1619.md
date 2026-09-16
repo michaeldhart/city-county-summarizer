@@ -10,7 +10,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1619
 ---
 
-## TL;DR
+## The lede
 - Special meeting called primarily for training on zoning items and Zoning Board of Appeals procedures
 - Meeting scheduled for 5:15 PM at the County Board Room
 - No specific zoning cases or variance requests listed on the agenda

@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/08/06-23-26-HPC-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 - Commission approved $1,500 reimbursement for new windows and doors at 105 Buchanan Street under the Property Maintenance Grant program
 - Approved disbursement of $27,278 in Downtown Façade Improvement grants to seven applicants (requests totaled $32,476.50 but funding was limited)
 - Elected new leadership: Sonya Dobberfuhl as Chair and David Kummerow as Vice Chair due to term limit rules

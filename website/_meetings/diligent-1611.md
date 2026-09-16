@@ -43,7 +43,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/4afda25c-7e2f-498f-8047-bb95eb830a10
 ---
 
-## TL;DR
+## The lede
 - Board scheduled to approve minutes from April 28, 2026 meeting
 - Special use permit for outdoor storage and self-service storage facility at 3100 US Route 20 on agenda for consideration
 - Major zoning updates on agenda: comprehensive Unified Development Ordinance to replace existing zoning ordinance and subdivision regulations, plus corresponding zoning map amendments

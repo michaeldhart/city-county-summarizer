@@ -100,7 +100,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/8abea9a6-956d-444e-941a-d08b2291a486
 ---
 
-## TL;DR
+## The lede
 
 - Committee reviewed and approved claims totaling $363,178.22 with specific abstentions by Chairman Johnson related to conflict of interest items
 - Board considered Ordinance 26-03 for property tax abatement of Alternate Bonds Series 2015A

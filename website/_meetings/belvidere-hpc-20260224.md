@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/04/02-24-26-HPC-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 
 - The commission is planning its 2026 awards program and scheduling fundraising events including a scavenger hunt (April), stained glass window tour (July), and Victorian picnic (September)
 - Approximately $2,500 is available for property maintenance grants; discussion about lead abatement concerns for window wrapping projects

@@ -4,6 +4,7 @@ body_id: board
 date: '2026-03-19'
 permalink: /bodies/board/meetings/diligent-1577/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1577
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -247,7 +248,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/57171373-4cb8-48ac-ba7e-a06ba6135085
 ---
 
-## TL;DR
+## The lede
 - **Board censured member Marion Thornberry** for attempted theft from church; he refused to resign despite guilty plea and was removed from committees and outside representation roles
 - **Approved controversial solar farm project** (US Route 20) despite ZBA's 0-5 recommendation to deny, citing lack of legal authority to block under state law and fear of costly litigation
 - **Approved four-way stop at Orth/Caledonia intersection** with red flashing lights, rumble strips, and yellow warning signs after emotional public testimony about safety concerns

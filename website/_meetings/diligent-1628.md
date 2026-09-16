@@ -10,7 +10,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1628
 ---
 
-## TL;DR
+## The lede
 - Finance Sub-Committee met to review budget matters ahead of the full Board meeting on August 3, 2026
 - Agenda included discussion of FY 2026 budget revision and FY 2027 budget proposal
 - Executive session was scheduled, likely for personnel or legal matters

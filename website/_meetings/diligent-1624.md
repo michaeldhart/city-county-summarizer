@@ -64,7 +64,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/1c04402f-635d-44e2-8f6c-2c19c2e26118
 ---
 
-## TL;DR
+## The lede
 - Committee reviewed monthly financial reports from the Treasurer and Administration for July 2026
 - Considered resolution authorizing action on a cellular tower provision at 1455 McKinley Avenue in Belvidere
 - Discussed infrastructure items including the Boone County Animal Services garage needs and courthouse boiler retube project

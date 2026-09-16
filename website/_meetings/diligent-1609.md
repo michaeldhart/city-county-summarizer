@@ -4,6 +4,7 @@ body_id: cotw-finance
 date: '2026-06-11'
 permalink: /bodies/cotw-finance/meetings/diligent-1609/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1609
+has_transcript: true
 resources:
 - kind: portal
   label: Diligent meeting page
@@ -46,7 +47,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/062c1ef1-dd58-4bca-8634-18fa086db893
 ---
 
-## TL;DR
+## The lede
 
 - **Unified Development Ordinance (UDO) nearing adoption**: Committee discussed final revisions to replace existing zoning and subdivision regulations, with Farm Bureau requesting changes to livestock facility setback requirements to match state statute rather than more restrictive county standards.
 - **Livestock facility buffer zones debated**: Key discussion focused on whether to require reverse setbacks (preventing residential development near existing livestock operations) and how to track facility locations for enforcement.

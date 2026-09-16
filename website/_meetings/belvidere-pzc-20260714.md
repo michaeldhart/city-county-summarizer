@@ -13,7 +13,7 @@ resources:
   url: https://www.belvidereil.gov/wp-content/uploads/2026/08/07-14-26-PZC-Minutes.pdf
 ---
 
-## TL;DR
+## The lede
 - **East Point Commons development** progresses with approvals for rezoning 87 acres to Planned Business and 98 acres to Planned Industrial, plus preliminary and final plat approvals
 - Planning Commission **recommended approval** (5-1 votes) for all four East Point Commons cases; one commissioner (Druckrey) consistently voted no over agricultural land loss concerns
 - **Public concern raised** about potential data center development and impacts (noise, lighting, traffic) on nearby residential areas; staff clarified strict zoning and landscaping requirements apply

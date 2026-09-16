@@ -28,7 +28,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/f9eae43a-6302-4f19-90a4-9b895f088a9f
 ---
 
-## TL;DR
+## The lede
 
 - Board scheduled to approve up to $12,000 for West Nile Virus equipment
 - Multiple policy approvals on agenda: GS Scale Analysis, IT Management Policy, and Temporary Weekly Claims Policy

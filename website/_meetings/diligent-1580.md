@@ -166,7 +166,7 @@ resources:
   url: https://boonecountyil.community.diligentoneplatform.com/document/1eed0f44-7799-402f-b401-3987323f577e
 ---
 
-## TL;DR
+## The lede
 
 - Board scheduled to approve $304,598.38 in county claims with abstentions noted for Chairman Johnson on specific highway and construction-related items
 - Courthouse renovation project Change Order #18 for $20,075.75 from Scandroli Construction on agenda for approval
