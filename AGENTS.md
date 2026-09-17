@@ -203,6 +203,21 @@ every cached record for nothing.
   migrated with `sed`. A model that ignores the instruction and emits `## TL;DR`
   again should be corrected in the prompt, not patched in `sitegen.py`.
 
+- **`website/index.md` is generated** by `ccs front-page` and overwritten on
+  every run. The briefs on it come from `data/meetings/<id>/briefs.json`, which
+  is gitignored cache — so the page is committed but its inputs are not, and
+  rebuilding it on a fresh clone needs `ccs brief` first.
+- Pins live in `docs/PINS.md`, parsed at runtime like `SCOPE.md`. A pin is
+  matched on the brief id, which is a hash of the headline — re-briefing a
+  meeting whose headline changes will dangle the pin, and `ccs front-page`
+  warns rather than silently dropping it.
+- `briefs.path_for()` derives the briefs file from `summary_path` rather than
+  storing a `briefs_path` on `MeetingRecord`. Storing it would mean calling
+  `manifest.upsert()` per meeting, which stamps `ingested_at = now` and would
+  falsify when each meeting was actually ingested.
+- The dispatch permalink shape lives in `sitegen.meeting_permalink()`. The
+  front page links dispatches too; don't write a second copy of it.
+
 ## Search
 
 - Pagefind indexes the built HTML after Jekyll runs, so it is not a Jekyll

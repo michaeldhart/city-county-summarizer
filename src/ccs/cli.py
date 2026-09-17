@@ -10,6 +10,11 @@ Commands:
   ccs ingest <source>:<key>             re-ingest a specific meeting, updating the manifest
                                         diligent:<numeric id>, bccd:YYYYMMDD, swcd:YYYYMMDD
   ccs backfill-resources                fill in the Resources list on older records (no Claude calls)
+  ccs brief                             write front-page briefs for meetings in a window (default: last 35 days)
+  ccs brief --since YYYY-MM-DD --only bccd
+  ccs front-page                        rank briefs in a window and write the front page
+  ccs front-page --no-rerank            skip the ranking Claude call (deterministic, free)
+  ccs front-page --list-briefs          print every brief id in the window (for docs/PINS.md)
   ccs build-site                        regenerate website/_bodies and website/_meetings from the manifest
 """
 from __future__ import annotations
@@ -18,7 +23,8 @@ import argparse
 import sys
 from datetime import date, timedelta
 
-from . import config, diligent, general, manifest, report, sitegen, sources, summarize
+from . import (briefs, config, diligent, frontpage, general, manifest, report, sitegen,
+               sources, summarize)
 from .config import body_for_type_id, load_env, tracked_bodies
 
 
@@ -52,6 +58,26 @@ def main(argv: list[str] | None = None) -> int:
     p_backfill.add_argument("--only", default=None,
                             help="Comma-separated body ids, sources, or jurisdictions")
 
+    p_brief = sub.add_parser(
+        "brief", help="Write front-page briefs for meetings in a window")
+    p_brief.add_argument("--since", type=_parse_date, default=None,
+                         help="Window start (default: 35 days ago)")
+    p_brief.add_argument("--only", default=None,
+                         help="Comma-separated body ids, sources, or jurisdictions")
+    p_brief.add_argument("--force", action="store_true",
+                         help="Re-write briefs even where the summary is unchanged")
+
+    p_front = sub.add_parser(
+        "front-page", help="Rank recent briefs and write the front page")
+    p_front.add_argument("--count", type=int, default=None,
+                         help=f"Briefs on the page (default: {config.FRONT_PAGE_BRIEFS})")
+    p_front.add_argument("--window-days", type=int, default=None,
+                         help=f"How far back to look (default: {config.FRONT_PAGE_WINDOW_DAYS})")
+    p_front.add_argument("--no-rerank", action="store_true",
+                         help="Skip the ranking Claude call; use the deterministic order")
+    p_front.add_argument("--list-briefs", action="store_true",
+                         help="Print every brief id in the window and exit, for pinning")
+
     sub.add_parser("build-site", help="Regenerate the Jekyll site's content from the manifest")
 
     args = parser.parse_args(argv)
@@ -65,6 +91,11 @@ def main(argv: list[str] | None = None) -> int:
         return _cmd_ingest(args.meeting_id)
     if args.command == "backfill-resources":
         return _cmd_backfill_resources(_parse_only(args.only))
+    if args.command == "brief":
+        return _cmd_brief(args.since, _parse_only(args.only), args.force)
+    if args.command == "front-page":
+        return _cmd_front_page(args.count, args.window_days,
+                               not args.no_rerank, args.list_briefs)
     if args.command == "build-site":
         return _cmd_build_site()
     parser.error(f"unknown command {args.command}")
@@ -206,6 +237,78 @@ def _cmd_backfill_resources(only: set | None) -> int:
         print(f"{partial} were only partly reconstructed — the source index or the "
               f"cached agenda no longer covers them.")
     print("Run `ccs build-site` to refresh the site.")
+    return 0
+
+
+def _cmd_brief(since: date | None, only: set | None, force: bool) -> int:
+    since = since or (date.today() - timedelta(days=35))
+    if _no_match(only):
+        return 2
+    wanted = {b.id for b in report.select_bodies(only)}
+    records = [r for r in manifest.load().values()
+               if r.body_id in wanted and r.date >= since.isoformat()]
+    records.sort(key=lambda r: r.date)
+    if not records:
+        print(f"No ingested meetings on or after {since}. Nothing to brief.")
+        return 0
+
+    print(f"Briefing {len(records)} meeting(s) from {since} onward\n")
+    written = skipped = failed = total = 0
+    for record in records:
+        summary = briefs.summary_text_for(record)
+        label = f"{record.date}  {record.body_id}"
+        if summary is None:
+            print(f"  {label}  — no summary on disk, skipped")
+            skipped += 1
+            continue
+        if not force and briefs.is_current(record, summary):
+            print(f"  {label}  — unchanged, skipped")
+            skipped += 1
+            continue
+        items = briefs.generate(record)
+        if not items:
+            print(f"  {label}  — FAILED (no usable briefs returned)")
+            failed += 1
+            continue
+        briefs.write(record, items, briefs.fingerprint(summary))
+        kinds = ", ".join(b.kind for b in items)
+        print(f"  {label}  — {len(items)} brief(s) [{kinds}]")
+        written += 1
+        total += len(items)
+
+    print(f"\n{total} brief(s) across {written} meeting(s). "
+          f"{skipped} skipped, {failed} failed.")
+    return 1 if failed and not written else 0
+
+
+def _cmd_front_page(count: int | None, window_days: int | None,
+                    rerank: bool, list_briefs: bool) -> int:
+    count = count or config.FRONT_PAGE_BRIEFS
+    window_days = window_days or config.FRONT_PAGE_WINDOW_DAYS
+
+    if list_briefs:
+        cands = frontpage.all_candidates()
+        in_window, days, _ = frontpage.select_window(cands, date.today(), count, window_days)
+        for c in sorted(in_window, key=lambda c: c.sort_key):
+            print(f"`{c.brief.id}`  [{c.brief.kind} {c.brief.score}]  {c.brief.headline}")
+        print(f"\n{len(in_window)} brief(s) in the last {days} days.")
+        return 0
+
+    if not frontpage.all_candidates():
+        print("No briefs found. Run `ccs brief` first.", file=sys.stderr)
+        return 1
+
+    report_ = frontpage.build(count=count, window_days=window_days, rerank=rerank)
+    for bid in report_["dangling_pins"]:
+        print(f"warning: pinned brief `{bid}` no longer exists — it was probably "
+              f"re-written under a new headline. Update docs/PINS.md.", file=sys.stderr)
+    if report_["widened"]:
+        print(f"Quiet stretch: widened the window to {report_['window_days']} days "
+              f"(back to {report_['window_start']}) to fill the page.")
+    print(f"Wrote {frontpage.INDEX_PATH.relative_to(config.REPO_ROOT)} — "
+          f"{report_['selected']} brief(s) from {report_['in_window']} in window "
+          f"({report_['total']} in the archive)"
+          + (f", {report_['pinned']} pinned" if report_["pinned"] else ""))
     return 0
 
 

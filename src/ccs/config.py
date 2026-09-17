@@ -28,6 +28,19 @@ HTTP_HEADERS = {
 
 CLAUDE_MODEL = "claude-sonnet-4-5"
 
+# Front-page assembly. The window and the count are the two knobs that decide how
+# much goes into Claude and how much fits on the page; widen or narrow either
+# rather than editing the ranking.
+BRIEF_MAX_PER_MEETING = 3
+FRONT_PAGE_WINDOW_DAYS = 30
+FRONT_PAGE_BRIEFS = 12
+
+# The folio line's volume. Bumped by hand each January. Issue numbers keep
+# climbing across volumes rather than resetting the way a print paper's do —
+# resetting would collide filenames in website/_front_pages/ and muddy the rule
+# that deleting issue N and re-running gives you a new issue N.
+FRONT_PAGE_VOLUME = 1
+
 
 @dataclass(frozen=True)
 class Jurisdiction:

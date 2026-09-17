@@ -28,6 +28,23 @@ BODIES_DIR = WEBSITE_DIR / "_bodies"
 MEETINGS_DIR = WEBSITE_DIR / "_meetings"
 
 
+def meeting_slug(meeting_id: str) -> str:
+    return meeting_id.replace(":", "-")
+
+
+def body_permalink(body_id: str) -> str:
+    return f"/bodies/{body_id}/"
+
+
+def meeting_permalink(body_id: str, meeting_id: str) -> str:
+    """The site path for one dispatch.
+
+    Defined here rather than inline because the front page links to dispatches
+    too, and two copies of a URL shape drift the first time one of them changes.
+    """
+    return f"/bodies/{body_id}/meetings/{meeting_slug(meeting_id)}/"
+
+
 def build_site_content() -> tuple[int, int]:
     """Write `_bodies/*.md` and `_meetings/*.md`. Returns (body_count, meeting_count)."""
     bodies = tracked_bodies()
@@ -69,18 +86,18 @@ def _write_body_doc(body: Body) -> None:
         "sort_key": "{:02d}-{:03d}".format(
             JURISDICTION_ORDER[jurisdiction.id], BODY_ORDER[body.id]
         ),
-        "permalink": f"/bodies/{body.id}/",
+        "permalink": body_permalink(body.id),
     }
     _write_doc(BODIES_DIR / f"{body.id}.md", front_matter, "")
 
 
 def _write_meeting_doc(record: manifest.MeetingRecord) -> None:
-    slug = record.id.replace(":", "-")
+    slug = meeting_slug(record.id)
     front_matter = {
         "title": clean_meeting_title(record.title) or record.body_id,
         "body_id": record.body_id,
         "date": record.date,
-        "permalink": f"/bodies/{record.body_id}/meetings/{slug}/",
+        "permalink": meeting_permalink(record.body_id, record.id),
     }
     if record.url:
         front_matter["source_url"] = record.url
