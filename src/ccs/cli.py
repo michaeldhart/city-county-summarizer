@@ -27,7 +27,7 @@ from datetime import date, timedelta
 
 from . import (briefs, config, diligent, frontpage, general, manifest, report, sitegen,
                sources, summarize)
-from .config import body_for_type_id, load_env, tracked_bodies
+from .config import body_for_meeting, load_env, tracked_bodies
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -185,7 +185,7 @@ def _ingest_diligent(source: str, base: str, key: str) -> int:
     if ref is None:
         print(f"error: no {source} meeting with id={target_id}", file=sys.stderr)
         return 1
-    body = body_for_type_id(source, ref.type_id)
+    body = body_for_meeting(source, ref.type_id, ref.title)
     if body is None:
         print(f"error: {source} type_id {ref.type_id} ('{ref.type_name}') isn't in the body registry",
               file=sys.stderr)

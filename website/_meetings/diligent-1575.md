@@ -1,8 +1,8 @@
 ---
 title: Boone County Regional Planning Commission Meeting
-body_id: board
+body_id: planning
 date: '2026-03-24'
-permalink: /bodies/board/meetings/diligent-1575/
+permalink: /bodies/planning/meetings/diligent-1575/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1575
 resources:
 - kind: portal

@@ -1,8 +1,8 @@
 ---
 title: Committee of the Whole Meeting - Finance
-body_id: board
+body_id: cotw-finance
 date: '2026-02-12'
-permalink: /bodies/board/meetings/diligent-1586/
+permalink: /bodies/cotw-finance/meetings/diligent-1586/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1586
 resources:
 - kind: portal

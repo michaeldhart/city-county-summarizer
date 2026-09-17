@@ -1,9 +1,9 @@
 ---
 title: Advisory Committtee for the Administration of the Enterprise Zone Enterprise
   Zone
-body_id: board
+body_id: enterprise-zone
 date: '2026-04-09'
-permalink: /bodies/board/meetings/diligent-1572/
+permalink: /bodies/enterprise-zone/meetings/diligent-1572/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1572
 resources:
 - kind: portal

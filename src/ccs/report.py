@@ -11,7 +11,7 @@ from . import diligent, manifest, sources, summarize, youtube
 from .config import (
     JURISDICTIONS_BY_ID,
     Body,
-    body_for_type_id,
+    body_for_meeting,
     is_cancelled,
     tracked_bodies,
 )
@@ -70,7 +70,8 @@ def check_sources(since: date, today: date | None = None,
         src = sources.SOURCES.get(body.source)
         if isinstance(src, sources.DiligentSource):
             has = any(
-                m.type_id in body.type_ids and not is_cancelled(m.title)
+                body_for_meeting(body.source, m.type_id, m.title) is body
+                and not is_cancelled(m.title)
                 for m in dil_by_source.get(body.source, [])
             )
         elif isinstance(src, sources.PdfIndexSource):
@@ -138,7 +139,7 @@ def _collect_recap(dil_by_source: dict[str, list[diligent.MeetingRef]],
                 continue
             if is_cancelled(m.title):
                 continue
-            body = body_for_type_id(source, m.type_id)
+            body = body_for_meeting(source, m.type_id, m.title)
             if body is None or body.id not in tracked_ids:
                 continue
             mid = manifest.make_id(source, str(m.id))
