@@ -37,6 +37,13 @@ collections:
     output: true
   meetings:
     output: true
+  # Back issues. Every `ccs front-page` run writes a numbered edition here and
+  # copies the newest one to index.md, so the front page has a history rather
+  # than being overwritten into nothing. output: true publishes them at
+  # /issues/NNN/ — see issues.md for the archive listing.
+  front_pages:
+    output: true
+    permalink: /issues/:name/
 
 defaults:
   # Ordinary pages had no layout at all, so about.md and about/*.md were
@@ -59,6 +66,15 @@ defaults:
       type: "meetings"
     values:
       layout: meeting
+  # Both a back issue and index.md render through `front-page`. Note it carries
+  # no data-pagefind-body: an issue is entirely pointers to dispatches that are
+  # already indexed, so indexing issues too would double every search result.
+  - scope:
+      path: ""
+      type: "front_pages"
+    values:
+      layout: front-page
+      archived: true
 
 # The wire itself: an Atom feed of every dispatch at /feed/meetings.xml
 # (jekyll-feed ships as a minima dependency already). The masthead and the

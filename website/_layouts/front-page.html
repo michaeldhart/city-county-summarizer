@@ -1,0 +1,22 @@
+---
+layout: default
+---
+{%- comment -%}
+  The front page, and every back issue of it — index.md and _front_pages/NNN.md
+  render through here so there is one place to style them in the layout pass.
+
+  No data-pagefind-body: an issue is pointers to dispatches that are already in
+  the search index, so indexing issues as well would return every story twice.
+{%- endcomment -%}
+
+{% if page.archived %}
+<p class="issue-banner">This is back issue No. {{ page.issue }}, published
+{{ page.generated | date: "%B %-d, %Y" }}. The current edition is on the
+<a href="{{ '/' | relative_url }}">front page</a>.</p>
+{% endif %}
+
+{{ content }}
+
+{% if page.archived %}
+<p><a href="{{ '/issues/' | relative_url }}">&larr; All back issues</a></p>
+{% endif %}

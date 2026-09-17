@@ -27,3 +27,7 @@ website/.bundle/
 .DS_Store
 .idea/
 .vscode/
+
+# Claude Code: launch.json is the shared local-preview config and IS tracked;
+# settings.local.json is a personal permission allowlist and is not.
+.claude/settings.local.json

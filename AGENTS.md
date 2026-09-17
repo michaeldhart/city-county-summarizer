@@ -203,10 +203,38 @@ every cached record for nothing.
   migrated with `sed`. A model that ignores the instruction and emits `## TL;DR`
   again should be corrected in the prompt, not patched in `sitegen.py`.
 
-- **`website/index.md` is generated** by `ccs front-page` and overwritten on
-  every run. The briefs on it come from `data/meetings/<id>/briefs.json`, which
-  is gitignored cache — so the page is committed but its inputs are not, and
-  rebuilding it on a fresh clone needs `ccs brief` first.
+- **`website/index.md` is generated** by `ccs front-page`, which writes
+  `_front_pages/NNN.md` first and copies it to index.md. The two carry identical
+  bodies and differ only in front matter, so a back issue is the edition that
+  actually ran rather than a reconstruction of it.
+- Issue numbers come from `max(existing) + 1`, scanned from the directory. That
+  is deliberate and load-bearing: deleting an issue and re-running reuses its
+  number. Do not replace it with a stored counter.
+- `index.md` sets `layout: front-page` explicitly. Left to the site defaults an
+  ordinary page gets `layout: page`, which wraps it in a `data-pagefind-body`
+  and would put every front-page headline into the search index a second time.
+  The `front-page` layout deliberately has no such wrapper.
+- The briefs on the page come from `data/meetings/<id>/briefs.json`, which is
+  gitignored cache — so the page and its back issues are committed but their
+  inputs are not. Rebuilding the front page on a fresh clone needs `ccs brief`
+  first; the already-published issues are unaffected, which is part of why they
+  are kept.
+- **A back issue freezes the markup it was published with.** `_front_pages/NNN.md`
+  stores rendered HTML, not a template, so changing `_render_body` or the
+  stylesheet only affects issues published *after* the change — an old issue
+  keeps rendering the way it did the day it ran. That is correct for a real
+  archive and confusing during development: if an issue looks unstyled, it
+  predates the layout. Delete and republish it rather than trying to patch it.
+- The front page is `.front-page`-scoped in `main.scss` and is the only serif
+  on the site. Every brief is a discrete grid item, never CSS `column-count`
+  text flow — a brief split across a column break would strand its headline or
+  its link away from its body, and the link is the point of the item.
+- The vertical column rules use `nth-child(3n+1)` / `nth-child(4n+1)` to drop
+  the rule on the first item of each row. That only works because the column
+  count is fixed per breakpoint; if you switch the rows to `auto-fit`, the
+  arithmetic silently stops matching the rendered rows.
+- `.claude/launch.json` runs the local preview (`bundle exec jekyll serve
+  --skip-initial-build --no-watch` from `website/`) on port 4000.
 - Pins live in `docs/PINS.md`, parsed at runtime like `SCOPE.md`. A pin is
   matched on the brief id, which is a hash of the headline — re-briefing a
   meeting whose headline changes will dangle the pin, and `ccs front-page`

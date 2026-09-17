@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "wire",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd website && bundle exec jekyll serve --skip-initial-build --no-watch"],
+      "port": 4000
+    }
+  ]
+}

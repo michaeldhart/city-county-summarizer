@@ -163,3 +163,224 @@ $wide-wrapper: 1120px;
   color: $grey-color;
   @include relative-font-size(0.8125);
 }
+
+// ---------------------------------------------------------------------------
+// The front page
+//
+// Set after early newspapers, which were almost entirely text in vertical
+// columns: a serif face, a ruled flag, and a density gradient down the page —
+// one lead across the full measure, three at a readable width, then the rest
+// set small in four columns.
+//
+// Scoped entirely under .front-page so none of it reaches the dispatches, the
+// beats page or the backgrounders, which stay in minima's sans.
+//
+// Every brief is a discrete grid item rather than text flowing through CSS
+// columns. Flowing columns are more authentically old-timey, but a brief split
+// across a column break would strand its headline or its link in a different
+// column from its body — and the link is the whole purpose of the item.
+// ---------------------------------------------------------------------------
+
+$front-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+              "Times New Roman", Times, serif;
+$rule: 1px solid $grey-color-light;
+$heavy-rule: 3px double $text-color;
+
+.front-page {
+  font-family: $front-serif;
+
+  // Wider than minima's 740px measure: three and four column rows need room.
+  // Matches the meeting page's wide wrapper so the two don't disagree.
+  @media screen and (min-width: 900px) {
+    max-width: none;
+  }
+
+  a { text-decoration: none; }
+  a:hover { text-decoration: underline; }
+}
+
+@media screen and (min-width: 900px) {
+  .wrapper:has(.front-page) {
+    max-width: calc(1120px - (#{$spacing-unit} * 2));
+  }
+}
+
+// --- the flag: nameplate, slogan, folio ------------------------------------
+
+.flag {
+  text-align: center;
+  margin-bottom: $spacing-unit;
+  padding-bottom: math.div($spacing-unit, 2);
+  border-bottom: $heavy-rule;
+}
+
+.front-page .nameplate {
+  margin: 0;
+  font-family: $front-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  @include relative-font-size(3.25);
+
+  @media screen and (max-width: $on-palm) {
+    @include relative-font-size(2);
+  }
+}
+
+.slogan {
+  margin: math.div($spacing-unit, 4) 0 0;
+  font-style: italic;
+  color: $grey-color-dark;
+  @include relative-font-size(1.0625);
+}
+
+.folio {
+  margin: math.div($spacing-unit, 3) 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $grey-color;
+  @include relative-font-size(0.75);
+
+  a { color: inherit; }
+}
+
+.folio-note {
+  margin: math.div($spacing-unit, 3) 0 0;
+  text-align: center;
+  font-style: italic;
+  color: $grey-color;
+  @include relative-font-size(0.875);
+}
+
+// --- briefs ----------------------------------------------------------------
+
+.brief {
+  // The one-column phone case is the default; rules between items are
+  // horizontal here, since vertical rules need columns to sit between.
+  padding-bottom: math.div($spacing-unit, 2);
+  margin-bottom: math.div($spacing-unit, 2);
+  border-bottom: $rule;
+
+  &:last-child { border-bottom: 0; }
+}
+
+.brief-headline {
+  margin: 0 0 math.div($spacing-unit, 4);
+  font-family: $front-serif;
+  font-weight: 700;
+  line-height: 1.15;
+
+  a { color: $text-color; }
+}
+
+.brief-body {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.brief-credit {
+  margin: math.div($spacing-unit, 4) 0 0;
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+  color: $grey-color;
+  @include relative-font-size(0.8125);
+}
+
+.brief-lead {
+  .brief-headline { @include relative-font-size(2); }
+  .brief-body     { @include relative-font-size(1.25); }
+
+  @media screen and (max-width: $on-palm) {
+    .brief-headline { @include relative-font-size(1.5); }
+    .brief-body     { @include relative-font-size(1.0625); }
+  }
+}
+
+.brief-major .brief-headline { @include relative-font-size(1.375); }
+.brief-major .brief-body     { @include relative-font-size(1); }
+
+.brief-minor .brief-headline { @include relative-font-size(1.0625); }
+.brief-minor .brief-body     { @include relative-font-size(0.875); line-height: 1.45; }
+
+// --- the column rows -------------------------------------------------------
+//
+// One column on a phone at every tier: multi-column text at 375px is
+// unreadable however period-correct it is. Two columns on a tablet, then the
+// real gradient — three then four — only where there is width for it.
+
+.brief-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+@media screen and (min-width: $on-palm) {
+  .brief-row {
+    column-gap: $spacing-unit;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .brief-row .brief {
+    border-bottom: $rule;
+    padding-left: math.div($spacing-unit, 2);
+    border-left: $rule;
+  }
+  // First item in each row owns the left edge, so it takes no rule and no
+  // indent. The column count is fixed per breakpoint, which is what makes
+  // nth-child arithmetic reliable here.
+  .brief-row .brief:nth-child(2n + 1) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .brief-row-major { grid-template-columns: repeat(3, 1fr); }
+  .brief-row-minor { grid-template-columns: repeat(4, 1fr); }
+
+  .brief-row .brief {
+    padding-left: math.div($spacing-unit, 2);
+    border-left: $rule;
+  }
+  .brief-row-major .brief:nth-child(2n + 1),
+  .brief-row-minor .brief:nth-child(2n + 1) {
+    padding-left: math.div($spacing-unit, 2);
+    border-left: $rule;
+  }
+  .brief-row-major .brief:nth-child(3n + 1),
+  .brief-row-minor .brief:nth-child(4n + 1) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+.brief-lead {
+  border-bottom: $rule;
+  padding-bottom: math.div($spacing-unit, 2);
+  margin-bottom: math.div($spacing-unit, 2);
+}
+
+// --- foot ------------------------------------------------------------------
+
+.front-page-foot {
+  margin-top: $spacing-unit;
+  padding-top: math.div($spacing-unit, 2);
+  border-top: $heavy-rule;
+}
+
+.front-page-disclosure {
+  color: $grey-color;
+  @include relative-font-size(0.8125);
+}
+
+.issue-banner {
+  padding: math.div($spacing-unit, 3) math.div($spacing-unit, 2);
+  margin-bottom: $spacing-unit;
+  background-color: $grey-color-light;
+  border-radius: 3px;
+  @include relative-font-size(0.875);
+}
+
+.issue-lead {
+  font-style: italic;
+  color: $grey-color-dark;
+}

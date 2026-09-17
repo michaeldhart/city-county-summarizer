@@ -15,6 +15,8 @@ Commands:
   ccs front-page                        rank briefs in a window and write the front page
   ccs front-page --no-rerank            skip the ranking Claude call (deterministic, free)
   ccs front-page --list-briefs          print every brief id in the window (for docs/PINS.md)
+  ccs front-page --list                 list back issues, newest first
+  ccs front-page --publish 2            make an existing issue the live front page again
   ccs build-site                        regenerate website/_bodies and website/_meetings from the manifest
 """
 from __future__ import annotations
@@ -77,6 +79,10 @@ def main(argv: list[str] | None = None) -> int:
                          help="Skip the ranking Claude call; use the deterministic order")
     p_front.add_argument("--list-briefs", action="store_true",
                          help="Print every brief id in the window and exit, for pinning")
+    p_front.add_argument("--list", action="store_true", dest="list_issues",
+                         help="List back issues and exit")
+    p_front.add_argument("--publish", type=int, default=None, metavar="N",
+                         help="Re-publish an existing issue as the front page (no Claude call)")
 
     sub.add_parser("build-site", help="Regenerate the Jekyll site's content from the manifest")
 
@@ -95,7 +101,8 @@ def main(argv: list[str] | None = None) -> int:
         return _cmd_brief(args.since, _parse_only(args.only), args.force)
     if args.command == "front-page":
         return _cmd_front_page(args.count, args.window_days,
-                               not args.no_rerank, args.list_briefs)
+                               not args.no_rerank, args.list_briefs,
+                               args.list_issues, args.publish)
     if args.command == "build-site":
         return _cmd_build_site()
     parser.error(f"unknown command {args.command}")
@@ -282,9 +289,30 @@ def _cmd_brief(since: date | None, only: set | None, force: bool) -> int:
 
 
 def _cmd_front_page(count: int | None, window_days: int | None,
-                    rerank: bool, list_briefs: bool) -> int:
+                    rerank: bool, list_briefs: bool,
+                    list_issues: bool = False, publish: int | None = None) -> int:
     count = count or config.FRONT_PAGE_BRIEFS
     window_days = window_days or config.FRONT_PAGE_WINDOW_DAYS
+
+    if list_issues:
+        issues = frontpage.list_issues()
+        if not issues:
+            print("No issues yet. Run `ccs front-page` to publish the first.")
+            return 0
+        for i in issues:
+            live = "  ← live" if i["live"] else ""
+            print(f"No. {i['issue']:<4} {i['generated'][:10]}  "
+                  f"{i['brief_count']:>2} briefs  {i['lead']}{live}")
+        print(f"\n{len(issues)} issue(s). Next run publishes No. {frontpage.next_issue()}.")
+        return 0
+
+    if publish is not None:
+        if not frontpage.publish(publish):
+            print(f"error: no issue No. {publish}. `ccs front-page --list` shows what exists.",
+                  file=sys.stderr)
+            return 1
+        print(f"Published No. {publish} as the front page.")
+        return 0
 
     if list_briefs:
         cands = frontpage.all_candidates()
@@ -305,10 +333,12 @@ def _cmd_front_page(count: int | None, window_days: int | None,
     if report_["widened"]:
         print(f"Quiet stretch: widened the window to {report_['window_days']} days "
               f"(back to {report_['window_start']}) to fill the page.")
-    print(f"Wrote {frontpage.INDEX_PATH.relative_to(config.REPO_ROOT)} — "
+    print(f"Published No. {report_['issue']} — "
           f"{report_['selected']} brief(s) from {report_['in_window']} in window "
           f"({report_['total']} in the archive)"
           + (f", {report_['pinned']} pinned" if report_["pinned"] else ""))
+    print(f"  {frontpage.issue_path(report_['issue']).relative_to(config.REPO_ROOT)}"
+          f" → {frontpage.INDEX_PATH.relative_to(config.REPO_ROOT)}")
     return 0
 
 
