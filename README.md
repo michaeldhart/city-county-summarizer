@@ -366,3 +366,30 @@ For deeper background, [`docs/SPIKE_NOTES.md`](docs/SPIKE_NOTES.md) has the
 end-to-end validation notes from the initial build, including the
 non-obvious bits (BoardDocs endpoint quirks, yt-dlp player-client workaround,
 the "minutes live on the next meeting's agenda" pattern).
+
+## Licensing
+
+Two different things live in this repository, and they are licensed
+differently.
+
+**The software** — `src/`, `website/_layouts/`, `website/_includes/`,
+`website/assets/`, `.github/` — is licensed under the
+[Apache License 2.0](LICENSE). Use it, fork it, run it for your own county.
+Keep the copyright and license notice, say so in files you modify (section
+4(b)), and carry [`NOTICE`](NOTICE) into derivative works (section 4(d)).
+
+**The published content** — everything generated under `website/_meetings/`,
+`website/_bodies/`, `website/_front_pages/` and `website/about/` — is not
+covered by that license and carries no copyright claim. It is written by a
+machine from public records, with no human author, so there is nothing here to
+reserve. Reuse it freely; a credit to The Belvidere Wire is appreciated and not
+required.
+
+Note what neither of those reaches: running this pipeline and publishing the
+site it produces is not distributing the software, so nothing obliges a fork to
+publish its changes or to credit this project. If you build something on it,
+consider doing both anyway.
+
+"The Belvidere Wire" is the publication's name, not part of the grant — the
+Apache License explicitly conveys no trademark rights (section 6). A site built
+from this code should publish under its own masthead.

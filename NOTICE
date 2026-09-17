@@ -1,0 +1,21 @@
+The Belvidere Wire
+Copyright 2026 Michael Hart
+
+This product includes software developed for The Belvidere Wire
+(https://github.com/michaeldhart/city-county-summarizer).
+
+Licensed under the Apache License, Version 2.0. See LICENSE.
+
+---
+
+This NOTICE covers the software in this repository only.
+
+The dispatches, briefs and backgrounders published under website/ are written
+by a machine from public records — agendas, minutes and meeting video published
+by governments in Boone County, Illinois. They are not covered by the Apache
+License, carry no claim of authorship, and are free to reuse. A credit to The
+Belvidere Wire is appreciated and not required.
+
+"The Belvidere Wire" is the name of this publication. The Apache License grants
+no trademark rights (section 6): the software may be reused freely, but a site
+built from it should publish under its own name.

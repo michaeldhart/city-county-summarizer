@@ -133,12 +133,53 @@ match the dispatch it links to. The dispatch is the one to trust.
 - **The wire goes quiet.** When too few meetings fall inside the window, it
   widens until the page fills, and the folio line says how far back it reached.
 
+## What this site records about you
+
+{% if site.goatcounter_code -%}
+This site counts page views, using [GoatCounter](https://www.goatcounter.com),
+an open-source analytics service. It sets no cookies and collects no personal
+data, which is why you were not asked to dismiss a banner to read this. What it
+records is the page, where you arrived from, your country, your browser and
+operating system, and the size of your screen — counted in aggregate, never
+tied to a person, never sold and never shared.
+
+You do not have to take that on trust: the numbers are
+[published in full](https://{{ site.goatcounter_code }}.goatcounter.com), the same view the publisher
+has. A publication that asks you to believe a machine wrote it should not keep
+its readership a secret.
+
+{% else -%}
+Nothing is counted. This site runs no analytics, sets no cookies, and has no
+record that you were here.
+
+{% endif -%}
+Two things are not covered by that, and both are worth saying plainly.
+
+**Reading by feed is invisible here.** [The wire]({{ '/feed/meetings.xml' | relative_url }}) and
+[the edition]({{ '/feed/issues.xml' | relative_url }}) are fetched by your reader rather than loaded as
+a page, and nothing on this site counts those. Whoever serves the files can see
+the request, as with any web address.
+
+**Searching stays in your browser.** The search index is downloaded and queried
+on your machine rather than on a server, so what you type is not sent anywhere
+as a search.
+
+The one place this site asks for anything about you is the contact form, which
+is a Google Form. Name and email are optional there — if you give them, they go
+to Google along with whatever you write, and a correction does not need them.
+
 ## Corrections
 
 If a dispatch gets something wrong, the underlying documents are linked at the
 top of the page — start there, then
-[open an issue](https://github.com/michaeldhart/city-county-summarizer/issues).
-The same goes for a brief, and for the front page having led with the wrong
-thing: the ranking is a judgment, and judgments can be argued with.
-Corrections are made by re-writing the dispatch from source, and the code that
-produces all of this is public.
+[send a correction](https://docs.google.com/forms/d/e/1FAIpQLScxpZW5UnwwEPaKGP5ls7szdGotiMh_0GA6FJIaHnRAG2WJiQ/viewform). The same goes for a brief, and for the front page
+having led with the wrong thing: the ranking is a judgment, and judgments can
+be argued with.
+
+Corrections are made by re-writing the dispatch from source, not by editing the
+sentence that was wrong — the dispatch has to keep matching the record it came
+from.
+
+That form is also the way to reach a person about anything else. Where the
+fault is in the machinery rather than in one dispatch, the code that produces
+all of this is public and can be [raised as an issue](https://github.com/michaeldhart/city-county-summarizer/issues) instead.

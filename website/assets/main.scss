@@ -124,8 +124,9 @@ $wide-wrapper: 1120px;
 // Masthead voice
 //
 // The front page reads as a publication rather than an index: an oversized
-// masthead, a standfirst under it, and the etymology set as a colophon at the
-// foot. None of these appear anywhere else, so they carry no layout risk.
+// masthead, a standfirst under it, and a colophon at the foot naming what the
+// wire covers and where corrections go. None of these appear anywhere else, so
+// they carry no layout risk.
 // ---------------------------------------------------------------------------
 
 .masthead {
@@ -383,4 +384,72 @@ $heavy-rule: 3px double $text-color;
 .issue-lead {
   font-style: italic;
   color: $grey-color-dark;
+}
+
+// ---------------------------------------------------------------------------
+// Site footer
+//
+// The markup is ours — website/_includes/footer.html overrides minima's, whose
+// author/email/social columns this site never sets. Three rows, all quiet: who
+// this is, the way back into the publication, and who to tell when it is
+// wrong. minima's .site-footer rule still supplies the top rule and padding;
+// its .footer-col* rules now match nothing and are simply unused.
+// ---------------------------------------------------------------------------
+
+.site-footer {
+  color: $grey-color;
+  @include relative-font-size(0.875);
+
+  a {
+    color: $grey-color-dark;
+  }
+}
+
+.footer-flag {
+  margin-bottom: math.div($spacing-unit, 4);
+
+  .p-name {
+    font-weight: 600;
+    color: $text-color;
+  }
+
+  // The separator belongs to the slogan rather than sitting in the markup, so
+  // the name reads alone to a screen reader.
+  .footer-slogan::before {
+    content: " · ";
+    color: $grey-color;
+  }
+}
+
+.footer-links {
+  margin-bottom: math.div($spacing-unit, 4);
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline;
+
+    // Outside the anchor, so the dot is neither underlined nor clickable.
+    + li::before {
+      content: " · ";
+      color: $grey-color;
+    }
+  }
+}
+
+.footer-accountability {
+  margin-bottom: math.div($spacing-unit, 4);
+}
+
+// Smaller again than the rest of the footer: this is the row a reader consults
+// rather than reads. It still has to be legible — the affiliation disclaimer
+// is the one line here that exists to prevent a misunderstanding.
+.footer-fine-print {
+  margin-bottom: 0;
+  color: $grey-color;
+  @include relative-font-size(0.8125);
 }

@@ -15,7 +15,7 @@ permalink: /beats/
 <h1>Beats</h1>
 
 <p class="standfirst">Every body The Belvidere Wire covers, grouped by the
-government it belongs to — twenty-two beats across five of them. Each links to
+government it belongs to — twenty-two beats across six of them. Each links to
 every dispatch filed from it, and each government links to its backgrounder:
 how it is organized, who currently serves, and when its bodies meet.</p>
 

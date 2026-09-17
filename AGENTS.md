@@ -141,6 +141,11 @@ I'll actually trip on" digest.
   and `.count` appear in the templates but have no rules yet. `.masthead`,
   `.standfirst` and `.colophon` are front-page-only; `.byline` is on every
   dispatch.
+- `website/_includes/footer.html` overrides minima's footer the same way, at
+  the same path. The theme's version prints `site.author`/`site.email`/social
+  columns this site never sets, so it fell back to repeating `site.title` and
+  printing `site.description` on screen. Ours is name, link row, corrections.
+  minima's `.footer-col*` rules are now dead — nothing emits those classes.
 - `website/` IS tracked, including the generated `_bodies/`, `_meetings/` and
   `about/` content. Regenerating produces diffs each time — that's intentional,
   since the site is the durable archive: the Park District page drops a year

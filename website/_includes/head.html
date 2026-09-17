@@ -1,0 +1,25 @@
+{%- comment -%}
+  Overrides minima's _includes/head.html at the same path, as with footer.html.
+  minima 2.5 has no custom-head.html hook — that arrived in minima 3 — so the
+  whole head is copied here. Everything above the analytics block is the
+  theme's, unchanged; keep it that way, and diff against the gem after a theme
+  bump.
+
+  The counter is gated twice. `jekyll.environment == 'production'` is only true
+  in the Pages workflow (a local `jekyll build` or `serve` defaults to
+  development), so previewing the site never records a hit. And an unset
+  goatcounter_code renders nothing at all, so the site ships un-instrumented
+  until there is a code to point at.
+{%- endcomment -%}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- seo -%}
+  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  {%- feed_meta -%}
+  {%- if jekyll.environment == 'production' and site.goatcounter_code -%}
+  <script data-goatcounter="https://{{ site.goatcounter_code }}.goatcounter.com/count"
+          async src="https://gc.zgo.at/count.js"></script>
+  {%- endif -%}
+</head>

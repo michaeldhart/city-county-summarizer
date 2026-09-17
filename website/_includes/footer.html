@@ -1,0 +1,81 @@
+{%- comment -%}
+  Overrides minima's _includes/footer.html at the same path — the same
+  customization point assets/main.scss already uses for the stylesheet.
+
+  The theme's footer is built for a personal blog: an author, an email, social
+  icons. This site sets none of those, so it degraded into printing the site
+  title twice (minima falls back to site.title when site.author is unset), an
+  empty social-media list, and site.description on screen — which on the front
+  page restated the colophon immediately above it.
+
+  What replaces it is what a masthead footer is actually for: identification,
+  the way back into the publication, and who to tell when it is wrong.
+  site.description still does its real work in <meta> and in the feed; it just
+  no longer prints. The feed link matters most here — before this it was
+  reachable only from the foot of /beats/.
+{%- endcomment -%}
+<footer class="site-footer h-card">
+  <data class="u-url" href="{{ "/" | relative_url }}"></data>
+
+  <div class="wrapper">
+
+    <p class="footer-flag">
+      <span class="p-name">{{ site.title | escape }}</span>
+      <span class="footer-slogan">{{ site.tagline | escape }}</span>
+    </p>
+
+    <nav class="footer-links">
+      <ul>
+        <li><a href="{{ '/' | relative_url }}">Front page</a></li>
+        <li><a href="{{ '/beats/' | relative_url }}">Beats</a></li>
+        <li><a href="{{ '/issues/' | relative_url }}">Back issues</a></li>
+        <li><a href="{{ '/method/' | relative_url }}">How this is written</a></li>
+        <li><a href="{{ '/search/' | relative_url }}">Search</a></li>
+        <li><a href="{{ '/feed/meetings.xml' | relative_url }}">Subscribe to the wire</a></li>
+        <li><a href="{{ '/feed/issues.xml' | relative_url }}">Subscribe to the edition</a></li>
+      </ul>
+    </nav>
+
+    <p class="footer-accountability">Every dispatch links the documents it was
+      written from.
+      {%- if site.contact_url %}
+      <a href="{{ site.contact_url }}">Contact &amp; corrections</a> ·
+      {%- else %}
+      <a href="{{ '/method/#corrections' | relative_url }}">Corrections</a> ·
+      {%- endif %}
+      <a href="{{ '/method/#what-this-site-records-about-you' | relative_url }}">Privacy</a> ·
+      <a href="{{ site.repo_url }}">Source code</a> (Apache-2.0)
+    </p>
+
+    {%- comment -%}
+      The fine print, in this order deliberately.
+
+      The maintainer credit and the affiliation line are one sentence because
+      they are one claim: a named person is what independence means here. It
+      also answers the question every other page raises — nothing on this site
+      is signed by a human, so the reader is owed one name that is.
+
+      The affiliation half is the misreading with consequences: a publication
+      called The Belvidere Wire, filing on the council and the county board,
+      could otherwise be taken for something a government runs or sanctions.
+
+      The rights line claims nothing, which is the accurate position — the
+      dispatches have no human author, so there is no copyright in them to
+      reserve. See NOTICE and the Licensing section of README.md; the Apache
+      license over the code stops well short of this content.
+    {%- endcomment -%}
+    <p class="footer-fine-print">
+      An independent project created and maintained by
+      {%- if site.maintainer_url %}
+      <a href="{{ site.maintainer_url }}" rel="author">{{ site.maintainer | escape }}</a>.
+      {%- else %}
+      {{ " " }}{{ site.maintainer | escape }}.
+      {%- endif %}
+      Not affiliated with, endorsed by, or speaking for any government in Boone
+      County. Dispatches are machine-written from public records and free to
+      reuse.
+    </p>
+
+  </div>
+
+</footer>

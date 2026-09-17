@@ -13,9 +13,42 @@ baseurl: "/city-county-summarizer"
 
 title: The Belvidere Wire
 tagline: A first draft of the public record.
+
+# Linked from the footer of every page. The code that writes the site is part
+# of the disclosure, not a footnote to it.
+repo_url: https://github.com/michaeldhart/city-county-summarizer
+
+# Where readers reach a person: a form, since the corrections process is the
+# main thing standing between this site and being wrong in public, and GitHub
+# issues are the wrong front door for most of Belvidere. The footer's Contact
+# link renders only when this is set, so leaving it empty breaks nothing.
+contact_url: https://docs.google.com/forms/d/e/1FAIpQLScxpZW5UnwwEPaKGP5ls7szdGotiMh_0GA6FJIaHnRAG2WJiQ/viewform
+
+# The person behind the publication, named in the footer. Deliberately NOT
+# `author`, which jekyll-feed would stamp onto every entry in the feed — the
+# dispatches have no human author, and the feed should not say otherwise. This
+# is a maintainer credit for the project, not a byline on the writing.
+#
+# maintainer_url is for a personal site; the name links only once it is set.
+maintainer: Michael D. Hart
+maintainer_url:
+
+# Read by jekyll-feed as the author of every entry. A publication authoring its
+# own dispatches is the accurate claim — and without it each entry carried an
+# empty <author><name></name>, which RFC 4287 does not allow. Note this is the
+# publication, not a person: see `maintainer` above for why that distinction is
+# kept.
+author: The Belvidere Wire
+
+# GoatCounter: the site code only, not the full URL — _includes/head.html builds
+# https://<code>.goatcounter.com/count from it. Cookieless and with no personal
+# data, so it needs no consent banner; what it does collect is disclosed on
+# /method/, which is also gated on this key, so an un-instrumented build makes
+# no claim either way.
+goatcounter_code: thebelviderewire
 description: >-
   Machine-written dispatches from every public meeting in Boone County,
-  Illinois — 22 beats across five governments, filed from the official
+  Illinois — 22 beats across six governments, filed from the official
   agenda, minutes and meeting video, with every source linked.
 
 # minima builds its nav from every page carrying a title, in path order, which
@@ -82,3 +115,7 @@ defaults:
 feed:
   collections:
     - meetings
+  # jekyll-feed ships 10. A `ccs` run can file a dozen dispatches at once, and
+  # at 10 a reader who polls after such a run never sees the ones that fell off
+  # the end — which is the one thing a wire must not do.
+  posts_limit: 50

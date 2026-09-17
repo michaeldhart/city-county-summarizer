@@ -34,7 +34,7 @@ lead: "Residents pack council meeting over data center concerns"
 <article class="brief brief-minor"><h2 class="brief-headline"><a href="{{ '/bodies/belvidere-council/meetings/belvidere-council-20260908/' | relative_url }}">Council approves video gaming for Logan Avenue 7-Eleven</a></h2><p class="brief-body">City Council approved a special use permit allowing 7-Eleven at 707 Logan Avenue to add a video gaming area with alcohol consumption. The gaming space will have frosted walls and buzzer entry requiring ID verification. Two aldermen abstained, citing concerns about shared restrooms with general store patrons.</p><p class="brief-credit">City Council · Sep 8, 2026</p></article>
 </div>
 <footer class="front-page-foot">
-<p class="front-page-disclosure">Every brief on this page was written by Claude from the dispatch it links to, and ordered by ranking those briefs against each other. No human editor chose this page. <a href="{{ '/method/#how-the-front-page-is-chosen' | relative_url }}">How this page is chosen</a></p>
-<p class="colophon"><em>Belvidere, from</em> belvedere <em>— a structure built for the view.</em></p>
+<p class="front-page-disclosure">Every brief on this page was written by a machine from the dispatch it links to, and ordered by ranking those briefs against each other. No human editor chose this page. <a href="{{ '/method/#how-the-front-page-is-chosen' | relative_url }}">How this page is chosen</a></p>
+<p class="colophon">The Belvidere Wire follows <a href="{{ '/beats/' | relative_url }}">22 public bodies</a> across six Boone County governments.</p>
 </footer>
 </div>

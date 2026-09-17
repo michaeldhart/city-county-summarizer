@@ -15,6 +15,11 @@ kept as it was published — the briefs it led with, in the order it ran them.
 Regenerating the front page starts a new issue rather than overwriting the last
 one.</p>
 
+<p><a href="{{ '/feed/issues.xml' | relative_url }}">Subscribe to the edition</a>
+— one entry per issue, the briefs it led with. For every dispatch as it is
+filed, <a href="{{ '/feed/meetings.xml' | relative_url }}">subscribe to the
+wire</a> instead.</p>
+
 {% assign issues = site.front_pages | sort: "issue" | reverse %}
 {% if issues.size == 0 %}
   <p><em>No issues published yet.</em></p>

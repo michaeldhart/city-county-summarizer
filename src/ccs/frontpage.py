@@ -418,16 +418,46 @@ def _render_body(selected: list, today: date, window_start: date, widened: bool,
     parts += [
         '<footer class="front-page-foot">',
         '<p class="front-page-disclosure">Every brief on this page was written '
-        "by Claude from the dispatch it links to, and ordered by ranking those "
+        "by a machine from the dispatch it links to, and ordered by ranking those "
         "briefs against each other. " + human + " "
         '<a href="' + method_href + '">How this page is chosen</a></p>',
-        '<p class="colophon"><em>Belvidere, from</em> belvedere '
-        "<em>— a structure built for the view.</em></p>",
+        _scope_line(),
         "</footer>",
         "</div>",
         "",
     ]
     return "\n".join(parts)
+
+
+# AP style, which the rest of the site's prose already follows: spell out one
+# through nine, numerals from ten up.
+_COUNT_WORDS = ("zero", "one", "two", "three", "four",
+                "five", "six", "seven", "eight", "nine")
+
+
+def _count_word(n: int) -> str:
+    return _COUNT_WORDS[n] if 0 <= n < len(_COUNT_WORDS) else str(n)
+
+
+def _scope_line() -> str:
+    """The colophon: one sentence naming what the wire covers.
+
+    Both counts are read from SCOPE.md rather than written down here. The front
+    page is where a stranger lands first, so it is the worst place on the site
+    to carry a coverage claim that quietly goes stale as bodies are added or
+    dropped — /beats/ enumerates them, and this only has to agree with it.
+
+    Deliberately nothing else: corrections and the source link live in the site
+    footer, which sits directly below this on the rendered page.
+    """
+    bodies = tracked_bodies()
+    governments = {b.jurisdiction_id for b in bodies}
+    beats_href = "{{ '/beats/' | relative_url }}"
+    return (
+        '<p class="colophon">The Belvidere Wire follows '
+        f'<a href="{beats_href}">{_count_word(len(bodies))} public bodies</a> '
+        f"across {_count_word(len(governments))} Boone County governments.</p>"
+    )
 
 
 def _brief_html(c: Candidate, tier: str) -> str:

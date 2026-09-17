@@ -1,11 +1,15 @@
 [build-system]
-requires = ["setuptools>=68"]
+# 77+ for PEP 639: the SPDX `license` string below replaces the
+# deprecated table form and the License:: classifier.
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "ccs"
 version = "0.1.0"
 description = "Boone County, IL government meeting monitor"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
 requires-python = ">=3.9"
 dependencies = [
     "anthropic>=0.40",

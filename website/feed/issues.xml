@@ -1,0 +1,64 @@
+---
+layout: null
+permalink: /feed/issues.xml
+---
+{%- comment -%}
+  The edition feed: one entry per issue, hand-written rather than handed to
+  jekyll-feed.
+
+  jekyll-feed can emit a feed for any collection, and for front_pages it gets
+  three things wrong. It dates every entry from site.time, because collection
+  documents carry no `date` — so each deploy would re-date every issue and
+  resurface old editions as new. It titles the feed "The Belvidere Wire |
+  Front_pages", with no hook to override. And it dumps the whole rendered front
+  page into each entry, about 9KB of it, which is the same twelve briefs the
+  wire feed already carried as full dispatches.
+
+  So: `generated` is the real publication stamp, and an entry is a digest —
+  the lead headline in the title, the rest listed under it. Someone who wants
+  the text subscribes to the wire; this is for someone who wants the edition.
+
+  The headline list is read back out of the issue's own rendered HTML, which
+  couples this template to the markup frontpage._brief_html emits. That is the
+  trade for the list working on every issue ever published, including ones on
+  disk before this feed existed, with no migration and no second copy of the
+  headlines in front matter. If that markup changes, the guard below drops the
+  list rather than emitting nonsense — check here when it does.
+{%- endcomment -%}
+{%- assign issues = site.front_pages | sort: "issue" | reverse -%}
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"{% if site.lang %} xml:lang="{{ site.lang }}"{% endif %}>
+  <generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>
+  <link href="{{ page.url | absolute_url }}" rel="self" type="application/atom+xml" />
+  <link href="{{ '/issues/' | absolute_url }}" rel="alternate" type="text/html" />
+  <title type="html">{{ site.title | append: " | Editions" | xml_escape }}</title>
+  <subtitle>One entry per edition of The Belvidere Wire — the briefs it led with, in the order it ran them. For every dispatch as it is filed, subscribe to the wire instead.</subtitle>
+  {%- comment -%}
+    Dated from the newest issue, not site.time: a rebuild that publishes
+    nothing new should not tell every reader the feed has changed.
+  {%- endcomment -%}
+  <updated>{% if issues.size > 0 %}{{ issues[0].generated | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}</updated>
+  <id>{{ page.url | absolute_url | xml_escape }}</id>
+  <author><name>{{ site.author | xml_escape }}</name></author>
+  {%- for issue in issues limit: 50 %}
+  <entry>
+    <title type="html">No. {{ issue.issue }}{% if issue.lead %} — {{ issue.lead | strip_html | xml_escape }}{% endif %}</title>
+    <link href="{{ issue.url | absolute_url }}" rel="alternate" type="text/html" />
+    <published>{{ issue.generated | date_to_xmlschema }}</published>
+    <updated>{{ issue.generated | date_to_xmlschema }}</updated>
+    <id>{{ issue.url | absolute_url | xml_escape }}</id>
+    {%- assign chunks = issue.content | split: '<h2 class="brief-headline">' -%}
+    <content type="html"><![CDATA[<p>{{ issue.brief_count }} brief{% if issue.brief_count != 1 %}s{% endif %}, filed {{ issue.generated | date: "%B %-d, %Y" }}.</p>
+    {%- if chunks.size > 1 -%}
+    <ol>
+      {%- for chunk in chunks offset: 1 -%}
+      {%- assign headline = chunk | split: '</h2>' | first | strip_html | strip -%}
+      {%- assign parts = chunk | split: '"' -%}
+      <li><a href="{{ parts[1] | prepend: site.url }}">{{ headline }}</a></li>
+      {%- endfor -%}
+    </ol>
+    {%- endif -%}
+    <p><a href="{{ issue.url | absolute_url }}">Read edition No. {{ issue.issue }}</a></p>]]></content>
+  </entry>
+  {%- endfor %}
+</feed>

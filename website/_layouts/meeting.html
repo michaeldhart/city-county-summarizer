@@ -67,7 +67,7 @@ layout: default
     {%- endif -%}
     {%- assign srcs = parts | remove_first: "|" | split: "|" -%}
     <p class="byline" data-pagefind-ignore>
-      Filed to the wire by machine — written by Claude from
+      Filed to the wire — written by a machine from
       {%- if srcs.size > 1 -%}
         {%- assign last_i = srcs.size | minus: 1 -%}
         {%- assign head = srcs | slice: 0, last_i -%}
