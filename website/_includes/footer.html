@@ -63,11 +63,19 @@
       dispatches have no human author, so there is no copyright in them to
       reserve. See NOTICE and the Licensing section of README.md; the Apache
       license over the code stops well short of this content.
+
+      The maintainer link carries noopener beside author: current browsers
+      imply it for target="_blank", older ones do not, and without it the
+      opened page can reach back through window.opener.
+
+      Both branches below emit their leading space explicitly. A whitespace-
+      trimming tag anywhere between "by" and the name eats the space that
+      would otherwise separate them, and it renders as "maintained byMichael".
     {%- endcomment -%}
     <p class="fine-print footer-fine-print">
       An independent project created and maintained by
       {%- if site.maintainer_url %}
-      <a href="{{ site.maintainer_url }}" rel="author">{{ site.maintainer | escape }}</a>.
+      {{ " " }}<a href="{{ site.maintainer_url }}" target="_blank" rel="author noopener">{{ site.maintainer | escape }}</a>.
       {%- else %}
       {{ " " }}{{ site.maintainer | escape }}.
       {%- endif %}
