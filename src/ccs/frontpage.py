@@ -404,12 +404,23 @@ def _render_body(selected: list, today: date, window_start: date, widened: bool,
         parts += [_brief_html(c, "minor") for c in minor]
         parts.append("</div>")
 
+    # The disclosure has to stay true edition by edition. "No human editor chose
+    # this page" is a strong claim, and it stops being true the moment a brief is
+    # pinned — so the page counts its own pins rather than asserting a default.
+    pinned = sum(1 for c in selected if c.brief.pinned)
+    if pinned:
+        human = ("%d brief%s pinned here by hand; nothing else on this page was "
+                 "chosen by a person." % (pinned, "s were" if pinned > 1 else " was"))
+    else:
+        human = "No human editor chose this page."
+    method_href = "{{ '/method/#how-the-front-page-is-chosen' | relative_url }}"
+
     parts += [
         '<footer class="front-page-foot">',
         '<p class="front-page-disclosure">Every brief on this page was written '
-        "by Claude from the dispatch it links to, and selected by ranking those "
-        "briefs against each other. No human editor chose this page. "
-        "<a href=\"{{ '/method/' | relative_url }}\">How this is written</a></p>",
+        "by Claude from the dispatch it links to, and ordered by ranking those "
+        "briefs against each other. " + human + " "
+        '<a href="' + method_href + '">How this page is chosen</a></p>',
         '<p class="colophon"><em>Belvidere, from</em> belvedere '
         "<em>— a structure built for the view.</em></p>",
         "</footer>",

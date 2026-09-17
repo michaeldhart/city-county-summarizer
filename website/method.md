@@ -10,9 +10,13 @@ Wire is written by Claude, an AI model made by Anthropic, from the primary
 documents a government publishes itself. Nothing here is reported, and nothing
 here is edited by a person before it is filed.
 
-That is an unusual thing for a publication to say, so this page says it plainly
-and sets out exactly what the machine sees, what it is told to do, and where it
-is known to be wrong.
+**Nor does a human choose the front page.** The briefs on it are written by the
+same model and ranked against each other by it. Deciding what leads a front page
+is the most editorial act a publication performs, and here a machine performs it.
+
+Those are unusual things for a publication to say, so this page says them
+plainly and sets out exactly what the machine sees, what it is told to do, and
+where it is known to be wrong.
 
 ## What a dispatch is written from
 
@@ -47,6 +51,63 @@ the dispatch is labelled an **agenda preview** and describes only what a body
 was scheduled to take up. It will not tell you that anything was decided,
 because nothing in its sources says so.
 
+## What the front page is
+
+The front page is assembled from **briefs** — short items of one paragraph each,
+written from a dispatch rather than from the meeting behind it. A brief is a
+summary of a summary, which is worth knowing: it is two removes from the
+official record, and the dispatch it links to is always closer to the truth than
+it is.
+
+Between one and three are written per meeting, sorted into three kinds:
+
+- **Civic** — something a resident of this county would want to know and could
+  still act on. Residents turning out, speaking, or objecting counts for more
+  here than anything else, followed by decisions still open to influence: a vote
+  to come, a comment period, a hearing with a date, a vacancy taking
+  applications.
+- **Significant** — real decisions and real spending that don't rise to that.
+- **Summary** — a plain account of a routine meeting, written only when nothing
+  above applies, so that a dull meeting produces something honest rather than
+  something inflated.
+
+Briefs are never quotations, for the same reason dispatches aren't: most of what
+they are drawn from began as an automatic caption.
+
+## How the front page is chosen
+
+Every brief from the last thirty days is a candidate. They are sorted by kind,
+then by a score the model assigned when it wrote them, then by recency — and
+then the shortlist is handed back to the model, which puts it in final order,
+judging each brief against the others rather than in isolation.
+
+That last pass exists because each brief is written without knowing any other
+brief exists. Only something looking at them together can notice that a
+committee taking a matter up and the board deciding it are one story and one
+slot on the page.
+
+The criteria it ranks on are the ones above: turnout, whether a decision is
+still open, whether it changes what a resident pays, owns or is allowed to do,
+the scale of public money involved, and whether a resident could learn it any
+other way. Routine approvals, reports received and procedural motions rank down.
+
+**There is one human lever.** A brief can be *pinned*, which forces it onto the
+page regardless of where it ranked. Pinning cannot promote a brief — it keeps
+its ranked position — and every pin is recorded in
+[a file in the public repository](https://github.com/michaeldhart/city-county-summarizer/blob/main/docs/PINS.md).
+Nothing else on this site is chosen by a person.
+
+## Editions
+
+Each time the front page is rebuilt it is published as a numbered issue and kept
+at [/issues/]({{ '/issues/' | relative_url }}). Nothing is overwritten, so what
+this publication led with on any given day stays on the record — including the
+days it led with the wrong thing.
+
+Back issues are frozen as published. If a dispatch is later corrected, the brief
+printed in an issue that has already run is **not** updated, and may no longer
+match the dispatch it links to. The dispatch is the one to trust.
+
 ## Where this is known to be wrong
 
 - **Agendas are not always published in advance.** The county sometimes posts
@@ -62,11 +123,22 @@ because nothing in its sources says so.
   Some will not be.
 - **A summary is not a record.** Where a dispatch and an official document
   disagree, the official document is right. Every one of them is linked.
+- **Briefs don't know about each other.** Each is written from one meeting in
+  isolation. The ranking pass is asked to catch the same story appearing twice,
+  but it is the only thing that can, and it will sometimes miss.
+- **A brief can describe a meeting nobody has a record of.** Where a dispatch
+  was written from an agenda alone, its briefs describe what a body was
+  scheduled to take up — not what it did. The dispatch says so; the brief has
+  one paragraph and may not.
+- **The wire goes quiet.** When too few meetings fall inside the window, it
+  widens until the page fills, and the folio line says how far back it reached.
 
 ## Corrections
 
 If a dispatch gets something wrong, the underlying documents are linked at the
 top of the page — start there, then
 [open an issue](https://github.com/michaeldhart/city-county-summarizer/issues).
+The same goes for a brief, and for the front page having led with the wrong
+thing: the ranking is a judgment, and judgments can be argued with.
 Corrections are made by re-writing the dispatch from source, and the code that
 produces all of this is public.
