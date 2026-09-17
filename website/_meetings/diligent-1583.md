@@ -1,9 +1,9 @@
 ---
 title: Agricultural Conservation and Easement and Farmland Protection Commission,
   4:30 PM
-body_id: board
+body_id: ag-easement
 date: '2026-02-24'
-permalink: /bodies/board/meetings/diligent-1583/
+permalink: /bodies/ag-easement/meetings/diligent-1583/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1583
 resources:
 - kind: portal

@@ -4,7 +4,7 @@ body_id: lepc
 jurisdiction: Boone County
 jurisdiction_id: boone-county
 about_url: /about/boone-county/
-sort_key: 00-007
+sort_key: 00-008
 permalink: /bodies/lepc/
 ---
 

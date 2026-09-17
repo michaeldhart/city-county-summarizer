@@ -65,9 +65,26 @@ on" digest.
   there are no per-item detail calls. Attachments are `<a href="/document/{guid}">`
   inside that HTML; use `diligent.extract_attachments(base, html)` to get them.
 - Body identification uses `(source, MeetingTypeId)` — type ids are only
-  unique within a tenant. See `config.body_for_type_id(source, type_id)`.
+  unique within a tenant. See `config.body_for_meeting(source, type_id, title)`.
   Known: 18=COTW-Admin, 19=COTW-Finance, 20=Health, 22=Board, 23=ZBA,
-  29=Planning, 31=Ag Easement, 32=Enterprise Zone.
+  29=Planning, 31=Ag Easement, 32=Enterprise Zone. Type 17 is the 2011–2025
+  bulk import, a lump of every body under one id and deliberately untracked;
+  33 (City-County Coordinating Committee, first meeting Oct 13, 2026) has no
+  `Body` yet, so its meetings are skipped.
+- **The type id lies on everything imported ahead of the cutover.** Every
+  county meeting from Nov 13, 2025 through May 4, 2026 (ids 1567–1606) is
+  stamped 22, "Boone County Board Meeting", whatever body actually met — the
+  vendor's import default. Meetings created natively after the cutover are
+  stamped correctly. `body_for_meeting` therefore lets a `Body.title_re` that
+  names a *different* body of the same tenant override the id; where they
+  agree, or no pattern matches, the id stands. An unmapped id is still
+  unmapped — title-matching type 17 would make 1,491 historical meetings
+  ingestable by an unsuspecting `ccs sync --since`. This misfiled 19 records
+  as `board` before it was caught; they were re-filed in place rather than
+  re-ingested, since only the attribution was wrong.
+- Adding a `title_re` means writing a pattern that names its own body without
+  matching another's title: `board` is `boone county board meeting` spelled out
+  so it does not swallow "Boone County Board of Health Meeting".
 - LEPC and Veteran's Assistance have `type_id=None` — no agendas on Diligent
   yet. They stay tracked but won't match. If you find where they publish, wire it.
 - The old BoardDocs URL (`go.boarddocs.com/il/boone`) still returns cached

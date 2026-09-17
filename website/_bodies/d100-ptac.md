@@ -4,7 +4,7 @@ body_id: d100-ptac
 jurisdiction: Belvidere Community Unit School District 100
 jurisdiction_id: d100
 about_url: /about/d100/
-sort_key: 02-015
+sort_key: 02-016
 permalink: /bodies/d100-ptac/
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: Boone County Board of Health Meeting
-body_id: board
+body_id: health
 date: '2026-03-02'
-permalink: /bodies/board/meetings/diligent-1581/
+permalink: /bodies/health/meetings/diligent-1581/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1581
 resources:
 - kind: portal

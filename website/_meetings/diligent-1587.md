@@ -1,8 +1,8 @@
 ---
 title: Committee of the Whole Meeting - Administration
-body_id: board
+body_id: cotw-admin
 date: '2026-02-05'
-permalink: /bodies/board/meetings/diligent-1587/
+permalink: /bodies/cotw-admin/meetings/diligent-1587/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1587
 resources:
 - kind: portal

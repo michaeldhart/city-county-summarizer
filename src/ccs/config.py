@@ -78,26 +78,48 @@ class Body:
     source: str                # manifest id namespace; key into sources.SOURCES
     scope_name: str            # exact string as it appears in SCOPE.md rows
     type_ids: tuple = ()       # Diligent MeetingTypeIds; empty for non-Diligent sources
+    title_re: str = ""         # corrects a wrong type id — see body_for_meeting()
 
 
 # Canonical registry. `type_id` values from Diligent recon in Aug 2026.
 # LEPC and Veteran's Assistance don't appear on Diligent — no id known — they
 # stay in scope but won't be matched until we find where their agendas live.
+#
+# `title_re` is only consulted when it contradicts the type id, and only for the
+# county's Diligent tenant, where the meetings imported ahead of the May 2026
+# cutover are all stamped with the Board's type id. Each pattern has to name its
+# own body without matching another's title: "boone county board meeting" is
+# written out in full precisely so it does not swallow "Boone County Board of
+# Health Meeting". See body_for_meeting().
 BODIES: tuple[Body, ...] = (
     Body("board", "Boone County Board", "boone-county", "diligent",
-         "Boone County Board (12 members, 3 districts)", type_ids=(22,)),
+         "Boone County Board (12 members, 3 districts)", type_ids=(22,),
+         title_re=r"boone county board meeting"),
     Body("cotw-admin", "COTW – Administrative & Legislative", "boone-county", "diligent",
-         "COTW – Administrative & Legislative", type_ids=(18,)),
+         "COTW – Administrative & Legislative", type_ids=(18,),
+         title_re=r"committee of the whole.*administrat"),
     Body("cotw-finance", "COTW – Finance, Taxation & Salaries", "boone-county", "diligent",
-         "COTW – Finance, Taxation & Salaries", type_ids=(19,)),
+         "COTW – Finance, Taxation & Salaries", type_ids=(19,),
+         title_re=r"committee of the whole.*financ"),
     Body("planning", "Regional Planning Commission", "boone-county", "diligent",
-         "Regional Planning Commission", type_ids=(29,)),
+         "Regional Planning Commission", type_ids=(29,),
+         title_re=r"regional planning commission"),
     Body("zba", "Zoning Board of Appeals", "boone-county", "diligent",
-         "Zoning Board of Appeals", type_ids=(23,)),
+         "Zoning Board of Appeals", type_ids=(23,),
+         title_re=r"zoning board of appeals"),
     Body("ag-easement", "Agricultural Conservation Easement Commission", "boone-county", "diligent",
-         "Agricultural Conservation Easement & Farmland Protection Commission", type_ids=(31,)),
+         "Agricultural Conservation Easement & Farmland Protection Commission", type_ids=(31,),
+         title_re=r"agricultural conservation"),
     Body("health", "Board of Health", "boone-county", "diligent",
-         "Board of Health", type_ids=(20,)),
+         "Board of Health", type_ids=(20,),
+         title_re=r"board of health"),
+    # An intergovernmental body — county, Belvidere, Poplar Grove and Capron —
+    # but it files its agendas on the county's portal under its own type id, so
+    # it is tracked here. It meets rarely (the April 2026 meeting approved
+    # minutes from April 2023); a thin page is still the right place for it.
+    Body("enterprise-zone", "Enterprise Zone Advisory Committee", "boone-county", "diligent",
+         "Advisory Committee for the Administration of the Enterprise Zone", type_ids=(32,),
+         title_re=r"enterprise zone"),
     Body("lepc", "Local Emergency Planning Committee", "boone-county", "diligent",
          "Local Emergency Planning Committee (LEPC)"),
     Body("veterans", "Veteran's Assistance Commission", "boone-county", "diligent",
@@ -154,17 +176,36 @@ def about_url_for(jurisdiction_id: str) -> str:
     return "/about/{}/".format(ABOUT_PAGE_FOR.get(jurisdiction_id, jurisdiction_id))
 
 
-def body_for_type_id(source: str, type_id: int) -> Body | None:
-    """Diligent MeetingTypeIds are only unique within one tenant — match on both.
+def body_for_meeting(source: str, type_id: int, title: str) -> Body | None:
+    """Which body actually met: the Diligent MeetingTypeId, corrected by the title.
 
-    A body can claim several type ids: District 100 files workshops, retreats,
-    town halls and hearings as their own types, but they're all meetings of the
-    same Board of Education.
+    MeetingTypeIds are only unique within one tenant, so both are matched on
+    source. A body can claim several type ids: District 100 files workshops,
+    retreats, town halls and hearings as their own types, but they're all
+    meetings of the same Board of Education.
+
+    The type id is not trustworthy on its own. Every county meeting the vendor
+    imported ahead of the May 2026 cutover — Nov 13, 2025 through May 4, 2026 —
+    carries type id 22, "Boone County Board Meeting", whatever body actually met,
+    so the id alone files a zoning hearing under the County Board. The imported
+    titles survived intact, so a title that names a different body of the same
+    tenant overrides the id. Where the two agree, or where no pattern matches,
+    the id stands.
+
+    An unmapped type id still resolves to nothing, rather than being rescued by
+    its title: type 17 is the 2011–2025 bulk import, deliberately out of scope
+    (docs/SCOPE.md), and title-matching it would make 1,491 historical meetings
+    ingestable by an unsuspecting `ccs sync --since`.
     """
-    for b in BODIES:
-        if b.source == source and type_id in b.type_ids:
-            return b
-    return None
+    by_type = next((b for b in BODIES if b.source == source and type_id in b.type_ids), None)
+    if by_type is None:
+        return None
+    by_title = next(
+        (b for b in BODIES
+         if b.source == source and b.title_re and re.search(b.title_re, title, re.IGNORECASE)),
+        None,
+    )
+    return by_title or by_type
 
 
 def load_env() -> None:

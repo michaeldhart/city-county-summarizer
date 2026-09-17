@@ -123,6 +123,17 @@ match the dispatch it links to. The dispatch is the one to trust.
   Some will not be.
 - **A summary is not a record.** Where a dispatch and an official document
   disagree, the official document is right. Every one of them is linked.
+- **A dispatch can be filed to the wrong beat.** Which body met is read from
+  the label the meeting portal puts on it. When the county moved platforms in
+  May 2026 every meeting carried over from the old system was relabelled as a
+  County Board meeting, and nineteen dispatches — zoning, health, planning,
+  the committees of the whole — sat on the County Board's beat until it was
+  caught on September 17, 2026. They have been refiled, which moved their web
+  addresses. The dispatches themselves were unaffected: each was written from
+  its own meeting's agenda and names the body correctly.
+- **The same meeting can appear twice.** A government occasionally lists one
+  meeting under two entries with different documents attached. Both are read,
+  and both are published, so a beat can carry two dispatches from one date.
 - **Briefs don't know about each other.** Each is written from one meeting in
   isolation. The ranking pass is asked to catch the same story appearing twice,
   but it is the only thing that can, and it will sometimes miss.

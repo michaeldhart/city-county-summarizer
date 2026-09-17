@@ -4,7 +4,7 @@ body_id: swcd
 jurisdiction: Boone County Soil & Water Conservation District
 jurisdiction_id: swcd
 about_url: /about/boone-county/
-sort_key: 05-010
+sort_key: 05-011
 permalink: /bodies/swcd/
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: Zoning Board of Appeals Meeting
-body_id: board
+body_id: zba
 date: '2026-03-24'
-permalink: /bodies/board/meetings/diligent-1576/
+permalink: /bodies/zba/meetings/diligent-1576/
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1576
 resources:
 - kind: portal

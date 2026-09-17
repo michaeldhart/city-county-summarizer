@@ -24,6 +24,7 @@ Change the status on any line to re-scope. The app reads this file at runtime.
 | Zoning Board of Appeals | `tracked` | On BoardDocs. |
 | Agricultural Conservation Easement & Farmland Protection Commission | `tracked` | On BoardDocs. |
 | Board of Health | `tracked` | Meets at Health Dept, noon. On BoardDocs. |
+| Advisory Committee for the Administration of the Enterprise Zone | `tracked` | Intergovernmental — county, Belvidere, Poplar Grove, Capron. Meets rarely; agendas on the county's Diligent portal. |
 | Local Emergency Planning Committee (LEPC) | `tracked` | Listed on county departments page. |
 | Veteran's Assistance Commission | `tracked` | Listed on county departments page. |
 

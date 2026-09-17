@@ -49,9 +49,54 @@ Every meeting has a numeric `MeetingTypeId`. No more title-regex matching:
 | 29 | Regional Planning Commission |
 | 31 | Agricultural Conservation Easement Commission |
 | 32 | Enterprise Zone Advisory Committee |
+| 33 | City-County Coordinating Committee |
 
 Type 17 ("Imported Meetings: 2011-2025") is a lump for historical data
-migrated in bulk from the old system.
+migrated in bulk from the old system: 1,491 meetings of every body under one
+id. Nothing tracks it, and nothing should without title-parsing the lot.
+
+Type 33 appeared after this recon and has one meeting scheduled (Oct 13, 2026).
+There is no `Body` for it, so it is skipped rather than misfiled.
+
+## The type ids on imported meetings are wrong (found Sep 17, 2026)
+
+"No more title-regex matching" was true only of meetings the county created in
+Diligent itself. The migration brought the last six months of BoardDocs across
+separately from the 2011-2025 lump, and stamped **every one of those meetings
+with type id 22, "Boone County Board Meeting"** — 33 meetings, ids 1567 through
+1606, dated Nov 13, 2025 through May 4, 2026. A zoning hearing, a Board of
+Health meeting and a Committee of the Whole all arrive claiming to be the
+County Board. Meetings created natively after the May 4 cutover (ids 1554-1562
+and 1607 up) carry the right type.
+
+The titles survived the import intact, so they are the better evidence. Each
+Diligent `Body` now carries a `title_re`, and `config.body_for_meeting()`
+prefers it when it names a *different* body of the same tenant; where the title
+and the id agree, or no pattern matches, the id stands. An id that maps to no
+body still maps to none — rescuing type 17 by title would quietly make 1,491
+historical meetings eligible for the next `ccs sync --since`.
+
+Across all 1,571 meetings on the county tenant the override changes exactly
+those 33, and none on District 100, whose bodies carry no patterns.
+
+Fallout, repaired Sep 17, 2026: 19 manifest records had been filed under
+`board`. Because only the attribution was wrong — every summary on disk was
+written from the real agenda and names the real body — they were re-filed in
+place from the live meetings list rather than re-ingested, and the site
+regenerated. Their dispatch permalinks moved from `/bodies/board/meetings/…`
+to their own beat, so the old URLs 404; no published front-page issue linked
+any of them.
+
+### Enterprise Zone (type 32)
+
+`enterprise-zone` is now a tracked `Body` rather than being folded into the
+Board or the COTWs. It is intergovernmental — Boone County, Belvidere, Poplar
+Grove and Capron, with a chairmanship that rotates between them — so its
+business is not the County Board's, and filing it there would repeat the
+mistake above under a different name. It meets rarely (the April 9, 2026
+meeting approved minutes from April 13, 2023), but a thin beat page is the
+honest shape for a body that meets rarely; the alternative is a reader finding
+enterprise-zone boundary decisions on a page about the County Board.
 
 **Not visible on Diligent:** LEPC (Local Emergency Planning Committee) and
 Veteran's Assistance Commission. Either they haven't migrated, they publish
@@ -69,7 +114,8 @@ Individual meeting pages live at:
 - Deleted `src/ccs/boarddocs.py`, replaced with `src/ccs/diligent.py`.
 - `config.py`: added `DILIGENT_BASE`, removed `BOARDDOCS_*`, changed `Body`
   from `title_patterns` to `type_id`, added `BODIES_BY_TYPE_ID` and
-  `body_for_type_id()`.
+  `body_for_type_id()` — since replaced by `body_for_meeting()`, which reads
+  the title again as a tiebreaker (see above).
 - `summarize.py`: `ingest_boarddocs` → `ingest_diligent`,
   `summarize_boarddocs_lookahead` → `summarize_diligent_lookahead`. Prompt
   now consumes the agenda HTML as a text blob rather than assembling from
