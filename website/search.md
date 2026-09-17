@@ -18,9 +18,13 @@ permalink: /search/
 
 <h1>Search the archive</h1>
 
-<p>Full text of every dispatch on the wire, plus the backgrounder for each
-government. Dispatches only — the agendas, minutes and transcripts they were
-written from are linked from the top of each one.</p>
+<p>What's searched here is the dispatches themselves: every one in full, along
+with each government's backgrounder and the pages explaining how this works.
+The agendas, minutes and video behind them aren't indexed, so something raised
+at a meeting won't necessarily turn up in the summary written from it. If a
+dispatch looks close to what you're after, open it — the Resources list beside
+it links the original documents, which are always nearer the record than a
+summary can be.</p>
 
 <div class="search-ui">
   <pagefind-input></pagefind-input>
