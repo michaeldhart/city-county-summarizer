@@ -7,10 +7,9 @@ import re
 from dataclasses import dataclass
 from datetime import date
 
-from . import diligent, manifest, resources, sources, summarize, youtube
+from . import diligent, manifest, sources, summarize, youtube
 from .config import (
     JURISDICTIONS_BY_ID,
-    MEETINGS_DIR,
     Body,
     body_for_type_id,
     is_cancelled,
@@ -179,90 +178,6 @@ def _collect_recap(dil_by_source: dict[str, list[diligent.MeetingRef]],
 
     entries.sort(key=lambda e: (e.meeting_date, e.body.id), reverse=True)
     return entries
-
-
-def backfill_resources(only: set | None = None) -> tuple[int, int]:
-    """Fill in `resources` on records ingested before the field existed.
-
-    Free — no Claude calls, no re-summarizing. Diligent records rebuild entirely
-    from the agenda HTML already cached on disk; PDF-index records need a
-    re-scrape of the source index to recover the minutes URL, which the record
-    itself never kept. Returns (filled, partial).
-
-    Only touches records whose list is empty, so re-running it can't downgrade
-    a record that a later ingest filled in properly.
-    """
-    records = manifest.load()
-    tracked_ids = {b.id for b in select_bodies(only)}
-    pending = [r for r in records.values() if r.body_id in tracked_ids and not r.resources]
-    if not pending:
-        return 0, 0
-
-    indexes = _pdf_index_by_key(pending)
-    filled = partial = 0
-    for record in pending:
-        built, complete = _rebuild_resources(record, indexes)
-        if not built:
-            continue
-        record.resources = built
-        filled += 1
-        partial += 0 if complete else 1
-    manifest.save(records)
-    return filled, partial
-
-
-def _pdf_index_by_key(pending: list[manifest.MeetingRecord]) -> dict[str, dict]:
-    """One index scrape per PDF source represented in `pending`, keyed by meeting key."""
-    out: dict[str, dict] = {}
-    for source in sorted({r.source for r in pending
-                          if isinstance(sources.SOURCES.get(r.source), sources.PdfIndexSource)}):
-        try:
-            out[source] = {m.key: m for m in sources.pdf_index_lister(source)()}
-        except Exception as e:
-            print(f"  WARN: {source} list failed: {e}")
-            out[source] = {}
-    return out
-
-
-def _rebuild_resources(record: manifest.MeetingRecord,
-                       indexes: dict[str, dict]) -> tuple[list[manifest.Resource], bool]:
-    src = sources.SOURCES.get(record.source)
-    key = record.id.split(":", 1)[1]
-
-    if isinstance(src, sources.DiligentSource):
-        html = _cached_agenda_html(record.id)
-        built = resources.for_diligent(src.base, int(key), html,
-                                       record.video_id, record.has_transcript)
-        return built, bool(html)
-
-    if isinstance(src, sources.PdfIndexSource):
-        meeting = indexes.get(record.source, {}).get(key)
-        if meeting is not None:
-            return resources.for_pdf_meeting(meeting.agenda_url, meeting.minutes_url,
-                                             record.video_id, record.has_transcript), True
-        # The index pages only ever show a year or two, so an older meeting has
-        # dropped off and the record's own url is the last surviving document.
-        agenda_url, minutes_url = _fallback_pdf_urls(record)
-        return resources.for_pdf_meeting(agenda_url, minutes_url,
-                                         record.video_id, record.has_transcript), False
-
-    return [], False
-
-
-def _cached_agenda_html(meeting_id: str) -> str:
-    """Every cached document for a meeting, concatenated — extract_attachments
-    dedupes by href, so which document a link came from doesn't matter."""
-    d = MEETINGS_DIR / meeting_id.replace(":", "_")
-    return "\n".join(f.read_text() for f in sorted(d.glob("document_*.html")))
-
-
-def _fallback_pdf_urls(record: manifest.MeetingRecord) -> tuple[str | None, str | None]:
-    """`record.url` is whichever of agenda/minutes existed — the cached
-    downloads beside it are what say which one it was."""
-    d = MEETINGS_DIR / record.id.replace(":", "_")
-    if (d / "minutes.pdf").exists() and not (d / "agenda.pdf").exists():
-        return None, record.url
-    return record.url, None
 
 
 def list_videos_by_jurisdiction(

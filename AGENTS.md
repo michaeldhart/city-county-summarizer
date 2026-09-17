@@ -1,9 +1,9 @@
 # AGENTS.md
 
 Context and gotchas for AI agents working in this repo. `README.md` is for
-humans; this file is for you. If it duplicates something in `README.md`,
-`docs/PLAN.md`, or `docs/SPIKE_NOTES.md`, prefer this file — it's the "what
-I'll actually trip on" digest.
+humans; this file is for you. If it duplicates something in `README.md` or
+`docs/SPIKE_NOTES.md`, prefer this file — it's the "what I'll actually trip
+on" digest.
 
 ## Cost discipline
 
@@ -115,15 +115,13 @@ I'll actually trip on" digest.
   lists them under a separate "Also linked from the agenda" heading that says
   so. If you ever wire those PDFs into the prompt, move them into the main
   group and delete the disclaimer — don't leave the page lying.
-- Older records predate the field. `ccs backfill-resources` fills them in with
-  **no Claude calls**: Diligent rebuilds offline from the cached
-  `data/meetings/<id>/document_*.html`, PDF sources re-scrape their index to
-  recover the minutes URL that `MeetingRecord.url` never kept. It only touches
-  records with an empty list, so it can't downgrade a properly-ingested one.
-- It reports a "partial" count: BPD and Belvidere index pages only show a year
-  or two, so meetings older than that no longer appear and fall back to the
-  single url already on the record. Re-ingesting is the only way to do better,
-  and that costs money.
+- Every ingest path fills the list at record creation, so it is never empty:
+  `for_diligent` always emits the portal link, and `sync_meetings` skips PDF
+  meetings that have neither an agenda nor a minutes URL.
+- A handful of older records still carry just one link. They were reconstructed
+  after the fact, and BPD and Belvidere index pages only show a year or two —
+  anything older had dropped off the public site by then. Re-ingesting is the
+  only way to do better, and that costs money.
 
 - **Never run two `ccs sync`/`ccs ingest` processes at once.** `manifest.upsert`
   is load-mutate-save with no locking, so concurrent runs silently drop each
@@ -226,6 +224,13 @@ every cached record for nothing.
   inputs are not. Rebuilding the front page on a fresh clone needs `ccs brief`
   first; the already-published issues are unaffected, which is part of why they
   are kept.
+- **`ccs brief` is fingerprint-driven, not fill-the-gaps.** Each briefs.json
+  stores a hash of the summary it was written from, and `briefs.is_current`
+  compares it: missing briefs get written, briefs whose summary has since
+  changed get rewritten, and everything else is skipped without a Claude call.
+  So a bare re-run costs nothing where nothing moved — but it is also not a
+  no-op after a re-ingest or a prompt change, which is the point. `--force`
+  bypasses the check and re-pays for every meeting in the window.
 - **A back issue freezes the markup it was published with.** `_front_pages/NNN.md`
   stores rendered HTML, not a template, so changing `_render_body` or the
   stylesheet only affects issues published *after* the change — an old issue
@@ -303,7 +308,7 @@ src/ccs/
   sitegen.py    manifest → Jekyll _bodies/_meetings collections
   general.py    `ccs summary` generator
   cli.py        argparse entry (`summary` / `check` / `sync` / `ingest` /
-                `backfill-resources` / `build-site`)
+                `brief` / `front-page` / `build-site`)
 ```
 
 - Adding a government means three things: a `Jurisdiction` (owns the YouTube

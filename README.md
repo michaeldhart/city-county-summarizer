@@ -145,27 +145,6 @@ ccs ingest swcd:20260701            # Soil & Water Conservation District, by dat
 Useful when you want to re-summarize after prompt tuning, or pull a meeting
 outside the default sync window.
 
-### `ccs backfill-resources`
-
-Every dispatch carries a Resources column listing the raw materials
-behind its summary — the Diligent meeting page, agenda and minutes PDFs,
-the YouTube recording, and any documents linked from the agenda. It is
-also what the page's byline is built from, so a record with an empty
-column gets a vaguer byline. Records ingested before that column existed
-have nothing to show; this fills them in. Free, no Claude calls: Diligent
-meetings rebuild from the agenda HTML already cached on disk, and PDF
-sources re-read their public index to recover the minutes link.
-
-```bash
-ccs backfill-resources
-ccs backfill-resources --only belvidere
-```
-
-Only records with an empty list are touched, so it's safe to re-run. Some
-meetings come back partly reconstructed — the park district and Belvidere
-index pages only show a year or two, so anything older has dropped off the
-public site and keeps just the one link already on record.
-
 ### `ccs brief`
 
 Writes 1–3 **briefs** per meeting — short, headline-bearing items used to build
@@ -179,10 +158,27 @@ ccs brief --only belvidere --force          # re-write even where unchanged
 ```
 
 Briefs land in `data/meetings/<id>/briefs.json` beside the summary they were
-written from, with a fingerprint of that summary. Re-runs skip meetings whose
-summary hasn't changed, so running it over the whole archive is free except
-where a summary was actually rewritten — which is also how a prompt change
-picks up the meetings it affects.
+written from, stamped with a fingerprint of that summary. **A re-run is not a
+full regeneration.** The fingerprint decides each meeting in the window
+independently:
+
+| State of the meeting | What `ccs brief` does |
+| --- | --- |
+| No `briefs.json` yet | Writes briefs — one Claude call |
+| Summary changed since the briefs were written | Rewrites them — one Claude call |
+| Summary unchanged | Skips it — no Claude call, no cost |
+
+So it does more than fill in meetings that have none: a re-ingest or a prompt
+change rewrites the summary, and the next `ccs brief` picks up exactly those
+meetings. Everything else is free, which is what makes `--since 2026-01-01`
+safe to run across the whole archive.
+
+`--force` skips the fingerprint check and rewrites **every** meeting in the
+window, changed or not — the only way to pay for all 174 again. Scope it with
+`--only` unless you mean it. One caveat: a brief's id is a hash of its
+headline, so a forced rewrite that reworks a headline retires that id and
+dangles any `docs/PINS.md` pin aimed at it. `ccs front-page` warns about
+dangling pins rather than dropping them silently.
 
 Cost: ~$0.01 per meeting (the input is the summary, not the transcript). A full
 174-meeting backfill is ~$2; a normal month is ~$0.15.
@@ -280,7 +276,6 @@ data/                           # gitignored — regenerable cache
 docs/
   SCOPE.md                      # tracked bodies (edit to re-scope)
   SOURCES.md                    # every URL the app pulls from
-  PLAN.md                       # architecture notes
   SPIKE_NOTES.md                # findings from the v1 spike (BoardDocs era)
   DILIGENT_MIGRATION.md         # findings from the Aug 2026 Diligent migration
 website/                        # Jekyll site published to GitHub Pages

@@ -9,8 +9,8 @@ Commands:
   ccs sync --only d100 --since ...      limit to one jurisdiction, source, or body
   ccs ingest <source>:<key>             re-ingest a specific meeting, updating the manifest
                                         diligent:<numeric id>, bccd:YYYYMMDD, swcd:YYYYMMDD
-  ccs backfill-resources                fill in the Resources list on older records (no Claude calls)
   ccs brief                             write front-page briefs for meetings in a window (default: last 35 days)
+                                        skips meetings whose summary is unchanged since their last brief
   ccs brief --since YYYY-MM-DD --only bccd
   ccs front-page                        rank briefs in a window and write the front page
   ccs front-page --no-rerank            skip the ranking Claude call (deterministic, free)
@@ -54,14 +54,9 @@ def main(argv: list[str] | None = None) -> int:
     p_ingest = sub.add_parser("ingest", help="Force-ingest a specific meeting")
     p_ingest.add_argument("meeting_id", help="e.g. diligent:1622, bccd:20260420, swcd:20260701")
 
-    p_backfill = sub.add_parser(
-        "backfill-resources",
-        help="Fill in the Resources list on records ingested before it existed (no Claude calls)")
-    p_backfill.add_argument("--only", default=None,
-                            help="Comma-separated body ids, sources, or jurisdictions")
-
     p_brief = sub.add_parser(
-        "brief", help="Write front-page briefs for meetings in a window")
+        "brief", help="Write front-page briefs for meetings in a window "
+                      "(skips meetings whose summary hasn't changed)")
     p_brief.add_argument("--since", type=_parse_date, default=None,
                          help="Window start (default: 35 days ago)")
     p_brief.add_argument("--only", default=None,
@@ -95,8 +90,6 @@ def main(argv: list[str] | None = None) -> int:
         return _cmd_sync(args.since, _parse_only(args.only))
     if args.command == "ingest":
         return _cmd_ingest(args.meeting_id)
-    if args.command == "backfill-resources":
-        return _cmd_backfill_resources(_parse_only(args.only))
     if args.command == "brief":
         return _cmd_brief(args.since, _parse_only(args.only), args.force)
     if args.command == "front-page":
@@ -229,21 +222,6 @@ def _ingest_pdf_meeting(source: str, key: str, lister) -> int:
     record = summarize.ingest_pdf_meeting(source, meeting, body, videos=videos)
     manifest.upsert(record)
     print(f"OK  transcript={record.has_transcript}  summary={record.summary_path}")
-    return 0
-
-
-def _cmd_backfill_resources(only: set | None) -> int:
-    if _no_match(only):
-        return 2
-    filled, partial = report.backfill_resources(only)
-    if not filled:
-        print("No records needed backfilling.")
-        return 0
-    print(f"Filled resources on {filled} record(s).")
-    if partial:
-        print(f"{partial} were only partly reconstructed — the source index or the "
-              f"cached agenda no longer covers them.")
-    print("Run `ccs build-site` to refresh the site.")
     return 0
 
 
