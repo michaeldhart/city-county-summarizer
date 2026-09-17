@@ -2,10 +2,10 @@
 title: "Backgrounder: Boone County"
 permalink: /about/boone-county/
 ---
-
 # Boone County - Backgrounder
 
-_Generated 2026-09-13 by `ccs summary`. Regenerate with the same command._
+Written by a machine from this government's own published pages, and current as of September 13, 2026. Rosters and meeting times change; where this and the government's own site disagree, theirs is right. [How this is written]({{ '/method/' | relative_url }})
+{: .fine-print }
 
 ## Overview
 
@@ -89,6 +89,7 @@ All appointed by the County Board. Agendas and minutes for these bodies are publ
 ## The conservation districts
 
 ### Boone County Conservation District
+{: #bccd }
 
 The Boone County Conservation District is a separate governmental body governed by an independently elected Board of Trustees. It owns and manages conservation areas, nature centers, and Illinois Nature Preserves within the county.
 
@@ -101,6 +102,7 @@ The Boone County Conservation District is a separate governmental body governed 
 Agendas and minutes are published on the district's website. The Board's 2026 meetings through August 18 have been held; September 15 is the next scheduled date.
 
 ### Boone County Soil & Water Conservation District
+{: #swcd }
 
 The Boone County Soil & Water Conservation District is a separate governmental body that partners with landowners and the community on conservation stewardship, including cost-share programs for conservation practices.
 

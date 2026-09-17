@@ -9,6 +9,7 @@ than getting their own — see config.ABOUT_PAGE_FOR.
 """
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -20,6 +21,7 @@ from bs4 import BeautifulSoup
 
 from . import diligent, sources
 from .config import (
+    ABOUT_PAGE_FOR,
     BODIES_BY_ID,
     CLAUDE_MODEL,
     DOCS_DIR,
@@ -63,7 +65,9 @@ the authoritative current roster; supplement with anything from the county site.
 
 ## The conservation districts
 (Boone County Conservation District and Boone County Soil & Water Conservation
-District - independent bodies with their own elected boards, tracked here.)
+District - independent bodies with their own elected boards, tracked here. Give
+each its own sub-section, headed with the district's full name - /beats/ links
+straight to those headings.)
 
 ## Departments
 (Directory. Where a source names a head or elected official, include them.)
@@ -268,12 +272,87 @@ def build_about_page(jurisdiction_id: str) -> Path:
     scope_md = (DOCS_DIR / "SCOPE.md").read_text()
     prompt = _build_prompt(name, spec, source_texts, roster_text, scope_md)
     print(f"[{jurisdiction_id}] prompt {len(prompt)} chars; calling Claude...")
-    summary = _call_claude(prompt)
+    summary = _pin_standfirst(_pin_anchors(jurisdiction_id, _call_claude(prompt)))
 
     ABOUT_DIR.mkdir(parents=True, exist_ok=True)
     out = ABOUT_DIR / f"{jurisdiction_id}.md"
     out.write_text(_front_matter(name, jurisdiction_id) + summary)
     return out
+
+
+# Rendered into every backgrounder under its title. Three jobs, in order: say a
+# machine wrote it, date it, and point at the page that explains both. The
+# dispatches have carried that disclosure since the first one was filed; these
+# pages never had it, and they are the ones most easily mistaken for something
+# a government published itself — they list officeholders, meeting times and
+# phone numbers.
+_STANDFIRST = (
+    "Written by a machine from this government's own published pages, and "
+    "current as of {when}. Rosters and meeting times change; where this and "
+    "the government's own site disagree, theirs is right. "
+    "[How this is written]({{{{ '/method/' | relative_url }}}})\n"
+    "{{: .fine-print }}"
+)
+
+
+def _pin_standfirst(markdown: str, when: date | None = None) -> str:
+    """Put the standfirst under the title, replacing whatever is in that slot.
+
+    Written here rather than asked for in the outline because a model handed a
+    date can echo it wrong, and because this is the one line on the page that
+    has to be there — a reader who takes a backgrounder for the government's
+    own material has been misled by omission.
+    """
+    when = when or date.today()
+    line = _STANDFIRST.format(when=when.strftime("%B %-d, %Y"))
+
+    # Anything already sitting between the title and the first section is the
+    # old "_Generated ... by `ccs summary`_" stamp, or a previous standfirst.
+    # subn, not comparing the result: re-running on a page that already carries
+    # an identical standfirst substitutes successfully and changes nothing, and
+    # equality would read that as a failure.
+    body, hits = re.subn(r"\A\s*(# .*\n)(?:(?!^#{2,} ).*\n)*?(?=^#{2,} )",
+                         r"\1\n" + line.replace("\\", "\\\\") + "\n\n",
+                         markdown, count=1, flags=re.MULTILINE)
+    if not hits:
+        print("  WARNING: could not place the standfirst — no title followed by "
+              "a section heading. The page will carry no disclosure.")
+    return body
+
+
+def _pin_anchors(jurisdiction_id: str, markdown: str) -> str:
+    """Attach a stable anchor to the heading of each government folded into this page.
+
+    The two conservation districts have no backgrounder of their own; they are
+    sub-sections of the county's (see config.ABOUT_PAGE_FOR), and /beats/ links
+    each district straight to its section. That link needs an id that does not
+    move, and neither of the obvious sources gives one: kramdown derives its
+    auto-id from the heading text, which a rewrite changes, and Liquid's
+    slugify cannot reproduce kramdown's id for a heading containing "&"
+    anyway.
+
+    So the id is written here rather than asked for in the outline. The model
+    writes prose; a piece of markup another page depends on is not its job to
+    remember. Where the heading itself has gone missing there is nothing to
+    attach to — that case warns rather than failing, because /beats/ falls back
+    to linking the top of this page and the document is still correct, just
+    less precisely linkable.
+    """
+    folded = sorted(jid for jid, host in ABOUT_PAGE_FOR.items()
+                    if host == jurisdiction_id)
+    for jid in folded:
+        ial = "{: #%s }" % jid
+        if ial in markdown:
+            continue
+        name = JURISDICTIONS_BY_ID[jid].display_name
+        heading = re.compile(r"^(\#{2,4}[ \t]*%s[ \t]*)$" % re.escape(name),
+                             re.MULTILINE)
+        markdown, hits = heading.subn(r"\1\n" + ial, markdown, count=1)
+        if not hits:
+            print(f"  WARNING: no heading matching {name!r} in the "
+                  f"{jurisdiction_id} backgrounder — /beats/ will link to the "
+                  f"top of the page rather than #{jid}.")
+    return markdown
 
 
 def build_all() -> list:
@@ -400,8 +479,6 @@ published it.
 Produce a Markdown document with this structure:
 
 # {name} - Backgrounder
-
-_Generated {date.today().isoformat()} by `ccs summary`. Regenerate with the same command._
 
 {spec.outline}
 

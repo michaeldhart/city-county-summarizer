@@ -2,10 +2,10 @@
 title: "Backgrounder: City of Belvidere"
 permalink: /about/belvidere/
 ---
-
 # City of Belvidere - Backgrounder
 
-_Generated 2026-09-13 by `ccs summary`. Regenerate with the same command._
+Written by a machine from this government's own published pages, and current as of September 13, 2026. Rosters and meeting times change; where this and the government's own site disagree, theirs is right. [How this is written]({{ '/method/' | relative_url }})
+{: .fine-print }
 
 ## Overview
 

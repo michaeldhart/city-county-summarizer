@@ -445,11 +445,105 @@ $heavy-rule: 3px double $text-color;
   margin-bottom: math.div($spacing-unit, 4);
 }
 
-// Smaller again than the rest of the footer: this is the row a reader consults
-// rather than reads. It still has to be legible — the affiliation disclaimer
-// is the one line here that exists to prevent a misunderstanding.
-.footer-fine-print {
-  margin-bottom: 0;
+// Fine print: the disclosure voice. Smaller and quieter than body text — the
+// line a reader consults rather than reads — but still legible, because these
+// are the lines that exist to prevent a misunderstanding. Shared by the
+// footer's affiliation row and the standfirst under a backgrounder's title, in
+// one rule so the two cannot drift apart.
+// No link rule here: inside the footer, .site-footer already greys its links
+// to match the quiet block around them, and outside it a disclosure sitting
+// under a page title should carry the site's ordinary link colour — it is the
+// route to /method/, and a reader looking for it should see a link.
+.fine-print {
   color: $grey-color;
   @include relative-font-size(0.8125);
+}
+
+.footer-fine-print {
+  margin-bottom: 0;
+}
+
+// ---------------------------------------------------------------------------
+// Beats: one card per government
+//
+// Columns, not a grid. The governments are lopsided — nine bodies for the
+// county, one each for the conservation districts — and grid row height is set
+// by the tallest card in the row, which would leave a nine-line hole beside the
+// short ones. Columns pack instead, and break-inside keeps a card whole.
+// ---------------------------------------------------------------------------
+
+.beat-grid {
+  margin-bottom: $spacing-unit;
+
+  @media screen and (min-width: $on-palm) {
+    columns: 2;
+    column-gap: $spacing-unit;
+  }
+
+  @media screen and (min-width: $two-column-above) {
+    columns: 3;
+  }
+}
+
+// Widened only while there are columns to fill, using the same :has() idiom as
+// the meeting grid and the front page.
+@media screen and (min-width: $two-column-above) {
+  .wrapper:has(.beat-grid) {
+    max-width: calc(#{$wide-wrapper} - (#{$spacing-unit} * 2));
+  }
+}
+
+.beat-card {
+  // A card must never be split across a column break: its heading is the only
+  // thing that says which government the bodies under it belong to.
+  break-inside: avoid;
+  page-break-inside: avoid;   // Safari still wants the old name
+  display: inline-block;      // and still needs this to honour it at all
+  width: 100%;
+
+  margin: 0 0 $spacing-unit;
+  padding: math.div($spacing-unit, 2);
+  border: 1px solid $grey-color-light;
+  border-radius: 3px;
+}
+
+// No link rules here on purpose: the heading is the only route to a
+// government's backgrounder now that the separate "Backgrounder:" line is
+// gone, so it takes minima's ordinary link colour rather than passing for
+// plain text.
+.beat-name {
+  margin-bottom: math.div($spacing-unit, 6);
+  @include relative-font-size(1.125);
+}
+
+.beat-bodies {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding: math.div($spacing-unit, 6) 0;
+
+    + li {
+      border-top: 1px solid $grey-color-light;
+    }
+  }
+
+  // The count trails the name rather than sitting in its own column: body
+  // names here run to "Agricultural Conservation Easement Commission", and at
+  // a card's width they wrap, which leaves a right-aligned number stranded.
+  .count {
+    display: block;
+    color: $grey-color;
+    @include relative-font-size(0.75);
+  }
+}
+
+.beat-wire {
+  padding-top: math.div($spacing-unit, 2);
+  border-top: 1px solid $grey-color-light;
+
+  h2 {
+    @include relative-font-size(1.125);
+  }
 }
