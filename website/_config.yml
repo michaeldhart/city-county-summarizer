@@ -8,8 +8,15 @@ theme: minima
 # Set explicitly (rather than relying on GitHub Pages' build-time
 # auto-detection) so absolute URLs — e.g. jekyll-feed's <link>/<id>
 # elements — are correct in local preview too, not just CI.
-url: "https://michaeldhart.github.io"
-baseurl: "/city-county-summarizer"
+#
+# No baseurl: belviderewire.com serves the site from its root. This was a
+# project site under /city-county-summarizer/ until the domain was pointed at
+# it, and GitHub redirects the old URLs. Every internal link already goes
+# through `relative_url`, so they resolve to bare paths now — but note local
+# preview moved with it, to http://localhost:4000/ rather than
+# http://localhost:4000/city-county-summarizer/.
+url: "https://belviderewire.com"
+baseurl: ""
 
 title: The Belvidere Wire
 tagline: A first draft of the public record.

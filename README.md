@@ -11,7 +11,7 @@ across five separate governments and 22 bodies:
 | Belvidere Township Park District | Board of Commissioners |
 | The two conservation districts | BCCD and Soil & Water, each an independent elected board |
 
-It publishes **[The Belvidere Wire](https://michaeldhart.github.io/city-county-summarizer/)**
+It publishes **[The Belvidere Wire](https://belviderewire.com/)**
 — *a first draft of the public record*. A static site with one page per body
 listing everything filed from it, one page per meeting carrying its full
 summary, and a reference page per government covering how it works, who
@@ -35,7 +35,7 @@ either side:
 Identifiers were deliberately left alone — only reader-facing copy carries the
 publication vocabulary. The masthead's own explanation of how dispatches are
 written lives at
-[/method/](https://michaeldhart.github.io/city-county-summarizer/method/),
+[/method/](https://belviderewire.com/method/),
 which is generated from `website/method.md` and is the one page to update when
 the prompts or the sources change.
 
@@ -205,7 +205,7 @@ Issue numbers are derived by scanning the directory, not from a counter, so a
 bad edition is disposable: delete `_front_pages/003.md`, run again, and you get
 a new No. 3 rather than a No. 4 with a hole behind it. Every issue stays
 published at `/issues/NNN/` and is listed at
-[`/issues/`](https://michaeldhart.github.io/city-county-summarizer/issues/) —
+[`/issues/`](https://belviderewire.com/issues/) —
 the issue number in the folio line links there.
 
 Selection runs in three passes: a date window, a free deterministic sort (kind,
@@ -249,7 +249,7 @@ npx -y pagefind@1.5.2 --site _site
 bundle exec jekyll serve --skip-initial-build --no-watch
 ```
 
-Then open <http://localhost:4000/city-county-summarizer/>.
+Then open <http://localhost:4000/>.
 
 `--skip-initial-build` is what matters: without it `jekyll serve` regenerates
 `_site` and deletes the `_site/pagefind/` index that was just built, and the
