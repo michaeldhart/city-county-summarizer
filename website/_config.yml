@@ -38,7 +38,7 @@ contact_url: https://docs.google.com/forms/d/e/1FAIpQLScxpZW5UnwwEPaKGP5ls7szdGo
 #
 # maintainer_url is for a personal site; the name links only once it is set.
 maintainer: Michael D. Hart
-maintainer_url:
+maintainer_url: https://www.michaeldhart.com
 
 # Read by jekyll-feed as the author of every entry. A publication authoring its
 # own dispatches is the accurate claim — and without it each entry carried an
