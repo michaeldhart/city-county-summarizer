@@ -364,9 +364,11 @@ def write_about_index() -> Path:
 
     This rewrites website/about.md wholesale, so it is the only place the hub's
     copy can live — anything edited into the file by hand is lost on the next
-    `ccs summary`. The links go through `relative_url` because the site is
-    served from a baseurl (/city-county-summarizer); a bare /about/<id>/ href
-    drops it and 404s in production while working fine in local preview.
+    `ccs summary`. The links go through `relative_url` rather than being
+    written out: a bare /about/<id>/ href hardcodes whatever baseurl happens to
+    be configured. That is empty now the site serves from belviderewire.com,
+    but it was /city-county-summarizer until the domain move, and a hardcoded
+    path worked in local preview while 404ing in production.
 
     The page is no longer in the site nav — /beats/ links to each backgrounder
     directly — but the URL stays live and the four pages hang off it.

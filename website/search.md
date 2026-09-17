@@ -7,8 +7,12 @@ permalink: /search/
   layout: default, not page — the search page has no content of its own to
   index, and indexing it would make it a result for every query.
 
-  relative_url supplies the /city-county-summarizer baseurl, so these paths
-  work in local preview and in production without being edited between them.
+  relative_url resolves whatever baseurl is configured, so these paths work in
+  local preview and in production without being edited between them. That
+  baseurl is empty now the site serves from belviderewire.com, but it was
+  /city-county-summarizer until the domain move — which is exactly why the
+  filter stays rather than the paths being written out.
+
   The bundle lives at /pagefind/ and is written by the Pagefind CLI after
   Jekyll builds; see the Deploy workflow and the README.
 {%- endcomment -%}

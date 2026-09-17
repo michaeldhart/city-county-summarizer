@@ -182,7 +182,9 @@ every cached record for nothing.
   on every `ccs summary`, so hand-edits to it are lost — change the copy in that
   function. Its links must go through `relative_url`; a bare `/about/<id>/`
   works in local preview and 404s in production, which is how the baseurl fix in
-  2424915 got silently reverted once already.
+  2424915 got silently reverted once already. The baseurl is empty now the site
+  serves from belviderewire.com — the filter still has to stay, since it was
+  /city-county-summarizer until the domain move and could change again.
 - `general._front_matter` quotes the backgrounder title (`"Backgrounder: X"`).
   Unquoted, the colon-space makes Jekyll read it as a nested mapping and the
   build fails.
