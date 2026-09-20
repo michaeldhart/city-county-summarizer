@@ -1,7 +1,7 @@
 ---
 layout: front-page
 title: Home
-issue: 2
+issue: 1
 generated: 2026-09-17T12:39:09+00:00
 window_start: 2026-08-18
 brief_count: 12
@@ -14,7 +14,7 @@ lead: "Residents pack council meeting over data center concerns"
 <header class="flag">
 <h1 class="nameplate">The Belvidere Wire</h1>
 <p class="slogan">A first draft of the public record.</p>
-<p class="folio">Vol. 1 · <a href="{{ '/issues/' | relative_url }}">No. 2</a> · Thursday, September 17, 2026</p>
+<p class="folio">Vol. 1 · <a href="{{ '/issues/' | relative_url }}">No. 1</a> · Thursday, September 17, 2026</p>
 </header>
 
 <article class="brief brief-lead"><h2 class="brief-headline"><a href="{{ '/bodies/belvidere-council/meetings/belvidere-council-20260908/' | relative_url }}">Residents pack council meeting over data center concerns</a></h2><p class="brief-body">More than twenty residents filled council chambers and overflowed into the hallway to voice opposition to a proposed data center, citing concerns about water consumption, power grid stress, noise, and agricultural land loss. Mayor Morris clarified no formal application has been submitted and emphasized any future action would require public hearings and council approval.</p><p class="brief-credit">City Council · Sep 8, 2026</p></article>
