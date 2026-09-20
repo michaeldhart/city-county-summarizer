@@ -125,8 +125,10 @@ $wide-wrapper: 1120px;
 //
 // The front page reads as a publication rather than an index: an oversized
 // masthead, a standfirst under it, and a colophon at the foot naming what the
-// wire covers and where corrections go. None of these appear anywhere else, so
-// they carry no layout risk.
+// wire covers and where corrections go. The masthead and the colophon appear
+// nowhere else and carry no layout risk; the standfirst since travelled, and
+// is now the deck on /beats/, /issues/ and /why/ as well — check those three
+// before changing it.
 // ---------------------------------------------------------------------------
 
 .masthead {
@@ -139,10 +141,24 @@ $wide-wrapper: 1120px;
   }
 }
 
+// The deck under a page title, on /beats/, /issues/ and /why/. At 1.0625 it
+// was a seventeenth of a pixel from body copy and read as a first paragraph
+// rather than as a summary of the page. Three things separate it now — size,
+// a tighter measure, and a full spacing unit of air before the body — because
+// colour alone was doing all the work and losing.
+//
+// Sans, deliberately: the front page is the only serif on the site, and a
+// serif deck here would read as a second masthead on a page that has none.
 .standfirst {
   max-width: 34em;   // a measure, not the full wrapper — this is body copy
+  margin-bottom: $spacing-unit;
   color: $grey-color-dark;
-  @include relative-font-size(1.0625);
+  line-height: 1.4;  // tighter than body: a deck is read in one pass
+  @include relative-font-size(1.3125);
+
+  @media screen and (max-width: $on-palm) {
+    @include relative-font-size(1.1875);
+  }
 }
 
 .colophon {
