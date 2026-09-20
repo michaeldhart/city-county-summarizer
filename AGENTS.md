@@ -153,9 +153,12 @@ on" digest.
 - `website/assets/main.scss` is the site's only stylesheet. It overrides the
   copy minima ships at the same path and `@import "minima"` pulls the theme in
   first, so everything in it is additive. Note `.breadcrumb`, `.jurisdiction`
-  and `.count` appear in the templates but have no rules yet. `.masthead`,
-  `.standfirst` and `.colophon` are front-page-only; `.byline` is on every
-  dispatch.
+  and `.count` appear in the templates but have no rules yet. `.colophon` is
+  front-page-only and `.byline` is on every dispatch, but `.standfirst` has
+  travelled — it is the deck under the title on `/beats/`, `/issues/` and
+  `/why/`, so check all three before changing it. `.masthead` is dead: the
+  flag redesign replaced it with `.front-page .nameplate`, and nothing has
+  emitted the class since.
 - `website/_includes/footer.html` overrides minima's footer the same way, at
   the same path. The theme's version prints `site.author`/`site.email`/social
   columns this site never sets, so it fell back to repeating `site.title` and
