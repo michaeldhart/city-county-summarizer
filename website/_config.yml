@@ -71,6 +71,7 @@ header_pages:
   - beats.md
   - search.md
   - method.md
+  - why.md
 
 collections:
   bodies:
