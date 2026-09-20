@@ -34,3 +34,5 @@ I hope this site is useful to you. I built this for me, my friends in local poli
 
 — Michael Hart<br>
 Creator &amp; Maintainer of "The Belvidere Wire"
+
+PS — "The Belvidere Wire" is an independent publication created and fully funded by me.
