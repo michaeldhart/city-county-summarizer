@@ -395,6 +395,15 @@ $heavy-rule: 3px double $text-color;
   color: $grey-color-dark;
 }
 
+// The quiet label after a name: dispatch counts on /beats/, the date and brief
+// count on /issues/. It lived inside .beat-bodies, so the /issues/ copy of the
+// class rendered at body size in body colour and read as part of the link it
+// trails. Only the block display is particular to the cards — see there.
+.count {
+  color: $grey-color;
+  @include relative-font-size(0.75);
+}
+
 // ---------------------------------------------------------------------------
 // Site footer
 //
@@ -538,13 +547,14 @@ $heavy-rule: 3px double $text-color;
     }
   }
 
-  // The count trails the name rather than sitting in its own column: body
-  // names here run to "Agricultural Conservation Easement Commission", and at
-  // a card's width they wrap, which leaves a right-aligned number stranded.
+  // The count drops below the name rather than sitting in its own column:
+  // body names here run to "Agricultural Conservation Easement Commission",
+  // and at a card's width they wrap, which leaves a right-aligned number
+  // stranded. Colour and size come from the shared .count rule above; on
+  // /issues/ the same label stays inline, where its em dash joins it to the
+  // issue number.
   .count {
     display: block;
-    color: $grey-color;
-    @include relative-font-size(0.75);
   }
 }
 

@@ -155,8 +155,9 @@ on" digest.
   first, so everything in it is additive. Note `.breadcrumb` and
   `.jurisdiction` (both in `_layouts/body.html`) have no rules behind them,
   and neither do `.issue-list` or the `.resource-*` classes in
-  `_layouts/meeting.html`. `.count` does have one, but nested under
-  `.beat-card` — the same class on `/issues/` gets nothing. `.colophon` is
+  `_layouts/meeting.html`. `.count` is styled site-wide; only the block
+  display that drops it below a body name is scoped to `.beat-bodies`, since
+  on `/issues/` the same label stays inline. `.colophon` is
   front-page-only and `.byline` is on every dispatch, but `.standfirst` has
   travelled: it is the deck under the title on `/beats/`, `/issues/` and
   `/why/`, so check all three before changing it.
