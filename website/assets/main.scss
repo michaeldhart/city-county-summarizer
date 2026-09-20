@@ -121,29 +121,22 @@ $wide-wrapper: 1120px;
 }
 
 // ---------------------------------------------------------------------------
-// Masthead voice
+// Deck and colophon
 //
-// The front page reads as a publication rather than an index: an oversized
-// masthead, a standfirst under it, and a colophon at the foot naming what the
-// wire covers and where corrections go. The masthead and the colophon appear
-// nowhere else and carry no layout risk; the standfirst since travelled, and
-// is now the deck on /beats/, /issues/ and /why/ as well — check those three
-// before changing it.
+// Two of the things that make a page read as a publication rather than an
+// index: a deck under the title, and a colophon at the foot naming what the
+// wire covers and where corrections go. The flag itself — nameplate, slogan,
+// folio — is further down.
+//
+// A .masthead rule headed this section until the flag redesign replaced it
+// with .front-page .nameplate. Nothing has emitted the class since, so it is
+// gone; the colophon below is the only part of the original three that is
+// still front-page-only.
 // ---------------------------------------------------------------------------
 
-.masthead {
-  margin-bottom: math.div($spacing-unit, 4);
-  letter-spacing: -0.02em;
-  @include relative-font-size(2.375);
-
-  @media screen and (max-width: $on-palm) {
-    @include relative-font-size(1.875);
-  }
-}
-
 // The deck under a page title, on /beats/, /issues/ and /why/. At 1.0625 it
-// was a seventeenth of a pixel from body copy and read as a first paragraph
-// rather than as a summary of the page. Three things separate it now — size,
+// was one pixel larger than body copy and read as a first paragraph rather
+// than as a summary of the page. Three things separate it now — size,
 // a tighter measure, and a full spacing unit of air before the body — because
 // colour alone was doing all the work and losing.
 //
