@@ -35,4 +35,16 @@ I hope this site is useful to you. I built this for me, my friends in local poli
 — Michael Hart<br>
 Creator &amp; Maintainer of "The Belvidere Wire"
 
+{% comment %}
+  The disclosure voice, same rule as the footer's affiliation row. Set with
+  a kramdown block attribute rather than a raw <p class="...">, which would
+  take the line out of markdown and leave its quotes straight while every
+  other pair on the page is curled.
+
+  Plain comment tags, not the whitespace-trimming pair with dashes: those
+  eat the blank line above, and kramdown then reads this paragraph as a
+  continuation of the sign-off. Note a comment body is still scanned for
+  tags, so the trimming form cannot even be named here.
+{% endcomment %}
 PS — "The Belvidere Wire" is an independent publication created and fully funded by me.
+{: .fine-print}
