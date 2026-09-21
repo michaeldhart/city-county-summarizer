@@ -3,6 +3,10 @@ title: Boone County Board of Health Meeting
 body_id: health
 date: '2026-08-31'
 permalink: /bodies/health/meetings/diligent-1639/
+description: The Board of Health was scheduled to approve budgets for fiscal years
+  2026 and 2027 at its August meeting. The board also considered updating its mileage
+  reimbursement rate to match the IRS rate effective July 1, 2026, and approving a
+  contract for a mobile health bus.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1639
 resources:
 - kind: portal

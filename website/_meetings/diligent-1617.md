@@ -3,6 +3,12 @@ title: Committee of the Whole Meeting - Finance
 body_id: cotw-finance
 date: '2026-07-09'
 permalink: /bodies/cotw-finance/meetings/diligent-1617/
+description: The county is moving forward with three advisory referendum questions
+  for the November general election, asking voters about property tax relief, local
+  control over solar energy projects, and limits on school administrative spending.
+  The questions originated from a request by state legislators to gauge voter sentiment.
+  The full County Board must approve the questions this month to meet the August deadline
+  for ballot placement.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1617
 has_transcript: true
 resources:

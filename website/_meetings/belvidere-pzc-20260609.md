@@ -3,6 +3,11 @@ title: Planning & Zoning Commission
 body_id: belvidere-pzc
 date: '2026-06-09'
 permalink: /bodies/belvidere-pzc/meetings/belvidere-pzc-20260609/
+description: The Planning and Zoning Commission unanimously recommended approval of
+  a special use permit for a restaurant with bar and video gaming at 336 West Chrysler
+  Drive. The proposal now goes to City Council for final approval. Staff reported
+  that while stand-alone gaming facilities have struggled in Belvidere, combined restaurant
+  and gaming operations are performing well.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/06/06-09-26-PZC-Agenda-1.pdf
 resources:
 - kind: agenda

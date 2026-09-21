@@ -3,6 +3,10 @@ title: Committee of the Whole Meeting - Finance
 body_id: cotw-finance
 date: '2026-04-09'
 permalink: /bodies/cotw-finance/meetings/diligent-1571/
+description: The County Board discussed proposed adjustments to Health Department
+  fees for environmental health services, food inspections, and septic system permits.
+  The discussion also included revisions to the county's sewage disposal code. No
+  vote was scheduled, leaving the changes open for further review.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1571
 resources:
 - kind: portal

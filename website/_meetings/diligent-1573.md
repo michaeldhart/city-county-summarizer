@@ -3,6 +3,11 @@ title: Committee of the Whole Meeting - Administration
 body_id: cotw-admin
 date: '2026-04-02'
 permalink: /bodies/cotw-admin/meetings/diligent-1573/
+description: The county board approved two major road construction contracts totaling
+  over $4.2 million. William Charles received $1.9 million for Hunter Road earthwork,
+  while Rock Road won $2.3 million for countywide resurfacing. Chairman Karl Johnson
+  abstained from voting on claims related to William Charles and all Highway Department
+  matters due to conflicts of interest.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1573
 resources:
 - kind: portal

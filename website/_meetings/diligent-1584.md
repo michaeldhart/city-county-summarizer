@@ -3,6 +3,11 @@ title: Boone County Board Meeting
 body_id: board
 date: '2026-02-19'
 permalink: /bodies/board/meetings/diligent-1584/
+description: The county board approved a $623,903 contract with M&M Concrete for the
+  North Boone School Road Bridge project, plus over $900,000 in highway department
+  equipment and construction contracts. Additional projects included $132,772 for
+  engineering work on Poplar Grove Road shoulders and a $165,608 truck body purchase
+  from Monroe Truck Equipment.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1584
 resources:
 - kind: portal

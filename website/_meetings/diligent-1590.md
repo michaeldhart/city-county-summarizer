@@ -3,6 +3,11 @@ title: Boone County Board Meeting
 body_id: board
 date: '2026-01-22'
 permalink: /bodies/board/meetings/diligent-1590/
+description: Residents asked the county board to install a four-way stop at Orth and
+  Calonia Roads after a serious accident sent one driver to the hospital by helicopter.
+  Speakers cited population growth, blind spots, and decades of safety concerns at
+  what locals call Dead Man's Crossing. The board referred the matter to its administration
+  committee, which meets February 5.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1590
 has_transcript: true
 resources:

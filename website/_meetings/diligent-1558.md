@@ -3,6 +3,11 @@ title: Boone County Board Meeting
 body_id: board
 date: '2026-05-21'
 permalink: /bodies/board/meetings/diligent-1558/
+description: The county board approved a 40-acre solar project on Cemetery Road by
+  a 7-4 vote after six residents spoke against it. Board members voting yes said state
+  law stripped local control and left them no choice, with one saying the county would
+  lose any lawsuit and face significant costs. One member said he would always vote
+  no regardless of lawsuit threats.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1558
 has_transcript: true
 resources:

@@ -3,6 +3,10 @@ title: Boone County Board of Health Meeting
 body_id: health
 date: '2026-05-04'
 permalink: /bodies/health/meetings/diligent-1567/
+description: The Boone County Board approved a $5,600 annual service fee for public
+  health accreditation. The payment supports the county's participation in the Public
+  Health Accreditation Board program. The board also received updates on building
+  status and planned revisions to Chapter 38, Section 31 of the county code.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1567
 resources:
 - kind: portal

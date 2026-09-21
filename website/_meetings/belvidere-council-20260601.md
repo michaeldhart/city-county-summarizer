@@ -3,6 +3,11 @@ title: City Council
 body_id: belvidere-council
 date: '2026-06-01'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260601/
+description: A longtime resident asked the council to remove a recently installed
+  four-way stop at 6th Street and 5th Avenue, saying neighbors were not notified in
+  advance. Lloyd Phillips cited increased noise from vehicles stopping and starting,
+  concerns about property values, and difficulty accessing his driveway, which empties
+  directly into the intersection.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/05/06-01-26-City-Council-Agenda-Packet.pdf
 has_transcript: true
 resources:

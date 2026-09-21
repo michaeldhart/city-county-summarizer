@@ -3,6 +3,11 @@ title: City Council
 body_id: belvidere-council
 date: '2026-04-06'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260406/
+description: The city approved emergency repairs to Well 7 without the usual competitive
+  bidding process, authorizing a contract not to exceed $200,000. Well 5 also failed
+  last week. The Well 7 pump assembly will require two and a half to three weeks to
+  remove, rehabilitate, and reinstall, leaving the city operating on reduced water
+  production capacity.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/04/04-06-26-City-Council-Agenda-Packet.pdf
 has_transcript: true
 resources:

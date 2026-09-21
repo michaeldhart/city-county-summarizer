@@ -3,6 +3,11 @@ title: Committee of the Whole Meeting - Finance
 body_id: cotw-finance
 date: '2026-09-10'
 permalink: /bodies/cotw-finance/meetings/diligent-1633/
+description: Boone County is finalizing an agreement with the Illinois Tollway, City
+  of Belvidere, and Flora Township that would dramatically reduce local costs for
+  Irene Road bridge maintenance. The county's share would be $90,000, down from over
+  $1 million under the previous arrangement. The total local cost would be $180,000
+  split between county and city.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1633
 has_transcript: true
 resources:

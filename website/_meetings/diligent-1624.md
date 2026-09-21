@@ -3,6 +3,10 @@ title: Committee of the Whole Meeting - Finance
 body_id: cotw-finance
 date: '2026-08-10'
 permalink: /bodies/cotw-finance/meetings/diligent-1624/
+description: The Finance Committee reviewed a resolution authorizing the county to
+  strike a provision related to a cellular tower at 1455 McKinley Avenue in Belvidere.
+  The resolution would name the County Board Chairman as the authorized representative
+  on the matter. The item was on the agenda for action.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1624
 resources:
 - kind: portal

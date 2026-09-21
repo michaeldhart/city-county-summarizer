@@ -3,6 +3,12 @@ title: City Council
 body_id: belvidere-council
 date: '2026-05-04'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260504/
+description: The city council approved stop sign installations at two intersections
+  following public testimony about speeding and accidents. A four-way stop will be
+  installed at Fifth Avenue and West Sixth Street per school district request. At
+  East Fifth Street and Caswell Street, the council amended the proposal to place
+  stop signs on Caswell instead of Fifth Street after residents described crashes
+  and safety concerns.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/05/05-04-26-City-Council-Agenda-Packet.pdf
 has_transcript: true
 resources:

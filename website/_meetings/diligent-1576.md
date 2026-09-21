@@ -3,6 +3,11 @@ title: Zoning Board of Appeals Meeting
 body_id: zba
 date: '2026-03-24'
 permalink: /bodies/zba/meetings/diligent-1576/
+description: The County Board reviewed a special use permit application for a solar
+  energy facility at 114xx US Route 20, submitted by SV CSG Bonus Solar 1, LLC. The
+  application included a decommissioning plan, traffic analysis, road capacity study,
+  and stormwater compliance documentation. The recommended action was to approve the
+  permit.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1576
 resources:
 - kind: portal

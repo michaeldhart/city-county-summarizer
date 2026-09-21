@@ -3,6 +3,10 @@ title: Boone County Board of Health Meeting
 body_id: health
 date: '2026-03-30'
 permalink: /bodies/health/meetings/diligent-1574/
+description: The Boone County Board of Health had a proposed county septic code on
+  its agenda for action, along with amendments to Chapter 38, Section 31 of the county
+  code. The board also reviewed multiple revised internal policies covering bereavement
+  leave, family medical leave, remote work, disability leave, and linguistic competency.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1574
 resources:
 - kind: portal

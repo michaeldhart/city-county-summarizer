@@ -3,6 +3,11 @@ title: Board of Fire & Police Commissioners
 body_id: belvidere-fpc
 date: '2026-06-11'
 permalink: /bodies/belvidere-fpc/meetings/belvidere-fpc-20260611/
+description: The Board of Fire and Police Commissioners moved Michael DeFrancisco
+  and Esteban Castanon forward to polygraph testing after passing background investigations,
+  while two other candidates failed their background checks. Neil Rossi received a
+  conditional job offer as a probational officer after completing his polygraph and
+  interview, pending psychological and medical testing.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/06/06-11-26-Special-FP-Meeting-Agenda.pdf
 resources:
 - kind: agenda

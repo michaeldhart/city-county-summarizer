@@ -3,6 +3,11 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-01-12'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260112/
+description: Belvidere approved two state grants totaling $280,000 for the Kishwaukee
+  Riverfront Path Extension, bringing total grant funding to $980,000 for the $1.1
+  million project. The path will connect the regional trail system through downtown
+  along the Kishwaukee River to park district facilities. The city's local match is
+  only $140,000, or about 13 percent of project costs.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/01/01-12-26-Committee-of-the-Whole-Packet.pdf
 has_transcript: true
 resources:

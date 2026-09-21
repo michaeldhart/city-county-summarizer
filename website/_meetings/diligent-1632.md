@@ -3,6 +3,11 @@ title: Committee of the Whole Meeting - Administration
 body_id: cotw-admin
 date: '2026-09-03'
 permalink: /bodies/cotw-admin/meetings/diligent-1632/
+description: The county approved a special use permit allowing up to 10 H-2A agricultural
+  workers to stay at 11635 Wange Road for three months each spring at a tree nursery
+  operation. A neighbor opposed the permit, citing concerns about property values,
+  water impact, and preference for local workers. The applicant explained that local
+  hiring is attempted first and workers undergo background checks and inspections.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1632
 has_transcript: true
 resources:

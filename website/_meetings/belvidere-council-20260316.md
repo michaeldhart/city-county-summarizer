@@ -3,6 +3,11 @@ title: City Council
 body_id: belvidere-council
 date: '2026-03-16'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260316/
+description: The City Council gave first approval to a fiscal year 2027 budget ordinance
+  with revenues of $25.8 million and an ending cash balance of $23.6 million, roughly
+  one year of reserves. Budget Officer Sarah Turnipseed adjusted the presentation
+  to remove operating transfer dollars from revenue after consulting with auditors.
+  A second reading is expected.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/03/03-16-26-City-Council-Agenda-Packet.pdf
 has_transcript: true
 resources:

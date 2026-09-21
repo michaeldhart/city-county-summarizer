@@ -3,6 +3,11 @@ title: Zoning Board of Appeals Meeting
 body_id: zba
 date: '2026-02-24'
 permalink: /bodies/zba/meetings/diligent-1582/
+description: The Zoning Board of Appeals reviewed a special use permit for a solar
+  energy facility on US Route 20, an application from SolarStone Development that
+  has drawn opposition letters from the public. Staff recommended approval of the
+  project, which includes site plans, decommissioning plans, and a bond letter. The
+  item was continued from previous meetings.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1582
 resources:
 - kind: portal

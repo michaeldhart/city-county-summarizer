@@ -3,6 +3,10 @@ title: Board of Fire & Police Commissioners
 body_id: belvidere-fpc
 date: '2026-03-25'
 permalink: /bodies/belvidere-fpc/meetings/belvidere-fpc-20260325/
+description: The Board of Fire and Police Commissioners voted to terminate Police
+  Officer Muhammad Rehman and Recruit Jacob Sampson following a closed session discussion
+  of employee performance. The Board also accepted the retirements of two veteran
+  officers, Michelle Schwartz and Rob Kozlowski, both effective in early May.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/03/3-25-26-Special-FP-Meeting-Agenda.pdf
 resources:
 - kind: agenda

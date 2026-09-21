@@ -3,6 +3,11 @@ title: City Council
 body_id: belvidere-council
 date: '2026-03-02'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260302/
+description: 'The City Council unanimously approved street closures for three community
+  events in 2026: Buchanan Street Markets on three evenings in May, June and July;
+  Downtown Business Trick or Treat on October 28; and Hometown Christmas on December
+  4. The closures include extended setup and cleanup times and designated trash receptacle
+  placements for each event.'
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/02/03-02-26-City-Council-Agenda-Packet.pdf
 has_transcript: true
 resources:

@@ -3,6 +3,10 @@ title: Special Meeting of the Boone County Board of Health Meeting
 body_id: health
 date: '2026-08-06'
 permalink: /bodies/health/meetings/diligent-1631/
+description: The Board of Health held a special meeting to discuss relocating the
+  Boone County Health Department. The board also convened in executive session, though
+  the specific topic was not disclosed. No details on decisions or outcomes were available
+  from the meeting agenda.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1631
 resources:
 - kind: portal

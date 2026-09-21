@@ -3,6 +3,11 @@ title: City Council
 body_id: belvidere-council
 date: '2026-01-20'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260120/
+description: The city council approved a budget amendment creating two new public
+  works positions to replace institutional knowledge as Director Brent Anderson retires
+  in June after 57 years. An assistant director position at $114,000 and a street,
+  water, and sewer superintendent at $106,000 will add $220,000 in annual spending
+  to the budget.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/01/01-20-26-City-Council-Agenda-Packet-Website.pdf
 has_transcript: true
 resources:

@@ -3,6 +3,10 @@ title: Committee of the Whole Meeting - Finance
 body_id: cotw-finance
 date: '2026-02-12'
 permalink: /bodies/cotw-finance/meetings/diligent-1586/
+description: The County Board reviewed a comparative wage study on board member per
+  diem compensation. The discussion comes as the board considers how much to pay members
+  for their service. No vote was taken at the meeting, and details of the wage study
+  were not disclosed.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1586
 resources:
 - kind: portal

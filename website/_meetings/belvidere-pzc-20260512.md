@@ -3,6 +3,10 @@ title: Planning & Zoning Commission
 body_id: belvidere-pzc
 date: '2026-05-12'
 permalink: /bodies/belvidere-pzc/meetings/belvidere-pzc-20260512/
+description: The commission recommended approval of a special use permit for Central
+  Commodities at 1140 West Locust Street to construct a 112-foot grain bin with building
+  separation of just over 11 feet instead of the required 40 feet. The grain elevator
+  has operated at the site since 1957. City Council will make the final decision.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/05/05.12.26-PZC-Mtg-Packet-1.pdf
 resources:
 - kind: agenda

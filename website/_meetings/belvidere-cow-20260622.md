@@ -3,6 +3,12 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-06-22'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260622/
+description: The council voted to refer Perry School to the Historic Preservation
+  Commission for possible landmark designation after the school district closed the
+  126-year-old building. Officials hope designation could help future private buyers
+  access tax credits for renovation and prevent the building from becoming blighted
+  like the abandoned St. Joe's Hospital. The designation would regulate exterior changes
+  but not prevent closure or require school use.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/06/06-22-26-Committee-of-the-Whole-Packet.pdf
 has_transcript: true
 resources:

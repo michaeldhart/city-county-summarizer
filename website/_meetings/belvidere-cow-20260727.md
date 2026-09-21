@@ -3,6 +3,12 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-07-27'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260727/
+description: The Committee of the Whole approved an ordinance amendment imposing a
+  5 percent electric utility tax on businesses that self-generate power rather than
+  purchasing from ComEd. The measure would apply to industrial peaker plants and fuel
+  cells but exempt emergency generators, ensuring businesses generating electricity
+  pay the same tax as those buying it retail. The ordinance advances to full City
+  Council.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/07/07-27-26-Committee-of-the-Whole-Packet.pdf
 has_transcript: true
 resources:

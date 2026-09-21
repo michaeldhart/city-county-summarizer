@@ -3,6 +3,11 @@ title: Committee of the Whole Meeting - Administration
 body_id: cotw-admin
 date: '2026-07-02'
 permalink: /bodies/cotw-admin/meetings/diligent-1615/
+description: The county approved two change orders totaling $41,733 for ongoing projects.
+  The courthouse renovation added $19,937 for window and ceiling modifications in
+  the future State's Attorney office. The Logan Avenue project added $21,796, primarily
+  for $13,000 in hallway carpet replacement. Both projects remain on schedule with
+  moves planned for August.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1615
 has_transcript: true
 resources:

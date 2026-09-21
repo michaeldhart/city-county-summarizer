@@ -3,6 +3,11 @@ title: 'Special Meeting: Board Vacancy Interviews'
 body_id: bpd-board
 date: '2026-08-10'
 permalink: /bodies/bpd-board/meetings/bpd-20260810-special-meeting-board-vacancy-interviews/
+description: The Belvidere Township Park District Board of Commissioners unanimously
+  appointed Carrie Lenzen as an interim board member at a special meeting held at
+  the Historic Baltic Mill. The board spent nearly two hours in closed session discussing
+  candidates before making the appointment. No information was provided about the
+  nature of the vacancy being filled.
 source_url: https://www.belviderepark.org/wp-content/uploads/2026/08/Special-Meeting-Agenda-August-10-2026.pdf
 resources:
 - kind: agenda

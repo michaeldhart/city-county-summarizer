@@ -3,6 +3,11 @@ title: City Council
 body_id: belvidere-council
 date: '2026-02-16'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260216/
+description: The City Council rejected proposals from three private IT vendors and
+  approved a three-year intergovernmental agreement with Boone County for information
+  technology and phone services at $110,000 annually. The contract includes annual
+  cost increases tied to inflation or three percent, whichever is higher, beginning
+  in May.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/02/02-16-26-City-Council-Agenda-Packet.pdf
 has_transcript: true
 resources:

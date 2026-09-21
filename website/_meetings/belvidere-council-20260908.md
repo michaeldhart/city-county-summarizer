@@ -3,6 +3,11 @@ title: City Council
 body_id: belvidere-council
 date: '2026-09-08'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260908/
+description: More than twenty residents filled council chambers and overflowed into
+  the hallway to voice opposition to a proposed data center, citing concerns about
+  water consumption, power grid stress, noise, and agricultural land loss. Mayor Morris
+  clarified no formal application has been submitted and emphasized any future action
+  would require public hearings and council approval.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/09/09-08-26-City-Council-Agenda-Packet.pdf
 has_transcript: true
 resources:

@@ -3,6 +3,10 @@ title: Historic Preservation Commission
 body_id: belvidere-hpc
 date: '2026-07-28'
 permalink: /bodies/belvidere-hpc/meetings/belvidere-hpc-20260728/
+description: The Historic Preservation Commission received an application to designate
+  Perry School as a local landmark and scheduled a public hearing for its August 25
+  meeting. The hearing will give residents an opportunity to comment on the proposed
+  landmark status before the commission makes a decision.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/07/07-28-26-HPC-Agenda.pdf
 resources:
 - kind: agenda

@@ -3,6 +3,12 @@ title: City Council
 body_id: belvidere-council
 date: '2026-04-20'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260420/
+description: The city council approved an ordinance establishing inspection of commercial
+  and multi-family buildings, limiting checks to common areas rather than individual
+  units. The Northwest Illinois Alliance of Realtors opposed the measure, arguing
+  it lacks clarity on Fourth Amendment protections, appeals procedures, and enforcement
+  timelines. The ordinance passed eight to one after an amendment clarified inspection
+  limits.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/04/04-20-26-City-Council-Agenda-Packet.pdf
 has_transcript: true
 resources:

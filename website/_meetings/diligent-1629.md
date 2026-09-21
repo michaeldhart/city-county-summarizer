@@ -3,6 +3,10 @@ title: Boone County Board of Health Meeting
 body_id: health
 date: '2026-08-03'
 permalink: /bodies/health/meetings/diligent-1629/
+description: The Board of Health was scheduled to vote on amendments to the current
+  fiscal year 2026 budget and approve the full fiscal year 2027 budget at its August
+  meeting. The board also reviewed its health fund balance and monthly revenue and
+  expenditure statements.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1629
 resources:
 - kind: portal

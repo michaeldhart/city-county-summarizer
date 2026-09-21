@@ -3,6 +3,11 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-01-26'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260126/
+description: Belvidere accepted a Federal Railroad Administration grant of $1,666,279
+  for preliminary engineering and environmental review of a grade separation at Appleton
+  Road, a project needed since 1966 according to city staff. Illinois DOT will provide
+  an additional $416,570 match. The project supports the Stellantis Assembly Plant
+  and aims to reduce traffic delays and emissions from idling at railroad crossings.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/01/01-26-26-Committee-of-the-Whole-Packet-1.pdf
 has_transcript: true
 resources:

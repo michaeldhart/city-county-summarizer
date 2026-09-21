@@ -3,6 +3,10 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-02-09'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260209/
+description: The Committee of the Whole was set to consider an intergovernmental agreement
+  for Boone County to provide IT and phone services to most city departments for $110,000
+  annually. The three-year deal beginning May 2026 excludes the Police Department
+  and includes annual cost increases of at least 3 percent starting in 2027.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/02/02-09-26-Committee-of-the-Whole-Packet-2.pdf
 resources:
 - kind: agenda

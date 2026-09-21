@@ -3,6 +3,11 @@ title: Committee of the Whole Meeting - Administration
 body_id: cotw-admin
 date: '2026-05-07'
 permalink: /bodies/cotw-admin/meetings/diligent-1554/
+description: The committee rejected a Cemetery Road solar farm and a Huber Road event
+  venue after sustained public opposition at its May 7 meeting. Neighbors cited prime
+  farmland loss, stray voltage risks, and soil contamination for the solar project,
+  and noise complaints and past violations for the venue. Both applications advance
+  to the full County Board for final votes on May 21.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1554
 has_transcript: true
 resources:

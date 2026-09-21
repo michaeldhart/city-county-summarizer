@@ -4,6 +4,11 @@ title: Agricultural Conservation and Easement and Farmland Protection Commission
 body_id: ag-easement
 date: '2026-02-24'
 permalink: /bodies/ag-easement/meetings/diligent-1583/
+description: The Agricultural Conservation and Easement and Farmland Protection Commission
+  met for its quarterly meeting to discuss ongoing county soil health assessments
+  conducted by the Soil and Water Conservation District and state agriculture department.
+  The commission also reviewed drainage and stormwater management updates and scheduled
+  a presentation to the Pomona Grange for March 11th.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1583
 resources:
 - kind: portal

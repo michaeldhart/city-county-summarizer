@@ -3,6 +3,10 @@ title: Historic Preservation Commission
 body_id: belvidere-hpc
 date: '2026-01-27'
 permalink: /bodies/belvidere-hpc/meetings/belvidere-hpc-20260127/
+description: The Historic Preservation Commission sent maintenance grant notices to
+  eligible property owners, with extra money available after two grants went unused
+  last year. St. John's and at least one other owner have already expressed interest
+  in applying. The commission's 2025 awards program raised $345 for the grant fund.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/01/01-27-26-HPC-Agenda.pdf
 resources:
 - kind: agenda

@@ -3,6 +3,11 @@ title: Board of Fire & Police Commissioners
 body_id: belvidere-fpc
 date: '2026-04-22'
 permalink: /bodies/belvidere-fpc/meetings/belvidere-fpc-20260422/
+description: The Board of Fire and Police Commissioners approved Seth Norris as a
+  probationary police officer effective May 1, following psychological and medical
+  evaluations. The hire comes as Officer Michelle Young retires the same day. Two
+  other officer candidates are scheduled to graduate from training school on April
+  23.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/04/4-22-26-Special-FP-Meeting-Agenda-1.pdf
 resources:
 - kind: agenda

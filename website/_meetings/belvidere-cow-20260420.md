@@ -3,6 +3,11 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-04-20'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260420/
+description: The city was scheduled to consider a sewer rate increase of 52 cents
+  per month, bringing the average monthly bill from $48.45 to $52.62 effective May
+  1. The increase was intended to fund $3.9 million in annual payments beginning in
+  2032 for an $87.3 million wastewater treatment plant improvement project. Additional
+  rate increases were planned over the next five years.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/04/04-27-26-Committee-of-the-Whole-Packet.pdf
 resources:
 - kind: agenda

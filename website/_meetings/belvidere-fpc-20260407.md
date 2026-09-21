@@ -3,6 +3,12 @@ title: Board of Fire & Police Commissioners
 body_id: belvidere-fpc
 date: '2026-04-07'
 permalink: /bodies/belvidere-fpc/meetings/belvidere-fpc-20260407/
+description: The Board of Fire and Police Commissioners amended its March meeting
+  minutes to formally record termination votes for active police officer Muhammad
+  Rehman and training candidate Jacob Sampson. Both terminations had been approved
+  unanimously but were initially omitted from the written record. The commission also
+  advanced entry-level candidate Seth Norris through testing and offered him employment
+  contingent on psychological and medical clearance.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/04/4-7-26-Special-FP-Meeting-Agenda-1.pdf
 resources:
 - kind: agenda

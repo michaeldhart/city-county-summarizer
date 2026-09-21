@@ -3,6 +3,10 @@ title: City Council
 body_id: belvidere-council
 date: '2026-07-20'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260720/
+description: The City Council approved a $1.6 million extension of the Kishwaukee
+  Riverfront Path, with state grants covering $980,000 of the cost. The city will
+  contribute $661,255 from budgeted capital funds. Grants include $780,000 secured
+  by Senator Stadelman and $200,000 in partnership with Belvidere Park District.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/07/07-20-26-City-Council-Agenda-Packet-1.pdf
 has_transcript: true
 resources:

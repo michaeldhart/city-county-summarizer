@@ -3,6 +3,10 @@ title: Special Boone County Board Meeting
 body_id: board
 date: '2026-01-15'
 permalink: /bodies/board/meetings/diligent-1593/
+description: The Boone County Board met in special session to consider authorizing
+  General Obligation Bonds, Series 2026, which would use sales tax revenue as an alternate
+  revenue source. The board voted on Ordinance 26-04 to issue the bonds, though the
+  exact vote tally and outcome were not available from meeting materials.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1593
 resources:
 - kind: portal

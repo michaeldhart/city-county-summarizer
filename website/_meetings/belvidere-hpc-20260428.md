@@ -3,6 +3,11 @@ title: Historic Preservation Commission
 body_id: belvidere-hpc
 date: '2026-04-28'
 permalink: /bodies/belvidere-hpc/meetings/belvidere-hpc-20260428/
+description: The Historic Preservation Commission approved two property maintenance
+  grants of $1,500 each on April 28. One went to 105/107 Buchanan Street for window
+  and door replacement while maintaining original openings. The other went to 401
+  N. Main Street for basement window replacement. The grants come from the commission's
+  fund, which held approximately $5,900.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/04/04-28-26-HPC-Agenda.pdf
 resources:
 - kind: agenda

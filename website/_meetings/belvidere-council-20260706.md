@@ -3,6 +3,10 @@ title: City Council
 body_id: belvidere-council
 date: '2026-07-06'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260706/
+description: The council voted to refer Perry School to the Historic Preservation
+  Commission for possible landmark status. Aldermen Peterson and Hoiness will serve
+  as official applicants for the public hearing process. The designation will return
+  to the full council for final approval regardless of the commission's recommendation.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/07/07-06-26-City-Council-Agenda-Packet.pdf
 has_transcript: true
 resources:

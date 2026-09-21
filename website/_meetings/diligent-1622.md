@@ -3,6 +3,10 @@ title: Boone County Board Meeting
 body_id: board
 date: '2026-07-16'
 permalink: /bodies/board/meetings/diligent-1622/
+description: The board unanimously approved three advisory questions for the November
+  ballot asking voters about property tax relief, local control of commercial solar
+  facilities and data centers, and school district administrative spending. The questions
+  are nonbinding but would signal voter preferences on state policy issues.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1622
 has_transcript: true
 resources:

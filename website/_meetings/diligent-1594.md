@@ -3,6 +3,10 @@ title: Committee of the Whole Meeting - Administration
 body_id: cotw-admin
 date: '2026-01-08'
 permalink: /bodies/cotw-admin/meetings/diligent-1594/
+description: The county board discussed an ongoing intergovernmental agreement for
+  IT services with the City of Belvidere. The county's most recent proposal called
+  for $120,000 annually with yearly increases tied to 3 percent or the consumer price
+  index, whichever is greater, over a four-year term. No vote was taken.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1594
 resources:
 - kind: portal

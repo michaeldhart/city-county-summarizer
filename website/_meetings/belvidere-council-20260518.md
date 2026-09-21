@@ -3,6 +3,10 @@ title: City Council
 body_id: belvidere-council
 date: '2026-05-18'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260518/
+description: The City Council voted 9-1 to raise sewer rates by 6.5 percent, effective
+  May 1. Alderman Brereton cast the lone opposing vote. The rate increase was approved
+  through Ordinance 764H, which amends the city fee schedule. The council also approved
+  nearly $2.8 million in routine expenditures across General and Water/Sewer funds.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/05/05-18-26-City-Council-Agenda-Packet.pdf
 has_transcript: true
 resources:

@@ -3,6 +3,11 @@ title: Historic Preservation Commission
 body_id: belvidere-hpc
 date: '2026-06-23'
 permalink: /bodies/belvidere-hpc/meetings/belvidere-hpc-20260623/
+description: The Historic Preservation Commission approved $27,278 in Downtown Façade
+  Improvement grants split among seven applicants. The requests totaled over $32,000,
+  but available funding fell short. Commissioners noted that historical properties
+  should receive priority over non-historical ones when allocating the limited grant
+  funds in future rounds.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/06/06-23-26-HPC-Agenda-1.pdf
 resources:
 - kind: agenda

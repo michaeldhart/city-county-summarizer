@@ -3,6 +3,11 @@ title: Committee of the Whole Meeting - Administration
 body_id: cotw-admin
 date: '2026-08-06'
 permalink: /bodies/cotw-admin/meetings/diligent-1623/
+description: The Administrative and Legislative Committee voted down an ordinance
+  reducing speed limits on Rockton, McCurry and Grade School roads after members said
+  no speed study had been conducted to justify the changes. The proposal would have
+  dropped limits from unmarked 55 mph to 35 mph in some areas. The failed measure
+  now goes to the full County Board.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1623
 has_transcript: true
 resources:

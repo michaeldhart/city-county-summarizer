@@ -3,6 +3,10 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-03-09'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260309/
+description: The committee was scheduled to consider an agreement transferring Genoa
+  Road from Interstate 90 to Huber Road from county to city control. The transfer
+  would enable the city to extend water and sewer lines to serve future development
+  along the corridor.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/03/03-09-26-Committee-of-the-Whole-Packet.pdf
 resources:
 - kind: agenda

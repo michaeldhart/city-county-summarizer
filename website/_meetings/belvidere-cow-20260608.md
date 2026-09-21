@@ -3,6 +3,10 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-06-08'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260608/
+description: The Committee of the Whole approved purchase of a pavement saw for $21,132
+  and a Bobcat utility vehicle for $80,195, both funded from water and wastewater
+  department depreciation accounts. The purchases had been budgeted in the city's
+  fiscal 2027 plan. The current pavement saw cuts unevenly and will be auctioned.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/06/06-08-26-Committee-of-the-Whole-Packet.pdf
 has_transcript: true
 resources:

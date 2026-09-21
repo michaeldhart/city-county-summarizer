@@ -3,6 +3,10 @@ title: Boone County Board of Health Meeting
 body_id: health
 date: '2026-06-01'
 permalink: /bodies/health/meetings/diligent-1613/
+description: The Board of Health was scheduled to approve up to $12,000 for West Nile
+  Virus equipment at its June meeting. The board also planned to consider new policies
+  on IT management and temporary weekly claims processing, along with a salary scale
+  analysis.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1613
 resources:
 - kind: portal

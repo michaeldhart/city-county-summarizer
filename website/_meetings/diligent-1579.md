@@ -3,6 +3,11 @@ title: Committee of the Whole Meeting - Finance
 body_id: cotw-finance
 date: '2026-03-12'
 permalink: /bodies/cotw-finance/meetings/diligent-1579/
+description: The Boone County Board discussed options for partially self-funding employee
+  health insurance at its March meeting. The presentation explored alternatives to
+  the county's current health insurance arrangement, though no decision was made.
+  Changes to employee health benefits could affect county costs and coverage for county
+  workers.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1579
 resources:
 - kind: portal

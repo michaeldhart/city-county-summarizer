@@ -3,6 +3,11 @@ title: City Council
 body_id: belvidere-council
 date: '2026-08-03'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260803/
+description: The City Council unanimously annexed and rezoned 185 acres south of US
+  Route 20 for the East Point Commons Subdivision, a mixed commercial and industrial
+  project. The city will contribute up to $805,268 toward water and sewer infrastructure,
+  matched by a nearly $3 million state grant and equal developer contribution. At
+  least 50 acres must remain industrial.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/07/08-03-26-City-Council-Agenda-Packet.pdf
 resources:
 - kind: agenda

@@ -3,6 +3,11 @@ title: Boone County Zoning Board of Appeals
 body_id: zba
 date: '2026-06-23'
 permalink: /bodies/zba/meetings/diligent-1621/
+description: The Zoning Board of Appeals decided a special use permit application
+  for an assembly use at 8410 Huber Road after receiving both supporting and opposing
+  comments from the public. The application included site plans, health department
+  materials, and environmental review. The permit request generated enough interest
+  to prompt written submissions on both sides.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1621
 resources:
 - kind: portal

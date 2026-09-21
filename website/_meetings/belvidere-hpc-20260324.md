@@ -3,6 +3,10 @@ title: Historic Preservation Commission
 body_id: belvidere-hpc
 date: '2026-03-24'
 permalink: /bodies/belvidere-hpc/meetings/belvidere-hpc-20260324/
+description: The Historic Preservation Commission scheduled a scavenger hunt for April
+  25, a fundraising event at Swift House on May 21, a stained glass window tour in
+  July, and a Victorian picnic in September. The commission also received one property
+  maintenance grant application and expects another from St. John's Church.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/03/03-24-26-HPC-Agenda.pdf
 resources:
 - kind: agenda

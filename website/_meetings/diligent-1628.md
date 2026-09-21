@@ -3,6 +3,10 @@ title: Boone County Board of Health - Finance Sub-Committee Meeting
 body_id: health
 date: '2026-07-31'
 permalink: /bodies/health/meetings/diligent-1628/
+description: The Board of Health finance subcommittee met to review a revised budget
+  for fiscal year 2026 and a proposed budget for fiscal year 2027. The panel also
+  entered executive session, typically used for personnel or legal matters. The full
+  health board was scheduled to meet August 3.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1628
 resources:
 - kind: portal

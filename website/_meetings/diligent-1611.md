@@ -3,6 +3,12 @@ title: Boone County Zoning Board of Appeals
 body_id: zba
 date: '2026-05-26'
 permalink: /bodies/zba/meetings/diligent-1611/
+description: The Zoning Board of Appeals had major zoning updates on its May 26 agenda,
+  including a comprehensive Unified Development Ordinance intended to replace the
+  county's existing zoning ordinance and subdivision regulations. Corresponding zoning
+  map amendments were also scheduled for consideration. The board was also set to
+  review a special use permit for outdoor and self-service storage at 3100 US Route
+  20.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1611
 resources:
 - kind: portal

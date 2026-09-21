@@ -3,6 +3,11 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-05-26'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260526/
+description: The city approved a TIF grant of up to $107,790 to help Dairy Farms of
+  America pay for over $806,800 in wastewater pre-treatment improvements. The city's
+  treatment plant has experienced ongoing problems and costs due to failures in DFA's
+  pre-treatment system, prompting a U.S. EPA audit that required city action. DFA
+  is the city's second-largest sewer customer.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/05/05-26-26-Committee-of-the-Whole-Packet.pdf
 has_transcript: true
 resources:

@@ -3,6 +3,11 @@ title: Boone County Board Meeting
 body_id: board
 date: '2026-06-18'
 permalink: /bodies/board/meetings/diligent-1612/
+description: The county board unanimously adopted a Unified Development Ordinance
+  that consolidates zoning and subdivision rules. After discussion with Farm Bureau
+  representatives, the board amended the ordinance to require quarter-mile buffers
+  from large livestock operations for new subdivisions and protect existing farms
+  with 300 or more animal units from encroaching development.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1612
 has_transcript: true
 resources:

@@ -3,6 +3,10 @@ title: Committee of the Whole Meeting - Finance
 body_id: cotw-finance
 date: '2026-01-15'
 permalink: /bodies/cotw-finance/meetings/diligent-1592/
+description: The County Board discussed a three-year agreement with the City of Belvidere
+  for information technology services at $110,000 annually. The contract would include
+  automatic annual increases matching either the consumer price index or 3 percent,
+  whichever is higher. No vote was taken at the meeting.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1592
 resources:
 - kind: portal

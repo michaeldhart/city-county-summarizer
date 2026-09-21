@@ -3,6 +3,11 @@ title: Planning & Zoning Commission
 body_id: belvidere-pzc
 date: '2026-08-11'
 permalink: /bodies/belvidere-pzc/meetings/belvidere-pzc-20260811/
+description: The Planning and Zoning Commission voted 6–1 to allow video gaming and
+  on-site alcohol consumption at a 7-Eleven at 707 Logan Avenue despite resident concerns
+  about intoxication and littering near the store. Gaming will be limited to a walled-off
+  area during store hours of 6 a.m. to 11 p.m. The city has issued 35 gaming licenses
+  of a 50-establishment cap.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/08/08-11-26-PZC-Agenda-and-Packet-1.pdf
 resources:
 - kind: agenda

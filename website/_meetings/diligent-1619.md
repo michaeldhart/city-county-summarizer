@@ -3,6 +3,10 @@ title: Boone County Zoning Board of Appeals
 body_id: zba
 date: '2026-06-18'
 permalink: /bodies/zba/meetings/diligent-1619/
+description: The Boone County Zoning Board of Appeals held a special meeting on June
+  18 for training on zoning procedures and board responsibilities. No variance requests
+  or zoning cases were on the agenda. The session was scheduled as the primary business
+  of the evening meeting at the County Board Room.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1619
 resources:
 - kind: portal

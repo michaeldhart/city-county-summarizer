@@ -3,6 +3,11 @@ title: Committee of the Whole Meeting - Finance
 body_id: cotw-finance
 date: '2026-05-14'
 permalink: /bodies/cotw-finance/meetings/diligent-1556/
+description: Following public complaints about noise from rumble strips at Caledonia
+  and Orth roads, the highway engineer committed to adding a paint layer to reduce
+  sound levels from 78-82 decibels to 73-74 decibels. Two residents reported hearing
+  the strips inside their homes during peak traffic hours. The engineer conducted
+  noise measurements at the intersection after receiving complaints.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1556
 has_transcript: true
 resources:

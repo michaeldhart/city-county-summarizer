@@ -3,6 +3,11 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-07-13'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260713/
+description: The council approved an annexation agreement for the East Point Commons
+  development on 184.88 acres. The project is supported by a $2.97 million state grant,
+  with the city and developer splitting the remaining $1.6 million in infrastructure
+  costs. The grant requires at least 50 acres for industrial use and construction
+  completion by December 31.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/07/07-13-26-Committee-of-the-Whole-Packet.pdf
 has_transcript: true
 resources:

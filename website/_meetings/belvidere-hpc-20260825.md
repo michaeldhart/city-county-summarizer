@@ -3,6 +3,11 @@ title: Historic Preservation Commission
 body_id: belvidere-hpc
 date: '2026-08-25'
 permalink: /bodies/belvidere-hpc/meetings/belvidere-hpc-20260825/
+description: The Historic Preservation Commission was scheduled to consider landmark
+  designation for Perry School at 633 West Perry Street, built in 1897. Staff recommended
+  approval, noting the building is believed to be the second oldest continuously operating
+  public elementary school in Illinois and retains much of its original design integrity
+  including stone foundation, brown brick, and distinctive circular windows.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/08/08-25-26-HPC-Agenda-1.pdf
 resources:
 - kind: agenda

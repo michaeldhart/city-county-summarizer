@@ -3,6 +3,10 @@ title: Committee of the Whole Meeting - Administration
 body_id: cotw-admin
 date: '2026-02-05'
 permalink: /bodies/cotw-admin/meetings/diligent-1587/
+description: The board scheduled consideration of an ordinance to repeal a section
+  of county code governing instant assessment of improvements. Ordinance 26-06 would
+  eliminate Section 70-5 from the Boone County Code, though the agenda provided no
+  explanation for the proposed change or its impact on property owners.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1587
 resources:
 - kind: portal

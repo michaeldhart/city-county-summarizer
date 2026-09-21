@@ -3,6 +3,11 @@ title: Agricultural Conservation and Easement and Farmland Protection Commission
 body_id: ag-easement
 date: '2026-05-26'
 permalink: /bodies/ag-easement/meetings/diligent-1610/
+description: The Agricultural Conservation Easement Commission reviewed a timeline
+  for a draft Unified Development Ordinance and Zoning Map at its May meeting. The
+  commission heard a presentation from a consultant working with Northern Illinois
+  Land Conservancy on conservation easements in Boone County. The next meeting is
+  scheduled for August 25.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1610
 resources:
 - kind: portal

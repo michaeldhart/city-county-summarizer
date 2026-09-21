@@ -3,6 +3,11 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-04-13'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260413/
+description: The city approved $310,500 for engineering design on a $5.9 million storm
+  sewer project aimed at ending chronic flooding on Fifth Avenue. The work includes
+  new connections to a detention pond and river outlet, plus reconstruction of Fifth
+  Avenue between 7th and Pleasant and Allen Street between 5th and 7th Avenues. Construction
+  will be staged in two phases.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/04/04-13-26-Committee-of-the-Whole-Packet.pdf
 has_transcript: true
 resources:

@@ -3,6 +3,11 @@ title: Committee of the Whole Meeting - Administration
 body_id: cotw-admin
 date: '2026-06-04'
 permalink: /bodies/cotw-admin/meetings/diligent-1607/
+description: The county and Luminous Energy reached an agreement after bullets from
+  the county shooting range struck solar panels at the Belvidere East Solar Farm.
+  Luminous will pay roughly $66,000 to raise the range berms, while the county will
+  use $25,000 already held in escrow to repair damaged panels. The rifle range remains
+  closed until improvements are completed.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1607
 has_transcript: true
 resources:

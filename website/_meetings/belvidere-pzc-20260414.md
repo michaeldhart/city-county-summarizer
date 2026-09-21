@@ -3,6 +3,11 @@ title: Planning & Zoning Commission
 body_id: belvidere-pzc
 date: '2026-04-14'
 permalink: /bodies/belvidere-pzc/meetings/belvidere-pzc-20260414/
+description: The Planning and Zoning Commission recommended approval of a special
+  use permit allowing video gaming machines and a bar inside the Citgo gas station
+  at 717 North State Street. The commission attached 10 conditions including limiting
+  the gaming area to 120 square feet with a maximum of five machines, adding ADA-compliant
+  parking, and requiring health department approval.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/04/04-14-26-PZC-Agenda-and-Packet.pdf
 resources:
 - kind: agenda

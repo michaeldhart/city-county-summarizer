@@ -3,6 +3,10 @@ title: Boone County Regional Planning Commission Meeting
 body_id: planning
 date: '2026-03-24'
 permalink: /bodies/planning/meetings/diligent-1575/
+description: The Boone County Planning Commission voted to recommend approval of a
+  map amendment rezoning property at 15xx Spring Creek Road from agricultural to residential
+  estate. County planning staff recommended approval of the request. The rezoning
+  will advance to the county board for a final decision.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1575
 resources:
 - kind: portal

@@ -4,6 +4,11 @@ title: Advisory Committtee for the Administration of the Enterprise Zone Enterpr
 body_id: enterprise-zone
 date: '2026-04-09'
 permalink: /bodies/enterprise-zone/meetings/diligent-1572/
+description: The advisory committee overseeing Boone County's enterprise zone met
+  for the first time since 2023 to discuss renewing the zone and potential changes
+  to its boundaries, tax abatement programs, and residential incentives. The committee,
+  representing the county and three municipalities, approved minutes from its last
+  meeting three years earlier.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1572
 resources:
 - kind: portal

@@ -3,6 +3,11 @@ title: Historic Preservation Commission
 body_id: belvidere-hpc
 date: '2026-02-24'
 permalink: /bodies/belvidere-hpc/meetings/belvidere-hpc-20260224/
+description: The Historic Preservation Commission has approximately $2,500 available
+  for property maintenance grants to help homeowners with historic building upkeep.
+  Commissioners discussed eligibility questions around window wrapping projects where
+  lead paint may be present, with staff planning to review specific methods and regulations
+  before awarding funds.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/02/02-24-26-HPC-Agenda-1.pdf
 resources:
 - kind: agenda

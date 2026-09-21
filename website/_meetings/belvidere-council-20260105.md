@@ -3,6 +3,11 @@ title: City Council
 body_id: belvidere-council
 date: '2026-01-05'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260105/
+description: The City Council held a first reading on a budget amendment raising salaries
+  for two Public Works leadership positions. The Assistant Public Works Director salary
+  would increase from $78,280 to $114,000, while the Street, Water, and Sewer Superintendent
+  position would rise from $92,451 to $106,000. Officials cited recruitment and retention
+  challenges as the reason for the increases.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/01/01-05-26-City-Council-Agenda-Packet.pdf
 has_transcript: true
 resources:

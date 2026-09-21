@@ -3,6 +3,11 @@ title: Boone County Board Meeting
 body_id: board
 date: '2026-03-19'
 permalink: /bodies/board/meetings/diligent-1577/
+description: The county board voted 10-2 to censure member Marion Thornberry after
+  he pleaded guilty to attempted theft of $20 from a church donation envelope. He
+  was removed from all committees and outside appointments but refused to resign,
+  claiming innocence and saying he only pleaded guilty on his attorney's advice. Several
+  members called for his resignation.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1577
 has_transcript: true
 resources:

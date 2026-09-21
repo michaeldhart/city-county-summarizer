@@ -3,6 +3,11 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-05-11'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260511/
+description: The City Council unanimously approved a resolution opposing proposed
+  state Build Act legislation that would strip municipalities of local zoning and
+  land-use control over housing decisions. Mayor Morris criticized the bill for ignoring
+  community-specific needs and removing local accountability, arguing it would destroy
+  decision-making that affects residents' quality of life.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/05/05-11-26-Committee-of-the-Whole-Packet.pdf
 has_transcript: true
 resources:

@@ -3,6 +3,11 @@ title: Board of Fire & Police Commissioners
 body_id: belvidere-fpc
 date: '2026-07-16'
 permalink: /bodies/belvidere-fpc/meetings/belvidere-fpc-20260716/
+description: The Board of Fire and Police Commissioners terminated probationary Police
+  Officer David Sanders following a closed executive session to discuss his employment
+  status. Sanders had been in the fourth step of field training. The board also appointed
+  two new probationary officers, Michael DeFrancisco and Esteban Castanon-Duron, after
+  they passed required psychological and medical examinations.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/07/07-16-26-Regular-FP-Meeting-REVISED-Agenda.pdf
 resources:
 - kind: agenda

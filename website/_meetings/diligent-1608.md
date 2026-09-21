@@ -3,6 +3,10 @@ title: Regional Planning Commission
 body_id: planning
 date: '2026-05-19'
 permalink: /bodies/planning/meetings/diligent-1608/
+description: The Regional Planning Commission reviewed a concept plan for a planned
+  unit development that would allow self-service storage and outdoor storage at 3100
+  US Route 20. The proposal requires a special use permit. No vote was taken at the
+  May meeting.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1608
 resources:
 - kind: portal

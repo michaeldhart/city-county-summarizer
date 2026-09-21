@@ -3,6 +3,12 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-03-23'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260323/
+description: Perry Elementary staff and parents asked the City Council to support
+  keeping their school open at upcoming District 100 hearings scheduled for April
+  6, 7, and 9. Speakers criticized the district for using a survey of mostly empty
+  nesters to justify closure, inflating maintenance cost estimates, and rushing the
+  decision after diverting students and deferring building upkeep despite a previous
+  board vote directing investment in Perry.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/03/03-23-26-Committee-of-the-Whole-Packet-1.pdf
 has_transcript: true
 resources:

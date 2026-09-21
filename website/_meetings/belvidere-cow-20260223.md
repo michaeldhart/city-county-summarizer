@@ -3,6 +3,11 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-02-23'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260223/
+description: Belvidere approved street closures for Chamber of Commerce events including
+  Buchanan Street Markets on three dates, Downtown Trick-or-Treat on October 28, and
+  Hometown Christmas on December 4. Last year the Halloween event drew nearly seven
+  thousand visitors and the Christmas event attracts approximately twelve thousand
+  annually. The closures are designed to increase foot traffic to local businesses.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/02/02-23-26-Committee-of-the-Whole-Packet-1.pdf
 has_transcript: true
 resources:

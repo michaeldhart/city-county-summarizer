@@ -3,6 +3,11 @@ title: Board of Fire & Police Commissioners
 body_id: belvidere-fpc
 date: '2026-06-25'
 permalink: /bodies/belvidere-fpc/meetings/belvidere-fpc-20260625/
+description: The Board of Fire and Police Commissioners appointed Neil Rossi as a
+  probationary Belvidere police officer after he completed required psychological
+  and medical examinations. The board also advanced two additional entry-level candidates,
+  approving polygraph tests, interviews, and conditional employment offers for Michael
+  DeFrancisco and Esteban Castanon-Duran, who will now undergo their own examinations.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/06/06-25-26-Special-FP-Meeting-Agenda.pdf
 resources:
 - kind: agenda

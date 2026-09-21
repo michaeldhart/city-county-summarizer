@@ -3,6 +3,11 @@ title: Boone County Board of Health Meeting
 body_id: health
 date: '2026-02-02'
 permalink: /bodies/health/meetings/diligent-1588/
+description: The Boone County Board of Health was scheduled to vote on updating employee
+  mileage reimbursement to match the 2026 IRS rate and adopt new policies governing
+  lunch hour coverage and computer, email, and internet usage. The board also planned
+  to review financial reports and receive updates on respiratory illness trends and
+  public health accreditation.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1588
 resources:
 - kind: portal

@@ -3,6 +3,11 @@ title: City Council
 body_id: belvidere-council
 date: '2026-02-02'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260202/
+description: Mitch McCauley asked the council to develop a public service announcement
+  informing residents of their rights if Immigration and Customs Enforcement comes
+  to Belvidere. He suggested coordinating a countywide plan, potentially with Winnebago
+  County. The council did not respond during the meeting, following standard public
+  comment protocol.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/01/02-02-26-City-Council-Agenda-Packet.pdf
 has_transcript: true
 resources:

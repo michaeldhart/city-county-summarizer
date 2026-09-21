@@ -3,6 +3,10 @@ title: Boone County Board Meeting
 body_id: board
 date: '2026-08-20'
 permalink: /bodies/board/meetings/diligent-1626/
+description: The Boone County Board was scheduled to vote on a change order adding
+  $64,210.63 to the ongoing courthouse construction project. The board also considered
+  a $19,040 bid from Rockford Steam Boiler Works to retube the courthouse boiler.
+  Total claims for approval were $1,542,162.91.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1626
 resources:
 - kind: portal

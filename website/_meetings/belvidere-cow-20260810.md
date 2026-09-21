@@ -3,6 +3,11 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-08-10'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260810/
+description: New FEMA flood plain maps designate land west of Stellantis as a 100-year
+  flood zone, jeopardizing a planned supplier park after the city and Region One spent
+  years preparing water and sewer infrastructure with grant funding. The city's land
+  bank purchased the property specifically for industrial development. Officials have
+  submitted formal comments challenging FEMA's data and methodology.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/08/08-10-26-Committee-of-the-Whole-Packet.pdf
 has_transcript: true
 resources:

@@ -3,6 +3,10 @@ title: Boone County Board of Health Meeting
 body_id: health
 date: '2026-03-02'
 permalink: /bodies/health/meetings/diligent-1581/
+description: The Boone County Board was scheduled to vote on a revised policy governing
+  artificial intelligence use and a new request form for employees seeking AI account
+  access. The policy update comes as local governments navigate emerging technology
+  tools and establish guidelines for their official use.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1581
 resources:
 - kind: portal

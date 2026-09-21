@@ -3,6 +3,11 @@ title: Board of Fire & Police Commissioners
 body_id: belvidere-fpc
 date: '2026-05-27'
 permalink: /bodies/belvidere-fpc/meetings/belvidere-fpc-20260527/
+description: The Board of Fire and Police Commissioners authorized the fire chief
+  to establish a 2026 eligibility list for firefighter and paramedic positions using
+  National Testing Network for online testing throughout June. The new format replaces
+  previous single-day Saturday testing to improve accessibility for candidates. The
+  current two-year eligibility list expires in August.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/05/5-27-26-Special-FP-Meeting-Agenda.pdf
 resources:
 - kind: agenda

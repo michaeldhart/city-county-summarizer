@@ -3,6 +3,10 @@ title: Zoning Board of Appeals Meeting
 body_id: zba
 date: '2026-04-28'
 permalink: /bodies/zba/meetings/diligent-1568/
+description: The board reviewed a special use permit for an assembly building at 8410
+  Huber Road, proposed by Rancho Los Diaz. Written public comments both supporting
+  and opposing the project were submitted ahead of the meeting. Staff recommended
+  approval of the permit, which included site plans and food safety certifications.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1568
 resources:
 - kind: portal

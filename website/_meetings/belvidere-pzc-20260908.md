@@ -3,6 +3,11 @@ title: Planning & Zoning Commission
 body_id: belvidere-pzc
 date: '2026-09-08'
 permalink: /bodies/belvidere-pzc/meetings/belvidere-pzc-20260908/
+description: The Planning and Zoning Commission was scheduled to hold a public hearing
+  on a special use permit for Build Holding Company to add drive-through lanes at
+  a new BMO Bank branch at 1862 Crystal Parkway. The proposal calls for three service
+  lanes plus a bypass lane for the roughly 4,120-square-foot building on a vacant
+  lot.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/09/09-08-26-PZC-Agenda-and-Packet.pdf
 resources:
 - kind: agenda

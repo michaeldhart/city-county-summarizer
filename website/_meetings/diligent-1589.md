@@ -3,6 +3,10 @@ title: Zoning Board of Appeals Meeting
 body_id: zba
 date: '2026-01-27'
 permalink: /bodies/zba/meetings/diligent-1589/
+description: The Zoning Board of Appeals took up a special use permit for a solar
+  installation at 6xx US Route 20. The application included decommissioning plans,
+  construction documents, and bonding information. Opposition letters were submitted
+  regarding the project. The board's decision was not recorded in agenda materials.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1589
 resources:
 - kind: portal

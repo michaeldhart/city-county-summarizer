@@ -3,6 +3,10 @@ title: Committee of the Whole Meeting - Administration
 body_id: cotw-admin
 date: '2026-03-05'
 permalink: /bodies/cotw-admin/meetings/diligent-1580/
+description: The county board approved a special use permit for a solar installation
+  at a property on US Route 20. The application included extensive documentation such
+  as site plans, decommissioning plans, and construction details. Staff recommended
+  approval with conditions, though opposition letters were submitted.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1580
 resources:
 - kind: portal

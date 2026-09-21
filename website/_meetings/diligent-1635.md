@@ -3,6 +3,10 @@ title: Boone County Zoning Board of Appeals
 body_id: zba
 date: '2026-08-25'
 permalink: /bodies/zba/meetings/diligent-1635/
+description: The Zoning Board of Appeals was scheduled to consider Special Use Permit
+  SUP-08-2026 for property at 11635 Wange Road at its August 25 meeting. The board
+  also planned to review its bylaws and approve minutes from its June meeting. The
+  next meeting is set for September 22.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1635
 resources:
 - kind: portal

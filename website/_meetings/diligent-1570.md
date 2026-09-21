@@ -3,6 +3,11 @@ title: Boone County Board Meeting
 body_id: board
 date: '2026-04-16'
 permalink: /bodies/board/meetings/diligent-1570/
+description: A 5-megawatt solar facility at US Route 20 initially failed on a 5-5
+  tie vote, but board members used procedural motions to reconsider the project and
+  approved it 6-4. The SunVest Solar project includes 18 conditions, with enhanced
+  landscaping to address neighbor concerns. The zoning board had recommended approval
+  unanimously.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1570
 has_transcript: true
 resources:

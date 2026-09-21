@@ -3,6 +3,12 @@ title: Committee of the Whole Meeting - Finance
 body_id: cotw-finance
 date: '2026-06-11'
 permalink: /bodies/cotw-finance/meetings/diligent-1609/
+description: The committee discussed revisions to a unified development ordinance
+  after the Farm Bureau requested livestock facility setback rules match state law
+  rather than stricter county standards. The draft currently requires facilities be
+  500 feet from lot lines; the Farm Bureau wants language matching state statute requiring
+  a quarter-mile from occupied dwellings. The State's Attorney will review whether
+  the county can be more restrictive.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1609
 has_transcript: true
 resources:

@@ -3,6 +3,11 @@ title: City Council
 body_id: belvidere-council
 date: '2026-08-17'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260817/
+description: The city will impose a new tax on electricity that residents and businesses
+  generate themselves, under an ordinance passed unanimously. The tax follows a tiered
+  structure, starting at 0.543 cents per kilowatt-hour for the first 2,000 kilowatt-hours
+  and declining to 0.267 cents for usage exceeding 20 million kilowatt-hours. Violators
+  face fines of at least $200 per day.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/08/08-17-26-City-Council-Agenda-Packet.pdf
 resources:
 - kind: agenda

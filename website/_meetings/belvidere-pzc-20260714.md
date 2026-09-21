@@ -3,6 +3,12 @@ title: Planning & Zoning Commission
 body_id: belvidere-pzc
 date: '2026-07-14'
 permalink: /bodies/belvidere-pzc/meetings/belvidere-pzc-20260714/
+description: The Planning and Zoning Commission recommended approval of rezoning and
+  subdivision plans for East Point Commons, an 185-acre development with business
+  and industrial lots. One commissioner voted against all four proposals over farmland
+  loss. A resident questioned whether a data center might locate there, but staff
+  said the parcels are too small and zoning standards would limit noise and lighting
+  impacts.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/07/07-14-26-PZC-Agenda-1.pdf
 resources:
 - kind: agenda

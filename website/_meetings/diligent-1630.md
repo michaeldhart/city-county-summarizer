@@ -3,6 +3,10 @@ title: Administrative Hearing - Boone County Board of Health Meeting
 body_id: health
 date: '2026-08-03'
 permalink: /bodies/health/meetings/diligent-1630/
+description: The Board of Health convened a special administrative hearing on a property
+  at 522 Bounty Drive Northeast, then entered executive session to discuss the matter.
+  No details of the hearing or any resulting decisions were documented in available
+  public materials, and no transcript or minutes were released.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1630
 resources:
 - kind: portal

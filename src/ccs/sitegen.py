@@ -11,7 +11,7 @@ from pathlib import Path
 
 import yaml
 
-from . import manifest
+from . import briefs, manifest
 from .config import (
     BODY_ORDER,
     JURISDICTION_ORDER,
@@ -93,12 +93,21 @@ def _write_body_doc(body: Body) -> None:
 
 def _write_meeting_doc(record: manifest.MeetingRecord) -> None:
     slug = meeting_slug(record.id)
+    body_content = _meeting_body_content(record)
     front_matter = {
+        # The meeting title, which is the body's name on most agendas. It is
+        # also what a link preview shows as the headline, since jekyll-seo-tag
+        # takes og:title from `title` and offers no separate hook — but this
+        # one is rendered as the page's <h1> too, so it stays as it is and the
+        # description below carries the story.
         "title": clean_meeting_title(record.title) or record.body_id,
         "body_id": record.body_id,
         "date": record.date,
         "permalink": meeting_permalink(record.body_id, record.id),
     }
+    description = _meeting_description(record, body_content)
+    if description:
+        front_matter["description"] = description
     if record.url:
         front_matter["source_url"] = record.url
     # The byline on the meeting page names the sources this dispatch was
@@ -110,7 +119,30 @@ def _write_meeting_doc(record: manifest.MeetingRecord) -> None:
         front_matter["has_transcript"] = True
     if record.resources:
         front_matter["resources"] = [asdict(r) for r in record.resources]
-    _write_doc(MEETINGS_DIR / f"{slug}.md", front_matter, _meeting_body_content(record))
+    _write_doc(MEETINGS_DIR / f"{slug}.md", front_matter, body_content)
+
+
+def _meeting_description(record: manifest.MeetingRecord, body_content: str) -> str | None:
+    """Preview text for a link card — what Facebook shows under the headline.
+
+    Set explicitly because jekyll-seo-tag's fallback is an auto-excerpt of the
+    rendered page, which on a dispatch is the lede's bullets run together with
+    their markup stripped. The brief is the better source: it is already written
+    as standalone prose, and it is the same sentence the front page runs for
+    this meeting, so a shared dispatch and a shared issue agree with each other.
+
+    Falls back to the lede's first bullet — a whole sentence — for meetings
+    that have a summary but no briefs yet, since `ccs brief` is a separate pass
+    and the site is generated whether or not it has run.
+    """
+    brief_set = briefs.load(record)
+    if brief_set and brief_set.briefs:
+        return max(brief_set.briefs, key=lambda b: b.score).body
+    for line in body_content.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("- "):
+            return stripped[2:].strip() or None
+    return None
 
 
 def _meeting_body_content(record: manifest.MeetingRecord) -> str:

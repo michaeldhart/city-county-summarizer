@@ -3,6 +3,11 @@ title: Committee of the Whole
 body_id: belvidere-cow
 date: '2026-08-24'
 permalink: /bodies/belvidere-cow/meetings/belvidere-cow-20260824/
+description: The council unanimously approved a four-way stop at East Perry Street
+  and Webster Street after five residents testified about speeding, poor visibility,
+  and dangers to children walking to school. The decision overrode the Public Works
+  Director's recommendation, as the intersection did not meet state accident or traffic
+  volume thresholds. A final vote is scheduled for September 14.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/08/08-24-26-Committee-of-the-Whole-Packet.pdf
 has_transcript: true
 resources:
