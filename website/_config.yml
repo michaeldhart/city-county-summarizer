@@ -87,6 +87,24 @@ collections:
     permalink: /issues/:name/
 
 defaults:
+  # The Open Graph card, on every page. jekyll-seo-tag reads `image` from page
+  # front matter only — it has no site-level fallback — so a default injected
+  # here is how one card covers the whole site. Setting it also flips
+  # twitter:card from `summary` to `summary_large_image` and emits the
+  # og:image:width/height/alt trio, which is why the dimensions are spelled out
+  # rather than left for the scraper to discover.
+  #
+  # A static card by decision: every post carries the same masthead. Rendering
+  # the headline into a per-issue card is the better-engagement version and a
+  # real piece of work — revisit it once the cadence has held.
+  - scope:
+      path: ""
+    values:
+      image:
+        path: /assets/og-card.png
+        width: 1200
+        height: 630
+        alt: The Belvidere Wire — a first draft of the public record.
   # Ordinary pages had no layout at all, so about.md and about/*.md were
   # rendering as bare HTML with no head, stylesheet or nav. `page` supplies the
   # site chrome and marks them for the search index. index.md sets its own
