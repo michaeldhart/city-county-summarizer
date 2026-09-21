@@ -148,8 +148,6 @@ on" digest.
 
 - `data/` is fully gitignored (cached scraped materials, transcripts,
   summaries, manifest). Don't `git add` anything under it.
-- `reports/` is gitignored (per-run monthly reports are regenerable from
-  `data/manifest.json` + sources).
 - `website/assets/main.scss` is the site's only stylesheet. It overrides the
   copy minima ships at the same path and `@import "minima"` pulls the theme in
   first, so everything in it is additive. Note `.breadcrumb` and
