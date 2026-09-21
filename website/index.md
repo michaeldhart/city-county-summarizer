@@ -1,6 +1,7 @@
 ---
 layout: front-page
 title: Home
+description: "More than twenty residents filled council chambers and overflowed into the hallway to voice opposition to a proposed data center, citing concerns about water consumption, power grid stress, noise, and agricultural land loss. Mayor Morris clarified no formal application has been submitted and emphasized any future action would require public hearings and council approval."
 issue: 1
 generated: 2026-09-17T12:39:09+00:00
 window_start: 2026-08-18
