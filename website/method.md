@@ -99,6 +99,10 @@ Nothing else on this site is chosen by a person.
 
 ## Editions
 
+A new edition runs every Monday morning. It carries what had been filed by then,
+which is not the same as everything that met the week before: a meeting whose
+agenda or minutes arrive late appears in a later edition instead.
+
 Each time the front page is rebuilt it is published as a numbered issue and kept
 at [/issues/]({{ '/issues/' | relative_url }}). Nothing is overwritten, so what
 this publication led with on any given day stays on the record — including the

@@ -10,7 +10,8 @@ permalink: /issues/
 
 <h1>Back issues</h1>
 
-<p class="standfirst">Every edition of The Belvidere Wire, newest first. Each is
+<p class="standfirst">A new edition runs every Monday morning. Every edition of
+The Belvidere Wire is here, newest first. Each is
 kept as it was published — the briefs it led with, in the order it ran them.
 Regenerating the front page starts a new issue rather than overwriting the last
 one.</p>
