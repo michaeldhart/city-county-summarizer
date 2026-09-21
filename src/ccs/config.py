@@ -32,7 +32,12 @@ CLAUDE_MODEL = "claude-sonnet-4-5"
 # much goes into Claude and how much fits on the page; widen or narrow either
 # rather than editing the ranking.
 BRIEF_MAX_PER_MEETING = 3
-FRONT_PAGE_WINDOW_DAYS = 30
+# 14, not 30, because the edition is weekly. Ranking does not know what already
+# ran, so the window is the only thing keeping consecutive issues apart: at 30
+# days a Monday edition repeated two thirds of the one before it. Two weeks
+# still lets an ongoing story lead twice, and select_window() widens on its own
+# when a fortnight is too quiet to fill the page.
+FRONT_PAGE_WINDOW_DAYS = 14
 FRONT_PAGE_BRIEFS = 12
 
 # The folio line's volume. Bumped by hand each January. Issue numbers keep
