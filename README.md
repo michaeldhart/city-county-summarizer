@@ -1,5 +1,5 @@
 # city-county-summarizer (`ccs`)
-
+_commit from wally_
 Personal CLI that watches local government activity in **Boone County, IL**
 across five separate governments and 22 bodies:
 
