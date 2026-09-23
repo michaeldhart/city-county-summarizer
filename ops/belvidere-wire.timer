@@ -1,0 +1,13 @@
+[Unit]
+Description=Publish The Belvidere Wire every Monday morning
+
+[Timer]
+# /method/ and /issues/ both promise "every Monday morning".
+OnCalendar=Mon *-*-* 06:00:00
+# A Monday missed because the box was off or rebooting runs at next boot
+# rather than silently skipping the week.
+Persistent=true
+AccuracySec=1min
+
+[Install]
+WantedBy=timers.target

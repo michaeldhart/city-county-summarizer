@@ -1,0 +1,9 @@
+[Unit]
+Description=Alert that %i failed
+
+[Service]
+Type=oneshot
+# Runs as root so journalctl can read the failed unit's log. The alert URL is
+# the only secret involved and lives in the EnvironmentFile.
+EnvironmentFile=-/etc/belvidere-wire-alert.conf
+ExecStart=__REPO__/ops/notify-failure.sh %i

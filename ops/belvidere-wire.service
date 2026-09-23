@@ -1,0 +1,19 @@
+[Unit]
+Description=The Belvidere Wire — weekly edition
+# Timers fire before DHCP/DNS are necessarily up; every step here is network-bound.
+After=network-online.target
+Wants=network-online.target
+OnFailure=belvidere-wire-failure@%n.service
+
+[Service]
+Type=oneshot
+User=__USER__
+WorkingDirectory=__REPO__
+ExecStart=__REPO__/ops/wire-run.sh
+# systemd does not reliably export HOME, and without it ssh cannot find the
+# deploy key, so the push fails after everything expensive has already run.
+Environment=HOME=/home/__USER__
+Environment=PYTHONUNBUFFERED=1
+Environment=LANG=C.UTF-8
+# A wedged yt-dlp or a hung HTTP read would otherwise hold the lock all week.
+TimeoutStartSec=5400
