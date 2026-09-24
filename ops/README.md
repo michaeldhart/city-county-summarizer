@@ -24,7 +24,7 @@ Substitute the user and repo path into the units, then install them:
     export WIRE_USER=$USER
     export WIRE_REPO=$HOME/city-county-summarizer
     for f in belvidere-wire.service belvidere-wire.timer belvidere-wire-failure@.service; do
-        sed -e "s|__USER__|$WIRE_USER|g" -e "s|__REPO__|$WIRE_REPO|g" "$f" \
+        sed -e "s|__USER__|$WIRE_USER|g" -e "s|__REPO__|$WIRE_REPO|g" "ops/$f" \
             | sudo tee "/etc/systemd/system/$f" >/dev/null
     done
     sudo systemctl daemon-reload
