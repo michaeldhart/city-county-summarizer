@@ -36,6 +36,37 @@ Slack):
         | sudo tee /etc/belvidere-wire-alert.conf >/dev/null
     sudo chmod 600 /etc/belvidere-wire-alert.conf
 
+## Keeping the units in sync
+
+The install loop copies the unit files; it does not link them. The scripts are
+the other way round — the units name them by absolute path, so `wire-run.sh` and
+`notify-failure.sh` are picked up from the repo on every run and a `git pull` is
+the whole update.
+
+So the loop needs re-running only when a pull changes one of the three unit
+files, when a new one is added, or when the user or the repo path changes. The
+alert URL is not one of these: `/etc/belvidere-wire-alert.conf` is read fresh at
+every start.
+
+Rather than remembering, ask whether the installed copies have drifted:
+
+    for f in belvidere-wire.service belvidere-wire.timer belvidere-wire-failure@.service; do
+        diff -q <(sed -e "s|__USER__|$USER|g" -e "s|__REPO__|$HOME/city-county-summarizer|g" "ops/$f") \
+                "/etc/systemd/system/$f" >/dev/null 2>&1 || echo "needs reinstall: $f"
+    done
+
+Silence means they match. Two things `daemon-reload` does not cover on its own:
+
+- A changed `[Install]` section needs `sudo systemctl reenable belvidere-wire.timer`.
+  Reloading re-reads units but does not rewrite the enable symlinks.
+- After changing `OnCalendar`, `sudo systemctl restart belvidere-wire.timer` and
+  then `systemctl list-timers belvidere-wire.timer` to see the new fire time
+  rather than trusting it.
+
+A schedule change is tidier as a drop-in than as an edit to the tracked unit —
+`sudo systemctl edit belvidere-wire.timer` writes an override holding only what
+differs, which survives later pulls.
+
 ## Verify before enabling the timer
 
     ./ops/wire-run.sh --dry-run          # runs the chain, shows the diff, commits nothing
