@@ -18,12 +18,17 @@ Commands:
   ccs front-page --list                 list back issues, newest first
   ccs front-page --publish 2            make an existing issue the live front page again
   ccs build-site                        regenerate website/_bodies and website/_meetings from the manifest
+  ccs notify-facebook 12                 post issue No. 12 to the Facebook page
+                                          (no-op unless FACEBOOK_PAGE_ID/FACEBOOK_PAGE_TOKEN are set)
 """
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from datetime import date, timedelta
+
+import requests
 
 from . import (briefs, config, diligent, frontpage, general, manifest, report, sitegen,
                sources, summarize)
@@ -81,6 +86,12 @@ def main(argv: list[str] | None = None) -> int:
 
     sub.add_parser("build-site", help="Regenerate the Jekyll site's content from the manifest")
 
+    p_fb = sub.add_parser(
+        "notify-facebook",
+        help="Post a published issue to the Facebook page "
+             "(no-op unless FACEBOOK_PAGE_ID/FACEBOOK_PAGE_TOKEN are set)")
+    p_fb.add_argument("issue", type=int, help='Issue number, from front-page\'s "Published No. N"')
+
     args = parser.parse_args(argv)
     if args.command == "summary":
         return _cmd_summary(args.jurisdiction)
@@ -98,6 +109,8 @@ def main(argv: list[str] | None = None) -> int:
                                args.list_issues, args.publish)
     if args.command == "build-site":
         return _cmd_build_site()
+    if args.command == "notify-facebook":
+        return _cmd_notify_facebook(args.issue)
     parser.error(f"unknown command {args.command}")
     return 2
 
@@ -324,6 +337,30 @@ def _cmd_build_site() -> int:
     n_bodies, n_meetings = sitegen.build_site_content()
     print(f"Wrote {n_bodies} body page(s) and {n_meetings} meeting page(s) "
           f"to {sitegen.WEBSITE_DIR.relative_to(config.REPO_ROOT)}/")
+    return 0
+
+
+def _cmd_notify_facebook(issue: int) -> int:
+    page_id = os.environ.get("FACEBOOK_PAGE_ID")
+    token = os.environ.get("FACEBOOK_PAGE_TOKEN")
+    if not page_id or not token:
+        print("FACEBOOK_PAGE_ID/FACEBOOK_PAGE_TOKEN not set — skipping (page isn't public yet)")
+        return 0
+
+    try:
+        headline, blurb, link = frontpage.facebook_post_text(issue)
+    except (FileNotFoundError, KeyError) as e:
+        print(f"error: no post text for issue No. {issue}: {e}", file=sys.stderr)
+        return 1
+
+    r = requests.post(
+        f"https://graph.facebook.com/v21.0/{page_id}/feed",
+        data={"message": f"{headline}\n\n{blurb}", "link": link, "access_token": token},
+        timeout=30)
+    if not r.ok:
+        print(f"error: Facebook post failed ({r.status_code}): {r.text}", file=sys.stderr)
+        return 1
+    print(f"Posted No. {issue} to the Facebook page.")
     return 0
 
 

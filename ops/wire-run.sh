@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 #
-# The weekly edition: sync → brief → front-page → build-site, commit, push.
-# GitHub Actions (pages.yml) picks it up from the push and deploys.
+# The weekly edition: sync → brief → front-page → build-site, commit, push,
+# notify-facebook. GitHub Actions (pages.yml) picks up the push and deploys.
+# notify-facebook runs after the push so a dead token never holds up the
+# site, and it fails the run loudly (set -e) if it IS configured and breaks —
+# see FACEBOOK_PAGE_ID/FACEBOOK_PAGE_TOKEN in ops/README.md.
 #
 # The whole body lives in main() because this script is inside the repo it
 # pulls. Bash reads a script incrementally, so a pull that rewrote these lines
@@ -84,6 +87,9 @@ main() {
     git commit -q -m "Run No. $issue"
     git push -q origin main
     echo "=== pushed; pages.yml will deploy"
+
+    echo "=== facebook"
+    "$CCS" notify-facebook "$issue"
 }
 
 main "$@"

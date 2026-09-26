@@ -3,7 +3,8 @@
 `wire-run.sh` is the Monday chain: `sync` → `brief` → `front-page` →
 `build-site`, then a commit and a push. The push to `main` touches
 `website/**`, which is what triggers `pages.yml` to build and deploy. Nothing
-here runs Jekyll — Actions owns the build.
+here runs Jekyll — Actions owns the build. `notify-facebook` runs last, after
+the push, and no-ops until the page is public — see below.
 
 The Mac must not run this chain. `ccs front-page` takes its issue number from
 `max(existing) + 1` scanned from `_front_pages/`, so two publishers race and
@@ -35,6 +36,18 @@ Slack):
     echo 'WIRE_ALERT_URL=https://ntfy.sh/your-private-topic' \
         | sudo tee /etc/belvidere-wire-alert.conf >/dev/null
     sudo chmod 600 /etc/belvidere-wire-alert.conf
+
+Optional Facebook posting — leave this file absent for now; `notify-facebook`
+no-ops silently without it, which is the intended state until the page is
+ready to go public. When it is, drop in the Page id and a Page access token:
+
+    printf 'FACEBOOK_PAGE_ID=...\nFACEBOOK_PAGE_TOKEN=...\n' \
+        | sudo tee /etc/belvidere-wire-facebook.conf >/dev/null
+    sudo chmod 600 /etc/belvidere-wire-facebook.conf
+    sudo systemctl daemon-reload
+
+The next Monday run picks it up automatically — no code or unit change
+needed, just `daemon-reload` so the service re-reads its `EnvironmentFile`.
 
 ## Keeping the units in sync
 

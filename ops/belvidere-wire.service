@@ -15,5 +15,7 @@ ExecStart=__REPO__/ops/wire-run.sh
 Environment=HOME=/home/__USER__
 Environment=PYTHONUNBUFFERED=1
 Environment=LANG=C.UTF-8
+# Optional; absent until the Facebook page goes public. See ops/README.md.
+EnvironmentFile=-/etc/belvidere-wire-facebook.conf
 # A wedged yt-dlp or a hung HTTP read would otherwise hold the lock all week.
 TimeoutStartSec=5400

@@ -131,6 +131,20 @@ def list_issues() -> list:
     return out
 
 
+def facebook_post_text(issue: int) -> tuple:
+    """(headline, blurb, link) for posting a published issue to Facebook.
+
+    Reads the numbered issue's own front matter rather than index.md, so a
+    reposted back issue always says what it said when it ran, never whatever
+    is currently live.
+    """
+    meta, _ = split_front_matter(issue_path(issue).read_text())
+    headline = json.loads(meta["lead"])
+    blurb = json.loads(meta["description"])
+    link = f"https://belviderewire.com/issues/{issue:03d}/"
+    return headline, blurb, link
+
+
 def publish(issue: int) -> bool:
     """Make an existing issue the live front page again. No Claude call."""
     src = issue_path(issue)
