@@ -12,7 +12,7 @@ WorkingDirectory=__REPO__
 ExecStart=__REPO__/ops/wire-run.sh
 # systemd does not reliably export HOME, and without it ssh cannot find the
 # deploy key, so the push fails after everything expensive has already run.
-Environment=HOME=/home/__USER__
+Environment=HOME=__HOME__
 Environment=PYTHONUNBUFFERED=1
 Environment=LANG=C.UTF-8
 # Optional; absent until the Facebook page goes public. See ops/README.md.

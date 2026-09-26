@@ -20,15 +20,14 @@ and a commit carrying a human's name would say it was:
     git config user.name "Wally"
     git config user.email "wally@wally.local"
 
-Substitute the user and repo path into the units, then install them:
+Install the units. The script fills in the run-as user, their home and the
+repo path, writes the three files to `/etc/systemd/system`, and reloads systemd:
 
-    export WIRE_USER=$USER
-    export WIRE_REPO=$HOME/city-county-summarizer
-    for f in belvidere-wire.service belvidere-wire.timer belvidere-wire-failure@.service; do
-        sed -e "s|__USER__|$WIRE_USER|g" -e "s|__REPO__|$WIRE_REPO|g" "ops/$f" \
-            | sudo tee "/etc/systemd/system/$f" >/dev/null
-    done
-    sudo systemctl daemon-reload
+    ./ops/install-units.sh
+
+Run it as the user that owns the clone, not under `sudo` — it calls `sudo`
+itself only for the writes. It refuses to run if it resolves the run-as user to
+root.
 
 Optional alert endpoint — any URL that accepts a POST body (ntfy, Discord,
 Slack):
@@ -61,20 +60,22 @@ files, when a new one is added, or when the user or the repo path changes. The
 alert URL is not one of these: `/etc/belvidere-wire-alert.conf` is read fresh at
 every start.
 
-Rather than remembering, ask whether the installed copies have drifted:
+Rather than remembering, ask:
 
-    for f in belvidere-wire.service belvidere-wire.timer belvidere-wire-failure@.service; do
-        diff -q <(sed -e "s|__USER__|$USER|g" -e "s|__REPO__|$HOME/city-county-summarizer|g" "ops/$f") \
-                "/etc/systemd/system/$f" >/dev/null 2>&1 || echo "needs reinstall: $f"
-    done
+    ./ops/check-units.sh
 
-Silence means they match. Two things `daemon-reload` does not cover on its own:
+It re-renders the units and diffs them against what is installed, so it answers
+the question rather than relying on you to have noticed the pull. It prints
+`units match the repo` and exits 0 when they agree, or names each stale file and
+exits 1. Both scripts share `ops/units-lib.sh`, so the check always renders
+exactly what the install would write — two copies of that `sed` would eventually
+disagree and report drift that was not there.
 
-- A changed `[Install]` section needs `sudo systemctl reenable belvidere-wire.timer`.
-  Reloading re-reads units but does not rewrite the enable symlinks.
-- After changing `OnCalendar`, `sudo systemctl restart belvidere-wire.timer` and
-  then `systemctl list-timers belvidere-wire.timer` to see the new fire time
-  rather than trusting it.
+`install-units.sh` also covers the two things `daemon-reload` does not do on its
+own, whenever the timer is already enabled: it `reenable`s it, because reloading
+re-reads units but does not rewrite the enable symlinks, and it restarts it so a
+changed `OnCalendar` is actually re-armed. Then it prints the next fire time
+rather than leaving you to trust it.
 
 A schedule change is tidier as a drop-in than as an edit to the tracked unit —
 `sudo systemctl edit belvidere-wire.timer` writes an override holding only what
