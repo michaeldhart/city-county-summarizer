@@ -439,6 +439,45 @@ $heavy-rule: 3px double $text-color;
   }
 }
 
+.footer-subscribe {
+  margin-bottom: math.div($spacing-unit, 4);
+
+  .footer-subscribe-lead {
+    margin: 0 0 math.div($spacing-unit, 8) 0;
+  }
+}
+
+.subscribe-form {
+  display: flex;
+  gap: math.div($spacing-unit, 4);
+  max-width: 320px;
+
+  input[type="email"] {
+    flex: 1;
+    min-width: 0;
+    padding: math.div($spacing-unit, 8) math.div($spacing-unit, 4);
+    border: 1px solid $grey-color-light;
+    border-radius: 2px;
+    font-size: inherit;
+    font-family: inherit;
+  }
+
+  button {
+    padding: math.div($spacing-unit, 8) math.div($spacing-unit, 4);
+    border: 1px solid $grey-color-dark;
+    border-radius: 2px;
+    background: transparent;
+    color: $text-color;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $grey-color-light;
+    }
+  }
+}
+
 .footer-links {
   margin-bottom: math.div($spacing-unit, 4);
 

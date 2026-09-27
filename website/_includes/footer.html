@@ -24,6 +24,21 @@
       <span class="footer-slogan">{{ site.tagline | escape }}</span>
     </p>
 
+    {%- comment -%}
+      The list is owned; the Atom feeds below are rented shelf space on a
+      reader's own client. This is the highest-leverage line in the footer,
+      so it sits first — before the nav links, not after them.
+    {%- endcomment -%}
+    <div class="footer-subscribe">
+      <p class="footer-subscribe-lead">Get the edition by email, every Monday morning.</p>
+      <form method="post" action="https://list.belviderewire.com/subscription/form" class="subscribe-form">
+        <input type="hidden" name="nonce" value="" />
+        <input type="hidden" name="l" value="cbc128b3-af69-405c-9695-f3b5a9a674f5" />
+        <input type="email" name="email" required placeholder="E-mail" aria-label="E-mail address" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
     <nav class="footer-links">
       <ul>
         <li><a href="{{ '/' | relative_url }}">Front page</a></li>
