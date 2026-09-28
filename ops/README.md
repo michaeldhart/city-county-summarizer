@@ -76,8 +76,8 @@ the other way round — the units name them by absolute path, so `wire-run.sh` a
 `notify-failure.sh` are picked up from the repo on every run and a `git pull` is
 the whole update.
 
-So the loop needs re-running only when a pull changes one of the three unit
-files, when a new one is added, or when the user or the repo path changes. The
+So the loop needs re-running only when a pull changes one of the unit files,
+when a new one is added, or when the user or the repo path changes. The
 alert URL is not one of these: `/etc/belvidere-wire-alert.conf` is read fresh at
 every start.
 
@@ -135,3 +135,30 @@ edition.
 
 `ccs summary` is deliberately not in the chain. It costs ~$0.40 and rebuilds
 rosters that only change at reorganizations; run it by hand a few times a year.
+
+## Listmonk backups
+
+`listmonk-backup.timer` runs `listmonk-backup.sh` daily at 03:00, dumping the
+Listmonk Postgres container (`docker exec listmonk_db pg_dump`) to
+`/opt/listmonk/backups/listmonk-<timestamp>.dump` and deleting anything older
+than 30 days. This is separate from the wire pipeline and the two never
+overlap. The subscriber list is the first real PII this project holds, and
+unlike everything else here it is deliberately kept out of git — the dumps
+live outside the repo entirely, `chmod 600`, in a `chmod 700` directory.
+
+Verify, then enable, the same way as the wire timer:
+
+    sudo systemctl start listmonk-backup    # a real run
+    journalctl -u listmonk-backup -n 20
+    ls -la /opt/listmonk/backups
+    sudo systemctl enable --now listmonk-backup.timer
+    systemctl list-timers listmonk-backup.timer
+
+To restore a dump:
+
+    docker exec -i listmonk_db pg_restore -U listmonk -d listmonk --clean \
+        < /opt/listmonk/backups/listmonk-<timestamp>.dump
+
+A same-box backup does not survive wally itself dying — worth deciding
+separately whether a copy should also leave the machine (synced to the Mac, a
+cloud bucket, wherever), which this timer does not attempt.

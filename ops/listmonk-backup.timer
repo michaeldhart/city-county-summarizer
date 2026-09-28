@@ -1,0 +1,11 @@
+[Unit]
+Description=Run the Listmonk backup daily
+
+[Timer]
+OnCalendar=*-*-* 03:00:00
+# A day missed because the box was off runs at next boot rather than skipping.
+Persistent=true
+AccuracySec=1min
+
+[Install]
+WantedBy=timers.target

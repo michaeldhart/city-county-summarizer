@@ -24,12 +24,16 @@ $SUDO systemctl daemon-reload
 
 # daemon-reload re-reads units but does not rewrite the enable symlinks, and a
 # changed OnCalendar needs the timer re-armed. Both are idempotent, so just do
-# them whenever the timer is already enabled.
-if systemctl is-enabled --quiet belvidere-wire.timer 2>/dev/null; then
-    $SUDO systemctl reenable belvidere-wire.timer >/dev/null
-    $SUDO systemctl restart belvidere-wire.timer
-    echo "reloaded; timer re-enabled and re-armed"
-    systemctl list-timers belvidere-wire.timer --no-pager
-else
-    echo "reloaded. The timer is not enabled yet — see ops/README.md."
-fi
+# them whenever a given timer is already enabled; one not yet enabled (a brand
+# new one, or one nobody has turned on yet) is left alone — see ops/README.md.
+echo "reloaded."
+for t in "${TIMERS[@]}"; do
+    if systemctl is-enabled --quiet "$t" 2>/dev/null; then
+        $SUDO systemctl reenable "$t" >/dev/null
+        $SUDO systemctl restart "$t"
+        echo "  $t: re-enabled and re-armed"
+    else
+        echo "  $t: not enabled yet"
+    fi
+done
+systemctl list-timers "${TIMERS[@]}" --no-pager
