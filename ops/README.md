@@ -3,8 +3,9 @@
 `wire-run.sh` is the Monday chain: `sync` → `brief` → `front-page` →
 `build-site`, then a commit and a push. The push to `main` touches
 `website/**`, which is what triggers `pages.yml` to build and deploy. Nothing
-here runs Jekyll — Actions owns the build. `notify-facebook` runs last, after
-the push, and no-ops until the page is public — see below.
+here runs Jekyll — Actions owns the build. `notify-facebook` and
+`notify-listmonk` run last, after the push, and each no-ops until its own
+credential is configured — see below.
 
 The Mac must not run this chain. `ccs front-page` takes its issue number from
 `max(existing) + 1` scanned from `_front_pages/`, so two publishers race and
@@ -47,6 +48,26 @@ ready to go public. When it is, drop in the Page id and a Page access token:
 
 The next Monday run picks it up automatically — no code or unit change
 needed, just `daemon-reload` so the service re-reads its `EnvironmentFile`.
+
+Optional mailing-list send — leave this file absent for now; `notify-listmonk`
+no-ops silently without it, same as `notify-facebook`. When the list is ready
+to mail publicly:
+
+    printf 'LISTMONK_API_URL=http://localhost:9000\nLISTMONK_API_USER=...\nLISTMONK_API_TOKEN=...\nLISTMONK_LIST_ID=...\nLISTMONK_FROM_EMAIL=The Belvidere Wire <wire@belviderewire.com>\n' \
+        | sudo tee /etc/belvidere-wire-listmonk.conf >/dev/null
+    sudo chmod 600 /etc/belvidere-wire-listmonk.conf
+    sudo systemctl daemon-reload
+
+`LISTMONK_API_URL` is `http://localhost:9000` rather than
+`https://list.belviderewire.com` — `wire-run.sh` runs on wally, the same box
+Listmonk is on, so the call never needs to leave the machine through the
+Tunnel and back in. `LISTMONK_API_USER`/`LISTMONK_API_TOKEN` come from an
+**API**-type user (Listmonk admin → Users → New, not the SMTP credentials and
+not your own admin login) — that's a distinct credential scoped to the API,
+so it can be revoked without touching how you log in. `LISTMONK_LIST_ID` is
+the list's numeric id (`Lists` page, or `GET /api/lists`) — not the UUID the
+public subscription form uses, those are two different identifiers for the
+same list.
 
 ## Keeping the units in sync
 

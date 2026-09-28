@@ -20,6 +20,9 @@ Commands:
   ccs build-site                        regenerate website/_bodies and website/_meetings from the manifest
   ccs notify-facebook 12                 post issue No. 12 to the Facebook page
                                           (no-op unless FACEBOOK_PAGE_ID/FACEBOOK_PAGE_TOKEN are set)
+  ccs notify-listmonk 12                 mail issue No. 12 to the list via Listmonk
+                                          (no-op unless LISTMONK_API_URL/LISTMONK_API_USER/
+                                          LISTMONK_API_TOKEN/LISTMONK_LIST_ID/LISTMONK_FROM_EMAIL are set)
 """
 from __future__ import annotations
 
@@ -92,6 +95,13 @@ def main(argv: list[str] | None = None) -> int:
              "(no-op unless FACEBOOK_PAGE_ID/FACEBOOK_PAGE_TOKEN are set)")
     p_fb.add_argument("issue", type=int, help='Issue number, from front-page\'s "Published No. N"')
 
+    p_lm = sub.add_parser(
+        "notify-listmonk",
+        help="Mail a published issue to the list via Listmonk "
+             "(no-op unless LISTMONK_API_URL/LISTMONK_API_USER/LISTMONK_API_TOKEN/"
+             "LISTMONK_LIST_ID/LISTMONK_FROM_EMAIL are set)")
+    p_lm.add_argument("issue", type=int, help='Issue number, from front-page\'s "Published No. N"')
+
     args = parser.parse_args(argv)
     if args.command == "summary":
         return _cmd_summary(args.jurisdiction)
@@ -111,6 +121,8 @@ def main(argv: list[str] | None = None) -> int:
         return _cmd_build_site()
     if args.command == "notify-facebook":
         return _cmd_notify_facebook(args.issue)
+    if args.command == "notify-listmonk":
+        return _cmd_notify_listmonk(args.issue)
     parser.error(f"unknown command {args.command}")
     return 2
 
@@ -361,6 +373,53 @@ def _cmd_notify_facebook(issue: int) -> int:
         print(f"error: Facebook post failed ({r.status_code}): {r.text}", file=sys.stderr)
         return 1
     print(f"Posted No. {issue} to the Facebook page.")
+    return 0
+
+
+def _cmd_notify_listmonk(issue: int) -> int:
+    api_url = os.environ.get("LISTMONK_API_URL")
+    api_user = os.environ.get("LISTMONK_API_USER")
+    api_token = os.environ.get("LISTMONK_API_TOKEN")
+    list_id = os.environ.get("LISTMONK_LIST_ID")
+    from_email = os.environ.get("LISTMONK_FROM_EMAIL")
+    if not all((api_url, api_user, api_token, list_id, from_email)):
+        print("LISTMONK_API_URL/LISTMONK_API_USER/LISTMONK_API_TOKEN/LISTMONK_LIST_ID/"
+              "LISTMONK_FROM_EMAIL not all set — skipping (mailing list isn't public yet)")
+        return 0
+
+    try:
+        subject, html, text = frontpage.newsletter_content(issue)
+    except (FileNotFoundError, KeyError) as e:
+        print(f"error: no newsletter content for issue No. {issue}: {e}", file=sys.stderr)
+        return 1
+
+    auth = {"Authorization": f"token {api_user}:{api_token}"}
+    r = requests.post(
+        f"{api_url}/api/campaigns", headers=auth,
+        json={
+            "name": f"Issue {issue}",
+            "subject": subject,
+            "lists": [int(list_id)],
+            "from_email": from_email,
+            "content_type": "html",
+            "body": html,
+            "altbody": text,
+            "messenger": "email",
+            "type": "regular",
+        },
+        timeout=30)
+    if not r.ok:
+        print(f"error: Listmonk campaign creation failed ({r.status_code}): {r.text}", file=sys.stderr)
+        return 1
+    campaign_id = r.json()["data"]["id"]
+
+    r = requests.put(
+        f"{api_url}/api/campaigns/{campaign_id}/status", headers=auth,
+        json={"status": "running"}, timeout=30)
+    if not r.ok:
+        print(f"error: Listmonk campaign send failed ({r.status_code}): {r.text}", file=sys.stderr)
+        return 1
+    print(f"Mailed No. {issue} to the list via Listmonk (campaign {campaign_id}).")
     return 0
 
 

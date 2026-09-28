@@ -145,6 +145,37 @@ def facebook_post_text(issue: int) -> tuple:
     return headline, blurb, link
 
 
+def newsletter_content(issue: int) -> tuple:
+    """(subject, html, text) for mailing a published issue via Listmonk.
+
+    Reads the numbered issue's own file, same as facebook_post_text — a
+    reposted back issue should mail exactly what it said when it ran, not
+    whatever is currently live.
+
+    The body is stored as rendered HTML with Jekyll's relative_url tags still
+    literal (see _render_body): a mail client has no page to resolve a
+    relative link against, so every one is expanded to an absolute URL here.
+    The plain-text alternative is a fallback for clients that don't render
+    HTML, not a second layout — stripping tags is enough.
+    """
+    meta, body = split_front_matter(issue_path(issue).read_text())
+    lead = json.loads(meta["lead"])
+    subject = f"The Belvidere Wire, No. {issue}: {lead}"
+    html_body = re.sub(r"\{\{\s*'([^']*)'\s*\|\s*relative_url\s*\}\}",
+                        r"https://belviderewire.com\1", body)
+    return subject, html_body, _html_to_text(html_body)
+
+
+def _html_to_text(html_body: str) -> str:
+    text = re.sub(r"(?i)</(p|h1|h2|article|li|div)>", "\n\n", html_body)
+    text = re.sub(r"(?i)<br\s*/?>", "\n", text)
+    text = re.sub(r"<[^>]+>", "", text)
+    text = html.unescape(text)
+    text = re.sub(r"[ \t]+", " ", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
 def publish(issue: int) -> bool:
     """Make an existing issue the live front page again. No Claude call."""
     src = issue_path(issue)
