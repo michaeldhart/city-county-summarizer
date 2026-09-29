@@ -162,3 +162,10 @@ To restore a dump:
 A same-box backup does not survive wally itself dying — worth deciding
 separately whether a copy should also leave the machine (synced to the Mac, a
 cloud bucket, wherever), which this timer does not attempt.
+
+Once enabled, it runs itself — no re-running anything day to day. The only
+time it needs attention is the same case as the wire timer: a pull that
+changes `listmonk-backup.service` or `.timer`'s own content, which needs
+`./ops/install-units.sh` to reach systemd. See "Keeping the units in sync"
+above — `./ops/check-units.sh` already covers both timers, so there's nothing
+timer-specific to remember here.
