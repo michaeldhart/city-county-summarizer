@@ -605,3 +605,90 @@ $heavy-rule: 3px double $text-color;
     @include relative-font-size(1.125);
   }
 }
+
+// ---------------------------------------------------------------------------
+// Header icons and the signup dialog
+//
+// Markup: _includes/header.html (overrides minima's). The icons float right,
+// ahead of .site-nav in the DOM, so on desktop they sit at the far right of
+// the header row. On a phone the nav is absolutely positioned, so the icons
+// are too, just left of the hamburger; the open nav menu is raised above them.
+// ---------------------------------------------------------------------------
+
+.header-icons {
+  float: right;
+  display: flex;
+  align-items: center;
+  height: $base-line-height * $base-font-size * 2.25;
+  margin-left: math.div($spacing-unit, 2);
+
+  @media screen and (max-width: $on-palm) {
+    position: absolute;
+    top: 9px;
+    right: $spacing-unit * 0.5 + 44px;
+    height: 36px;
+    margin-left: 0;
+  }
+}
+
+.header-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: $grey-color;
+
+  &:hover, &:focus-visible { color: $grey-color-dark; }
+}
+
+.site-nav { z-index: 3; }
+
+.subscribe-form {
+  flex-wrap: wrap;
+
+  .subscribe-note {
+    flex-basis: 100%;
+    margin: 0;
+    color: $grey-color-dark;
+    @include relative-font-size(0.875);
+
+    &:empty { display: none; }
+  }
+}
+
+.subscribe-dialog {
+  max-width: 24rem;
+  width: calc(100% - #{$spacing-unit});
+  padding: $spacing-unit;
+  border: 1px solid $grey-color-dark;
+  border-top-width: 5px;
+  border-radius: 0;
+  background: $background-color;
+  color: $text-color;
+
+  &::backdrop { background: rgba(0, 0, 0, 0.45); }
+
+  h2 {
+    margin: 0 0 math.div($spacing-unit, 4);
+    @include relative-font-size(1.375);
+  }
+
+  p { margin: 0 0 math.div($spacing-unit, 2); }
+
+  .subscribe-form { max-width: none; }
+}
+
+.subscribe-dialog-close {
+  position: absolute;
+  top: math.div($spacing-unit, 8);
+  right: math.div($spacing-unit, 4);
+  border: 0;
+  background: transparent;
+  color: $grey-color;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+
+  &:hover { color: $grey-color-dark; }
+}

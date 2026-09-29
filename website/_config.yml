@@ -31,6 +31,10 @@ repo_url: https://github.com/michaeldhart/city-county-summarizer
 # link renders only when this is set, so leaving it empty breaks nothing.
 contact_url: https://docs.google.com/forms/d/e/1FAIpQLScxpZW5UnwwEPaKGP5ls7szdGotiMh_0GA6FJIaHnRAG2WJiQ/viewform
 
+# The publication's Facebook page, linked from the header icons. The icon
+# renders only when this is set.
+facebook_url: https://www.facebook.com/profile.php?id=61594971712373
+
 # The person behind the publication, named in the footer. Deliberately NOT
 # `author`, which jekyll-feed would stamp onto every entry in the feed — the
 # dispatches have no human author, and the feed should not say otherwise. This

@@ -269,6 +269,13 @@ every cached record for nothing.
   the rule on the first item of each row. That only works because the column
   count is fixed per breakpoint; if you switch the rows to `auto-fit`, the
   arithmetic silently stops matching the rendered rows.
+- `website/_includes/header.html` overrides minima's the same way, adding the
+  envelope and Facebook icons. The envelope is a link to `#subscribe` (the
+  footer form) that a small inline script upgrades to a `<dialog>` modal; both
+  forms come from `_includes/subscribe-form.html`, so change the Listmonk
+  action or list id there. Site-wide chrome goes here, never in the front-page
+  flag, which `frontpage.py` generates and back issues freeze. The Facebook URL
+  is `facebook_url` in `_config.yml`.
 - `.claude/launch.json` runs the local preview (`bundle exec jekyll serve
   --skip-initial-build --no-watch` from `website/`) on port 4000.
 - Pins live in `docs/PINS.md`, parsed at runtime like `SCOPE.md`. A pin is
