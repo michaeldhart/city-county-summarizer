@@ -366,7 +366,7 @@ def _cmd_notify_facebook(issue: int) -> int:
         return 1
 
     r = requests.post(
-        f"https://graph.facebook.com/v21.0/{page_id}/feed",
+        f"https://graph.facebook.com/v26.0/{page_id}/feed",
         data={"message": f"{headline}\n\n{blurb}", "link": link, "access_token": token},
         timeout=30)
     if not r.ok:
