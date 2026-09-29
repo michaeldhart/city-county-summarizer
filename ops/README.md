@@ -7,6 +7,14 @@ here runs Jekyll — Actions owns the build. `notify-facebook` and
 `notify-listmonk` run last, after the push, and each no-ops until its own
 credential is configured — see below.
 
+Before either notify step, the script polls the new `/issues/NNN/` URL until
+the deploy has made it live (up to 30 minutes). Facebook scrapes a link once,
+when the post is made, and caches whatever it gets — posting straight after the
+push gave issue No. 3 a "Page not found" preview. If the page never appears,
+the Facebook post is skipped and the run fails, but the mailing still goes out.
+The two steps are independent the same way: a dead Page token does not stop the
+mailing, and either one failing fails the run after both have been tried.
+
 The Mac must not run this chain. `ccs front-page` takes its issue number from
 `max(existing) + 1` scanned from `_front_pages/`, so two publishers race and
 produce two issues with the same number.
