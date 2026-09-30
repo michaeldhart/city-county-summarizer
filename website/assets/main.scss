@@ -715,7 +715,7 @@ $heavy-rule: 3px double $text-color;
 // The header row holds the title, five links and two icons, which is a tight
 // fit in a 740px wrapper: give the title room and pull the links in a little.
 // On the pages whose content wrapper is widened (meeting grid, front page)
-// the header's wrapper follows, so the masthead row lines up with the columns
+// the header's and footer's wrappers follow, so the masthead row lines up with the columns
 // below it instead of sitting in a narrower box above them.
 .site-title { margin-right: math.div($spacing-unit, 2); }
 
@@ -724,7 +724,7 @@ $heavy-rule: 3px double $text-color;
 }
 
 @media screen and (min-width: $two-column-above) {
-  body:has(.meeting-grid, .front-page) .site-header .wrapper {
+  body:has(.meeting-grid, .front-page, .beat-grid) :is(.site-header, .site-footer) .wrapper {
     max-width: calc(#{$wide-wrapper} - (#{$spacing-unit} * 2));
   }
 }
