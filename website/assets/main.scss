@@ -637,9 +637,28 @@ $heavy-rule: 3px double $text-color;
   justify-content: center;
   width: 36px;
   height: 36px;
-  color: $grey-color;
+  margin-left: 2px;
+  border-radius: 50%;
+  color: $brand-color;
+  background: rgba($brand-color, 0.08);
+  transition: background-color 0.15s, color 0.15s, transform 0.15s;
 
-  &:hover, &:focus-visible { color: $grey-color-dark; }
+  &:hover, &:focus-visible {
+    color: $background-color;
+    background: $brand-color;
+    transform: translateY(-1px);
+  }
+
+  // A soft ring that ripples out twice shortly after load, then stops.
+  @media (prefers-reduced-motion: no-preference) {
+    animation: header-icon-ring 2s ease-out 1.2s 3;
+  }
+}
+
+@keyframes header-icon-ring {
+  0%   { box-shadow: 0 0 0 0 rgba($brand-color, 0.35); }
+  70%  { box-shadow: 0 0 0 9px rgba($brand-color, 0); }
+  100% { box-shadow: 0 0 0 0 rgba($brand-color, 0); }
 }
 
 .site-nav { z-index: 3; }
