@@ -177,3 +177,44 @@ changes `listmonk-backup.service` or `.timer`'s own content, which needs
 `./ops/install-units.sh` to reach systemd. See "Keeping the units in sync"
 above — `./ops/check-units.sh` already covers both timers, so there's nothing
 timer-specific to remember here.
+
+## Status page
+
+`status-snapshot.timer` runs `status-snapshot.py` every five minutes and writes
+one self-contained page to `/var/lib/wire-status/index.html`;
+`status-serve.service` serves that directory with `python3 -m http.server`.
+Nothing collects live — the page is a snapshot, and it says so: it shows when it
+was written and turns red if it is over 15 minutes old, which is how a dead
+timer shows up. The script is stdlib-only and every section is collected
+independently, so one failed probe reads "unknown" rather than blanking the page.
+
+It covers host load/temperature/updates, memory, disk, network and DNS, the
+`cloudflared` service plus an end-to-end probe through the Tunnel, Listmonk (app
+health, Postgres, subscriber and subscription counts, last campaign), backup
+freshness, the publishing pipeline (clean tree, `origin` reachable, latest issue
+live, last Monday run), Docker containers, every timer on the box with its next
+and last run, and week-long sparklines from `history.json` beside the page.
+
+Install and start:
+
+    ./ops/install-units.sh
+    sudo systemctl enable --now status-snapshot.timer status-serve.service
+    sudo systemctl start status-snapshot     # don't wait five minutes for the first page
+
+Then open `http://wally.local:8088/` (or wally's LAN address) from any machine
+on the network. There is no auth and it shows subscriber counts, so it binds the
+LAN only by design — do not add it to the Tunnel's ingress. Override the bind
+address or port, the tunnel probe URL, or the Listmonk DB container name in
+`/etc/belvidere-wire-status.conf` (`WIRE_STATUS_BIND`, `WIRE_STATUS_PORT`,
+`WIRE_STATUS_TUNNEL_URL`, `LISTMONK_DB_CONTAINER`), then
+`sudo systemctl restart status-serve` / `daemon-reload` as needed.
+
+Alerts reuse `WIRE_ALERT_URL`. A section must be down for two consecutive runs
+(ten minutes) before it posts, and it posts once more when it recovers, so a
+blip does not page you and a long outage does not repeat. Timers and the
+pipeline do not alert from here: a failed Monday run already does through
+`belvidere-wire-failure@`.
+
+The snapshot runs as the repo user with the `docker` and `systemd-journal`
+groups added by the unit. If a row reads "journal not readable" or Docker shows
+"not reachable", that user is missing one of them.

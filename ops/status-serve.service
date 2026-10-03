@@ -1,0 +1,18 @@
+[Unit]
+Description=Serve wally's status page on the LAN
+After=network.target
+
+[Service]
+User=__USER__
+StateDirectory=wire-status
+Environment=WIRE_STATUS_BIND=0.0.0.0
+Environment=WIRE_STATUS_PORT=8088
+EnvironmentFile=-/etc/belvidere-wire-status.conf
+ExecStart=/usr/bin/python3 -m http.server ${WIRE_STATUS_PORT} --bind ${WIRE_STATUS_BIND} --directory /var/lib/wire-status
+Restart=on-failure
+ProtectHome=true
+ProtectSystem=strict
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

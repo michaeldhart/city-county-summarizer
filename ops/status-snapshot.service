@@ -1,0 +1,22 @@
+[Unit]
+Description=Write wally's status page
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=__USER__
+WorkingDirectory=__REPO__
+ExecStart=/usr/bin/python3 __REPO__/ops/status-snapshot.py
+# docker for the container and Postgres checks, systemd-journal so the
+# cloudflared error count is readable without running as root.
+SupplementaryGroups=docker systemd-journal
+StateDirectory=wire-status
+# ssh needs HOME to find the deploy key for the git ls-remote check.
+Environment=HOME=__HOME__
+Environment=PYTHONUNBUFFERED=1
+# Optional; the same alert URL the failure notifier uses. See ops/README.md.
+EnvironmentFile=-/etc/belvidere-wire-alert.conf
+# Optional overrides (WIRE_STATUS_TUNNEL_URL, LISTMONK_DB_CONTAINER, ...).
+EnvironmentFile=-/etc/belvidere-wire-status.conf
+TimeoutStartSec=120

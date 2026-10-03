@@ -36,4 +36,13 @@ for t in "${TIMERS[@]}"; do
         echo "  $t: not enabled yet"
     fi
 done
+# Same for a long-running service: the new unit text only takes effect on restart.
+for sv in "${SERVICES[@]}"; do
+    if systemctl is-active --quiet "$sv" 2>/dev/null; then
+        $SUDO systemctl restart "$sv"
+        echo "  $sv: restarted"
+    else
+        echo "  $sv: not running yet"
+    fi
+done
 systemctl list-timers "${TIMERS[@]}" --no-pager

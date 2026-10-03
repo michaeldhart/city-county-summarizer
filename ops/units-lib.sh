@@ -3,8 +3,10 @@
 # as the install did — two copies that drift apart would report drift forever.
 
 UNITS=(belvidere-wire.service belvidere-wire.timer belvidere-wire-failure@.service
-       listmonk-backup.service listmonk-backup.timer)
-TIMERS=(belvidere-wire.timer listmonk-backup.timer)
+       listmonk-backup.service listmonk-backup.timer
+       status-snapshot.service status-snapshot.timer status-serve.service)
+TIMERS=(belvidere-wire.timer listmonk-backup.timer status-snapshot.timer)
+SERVICES=(status-serve.service)
 UNIT_DIR="${WIRE_UNIT_DIR:-/etc/systemd/system}"
 
 # SUDO_USER first: under `sudo ./install-units.sh`, $USER is root, and baking
