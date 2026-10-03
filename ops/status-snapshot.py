@@ -6,6 +6,7 @@ section is collected independently — a failed probe shows "unknown" and never
 takes the page down."""
 from __future__ import annotations
 
+import calendar
 import glob
 import html
 import json
@@ -347,9 +348,13 @@ def listmonk(s, ctx):
         return
     s.add("Postgres", "answering queries", OK)
     s.add("Subscribers", out.strip())
-    rc, out = psql("select subscription_status, count(*) from subscriber_lists group by 1 order by 1")
-    counts = dict(l.split("|") for l in out.splitlines() if "|" in l)
-    s.add("Subscriptions", " · ".join(f"{k} {v}" for k, v in counts.items()) or "none")
+    rc, out = psql("select status, count(*) from subscriber_lists group by 1 order by 1")
+    if rc != 0:
+        s.add("Subscriptions", "query failed", WARN)
+        counts = {}
+    else:
+        counts = dict(l.split("|") for l in out.splitlines() if "|" in l)
+        s.add("Subscriptions", " · ".join(f"{k} {v}" for k, v in counts.items()) or "none")
     ctx["subs"] = int(counts.get("confirmed", 0))
     rc, out = psql("select count(*) from lists")
     s.add("Lists", out.strip())
@@ -421,6 +426,10 @@ def pipeline(s, ctx):
         s.add("Monday run", f"{p.get('Result')} {ago(end or start)}{dur}", OK if ok else BAD)
 
 
+def docker_ts(s):
+    return calendar.timegm(time.strptime(s[:19], "%Y-%m-%dT%H:%M:%S"))
+
+
 def containers(s, ctx):
     rc, out = run(["docker", "ps", "-a", "-q"])
     if rc != 0:
@@ -429,16 +438,18 @@ def containers(s, ctx):
     ids = out.split()
     rows = []
     worst = OK
-    fmt = "{{.Name}}|{{.State.Status}}|{{.RestartCount}}|{{if .State.Health}}{{.State.Health.Status}}{{end}}|{{.Config.Image}}"
+    fmt = "{{.Name}}|{{.State.Status}}|{{.RestartCount}}|{{.State.StartedAt}}|{{if .State.Health}}{{.State.Health.Status}}{{end}}|{{.Config.Image}}"
     rc, out = run(["docker", "inspect", "-f", fmt] + ids) if ids else (0, "")
     for line in out.splitlines():
-        name, state, restarts, health, image = line.split("|", 4)
+        name, state, restarts, started, health, image = line.split("|", 5)
         st = OK
         if state != "running":
             st = WARN
         if health == "unhealthy":
             st = BAD
-        elif int(restarts) >= 5 and st == OK:
+        elif int(restarts) and st == OK and time.time() - docker_ts(started) < 3600:
+            # RestartCount never resets, so a boot-time crash-and-retry would
+            # stay amber for the container's whole life; only recent ones count.
             st = WARN
         shown = state + (f" ({health})" if health else "")
         rows.append([name.lstrip("/"), image, (shown, st), restarts])
