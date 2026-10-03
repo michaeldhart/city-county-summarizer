@@ -12,6 +12,6 @@ echo "$log"
 
 if [[ -n "${WIRE_ALERT_URL:-}" ]]; then
     printf 'The Belvidere Wire: %s failed\n\n%s\n' "$unit" "$log" \
-        | curl -fsS -H "Title: Wire run failed" --data-binary @- "$WIRE_ALERT_URL" \
+        | curl -fsS -H "Title: Wire run failed" -H "Priority: high" -H "Tags: rotating_light" --data-binary @- "$WIRE_ALERT_URL" \
         || echo "warning: alert POST to WIRE_ALERT_URL failed" >&2
 fi

@@ -45,6 +45,12 @@ Slack):
         | sudo tee /etc/belvidere-wire-alert.conf >/dev/null
     sudo chmod 600 /etc/belvidere-wire-alert.conf
 
+With ntfy, install the phone app and subscribe to the same topic. The topic
+name is the only secret, so make it long and random (`openssl rand -hex 12`).
+Test the whole path without waiting for a real failure:
+
+    sudo systemctl start belvidere-wire-failure@belvidere-wire.service
+
 Optional Facebook posting — leave this file absent for now; `notify-facebook`
 no-ops silently without it, which is the intended state until the page is
 ready to go public. When it is, drop in the Page id and a Page access token:
