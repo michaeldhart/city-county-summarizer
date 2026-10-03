@@ -189,8 +189,8 @@ timer shows up. The script is stdlib-only and every section is collected
 independently, so one failed probe reads "unknown" rather than blanking the page.
 
 It covers host load/temperature/updates, memory, disk, network and DNS, the
-`cloudflared` service plus an end-to-end probe through the Tunnel, Listmonk (app
-health, Postgres, subscriber and subscription counts, last campaign), backup
+`cloudflared` service plus an end-to-end probe through the Tunnel, Listmonk (login
+page, Postgres, subscriber and subscription counts, last campaign), backup
 freshness, the publishing pipeline (clean tree, `origin` reachable, latest issue
 live, last Monday run), Docker containers, every timer on the box with its next
 and last run, and week-long sparklines from `history.json` beside the page.

@@ -23,8 +23,8 @@ OUT = Path(os.environ.get("WIRE_STATUS_DIR", "/var/lib/wire-status"))
 REPO = Path(os.environ.get("WIRE_REPO", Path(__file__).resolve().parent.parent))
 SITE = os.environ.get("WIRE_STATUS_SITE", "https://belviderewire.com")
 TUNNEL_UNIT = os.environ.get("WIRE_STATUS_TUNNEL_UNIT", "cloudflared.service")
-TUNNEL_URL = os.environ.get("WIRE_STATUS_TUNNEL_URL", "https://list.belviderewire.com/api/health")
-LISTMONK_URL = os.environ.get("WIRE_STATUS_LISTMONK_URL", "http://localhost:9000/api/health")
+TUNNEL_URL = os.environ.get("WIRE_STATUS_TUNNEL_URL", "https://list.belviderewire.com/subscription/form")
+LISTMONK_URL = os.environ.get("WIRE_STATUS_LISTMONK_URL", "http://localhost:9000/admin/login")
 DB_CONTAINER = os.environ.get("LISTMONK_DB_CONTAINER", "listmonk_db")
 BACKUP_DIR = Path(os.environ.get("LISTMONK_BACKUP_DIR", "/opt/listmonk/backups"))
 ALERT_URL = os.environ.get("WIRE_ALERT_URL", "")
@@ -330,7 +330,7 @@ def psql(sql):
 
 def listmonk(s, ctx):
     code, ms, err = probe(LISTMONK_URL)
-    s.add("App", f"/api/health HTTP 200, {ms} ms" if code == 200 else err or f"HTTP {code}", OK if code == 200 else BAD)
+    s.add("App", f"login page HTTP 200, {ms} ms" if code == 200 else err or f"HTTP {code}", OK if code == 200 else BAD)
 
     rc, out = run(["docker", "inspect", "-f", "{{.State.Status}} {{.RestartCount}}", DB_CONTAINER])
     if rc != 0:
