@@ -63,9 +63,11 @@ ready to go public. When it is, drop in the Page id and a Page access token:
 The next Monday run picks it up automatically — no code or unit change
 needed, just `daemon-reload` so the service re-reads its `EnvironmentFile`.
 
-Optional mailing-list send — leave this file absent for now; `notify-listmonk`
-no-ops silently without it, same as `notify-facebook`. When the list is ready
-to mail publicly:
+Mailing-list send — `belvidere-wire.service` sets `LISTMONK_REQUIRED=1`, so a
+missing or incomplete file makes `notify-listmonk` fail the run and fire the
+alert instead of skipping silently (it did exactly that once, and a Monday
+issue went unmailed). Before the list is public, drop that `Environment=` line
+via a drop-in to get the old no-op back. Create the file:
 
     printf 'LISTMONK_API_URL=http://localhost:9000\nLISTMONK_API_USER=...\nLISTMONK_API_TOKEN=...\nLISTMONK_LIST_ID=...\nLISTMONK_FROM_EMAIL=The Belvidere Wire <wire@belviderewire.com>\n' \
         | sudo tee /etc/belvidere-wire-listmonk.conf >/dev/null
@@ -137,7 +139,11 @@ Then:
 
     systemctl list-timers belvidere-wire.timer   # when it next fires
     journalctl -u belvidere-wire -n 100          # last run
-    journalctl -u belvidere-wire --since '2 weeks ago' | grep '^==='
+    journalctl -u belvidere-wire --since '2 weeks ago' | grep '=== '
+
+Don't anchor that grep with `^`: journal lines start with a timestamp and
+hostname, so `'^==='` matches nothing. Use `sudo` if the journal comes back
+empty and you aren't in the `systemd-journal` group.
 
 ## When it fails
 

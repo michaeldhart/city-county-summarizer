@@ -383,6 +383,11 @@ def _cmd_notify_listmonk(issue: int) -> int:
     list_id = os.environ.get("LISTMONK_LIST_ID")
     from_email = os.environ.get("LISTMONK_FROM_EMAIL")
     if not all((api_url, api_user, api_token, list_id, from_email)):
+        if os.environ.get("LISTMONK_REQUIRED"):
+            print("error: LISTMONK_REQUIRED is set but LISTMONK_API_URL/LISTMONK_API_USER/"
+                  "LISTMONK_API_TOKEN/LISTMONK_LIST_ID/LISTMONK_FROM_EMAIL are not all set",
+                  file=sys.stderr)
+            return 1
         print("LISTMONK_API_URL/LISTMONK_API_USER/LISTMONK_API_TOKEN/LISTMONK_LIST_ID/"
               "LISTMONK_FROM_EMAIL not all set — skipping (mailing list isn't public yet)")
         return 0

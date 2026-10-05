@@ -19,5 +19,8 @@ Environment=LANG=C.UTF-8
 EnvironmentFile=-/etc/belvidere-wire-facebook.conf
 # Optional; absent until the mailing list goes public. See ops/README.md.
 EnvironmentFile=-/etc/belvidere-wire-listmonk.conf
+# The list is public: a missing or incomplete listmonk.conf must fail the run
+# (and fire the alert) rather than skip the mailing silently.
+Environment=LISTMONK_REQUIRED=1
 # A wedged yt-dlp or a hung HTTP read would otherwise hold the lock all week.
 TimeoutStartSec=5400
