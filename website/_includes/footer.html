@@ -15,13 +15,13 @@
   reachable only from the foot of /beats/.
 {%- endcomment -%}
 <footer class="site-footer h-card">
-  <data class="u-url" href="{{ "/" | relative_url }}"></data>
+  <data class="u-url" href="{{ "/" | loc | relative_url }}"></data>
 
   <div class="wrapper">
 
     <p class="footer-flag">
       <span class="p-name">{{ site.title | escape }}</span>
-      <span class="footer-slogan">{{ site.tagline | escape }}</span>
+      <span class="footer-slogan">{{ 'tagline' | t | escape }}</span>
     </p>
 
     {%- comment -%}
@@ -30,31 +30,33 @@
       so it sits first — before the nav links, not after them.
     {%- endcomment -%}
     <div class="footer-subscribe" id="subscribe">
-      <p class="footer-subscribe-lead">Get the edition by email, every Monday morning.</p>
+      <p class="footer-subscribe-lead">{{ 'sub_lead' | t }}</p>
       {%- include subscribe-form.html -%}
     </div>
 
     <nav class="footer-links">
       <ul>
-        <li><a href="{{ '/' | relative_url }}">Front page</a></li>
-        <li><a href="{{ '/beats/' | relative_url }}">Beats</a></li>
-        <li><a href="{{ '/issues/' | relative_url }}">Back issues</a></li>
-        <li><a href="{{ '/method/' | relative_url }}">How this is written</a></li>
-        <li><a href="{{ '/search/' | relative_url }}">Search</a></li>
-        <li><a href="{{ '/feed/meetings.xml' | relative_url }}">Subscribe to the wire</a></li>
-        <li><a href="{{ '/feed/issues.xml' | relative_url }}">Subscribe to the edition</a></li>
+        <li><a href="{{ '/' | loc | relative_url }}">{{ 'nav_front' | t }}</a></li>
+        <li><a href="{{ '/beats/' | loc | relative_url }}">{{ 'nav_beats' | t }}</a></li>
+        <li><a href="{{ '/issues/' | loc | relative_url }}">{{ 'nav_issues' | t }}</a></li>
+        <li><a href="{{ '/method/' | loc | relative_url }}">{{ 'nav_method' | t }}</a></li>
+        <li><a href="{{ '/search/' | loc | relative_url }}">{{ 'nav_search' | t }}</a></li>
+        <li><a href="{{ '/feed/meetings.xml' | loc | relative_url }}">{{ 'feed_wire' | t }}</a></li>
+        <li><a href="{{ '/feed/issues.xml' | loc | relative_url }}">{{ 'feed_edition' | t }}</a></li>
+        {%- if page.alt_url %}
+        <li><a href="{{ page.alt_url | relative_url }}" hreflang="{% if page.lang == 'es' %}en{% else %}es{% endif %}" lang="{% if page.lang == 'es' %}en{% else %}es{% endif %}">{{ 'other_lang' | t }}</a></li>
+        {%- endif %}
       </ul>
     </nav>
 
-    <p class="footer-accountability">Every dispatch links the documents it was
-      written from.
+    <p class="footer-accountability">{{ 'acct_lead' | t }}
       {%- if site.contact_url %}
-      <a href="{{ site.contact_url }}">Contact &amp; corrections</a> ·
+      <a href="{{ site.contact_url }}">{{ 'acct_contact' | t | escape }}</a> ·
       {%- else %}
-      <a href="{{ '/method/#corrections' | relative_url }}">Corrections</a> ·
+      <a href="{{ '/method/#corrections' | loc | relative_url }}">{{ 'acct_corrections' | t }}</a> ·
       {%- endif %}
-      <a href="{{ '/method/#what-this-site-records-about-you' | relative_url }}">Privacy</a> ·
-      <a href="{{ site.repo_url }}">Source code</a> (Apache-2.0)
+      <a href="{{ '/method/#what-this-site-records-about-you' | loc | relative_url }}">{{ 'acct_privacy' | t }}</a> ·
+      <a href="{{ site.repo_url }}">{{ 'acct_source' | t }}</a> (Apache-2.0)
     </p>
 
     {%- comment -%}
@@ -83,15 +85,13 @@
       would otherwise separate them, and it renders as "maintained byMichael".
     {%- endcomment -%}
     <p class="fine-print footer-fine-print">
-      An independent project created and maintained by
+      {{ 'fine_a' | t }}
       {%- if site.maintainer_url %}
       {{ " " }}<a href="{{ site.maintainer_url }}" target="_blank" rel="author noopener">{{ site.maintainer | escape }}</a>.
       {%- else %}
       {{ " " }}{{ site.maintainer | escape }}.
       {%- endif %}
-      Not affiliated with, endorsed by, or speaking for any government in Boone
-      County. Dispatches are machine-written from public records and free to
-      reuse.
+      {{ 'fine_b' | t }}
     </p>
 
   </div>

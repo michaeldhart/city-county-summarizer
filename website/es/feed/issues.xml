@@ -1,0 +1,47 @@
+---
+layout: null
+permalink: /es/feed/issues.xml
+lang: es
+---
+{%- comment -%}
+  The Spanish edition feed: the same digest as feed/issues.xml, over the
+  translated issues. It reads the headline list back out of each issue's
+  rendered HTML in the same way, so it depends on the same markup — see the
+  note in the English template.
+{%- endcomment -%}
+{%- assign ed_title = 'feed_edition_title' | t -%}
+{%- assign feed_title = site.title | append: " | " | append: ed_title -%}
+{%- assign issues = site.pages | where: "es_issue", true | sort: "issue" | reverse -%}
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+  <generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>
+  <link href="{{ page.url | absolute_url }}" rel="self" type="application/atom+xml" />
+  <link href="{{ '/es/issues/' | absolute_url }}" rel="alternate" type="text/html" />
+  <title type="html">{{ feed_title | xml_escape }}</title>
+  <subtitle>{{ 'feed_edition_subtitle' | t | xml_escape }}</subtitle>
+  <updated>{% if issues.size > 0 %}{{ issues[0].generated | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}</updated>
+  <id>{{ page.url | absolute_url | xml_escape }}</id>
+  <author><name>{{ site.author | xml_escape }}</name></author>
+  {%- for issue in issues limit: 50 %}
+  <entry>
+    <title type="html">{{ 'issue_no' | t: issue.issue }}{% if issue.lead %} — {{ issue.lead | strip_html | xml_escape }}{% endif %}</title>
+    <link href="{{ issue.url | absolute_url }}" rel="alternate" type="text/html" />
+    <published>{{ issue.generated | date_to_xmlschema }}</published>
+    <updated>{{ issue.generated | date_to_xmlschema }}</updated>
+    <id>{{ issue.url | absolute_url | xml_escape }}</id>
+    {%- assign chunks = issue.content | split: '<h2 class="brief-headline">' -%}
+    {%- assign issued = issue.generated | fdate: 'long' -%}
+    <content type="html"><![CDATA[<p>{% if issue.brief_count == 1 %}{{ 'brief_one' | t }}{% else %}{{ 'brief_many' | t: issue.brief_count }}{% endif %}, {{ 'filed_on' | t }} {{ issued }}.</p>
+    {%- if chunks.size > 1 -%}
+    <ol>
+      {%- for chunk in chunks offset: 1 -%}
+      {%- assign headline = chunk | split: '</h2>' | first | strip_html | strip -%}
+      {%- assign parts = chunk | split: '"' -%}
+      <li><a href="{{ parts[1] | prepend: site.url }}">{{ headline }}</a></li>
+      {%- endfor -%}
+    </ol>
+    {%- endif -%}
+    <p><a href="{{ issue.url | absolute_url }}">{{ 'read_edition' | t: issue.issue }}</a></p>]]></content>
+  </entry>
+  {%- endfor %}
+</feed>

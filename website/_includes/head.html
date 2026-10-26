@@ -22,7 +22,22 @@
   <link rel="icon" href="{{ "/assets/favicon-16x16.png" | relative_url }}" sizes="16x16" type="image/png">
   <link rel="apple-touch-icon" href="{{ "/assets/apple-touch-icon.png" | relative_url }}">
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  {%- if page.lang == 'es' -%}
+  <link rel="alternate" type="application/atom+xml" href="{{ '/es/feed/meetings.xml' | absolute_url }}" title="{{ site.title | escape }}">
+  {%- else -%}
   {%- feed_meta -%}
+  {%- endif -%}
+  {%- if page.alt_url -%}
+  {%- if page.lang == 'es' -%}
+  <link rel="alternate" hreflang="en" href="{{ page.alt_url | absolute_url }}">
+  <link rel="alternate" hreflang="es" href="{{ page.url | absolute_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ page.alt_url | absolute_url }}">
+  {%- else -%}
+  <link rel="alternate" hreflang="en" href="{{ page.url | absolute_url }}">
+  <link rel="alternate" hreflang="es" href="{{ page.alt_url | absolute_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ page.url | absolute_url }}">
+  {%- endif -%}
+  {%- endif -%}
   {%- if jekyll.environment == 'production' and site.goatcounter_code -%}
   <script data-goatcounter="https://{{ site.goatcounter_code }}.goatcounter.com/count"
           async src="https://gc.zgo.at/count.js"></script>

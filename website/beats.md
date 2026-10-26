@@ -2,6 +2,8 @@
 layout: default
 title: Beats
 permalink: /beats/
+i18n: true
+title_es: Secciones
 ---
 {%- comment -%}
   layout: default, not page — this is a list of links rather than content, and
@@ -19,12 +21,9 @@ permalink: /beats/
   moved wholesale to /beats/, then became this.
 {%- endcomment -%}
 
-<h1>Beats</h1>
+<h1>{{ 'beats_h1' | t }}</h1>
 
-<p class="standfirst">Every body The Belvidere Wire covers, grouped by the
-government it belongs to — twenty-three beats across six of them. Each links to
-every dispatch filed from it, and each government links to its backgrounder:
-how it is organized, who currently serves, and when its bodies meet.</p>
+<p class="standfirst">{{ 'beats_standfirst' | t }}</p>
 
 {% assign ordered = site.bodies | sort: "sort_key" %}
 <div class="beat-grid">
@@ -64,16 +63,16 @@ how it is organized, who currently serves, and when its bodies meet.</p>
       {%- endif %}
     {%- endunless %}
 <section class="beat-card">
-  <h2 class="beat-name"><a href="{{ body.about_url | relative_url }}{{ anchor }}">{{ body.jurisdiction }}</a></h2>
+  <h2 class="beat-name"><a href="{{ body.about_url | loc | relative_url }}{{ anchor }}">{{ body.jurisdiction }}</a></h2>
   <ul class="beat-bodies">
   {%- endif %}
   {%- assign count = site.meetings | where: "body_id", body.body_id | size %}
     <li>
-      <a href="{{ body.url | relative_url }}">{{ body.title }}</a>
+      <a href="{{ body.url | loc | relative_url }}">{{ body.title }}</a>
       {%- if count > 0 %}
-      <span class="count">{{ count }} dispatch{% if count != 1 %}es{% endif %}</span>
+      <span class="count">{% if count == 1 %}{{ 'count_one' | t }}{% else %}{{ 'count_many' | t: count }}{% endif %}</span>
       {%- else %}
-      <span class="count">no dispatches filed yet</span>
+      <span class="count">{{ 'count_none' | t }}</span>
       {%- endif %}
     </li>
   {%- if forloop.last %}
@@ -84,9 +83,7 @@ how it is organized, who currently serves, and when its bodies meet.</p>
 </div>
 
 <section class="beat-wire">
-  <h2>The wire</h2>
-  <p><a href="{{ '/feed/meetings.xml' | relative_url }}">Subscribe to the wire</a>
-  — one entry per dispatch as it is filed, across every beat. For one entry per
-  edition instead, <a href="{{ '/feed/issues.xml' | relative_url }}">subscribe to
-  the edition</a>.</p>
+  <h2>{{ 'wire_h2' | t }}</h2>
+  <p><a href="{{ '/feed/meetings.xml' | loc | relative_url }}">{{ 'feed_wire' | t }}</a>
+  {{ 'wire_a' | t }} <a href="{{ '/feed/issues.xml' | loc | relative_url }}">{{ 'feed_edition_lc' | t }}</a>.</p>
 </section>

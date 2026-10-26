@@ -51,6 +51,12 @@ maintainer_url: https://www.michaeldhart.com
 # kept.
 author: The Belvidere Wire
 
+# Listmonk list ids for the signup forms, by page language. A language without
+# an entry falls back to English, so a Spanish reader is subscribed to the
+# English list until the Spanish one exists — create it, then set `es` here.
+listmonk_lists:
+  en: cbc128b3-af69-405c-9695-f3b5a9a674f5
+
 # GoatCounter: the site code only, not the full URL — _includes/head.html builds
 # https://<code>.goatcounter.com/count from it. Cookieless and with no personal
 # data, so it needs no consent banner; what it does collect is disclosed on

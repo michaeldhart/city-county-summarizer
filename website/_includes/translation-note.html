@@ -1,0 +1,12 @@
+{%- comment -%}
+  Shown on every Spanish page that is a translation of an English one (a
+  dispatch or an issue), never on hand-written Spanish pages. The English
+  original governs, and the page says so. data-pagefind-ignore keeps the
+  identical sentence out of the search index.
+{%- endcomment -%}
+{%- if page.lang == 'es' and page.alt_url and page.es_source_hash -%}
+<p class="translation-note" data-pagefind-ignore>{{ 'tn_machine' | t }}
+  <a href="{{ page.alt_url | relative_url }}" hreflang="en">{{ 'tn_original' | t }}</a>.
+  {%- unless page.es_reviewed %} {{ 'tn_unreviewed' | t }}{% endunless -%}
+</p>
+{%- endif -%}

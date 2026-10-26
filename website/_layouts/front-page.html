@@ -10,13 +10,15 @@ layout: default
 {%- endcomment -%}
 
 {% if page.archived %}
-<p class="issue-banner">This is back issue No. {{ page.issue }}, published
-{{ page.generated | date: "%B %-d, %Y" }}. The current edition is on the
-<a href="{{ '/' | relative_url }}">front page</a>.</p>
+{%- assign issued = page.generated | fdate: 'long' -%}
+<p class="issue-banner">{{ 'issue_banner_a' | t: page.issue, issued }}
+<a href="{{ '/' | loc | relative_url }}">{{ 'issue_banner_link' | t }}</a>{{ 'issue_banner_b' | t }}</p>
 {% endif %}
 
 {{ content }}
 
+{%- include translation-note.html -%}
+
 {% if page.archived %}
-<p><a href="{{ '/issues/' | relative_url }}">&larr; All back issues</a></p>
+<p><a href="{{ '/issues/' | loc | relative_url }}">&larr; {{ 'all_back_issues' | t }}</a></p>
 {% endif %}

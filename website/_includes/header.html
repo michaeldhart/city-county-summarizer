@@ -14,14 +14,14 @@
   <div class="wrapper">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    <a class="site-title" rel="author" href="{{ "/" | loc | relative_url }}">{{ site.title | escape }}</a>
 
     <div class="header-icons">
-      <a class="header-icon" id="subscribe-open" href="#subscribe" aria-label="Get the edition by email" title="Get the edition by email">
+      <a class="header-icon" id="subscribe-open" href="#subscribe" aria-label="{{ 'sub_edition' | t }}" title="{{ 'sub_edition' | t }}">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6.5 9 7 9-7"/></svg>
       </a>
       {%- if site.facebook_url %}
-      <a class="header-icon" href="{{ site.facebook_url }}" target="_blank" rel="noopener noreferrer" aria-label="The Belvidere Wire on Facebook (opens in a new tab)" title="Follow on Facebook">
+      <a class="header-icon" href="{{ site.facebook_url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ 'fb_aria' | t }}" title="{{ 'fb_title' | t }}">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.95.4-1.7 1.8-1.7h1.6V3.8c-.3 0-1.3-.15-2.4-.15-2.5 0-4.1 1.5-4.1 4.2v2.65H7.7v3.3h2.7V22z"/></svg>
       </a>
       {%- endif %}
@@ -41,6 +41,9 @@
         <div class="trigger">
           {%- for path in page_paths -%}
             {%- assign my_page = site.pages | where: "path", path | first -%}
+            {%- if page.lang == 'es' and my_page.alt_url -%}
+              {%- assign my_page = site.pages | where: "url", my_page.alt_url | first -%}
+            {%- endif -%}
             {%- if my_page.title -%}
             <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
             {%- endif -%}
@@ -52,9 +55,9 @@
 </header>
 
 <dialog class="subscribe-dialog" id="subscribe-dialog" aria-labelledby="subscribe-dialog-title">
-  <button type="button" class="subscribe-dialog-close" aria-label="Close">&times;</button>
-  <h2 id="subscribe-dialog-title">The edition, by email</h2>
-  <p>Get the edition by email, every Monday morning.</p>
+  <button type="button" class="subscribe-dialog-close" aria-label="{{ 'close' | t }}">&times;</button>
+  <h2 id="subscribe-dialog-title">{{ 'dialog_title' | t }}</h2>
+  <p>{{ 'sub_lead' | t }}</p>
   {%- include subscribe-form.html -%}
 </dialog>
 <script>
@@ -81,11 +84,11 @@
           form.classList.add("is-done");
           form.querySelector("input[type=email]").hidden = true;
           button.hidden = true;
-          note.textContent = "Thanks. Check your inbox to confirm your subscription.";
+          note.textContent = {{ 'sub_thanks' | t | jsonify }};
         })
         .catch(function () {
           button.disabled = false;
-          note.textContent = "Something went wrong. Please try again in a moment.";
+          note.textContent = {{ 'sub_error' | t | jsonify }};
         });
     });
 

@@ -1,22 +1,25 @@
 ---
 layout: default
 ---
-<p class="breadcrumb"><a href="{{ '/beats/' | relative_url }}">All beats</a> &rsaquo; {{ page.jurisdiction }}</p>
+<p class="breadcrumb"><a href="{{ '/beats/' | loc | relative_url }}">{{ 'all_beats' | t }}</a> &rsaquo; {{ page.jurisdiction }}</p>
 
 <h1>{{ page.title }}</h1>
-<p class="jurisdiction">{{ page.jurisdiction }} &middot; <a href="{{ page.about_url | relative_url }}">Backgrounder on this government</a></p>
+<p class="jurisdiction">{{ page.jurisdiction }} &middot; <a href="{{ page.about_url | loc | relative_url }}">{{ 'backgrounder_link' | t }}</a></p>
 
 {% assign meetings = site.meetings | where: "body_id", page.body_id | sort: "date" | reverse %}
 
-<h2>Dispatches</h2>
+<h2>{{ 'dispatches' | t }}</h2>
 {% if meetings.size == 0 %}
-  <p><em>Nothing filed from this beat yet.</em></p>
+  <p><em>{{ 'nothing_filed' | t }}</em></p>
 {% else %}
   <ul>
   {% for m in meetings %}
-    <li><a href="{{ m.url | relative_url }}">{{ m.date | date: "%b %-d, %Y" }} — {{ m.title }}</a></li>
+    {%- assign m_url = m.url | loc -%}
+    <li><a href="{{ m_url | relative_url }}">{{ m.date | fdate: 'short' }} — {{ m.title }}</a>
+      {%- if page.lang == 'es' and m_url == m.url %} <span class="count">{{ 'in_english' | t }}</span>{% endif -%}
+    </li>
   {% endfor %}
   </ul>
 {% endif %}
 
-<p><a href="{{ '/beats/' | relative_url }}">&larr; All beats</a></p>
+<p><a href="{{ '/beats/' | loc | relative_url }}">&larr; {{ 'all_beats' | t }}</a></p>

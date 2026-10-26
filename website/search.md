@@ -2,6 +2,8 @@
 layout: default
 title: Search
 permalink: /search/
+i18n: true
+title_es: Buscar
 ---
 {%- comment -%}
   layout: default, not page — the search page has no content of its own to
@@ -20,15 +22,9 @@ permalink: /search/
 <script src="{{ '/pagefind/pagefind-component-ui.js' | relative_url }}" type="module"></script>
 <pagefind-config bundle-path="{{ '/pagefind/' | relative_url }}"></pagefind-config>
 
-<h1>Search the archive</h1>
+<h1>{{ 'search_h1' | t }}</h1>
 
-<p>What's searched here is the dispatches themselves: every one in full, along
-with each government's backgrounder and the pages explaining how this works.
-The agendas, minutes and video behind them aren't indexed, so something raised
-at a meeting won't necessarily turn up in the summary written from it. If a
-dispatch looks close to what you're after, open it — the Resources list beside
-it links the original documents, which are always nearer the record than a
-summary can be.</p>
+<p>{{ 'search_intro' | t }}</p>
 
 <div class="search-ui">
   <pagefind-input></pagefind-input>
@@ -44,7 +40,6 @@ summary can be.</p>
 </div>
 
 <noscript>
-  <p><strong>Search needs JavaScript.</strong> Without it, browse by government
-  from the <a href="{{ '/beats/' | relative_url }}">beats page</a> — every
-  dispatch is listed under its beat.</p>
+  <p><strong>{{ 'search_nojs_a' | t }}</strong> {{ 'search_nojs_b' | t }}
+  <a href="{{ '/beats/' | loc | relative_url }}">{{ 'search_nojs_link' | t }}</a>{{ 'search_nojs_c' | t }}</p>
 </noscript>

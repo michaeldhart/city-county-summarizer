@@ -26,14 +26,14 @@ layout: default
     22 bodies, several of which are not bodies at all.
   {%- endcomment -%}
   <div class="meeting-main" data-pagefind-body data-pagefind-filter="type:Meeting"
-       data-pagefind-meta="title:{{ page.title }} — {{ page.date | date: '%b %-d, %Y' }}">
+       data-pagefind-meta="title:{{ page.title }} — {{ page.date | fdate: 'short' }}">
     {%- if parent_body.jurisdiction -%}
     <span hidden data-pagefind-filter="jurisdiction:{{ parent_body.jurisdiction }}"></span>
     {%- endif -%}
     <h1 data-pagefind-filter="body:{{ parent_body.title | default: page.title }}">{{ page.title }}</h1>
     <p class="meeting-date"
        data-pagefind-meta="date"
-       data-pagefind-filter="year:{{ page.date | date: '%Y' }}">{{ page.date | date: "%b %-d, %Y" }}</p>
+       data-pagefind-filter="year:{{ page.date | date: '%Y' }}">{{ page.date | fdate: 'short' }}</p>
 
     {{ content }}
 
@@ -55,36 +55,40 @@ layout: default
     {%- assign agenda_docs = page.resources | where: "kind", "agenda" -%}
     {%- assign portal_docs = page.resources | where: "kind", "portal" -%}
     {%- assign minutes_docs = page.resources | where: "kind", "minutes" -%}
+    {%- assign src_agenda = 'src_agenda' | t -%}
+    {%- assign src_minutes = 'src_minutes' | t -%}
+    {%- assign src_video = 'src_video' | t -%}
     {%- assign parts = "" -%}
     {%- if agenda_docs.size > 0 or portal_docs.size > 0 -%}
-      {%- assign parts = parts | append: "|the agenda" -%}
+      {%- assign parts = parts | append: "|" | append: src_agenda -%}
     {%- endif -%}
     {%- if minutes_docs.size > 0 -%}
-      {%- assign parts = parts | append: "|the minutes" -%}
+      {%- assign parts = parts | append: "|" | append: src_minutes -%}
     {%- endif -%}
     {%- if page.has_transcript -%}
-      {%- assign parts = parts | append: "|the meeting video" -%}
+      {%- assign parts = parts | append: "|" | append: src_video -%}
     {%- endif -%}
     {%- assign srcs = parts | remove_first: "|" | split: "|" -%}
     <p class="byline" data-pagefind-ignore>
-      Filed to the wire — written by a machine from
+      {{ 'byline_lead' | t }}
       {%- if srcs.size > 1 -%}
         {%- assign last_i = srcs.size | minus: 1 -%}
         {%- assign head = srcs | slice: 0, last_i -%}
-        {{ " " }}{{ head | join: ", " }} and {{ srcs[last_i] }}.
+        {{ " " }}{{ head | join: ", " }} {{ 'list_and' | t }} {{ srcs[last_i] }}.
       {%- elsif srcs.size == 1 -%}
         {{ " " }}{{ srcs[0] }}.
       {%- else -%}
-        {{ " " }}this body's published meeting materials.
+        {{ " " }}{{ 'byline_none' | t }}
       {%- endif -%}
-      {{ " " }}No human reporter attended.
-      <a href="{{ '/method/' | relative_url }}">How this is written</a>
+      {{ " " }}{{ 'byline_nohuman' | t }}
+      <a href="{{ '/method/' | loc | relative_url }}">{{ 'byline_method' | t }}</a>
     </p>
+    {%- include translation-note.html -%}
   </div>
 
   {% if page.resources %}
   <aside class="meeting-resources" data-pagefind-ignore>
-    <h2>Resources</h2>
+    <h2>{{ 'resources' | t }}</h2>
     {% if summarized.size > 0 %}
     <ul>
       {% for r in summarized %}
@@ -94,9 +98,8 @@ layout: default
     {% endif %}
 
     {% if attachments.size > 0 %}
-    <h3>Also linked from the agenda</h3>
-    <p class="resource-note">Backup documents published with the agenda. These
-    were not read when writing the dispatch above.</p>
+    <h3>{{ 'also_linked' | t }}</h3>
+    <p class="resource-note">{{ 'attachments_note' | t }}</p>
     <ul>
       {% for r in attachments %}
       <li class="resource-attachment"><a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.label }}</a></li>
@@ -108,5 +111,5 @@ layout: default
 </div>
 
 {% if parent_body %}
-<p><a href="{{ parent_body.url | relative_url }}">&larr; Back to {{ parent_body.title }}</a></p>
+<p><a href="{{ parent_body.url | loc | relative_url }}">&larr; {{ 'back_to' | t: parent_body.title }}</a></p>
 {% endif %}
