@@ -163,23 +163,6 @@ def estimate_page_cost(src: PageSource) -> float:
     return (toks_in * _PRICE_IN + toks_in * _OUT_PER_IN * _PRICE_OUT) / 1e6
 
 
-def translate_page(src: PageSource) -> Path:
-    """Like translate_meeting, for a static page. Writes the store file."""
-    prompt = _build_page_prompt(src)
-    problem = None
-    for _ in range(2):
-        raw = _call_claude(prompt if problem is None else
-                           prompt + f"\n\nYour previous attempt was rejected: {problem}\n"
-                                    "Translate again, fixing exactly that.\n")
-        parsed = _parse_page(raw, src)
-        problem = check_page(src.body, parsed["body"])
-        for k, v in src.fields:
-            problem = problem or check_plain(v, parsed[k])
-        if problem is None:
-            return _write_page(src, parsed)
-    raise TranslationError(f"{src.name}: {problem}")
-
-
 def _build_page_prompt(src: PageSource) -> str:
     glossary = GLOSSARY_PATH.read_text()
     sections = [("TITLE", src.title)] + [(k.upper(), v) for k, v in src.fields] + [("BODY", src.body)]
@@ -287,19 +270,121 @@ def sync_index() -> str:
     return f"Spanish home page set to issue {issue}"
 
 
-def translate_meeting(src: Source) -> Path:
-    """One Claude call (two if validation catches a dropped figure). Writes the store file."""
-    prompt = _build_prompt(src)
+class Rejected(Exception):
+    """A reply that parsed badly or failed validation; worth one more try."""
+
+
+def build_prompt(src) -> str:
+    return _build_page_prompt(src) if isinstance(src, PageSource) else _build_prompt(src)
+
+
+def _finish(src, raw: str) -> Path:
+    """Parse, validate and write one reply, or raise Rejected with why."""
+    try:
+        if isinstance(src, PageSource):
+            parsed = _parse_page(raw, src)
+            problem = check_page(src.body, parsed["body"])
+            for k, v in src.fields:
+                problem = problem or check_plain(v, parsed[k])
+            writer = _write_page
+        else:
+            parsed = _parse(raw)
+            problem = check(src.body, parsed["body"]) or check_plain(src.description, parsed["description"])
+            writer = _write
+    except TranslationError as e:
+        raise Rejected(str(e))
+    if problem:
+        raise Rejected(problem)
+    return writer(src, parsed)
+
+
+def translate_item(src, first_raw: str | None = None) -> Path:
+    """One Claude call (two if validation catches a dropped figure). Writes the store file.
+
+    `first_raw` is a reply already in hand (from a batch), used in place of the
+    first call; a rejection then costs one ordinary call, same as it would have.
+    """
+    prompt = build_prompt(src)
     problem = None
+    raw = first_raw
     for _ in range(2):
-        raw = _call_claude(prompt if problem is None else
-                           prompt + f"\n\nYour previous attempt was rejected: {problem}\n"
-                                    "Translate again, fixing exactly that.\n")
-        parsed = _parse(raw)
-        problem = check(src.body, parsed["body"]) or check_plain(src.description, parsed["description"])
-        if problem is None:
-            return _write(src, parsed)
+        if raw is None:
+            raw = _call_claude(prompt if problem is None else
+                               prompt + f"\n\nYour previous attempt was rejected: {problem}\n"
+                                        "Translate again, fixing exactly that.\n")
+        try:
+            return _finish(src, raw)
+        except Rejected as e:
+            problem, raw = str(e), None
     raise TranslationError(f"{src.name}: {problem}")
+
+
+BATCH_FILE = REPO_ROOT / "data" / "translate_batch.json"
+_POLL_SECS = 30
+
+
+def _custom_id(src) -> str:
+    key = f"p_{src.store}" if isinstance(src, PageSource) else f"m_{src.name}"
+    return re.sub(r"[^A-Za-z0-9_-]", "_", key)[:64]
+
+
+def run_batch(srcs: list, batch_id: str | None = None, log=print) -> tuple:
+    """Translate through the Batch API (half price, results within the hour or so).
+
+    Submits one request per source, polls until the batch ends, then writes each
+    reply through the same validation as translate_item. Returns (done, failed
+    names). The batch id is saved to data/translate_batch.json the moment it is
+    created, so a run interrupted while waiting can be collected with
+    `--batch-id`; replies already written are skipped by the normal is-current
+    check next time.
+    """
+    import json
+    import time
+
+    load_env()
+    client = anthropic.Anthropic()
+    by_id = {_custom_id(s): s for s in srcs}
+    if len(by_id) != len(srcs):
+        raise TranslationError("batch custom ids collide")
+
+    if batch_id is None:
+        batch = client.messages.batches.create(requests=[
+            {"custom_id": cid, "params": {
+                "model": CLAUDE_MODEL, "max_tokens": MAX_TOKENS,
+                "messages": [{"role": "user", "content": build_prompt(s)}]}}
+            for cid, s in by_id.items()])
+        batch_id = batch.id
+        BATCH_FILE.parent.mkdir(parents=True, exist_ok=True)
+        BATCH_FILE.write_text(json.dumps({"id": batch_id, "count": len(by_id)}))
+        log(f"Submitted batch {batch_id} ({len(by_id)} requests)")
+    else:
+        log(f"Collecting batch {batch_id}")
+
+    while True:
+        batch = client.messages.batches.retrieve(batch_id)
+        if batch.processing_status == "ended":
+            break
+        c = batch.request_counts
+        log(f"  waiting: {c.succeeded} succeeded, {c.errored} errored, {c.processing} processing")
+        time.sleep(_POLL_SECS)
+
+    done, failed = 0, []
+    for entry in client.messages.batches.results(batch_id):
+        src = by_id.get(entry.custom_id)
+        if src is None:
+            continue
+        raw = None
+        if entry.result.type == "succeeded" and entry.result.message.stop_reason != "max_tokens":
+            raw = entry.result.message.content[0].text
+        try:
+            translate_item(src, first_raw=raw)
+        except TranslationError as e:
+            log(f"  {src.name}  — FAILED: {e}")
+            failed.append(src.name)
+            continue
+        done += 1
+        log(f"  {src.name}  — done" + ("" if raw else " (retried outside the batch)"))
+    return done, failed
 
 
 def _build_prompt(src: Source) -> str:
@@ -353,15 +438,54 @@ def _parse(raw: str) -> dict:
     return {k.lower(): v for k, v in found.items()}
 
 
-_NUM = re.compile(r"\d+(?:[.,]\d+)*")
-
-
+# A figure is compared by value, not spelling: "$600K" and "$600,000" are the
+# same figure, and so are "FY27" and "2027".
+_NUM = re.compile(r"(\d[\d,]*(?:\.\d+)?)([KkMm]\b| (?:million|millones|millón|thousand|mil)\b)?")
+_ORD_EN = re.compile(r"\b(\d+)(?:st|nd|rd|th)\b")
 # "1st Tuesday" is "primer martes": the figure becomes a word, which is correct.
-_ORDINAL = re.compile(r"\b\d+(?:st|nd|rd|th)\b|\b\d+(?:\.?[ºª°]|\.er)(?!\w)")
+_ORD_ES = re.compile(r"\b\d+(?:\.?[ºª°]|\.er)(?!\w)")
+
+_UNITS = {w: i for i, w in enumerate(
+    "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen "
+    "fifteen sixteen seventeen eighteen nineteen".split())}
+_TENS = {"twenty": 20, "thirty": 30, "forty": 40, "fifty": 50, "sixty": 60,
+         "seventy": 70, "eighty": 80, "ninety": 90}
+_ORDINAL_WORDS = {"first": 1, "second": 2, "third": 3, "fourth": 4, "fifth": 5, "sixth": 6,
+                  "seventh": 7, "eighth": 8, "ninth": 9, "tenth": 10, "eleventh": 11,
+                  "twelfth": 12, "twentieth": 20, "thirtieth": 30}
+
+
+def _norm(num: str, suffix: str | None) -> str:
+    v = num.replace(",", "")
+    if suffix:
+        from decimal import Decimal
+        v = str(int(Decimal(v) * (1000 if suffix in ("K", "k", " thousand", " mil") else 1_000_000)))
+    if re.fullmatch(r"20[2-3]\d", v):
+        v = v[2:]
+    return v
 
 
 def _nums(text: str) -> Counter:
-    return Counter(_NUM.findall(_ORDINAL.sub(" ", text)))
+    return Counter(_norm(n, k) for n, k in _NUM.findall(_ORD_ES.sub(" ", _ORD_EN.sub(" ", text))))
+
+
+def _written(english: str) -> set:
+    """Values the English spells out in words, which Spanish may legitimately write as digits."""
+    out = set()
+    low = english.lower()
+    for w in re.findall(r"[a-z]+(?:-[a-z]+)?", low):
+        parts = w.split("-")
+        if len(parts) == 2 and parts[0] in _TENS and (parts[1] in _UNITS or parts[1] in _ORDINAL_WORDS):
+            out.add(str(_TENS[parts[0]] + (_UNITS.get(parts[1]) or _ORDINAL_WORDS[parts[1]])))
+        for part in parts:
+            for table in (_UNITS, _TENS, _ORDINAL_WORDS):
+                if part in table:
+                    out.add(str(table[part]))
+        if w in ("hundred", "dozen"):
+            out.add("100" if w == "hundred" else "12")
+    if re.search(r"\b(noon|midnight)\b", low):
+        out |= {"12", "0", "00"}
+    return out
 
 
 def check(english: str, spanish: str) -> str | None:
@@ -382,8 +506,11 @@ def check(english: str, spanish: str) -> str | None:
 
 
 def check_plain(english: str, spanish: str) -> str | None:
+    optional = Counter(_norm(n, None) for n in _ORD_EN.findall(english))
+    allowed = _written(english)
     missing = _nums(english) - _nums(spanish)
-    extra = _nums(spanish) - _nums(english)
+    extra = Counter({k: v for k, v in ((_nums(spanish) - _nums(english)) - optional).items()
+                     if k not in allowed})
     if missing or extra:
         return (f"figures differ — missing from Spanish: {sorted(missing.elements())[:8]}, "
                 f"added in Spanish: {sorted(extra.elements())[:8]}")

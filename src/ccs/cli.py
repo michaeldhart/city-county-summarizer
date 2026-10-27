@@ -91,6 +91,10 @@ def main(argv: list[str] | None = None) -> int:
                       help="Re-translate even where the English is unchanged")
     p_tr.add_argument("--pages", action="store_true",
                       help="Only the static pages and front-page issues")
+    p_tr.add_argument("--batch", action="store_true",
+                      help="Use the Batch API: half price, but waits for the whole batch")
+    p_tr.add_argument("--batch-id", default=None, metavar="ID",
+                      help="Collect an already-submitted batch instead of submitting a new one")
     p_tr.add_argument("--dry-run", action="store_true",
                       help="List what would be translated and the estimated cost; call nothing")
 
@@ -140,7 +144,8 @@ def main(argv: list[str] | None = None) -> int:
         return _cmd_brief(args.since, _parse_only(args.only), args.force)
     if args.command == "translate":
         return _cmd_translate(args.since, _parse_only(args.only), args.limit,
-                              args.force, args.dry_run, args.pages)
+                              args.force, args.dry_run, args.pages,
+                              args.batch or bool(args.batch_id), args.batch_id)
     if args.command == "front-page":
         return _cmd_front_page(args.count, args.window_days,
                                not args.no_rerank, args.list_briefs,
@@ -320,7 +325,8 @@ def _cmd_brief(since: date | None, only: set | None, force: bool) -> int:
 
 
 def _cmd_translate(since: date | None, only: set | None, limit: int | None,
-                   force: bool, dry_run: bool, pages_only: bool = False) -> int:
+                   force: bool, dry_run: bool, pages_only: bool = False,
+                   batch: bool = False, batch_id: str | None = None) -> int:
     if _no_match(only):
         return 2
     wanted = {b.id for b in report.select_bodies(only)}
@@ -329,16 +335,16 @@ def _cmd_translate(since: date | None, only: set | None, limit: int | None,
     # leaves the pages alone.
     jobs = []
     if pages_only or (only is None and since is None):
-        jobs += [(f"page        {s.name}", s, translate.translate_page, translate.estimate_page_cost,
+        jobs += [(f"page        {s.name}", s, translate.estimate_page_cost,
                   force or not translate.is_page_current(s))
                  for s in translate.load_page_sources() + translate.load_issue_sources()]
     if not pages_only:
         meetings = [s for s in translate.load_sources()
                     if s.body_id in wanted and (since is None or s.date >= since.isoformat())]
         meetings.sort(key=lambda s: s.date, reverse=True)
-        jobs += [(f"{s.date}  {s.name}", s, translate.translate_meeting, translate.estimate_cost,
+        jobs += [(f"{s.date}  {s.name}", s, translate.estimate_cost,
                   force or not translate.is_current(s)) for s in meetings]
-    todo = [j for j in jobs if j[4]]
+    todo = [j for j in jobs if j[3]]
     skipped = len(jobs) - len(todo)
     if limit is not None:
         todo = todo[:limit]
@@ -351,16 +357,22 @@ def _cmd_translate(since: date | None, only: set | None, limit: int | None,
     if dry_run:
         for label, *_ in todo:
             print(f"  {label}")
-        cost = sum(est(s) for _, s, _, est, _ in todo)
+        cost = sum(est(s) for _, s, est, _ in todo)
         print(f"\n{len(todo)} to translate, {skipped} current. Estimated ~${cost:.2f} "
               f"(~${cost / 2:.2f} via the Batch API). Nothing called.")
         return 0
 
     print(f"Translating {len(todo)} item(s); {skipped} already current\n")
+    if batch:
+        done, failed_names = translate.run_batch([s for _, s, _, _ in todo], batch_id)
+        failed = len(failed_names)
+        print(f"\n{done} translated, {skipped} skipped, {failed} failed.")
+        print(translate.sync_index())
+        return 1 if failed else 0
     done = failed = 0
-    for label, s, fn, _, _ in todo:
+    for label, s, _, _ in todo:
         try:
-            fn(s)
+            translate.translate_item(s)
         except translate.TranslationError as e:
             print(f"  {label}  — FAILED: {e}")
             failed += 1

@@ -252,6 +252,8 @@ ccs translate                               # static pages, then every dispatch 
 ccs translate --pages                       # just method, why, about, the backgrounders and the front-page issues
 ccs translate --only belvidere --since 2026-09-01
 ccs translate --force --only belvidere      # re-translate even where unchanged (e.g. after a glossary edit)
+ccs translate --batch                       # Batch API: half price; waits (minutes to an hour) for the whole batch
+ccs translate --batch-id msgbatch_...       # collect a batch that was submitted but not collected
 ```
 
 A scoped run (`--only` or `--since`) leaves the static pages alone. Each
@@ -261,8 +263,12 @@ it fails; the command exits non-zero if any still fail. Editorial rules live
 in [`docs/GLOSSARY_ES.md`](docs/GLOSSARY_ES.md), pasted into every prompt;
 editing it does not re-translate anything already stored.
 
-Cost: ~$0.06 per dispatch, ~$11 for the full archive (about half via the
-Batch API).
+Cost: ~$0.06 per dispatch, ~$11 for the full archive (about half via `--batch`).
+`--batch` is for backfills: it submits one request per item, polls, and writes each
+reply through the same validation; a rejected reply is retried once outside the
+batch. The batch id is saved to `data/translate_batch.json` when it is submitted,
+so an interrupted wait is resumed with `--batch-id`. The weekly run uses the
+ordinary path, since a handful of items is not worth waiting for.
 
 Front-page issues are translated whole, from the committed
 `website/_front_pages/NNN.md`, as `_i18n/es/front_pages/NNN.md` (a Spanish issue

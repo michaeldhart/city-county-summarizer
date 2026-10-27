@@ -367,6 +367,9 @@ src/ccs/
 - The prompt is `translate._build_prompt`; editorial rules are
   `docs/GLOSSARY_ES.md`, pasted into it verbatim. Editing the glossary does not
   re-translate anything (hash is of the English only) — use `--force --only`.
+- `ccs translate --batch` is the backfill path (half price, one request per item,
+  id saved to `data/translate_batch.json`; resume with `--batch-id`). Never run
+  it unscoped on Wally — the weekly chain uses the plain path.
 - `ccs translate --dry-run` is free. A full backfill is ~$11 at Sonnet 4.5
   rates, half that via the Batch API. Smoke-test with `--limit 1`.
 - Static pages (`method`, `why`, `about`, `about/*`) are stored under
