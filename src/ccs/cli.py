@@ -14,7 +14,7 @@ Commands:
   ccs brief --since YYYY-MM-DD --only bccd
   ccs translate                         write Spanish translations for dispatches that lack one or whose
                                         English has changed (reads website/_meetings; no data/ needed)
-  ccs translate --pages                 only the static pages (method, why, backgrounders)
+  ccs translate --pages                 only the static pages and front-page issues (method, why, backgrounders, No. N)
   ccs translate --dry-run               list what would be translated, with a cost estimate (no Claude calls)
   ccs translate --only bccd --limit 5   scope by body id, source or jurisdiction; cap the number translated
   ccs front-page                        rank briefs in a window and write the front page
@@ -26,6 +26,7 @@ Commands:
   ccs notify-facebook 12                 post issue No. 12 to the Facebook page
                                           (no-op unless FACEBOOK_PAGE_ID/FACEBOOK_PAGE_TOKEN are set)
   ccs notify-listmonk 12                 mail issue No. 12 to the list via Listmonk
+  ccs notify-listmonk 12 --lang es       the Spanish edition, to LISTMONK_LIST_ID_ES (skipped while unset)
                                           (no-op unless LISTMONK_API_URL/LISTMONK_API_USER/
                                           LISTMONK_API_TOKEN/LISTMONK_LIST_ID/LISTMONK_FROM_EMAIL are set)
 """
@@ -89,7 +90,7 @@ def main(argv: list[str] | None = None) -> int:
     p_tr.add_argument("--force", action="store_true",
                       help="Re-translate even where the English is unchanged")
     p_tr.add_argument("--pages", action="store_true",
-                      help="Only the static pages (method, why, backgrounders)")
+                      help="Only the static pages and front-page issues")
     p_tr.add_argument("--dry-run", action="store_true",
                       help="List what would be translated and the estimated cost; call nothing")
 
@@ -122,6 +123,9 @@ def main(argv: list[str] | None = None) -> int:
              "(no-op unless LISTMONK_API_URL/LISTMONK_API_USER/LISTMONK_API_TOKEN/"
              "LISTMONK_LIST_ID/LISTMONK_FROM_EMAIL are set)")
     p_lm.add_argument("issue", type=int, help='Issue number, from front-page\'s "Published No. N"')
+    p_lm.add_argument("--lang", choices=("en", "es"), default="en",
+                      help="es mails the Spanish edition to LISTMONK_LIST_ID_ES "
+                           "(skipped quietly while that is unset)")
 
     args = parser.parse_args(argv)
     if args.command == "summary":
@@ -146,7 +150,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "notify-facebook":
         return _cmd_notify_facebook(args.issue)
     if args.command == "notify-listmonk":
-        return _cmd_notify_listmonk(args.issue)
+        return _cmd_notify_listmonk(args.issue, args.lang)
     parser.error(f"unknown command {args.command}")
     return 2
 
@@ -326,7 +330,8 @@ def _cmd_translate(since: date | None, only: set | None, limit: int | None,
     jobs = []
     if pages_only or (only is None and since is None):
         jobs += [(f"page        {s.name}", s, translate.translate_page, translate.estimate_page_cost,
-                  force or not translate.is_page_current(s)) for s in translate.load_page_sources()]
+                  force or not translate.is_page_current(s))
+                 for s in translate.load_page_sources() + translate.load_issue_sources()]
     if not pages_only:
         meetings = [s for s in translate.load_sources()
                     if s.body_id in wanted and (since is None or s.date >= since.isoformat())]
@@ -339,6 +344,8 @@ def _cmd_translate(since: date | None, only: set | None, limit: int | None,
         todo = todo[:limit]
     if not todo:
         print(f"Nothing to translate ({skipped} already current).")
+        if not dry_run:
+            print(translate.sync_index())
         return 0
 
     if dry_run:
@@ -361,6 +368,7 @@ def _cmd_translate(since: date | None, only: set | None, limit: int | None,
         print(f"  {label}  — done")
         done += 1
     print(f"\n{done} translated, {skipped} skipped, {failed} failed.")
+    print(translate.sync_index())
     return 1 if failed else 0
 
 
@@ -449,12 +457,15 @@ def _cmd_notify_facebook(issue: int) -> int:
     return 0
 
 
-def _cmd_notify_listmonk(issue: int) -> int:
+def _cmd_notify_listmonk(issue: int, lang: str = "en") -> int:
     api_url = os.environ.get("LISTMONK_API_URL")
     api_user = os.environ.get("LISTMONK_API_USER")
     api_token = os.environ.get("LISTMONK_API_TOKEN")
-    list_id = os.environ.get("LISTMONK_LIST_ID")
+    list_id = os.environ.get("LISTMONK_LIST_ID_ES" if lang == "es" else "LISTMONK_LIST_ID")
     from_email = os.environ.get("LISTMONK_FROM_EMAIL")
+    if lang == "es" and not list_id:
+        print("LISTMONK_LIST_ID_ES not set — skipping the Spanish mailing (list doesn't exist yet)")
+        return 0
     if not all((api_url, api_user, api_token, list_id, from_email)):
         if os.environ.get("LISTMONK_REQUIRED"):
             print("error: LISTMONK_REQUIRED is set but LISTMONK_API_URL/LISTMONK_API_USER/"
@@ -466,7 +477,8 @@ def _cmd_notify_listmonk(issue: int) -> int:
         return 0
 
     try:
-        subject, html, text = frontpage.newsletter_content(issue)
+        subject, html, text = (frontpage.newsletter_content_es if lang == "es"
+                               else frontpage.newsletter_content)(issue)
     except (FileNotFoundError, KeyError) as e:
         print(f"error: no newsletter content for issue No. {issue}: {e}", file=sys.stderr)
         return 1
@@ -475,7 +487,7 @@ def _cmd_notify_listmonk(issue: int) -> int:
     r = requests.post(
         f"{api_url}/api/campaigns", headers=auth,
         json={
-            "name": f"Issue {issue}",
+            "name": f"Issue {issue}" + (" (es)" if lang == "es" else ""),
             "subject": subject,
             "lists": [int(list_id)],
             "from_email": from_email,
@@ -497,7 +509,7 @@ def _cmd_notify_listmonk(issue: int) -> int:
     if not r.ok:
         print(f"error: Listmonk campaign send failed ({r.status_code}): {r.text}", file=sys.stderr)
         return 1
-    print(f"Mailed No. {issue} to the list via Listmonk (campaign {campaign_id}).")
+    print(f"Mailed No. {issue}{' (Spanish)' if lang == 'es' else ''} to the list via Listmonk (campaign {campaign_id}).")
     return 0
 
 

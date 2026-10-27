@@ -99,7 +99,7 @@ Nothing else on this site is chosen by a person.
 
 ## The Spanish edition
 
-Dispatches, the backgrounders and this page are also published in Spanish, under
+Dispatches, front-page issues, the backgrounders and this page are also published in Spanish, under
 [/es/]({{ '/es/beats/' | relative_url }}). **The Spanish is a machine translation
 of the English page**, made by the same model after the English is filed — nothing in it is re-reported, and the English
 original governs wherever the two differ. Every translated page says so and

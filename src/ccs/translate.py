@@ -106,14 +106,16 @@ def estimate_cost(src: Source) -> float:
 
 @dataclass
 class PageSource:
-    """A static English page: method, why, the about hub and the backgrounders."""
-    name: str            # path under website/: "about/bpd.md"
+    """An English page translated as one piece: a static page or a front-page issue."""
+    name: str            # label: "about/bpd.md", "issue 004"
+    store: str           # path under the store: "pages/about/bpd.md", "front_pages/004.md"
     title: str
     body: str            # Liquid comments already stripped
+    fields: tuple = ()   # more front matter to translate beside the title: (("description", "..."), ...)
 
     @property
     def fingerprint(self) -> str:
-        blob = "\n\x1f".join([self.title, self.body])
+        blob = "\n\x1f".join([self.title, *(v for _, v in self.fields), self.body])
         return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:16]
 
 
@@ -121,8 +123,9 @@ PAGE_NAMES = ("method.md", "why.md", "about.md")
 _LIQUID_COMMENT = re.compile(r"\{%-?\s*comment\s*-?%\}.*?\{%-?\s*endcomment\s*-?%\}\s*", re.S)
 
 
-def page_store_path(name: str) -> Path:
-    return STORE_DIR / "pages" / name
+FRONT_PAGES_DIR = WEBSITE_DIR / "_front_pages"
+INDEX_PATH = WEBSITE_DIR / "index.md"
+ISSUE_FIELDS = ("description", "lead")
 
 
 def load_page_sources() -> list:
@@ -131,12 +134,24 @@ def load_page_sources() -> list:
     for p in paths:
         meta, body = split_front_matter(p.read_text())
         body = _LIQUID_COMMENT.sub("", body).strip()
-        out.append(PageSource(name=str(p.relative_to(WEBSITE_DIR)), title=meta.get("title", ""), body=body))
+        name = str(p.relative_to(WEBSITE_DIR))
+        out.append(PageSource(name=name, store=f"pages/{name}", title=meta.get("title", ""), body=body))
+    return out
+
+
+def load_issue_sources() -> list:
+    out = []
+    for p in sorted(FRONT_PAGES_DIR.glob("*.md")):
+        meta, body = split_front_matter(p.read_text())
+        out.append(PageSource(
+            name=f"issue {p.stem}", store=f"front_pages/{p.name}", title=meta.get("title", ""),
+            body=body.strip(),
+            fields=tuple((k, meta[k]) for k in ISSUE_FIELDS if meta.get(k))))
     return out
 
 
 def is_page_current(src: PageSource) -> bool:
-    p = page_store_path(src.name)
+    p = STORE_DIR / src.store
     if not p.exists():
         return False
     meta, _ = split_front_matter(p.read_text())
@@ -144,7 +159,7 @@ def is_page_current(src: PageSource) -> bool:
 
 
 def estimate_page_cost(src: PageSource) -> float:
-    toks_in = len(src.body + src.title) / _CHARS_PER_TOKEN + 1500
+    toks_in = len(src.body + src.title + "".join(v for _, v in src.fields)) / _CHARS_PER_TOKEN + 1500
     return (toks_in * _PRICE_IN + toks_in * _OUT_PER_IN * _PRICE_OUT) / 1e6
 
 
@@ -156,8 +171,10 @@ def translate_page(src: PageSource) -> Path:
         raw = _call_claude(prompt if problem is None else
                            prompt + f"\n\nYour previous attempt was rejected: {problem}\n"
                                     "Translate again, fixing exactly that.\n")
-        parsed = _parse_page(raw)
+        parsed = _parse_page(raw, src)
         problem = check_page(src.body, parsed["body"])
+        for k, v in src.fields:
+            problem = problem or check_plain(v, parsed[k])
         if problem is None:
             return _write_page(src, parsed)
     raise TranslationError(f"{src.name}: {problem}")
@@ -165,6 +182,10 @@ def translate_page(src: PageSource) -> Path:
 
 def _build_page_prompt(src: PageSource) -> str:
     glossary = GLOSSARY_PATH.read_text()
+    sections = [("TITLE", src.title)] + [(k.upper(), v) for k, v in src.fields] + [("BODY", src.body)]
+    hints = {"TITLE": "the page title", "BODY": "the page, in Markdown or HTML"}
+    reply = "\n".join(f"==={k}===\n({hints.get(k, k.lower())})" for k, _ in sections)
+    source = "\n".join(f"==={k}===\n{v}" for k, v in sections)
     return f"""You are translating a page of The Belvidere Wire into Spanish. The Wire
 publishes machine-written accounts of the public meetings of local government in
 Boone County, Illinois. Your Spanish edition sits beside the English one; the
@@ -187,26 +208,21 @@ translated, and how.
 
 {glossary}
 
-Reply in exactly this format, with these two marker lines and nothing else
+Reply in exactly this format, with these marker lines and nothing else
 before, between or after the sections:
 
-===TITLE===
-(the page title)
-===BODY===
-(the page, in Markdown)
+{reply}
 
-===TITLE===
-{src.title}
-===BODY===
-{src.body}
+{source}
 """
 
 
-def _parse_page(raw: str) -> dict:
-    parts = re.split(r"^===(TITLE|BODY)===[ \t]*$", raw, flags=re.M)
+def _parse_page(raw: str, src: PageSource) -> dict:
+    want = {"TITLE", "BODY", *(k.upper() for k, _ in src.fields)}
+    parts = re.split(r"^===([A-Z]+)===[ \t]*$", raw, flags=re.M)
     found = {parts[i]: parts[i + 1].strip() for i in range(1, len(parts) - 1, 2)}
-    if set(found) != {"TITLE", "BODY"} or not found["BODY"]:
-        raise TranslationError(f"reply did not have both sections: {sorted(found)}")
+    if set(found) != want or not found["BODY"]:
+        raise TranslationError(f"reply did not have the sections {sorted(want)}: {sorted(found)}")
     return {k.lower(): v for k, v in found.items()}
 
 
@@ -225,10 +241,11 @@ def check_page(english: str, spanish: str) -> str | None:
 
 
 def _write_page(src: PageSource, parsed: dict) -> Path:
-    p = page_store_path(src.name)
+    p = STORE_DIR / src.store
     p.parent.mkdir(parents=True, exist_ok=True)
     meta = {
         "title": parsed["title"],
+        **{k: parsed[k] for k, _ in src.fields},
         "es_source_hash": src.fingerprint,
         "es_model": CLAUDE_MODEL,
         "es_translated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -239,6 +256,35 @@ def _write_page(src: PageSource, parsed: dict) -> Path:
     body = parsed["body"].replace("| relative_url", "| loc | relative_url")
     p.write_text(f"---\n{fm}---\n\n{body}\n")
     return p
+
+
+def sync_index() -> str:
+    """Keep the Spanish home page in step with the live issue. Free: no Claude call.
+
+    index.md is a copy of one issue's body under different front matter (see
+    frontpage.publish), so the Spanish home page is that issue's stored
+    translation under the same swap. Returns a one-line status.
+    """
+    if not INDEX_PATH.exists():
+        return "no index.md"
+    meta, body = split_front_matter(INDEX_PATH.read_text())
+    body = re.sub(r"<!--.*?-->\s*", "", body, flags=re.S).strip()
+    issue = meta.get("issue")
+    fp = hashlib.sha256(f"{issue}\x1f{body}".encode("utf-8")).hexdigest()[:16]
+    dest = STORE_DIR / "index.md"
+    if dest.exists() and split_front_matter(dest.read_text())[0].get("es_source_hash") == fp:
+        return "Spanish home page current"
+    src = STORE_DIR / "front_pages" / f"{int(issue):03d}.md"
+    if not src.exists():
+        return f"Spanish home page not updated: issue {issue} has no translation yet"
+    es_meta, es_body = split_front_matter(src.read_text())
+    out = {k: v for k, v in meta.items() if k in ("issue", "generated", "window_start", "brief_count")}
+    out.update({"title": "Inicio", "description": es_meta.get("description", ""),
+                "lead": es_meta.get("lead", ""), "es_source_hash": fp,
+                "es_model": es_meta.get("es_model"), "es_translated_at": es_meta.get("es_translated_at")})
+    fm = yaml.safe_dump(out, sort_keys=False, allow_unicode=True, width=10_000)
+    dest.write_text(f"---\n{fm}---\n\n{es_body.strip()}\n")
+    return f"Spanish home page set to issue {issue}"
 
 
 def translate_meeting(src: Source) -> Path:

@@ -1,7 +1,7 @@
 # Running the weekly edition on `wally`
 
 `wire-run.sh` is the Monday chain: `sync` → `brief` → `front-page` →
-`build-site`, then a commit and a push. The push to `main` touches
+`build-site` → `translate`, then a commit and a push. The push to `main` touches
 `website/**`, which is what triggers `pages.yml` to build and deploy. Nothing
 here runs Jekyll — Actions owns the build. `notify-facebook` and
 `notify-listmonk` run last, after the push, and each no-ops until its own
@@ -14,6 +14,13 @@ push gave issue No. 3 a "Page not found" preview. If the page never appears,
 the Facebook post is skipped and the run fails, but the mailing still goes out.
 The two steps are independent the same way: a dead Page token does not stop the
 mailing, and either one failing fails the run after both have been tried.
+
+`translate` writes the Spanish edition into `website/_i18n/es/` (it needs only
+the committed English, plus the same `ANTHROPIC_API_KEY`). It may fail without
+stopping the edition: the English is published regardless, whatever Spanish did
+translate goes out with it, and the run still ends non-zero so the failure alert
+fires. A dispatch whose translation failed has no Spanish page until the next
+run retries it.
 
 The Mac must not run this chain. `ccs front-page` takes its issue number from
 `max(existing) + 1` scanned from `_front_pages/`, so two publishers race and
@@ -84,6 +91,14 @@ so it can be revoked without touching how you log in. `LISTMONK_LIST_ID` is
 the list's numeric id (`Lists` page, or `GET /api/lists`) — not the UUID the
 public subscription form uses, those are two different identifiers for the
 same list.
+
+The Spanish mailing is a second Listmonk list. Create it, then add its numeric
+id to the same file as `LISTMONK_LIST_ID_ES=...` and `daemon-reload`; the run
+then also executes `notify-listmonk N --lang es`. While the variable is unset
+that step prints a skip and succeeds, so it needs no `LISTMONK_REQUIRED`
+exception. Set `listmonk_lists.es` in `website/_config.yml` to the list's
+public UUID at the same time, so the Spanish signup form subscribes people to
+it instead of the English list.
 
 ## Keeping the units in sync
 

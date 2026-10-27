@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 #
-# The weekly edition: sync → brief → front-page → build-site, commit, push,
-# notify-facebook, notify-listmonk. GitHub Actions (pages.yml) picks up the
+# The weekly edition: sync → brief → front-page → build-site → translate, commit,
+# push, notify-facebook, notify-listmonk (English, then Spanish). GitHub Actions (pages.yml) picks up the
 # push and deploys. The two notify steps wait for that deploy, run after the
 # push so a dead credential never holds up the site, run independently of each
 # other, and fail the run loudly if either IS configured and breaks — see
 # FACEBOOK_PAGE_ID/FACEBOOK_PAGE_TOKEN
 # and LISTMONK_API_URL/LISTMONK_API_USER/LISTMONK_API_TOKEN/LISTMONK_LIST_ID/
-# LISTMONK_FROM_EMAIL in ops/README.md.
+# LISTMONK_FROM_EMAIL in ops/README.md. The Spanish mailing goes to
+# LISTMONK_LIST_ID_ES and is skipped while that is unset.
+#
+# translate is allowed to fail without stopping the edition: the English ships
+# regardless, whatever Spanish did translate is published, and the run still
+# ends non-zero so the failure alert fires.
 #
 # The whole body lives in main() because this script is inside the repo it
 # pulls. Bash reads a script incrementally, so a pull that rewrote these lines
@@ -71,6 +76,12 @@ main() {
     echo "=== build-site"
     "$CCS" build-site
 
+    # After build-site, which rewrites the English dispatches translate reads;
+    # after front-page, whose new issue it also translates.
+    echo "=== translate"
+    local translate_status=0
+    "$CCS" translate || translate_status=1
+
     git add -A website/
     if git diff --cached --quiet; then
         echo "=== no site changes — nothing to publish"
@@ -85,7 +96,7 @@ main() {
         git restore --source=HEAD --staged --worktree -- website/
         git clean -fdq website/
         echo "=== dry run — website/ restored, nothing committed"
-        exit 0
+        exit "$translate_status"
     fi
 
     echo "=== publishing No. $issue"
@@ -112,6 +123,10 @@ main() {
     echo "=== listmonk"
     "$CCS" notify-listmonk "$issue" || status=1
 
+    echo "=== listmonk (es)"
+    "$CCS" notify-listmonk "$issue" --lang es || status=1
+
+    (( translate_status == 0 )) || { echo "error: some translations failed (see above)" >&2; status=1; }
     exit "$status"
 }
 

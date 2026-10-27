@@ -249,7 +249,7 @@ costs nothing where nothing moved (the same shape as `ccs brief`).
 ccs translate --dry-run                     # what would run, with a cost estimate; calls nothing
 ccs translate --limit 1                     # smoke-test one (newest first)
 ccs translate                               # static pages, then every dispatch lacking a current translation
-ccs translate --pages                       # just method, why, about and the backgrounders
+ccs translate --pages                       # just method, why, about, the backgrounders and the front-page issues
 ccs translate --only belvidere --since 2026-09-01
 ccs translate --force --only belvidere      # re-translate even where unchanged (e.g. after a glossary edit)
 ```
@@ -264,10 +264,19 @@ editing it does not re-translate anything already stored.
 Cost: ~$0.06 per dispatch, ~$11 for the full archive (about half via the
 Batch API).
 
-Run order after a content change: `ccs sync` → `ccs build-site` (rewrites the
-English collections) → `ccs translate`. Backgrounders are `ccs summary` then
-`ccs translate --pages`. The Spanish front page and issues are not generated
-yet.
+Front-page issues are translated whole, from the committed
+`website/_front_pages/NNN.md`, as `_i18n/es/front_pages/NNN.md` (a Spanish issue
+shares its English number). The Spanish home page, `_i18n/es/index.md`, is then
+copied from the live issue's translation — no Claude call, so it follows
+`ccs front-page --publish N` for free.
+
+Run order after a content change: `ccs sync` → `ccs brief` → `ccs front-page` →
+`ccs build-site` (rewrites the English collections) → `ccs translate`; that is
+what `ops/wire-run.sh` runs. Backgrounders are `ccs summary` then
+`ccs translate --pages`.
+
+The Spanish mailing is `ccs notify-listmonk N --lang es`, which sends to the
+list in `LISTMONK_LIST_ID_ES` and is skipped while that is unset.
 
 ## The Spanish edition
 
@@ -285,8 +294,10 @@ Proper nouns stay in English; the register is formal US Spanish.
   has its hash. Run it before building; CI does not.
 - Spanish pages carry a machine-translation note linking the English original,
   which governs. Facebook posts stay English-only.
-- The Spanish Listmonk list is not set up; `listmonk_lists.es` in
-  `_config.yml` is unset, so Spanish pages subscribe to the English list.
+- The Spanish Listmonk list is not set up yet: `listmonk_lists.es` in
+  `_config.yml` and `LISTMONK_LIST_ID_ES` on the server are unset, so Spanish
+  pages subscribe to the English list and no Spanish mailing goes out. See
+  `ops/README.md`.
 
 ## Previewing the site locally
 

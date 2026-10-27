@@ -371,15 +371,20 @@ src/ccs/
   rates, half that via the Batch API. Smoke-test with `--limit 1`.
 - Static pages (`method`, `why`, `about`, `about/*`) are stored under
   `_i18n/es/pages/<path under website/>` and translated by the same command
-  (`--pages` for just those; a scoped `--only`/`--since` run skips them). The
+  (`--pages` for just those and the issues; a scoped `--only`/`--since` run skips them). The
   English is hashed with Liquid comments stripped, and the output must keep every
   Liquid tag, kramdown `{: }` line and link target. `| relative_url` is rewritten
   to `| loc | relative_url`. The backgrounders are generated, so `ccs summary`
   followed by `ccs translate --pages` is the order.
 - Run order matters: `build-site` rewrites `_meetings/` from the manifest, and
-  `translate` reads it, so `sync` → `brief` → `build-site` → `translate`. The
-  Spanish front page/issues are not generated yet (phase 4); neither is the
-  Spanish Listmonk list, so `listmonk_lists.es` is unset.
+  `translate` reads it, so `sync` → `brief` → `front-page` → `build-site` → `translate`
+  (`ops/wire-run.sh`; a translate failure never blocks the English edition, it
+  fails the run afterward). Issues are translated whole from
+  `_front_pages/NNN.md` into `_i18n/es/front_pages/`; `_i18n/es/index.md` is
+  derived from the live issue's translation by `translate.sync_index()` (free).
+  The Spanish newsletter reads that store (`frontpage.newsletter_content_es`),
+  sends to `LISTMONK_LIST_ID_ES` and is skipped while it is unset, so
+  `listmonk_lists.es` is also still unset until the list exists.
 - `scripts/check_i18n.py` is not run by CI; run it before pushing UI string
   changes. README's "The Spanish edition" and `/method/` describe this for
   humans — keep all three in step when behavior changes.

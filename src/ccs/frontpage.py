@@ -23,6 +23,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import anthropic
+import yaml
 
 from . import briefs, manifest, sitegen
 from .config import (
@@ -38,6 +39,7 @@ from .config import (
 )
 
 INDEX_PATH = REPO_ROOT / "website" / "index.md"
+ES_STORE = REPO_ROOT / "website" / "_i18n" / "es"
 FRONT_PAGES_DIR = REPO_ROOT / "website" / "_front_pages"
 PINS_PATH = DOCS_DIR / "PINS.md"
 
@@ -164,6 +166,33 @@ def newsletter_content(issue: int) -> tuple:
     html_body = re.sub(r"\{\{\s*'([^']*)'\s*\|\s*relative_url\s*\}\}",
                         r"https://belviderewire.com\1", body)
     return subject, html_body, _html_to_text(html_body)
+
+
+def newsletter_content_es(issue: int) -> tuple:
+    """newsletter_content for the Spanish edition, from the stored translation.
+
+    The stored body links through `loc`, which Jekyll resolves at build time
+    against the pages that exist. A mail can't ask, so the same question is
+    answered here from the store: a dispatch links to its /es/ page if it has a
+    translation, and to the English page if not.
+    """
+    path = ES_STORE / "front_pages" / f"{issue:03d}.md"
+    if not path.exists():
+        raise FileNotFoundError(f"no Spanish translation of issue No. {issue}")
+    _, body = split_front_matter(path.read_text())
+    lead = yaml.safe_load(path.read_text().split("---", 2)[1])["lead"]
+
+    def absolute(m):
+        url = m.group(1)
+        name = url.rstrip("/").rsplit("/", 1)[-1]
+        if "/meetings/" in url:
+            twin = (ES_STORE / "meetings" / f"{name}.md").exists()
+        else:
+            twin = url.startswith(("/issues/", "/method/", "/beats/", "/about/"))
+        return "https://belviderewire.com" + ("/es" if twin else "") + url
+
+    html_body = re.sub(r"\{\{\s*'([^']*)'\s*\|\s*loc\s*\|\s*relative_url\s*\}\}", absolute, body)
+    return f"The Belvidere Wire, N.º {issue}: {lead}", html_body, _html_to_text(html_body)
 
 
 def _html_to_text(html_body: str) -> str:
