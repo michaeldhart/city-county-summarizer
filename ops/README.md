@@ -92,13 +92,23 @@ the list's numeric id (`Lists` page, or `GET /api/lists`) — not the UUID the
 public subscription form uses, those are two different identifiers for the
 same list.
 
-The Spanish mailing is a second Listmonk list. Create it, then add its numeric
-id to the same file as `LISTMONK_LIST_ID_ES=...` and `daemon-reload`; the run
-then also executes `notify-listmonk N --lang es`. While the variable is unset
-that step prints a skip and succeeds, so it needs no `LISTMONK_REQUIRED`
-exception. Set `listmonk_lists.es` in `website/_config.yml` to the list's
-public UUID at the same time, so the Spanish signup form subscribes people to
-it instead of the English list.
+**Spanish mailing — deferred, not set up.** The code is in place and inert: the
+run executes `notify-listmonk N --lang es`, which prints a skip and succeeds
+while `LISTMONK_LIST_ID_ES` is unset (so it needs no `LISTMONK_REQUIRED`
+exception), and Spanish pages subscribe to the English list. To turn it on:
+
+1. In Listmonk, create a second list (a public one, like the English list) and
+   note its numeric id and its public UUID.
+2. Add `LISTMONK_LIST_ID_ES=<numeric id>` to `/etc/belvidere-wire-listmonk.conf`
+   and run `sudo systemctl daemon-reload`.
+3. Set `listmonk_lists.es: <public UUID>` in `website/_config.yml`, so the
+   Spanish signup form subscribes people to it. Push.
+4. Dry-run it by hand against the latest issue before Monday:
+   `ccs notify-listmonk <N> --lang es` mails for real, so first point
+   `LISTMONK_LIST_ID_ES` at a list containing only yourself.
+
+Existing English subscribers are not moved; Spanish readers have to subscribe
+from a Spanish page.
 
 ## Keeping the units in sync
 
