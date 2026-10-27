@@ -12,6 +12,10 @@ Commands:
   ccs brief                             write front-page briefs for meetings in a window (default: last 35 days)
                                         skips meetings whose summary is unchanged since their last brief
   ccs brief --since YYYY-MM-DD --only bccd
+  ccs translate                         write Spanish translations for dispatches that lack one or whose
+                                        English has changed (reads website/_meetings; no data/ needed)
+  ccs translate --dry-run               list what would be translated, with a cost estimate (no Claude calls)
+  ccs translate --only bccd --limit 5   scope by body id, source or jurisdiction; cap the number translated
   ccs front-page                        rank briefs in a window and write the front page
   ccs front-page --no-rerank            skip the ranking Claude call (deterministic, free)
   ccs front-page --list-briefs          print every brief id in the window (for docs/PINS.md)
@@ -34,7 +38,7 @@ from datetime import date, timedelta
 import requests
 
 from . import (briefs, config, diligent, frontpage, general, manifest, report, sitegen,
-               sources, summarize)
+               sources, summarize, translate)
 from .config import body_for_meeting, load_env, tracked_bodies
 
 
@@ -71,6 +75,20 @@ def main(argv: list[str] | None = None) -> int:
                          help="Comma-separated body ids, sources, or jurisdictions")
     p_brief.add_argument("--force", action="store_true",
                          help="Re-write briefs even where the summary is unchanged")
+
+    p_tr = sub.add_parser(
+        "translate", help="Translate dispatches into Spanish "
+                          "(skips those whose English is unchanged since their last translation)")
+    p_tr.add_argument("--since", type=_parse_date, default=None,
+                      help="Only dispatches dated on or after this day (default: all)")
+    p_tr.add_argument("--only", default=None,
+                      help="Comma-separated body ids, sources, or jurisdictions")
+    p_tr.add_argument("--limit", type=int, default=None,
+                      help="Translate at most this many dispatches (newest first)")
+    p_tr.add_argument("--force", action="store_true",
+                      help="Re-translate even where the English is unchanged")
+    p_tr.add_argument("--dry-run", action="store_true",
+                      help="List what would be translated and the estimated cost; call nothing")
 
     p_front = sub.add_parser(
         "front-page", help="Rank recent briefs and write the front page")
@@ -113,6 +131,9 @@ def main(argv: list[str] | None = None) -> int:
         return _cmd_ingest(args.meeting_id)
     if args.command == "brief":
         return _cmd_brief(args.since, _parse_only(args.only), args.force)
+    if args.command == "translate":
+        return _cmd_translate(args.since, _parse_only(args.only), args.limit,
+                              args.force, args.dry_run)
     if args.command == "front-page":
         return _cmd_front_page(args.count, args.window_days,
                                not args.no_rerank, args.list_briefs,
@@ -289,6 +310,46 @@ def _cmd_brief(since: date | None, only: set | None, force: bool) -> int:
     print(f"\n{total} brief(s) across {written} meeting(s). "
           f"{skipped} skipped, {failed} failed.")
     return 1 if failed and not written else 0
+
+
+def _cmd_translate(since: date | None, only: set | None, limit: int | None,
+                   force: bool, dry_run: bool) -> int:
+    if _no_match(only):
+        return 2
+    wanted = {b.id for b in report.select_bodies(only)}
+    sources_ = [s for s in translate.load_sources()
+                if s.body_id in wanted and (since is None or s.date >= since.isoformat())]
+    todo = [s for s in sources_ if force or not translate.is_current(s)]
+    todo.sort(key=lambda s: s.date, reverse=True)
+    skipped = len(sources_) - len(todo)
+    if limit is not None:
+        todo = todo[:limit]
+    if not todo:
+        print(f"Nothing to translate ({skipped} already current).")
+        return 0
+
+    if dry_run:
+        for s in todo:
+            print(f"  {s.date}  {s.name}")
+        cost = sum(translate.estimate_cost(s) for s in todo)
+        print(f"\n{len(todo)} to translate, {skipped} current. Estimated ~${cost:.2f} "
+              f"(~${cost / 2:.2f} via the Batch API). Nothing called.")
+        return 0
+
+    print(f"Translating {len(todo)} dispatch(es); {skipped} already current\n")
+    done = failed = 0
+    for s in todo:
+        label = f"{s.date}  {s.name}"
+        try:
+            translate.translate_meeting(s)
+        except translate.TranslationError as e:
+            print(f"  {label}  — FAILED: {e}")
+            failed += 1
+            continue
+        print(f"  {label}  — done")
+        done += 1
+    print(f"\n{done} translated, {skipped} skipped, {failed} failed.")
+    return 1 if failed else 0
 
 
 def _cmd_front_page(count: int | None, window_days: int | None,

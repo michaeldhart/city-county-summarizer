@@ -338,6 +338,7 @@ src/ccs/
   report.py     cross-source discovery + ingestion orchestration
   sitegen.py    manifest → Jekyll _bodies/_meetings collections
   general.py    `ccs summary` generator
+  translate.py  Spanish translations → website/_i18n/es/ (ccs translate)
   cli.py        argparse entry (`summary` / `check` / `sync` / `ingest` /
                 `brief` / `front-page` / `build-site`)
 ```
@@ -352,6 +353,24 @@ src/ccs/
   `general._build_prompt`. Change them there.
 - The Claude model is a single constant: `config.CLAUDE_MODEL`. To try a
   different model, change it there — don't scatter model choices per call site.
+
+## Spanish edition
+
+- English at `/`, Spanish at `/es/`. Plugin `website/_plugins/i18n.rb` (adapted
+  from eyes-on-hawkeye) builds the `/es/` pages; UI strings are
+  `website/_data/i18n/{en,es}.yml` and `scripts/check_i18n.py` checks parity.
+- Translations are a **committed store**, `website/_i18n/es/meetings/<name>.md`,
+  each keyed by `es_source_hash` of the English. `ccs translate` reads the
+  English from `website/_meetings/` (not `data/`), so it works from any
+  checkout, and skips whatever is current. A dispatch with no stored
+  translation has no Spanish page; `loc` sends every link to the English one.
+- The prompt is `translate._build_prompt`; editorial rules are
+  `docs/GLOSSARY_ES.md`, pasted into it verbatim. Editing the glossary does not
+  re-translate anything (hash is of the English only) — use `--force --only`.
+- `ccs translate --dry-run` is free. A full backfill is ~$11 at Sonnet 4.5
+  rates, half that via the Batch API. Smoke-test with `--limit 1`.
+- Untranslated Spanish chrome to remember: resource labels ("Agenda (PDF)")
+  come from `resources.py` in English.
 
 ## What's NOT built
 

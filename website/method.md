@@ -97,6 +97,24 @@ its ranked position — and every pin is recorded in
 [a file in the public repository](https://github.com/michaeldhart/city-county-summarizer/blob/main/docs/PINS.md).
 Nothing else on this site is chosen by a person.
 
+## The Spanish edition
+
+Dispatches are also published in Spanish, under [/es/]({{ '/es/beats/' | relative_url }}). **The
+Spanish is a machine translation of the English dispatch**, made by the same
+model after the English is filed — nothing in it is re-reported, and the English
+original governs wherever the two differ. Every translated page says so and
+links to the original.
+
+The model is told to translate faithfully and completely, to leave every figure,
+vote count and name as written, and to keep the names of governments, bodies and
+people in English. A translation is rejected and redone if it drops a heading or
+a bullet, or if its numbers do not match the English. What that cannot catch is
+phrasing: a sentence can be accurate and still read oddly. Until a Spanish
+speaker has reviewed a page, it says it has not.
+
+A dispatch that has not been translated yet has no Spanish page, and links to it
+from the Spanish site go to the English one instead.
+
 ## Editions
 
 A new edition runs every Monday morning. It carries what had been filed by then,
@@ -168,7 +186,7 @@ Nothing is counted. This site runs no analytics, sets no cookies, and has no
 record that you were here.
 
 {% endif -%}
-Two things are not covered by that, and both are worth saying plainly.
+Three things are not covered by that, and all are worth saying plainly.
 
 **Reading by feed is invisible here.** [The wire]({{ '/feed/meetings.xml' | relative_url }}) and
 [the edition]({{ '/feed/issues.xml' | relative_url }}) are fetched by your reader rather than loaded as
@@ -178,6 +196,13 @@ the request, as with any web address.
 **Searching stays in your browser.** The search index is downloaded and queried
 on your machine rather than on a server, so what you type is not sent anywhere
 as a search.
+
+**Your language is remembered, in your browser.** If your browser is set to
+prefer Spanish, the first English page you open sends you to its Spanish
+version, when one exists. Choosing a language with the link in the footer saves
+that choice in your browser's local storage so it is not second-guessed again.
+It never leaves your machine and nothing on this site reads it but that one
+line of code.
 
 The one place this site asks for anything about you is the contact form, which
 is a Google Form. Name and email are optional there — if you give them, they go

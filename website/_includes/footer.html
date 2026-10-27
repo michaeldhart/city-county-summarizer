@@ -44,7 +44,7 @@
         <li><a href="{{ '/feed/meetings.xml' | loc | relative_url }}">{{ 'feed_wire' | t }}</a></li>
         <li><a href="{{ '/feed/issues.xml' | loc | relative_url }}">{{ 'feed_edition' | t }}</a></li>
         {%- if page.alt_url %}
-        <li><a href="{{ page.alt_url | relative_url }}" hreflang="{% if page.lang == 'es' %}en{% else %}es{% endif %}" lang="{% if page.lang == 'es' %}en{% else %}es{% endif %}">{{ 'other_lang' | t }}</a></li>
+        <li><a href="{{ page.alt_url | relative_url }}" data-set-lang="{% if page.lang == 'es' %}en{% else %}es{% endif %}" hreflang="{% if page.lang == 'es' %}en{% else %}es{% endif %}" lang="{% if page.lang == 'es' %}en{% else %}es{% endif %}">{{ 'other_lang' | t }}</a></li>
         {%- endif %}
       </ul>
     </nav>
@@ -97,3 +97,14 @@
   </div>
 
 </footer>
+{%- if page.alt_url %}
+<script>
+  // Remember an explicit language choice so the first-visit redirect (see
+  // head.html) stops second-guessing it.
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("[data-set-lang]");
+    if (!a) return;
+    try { localStorage.setItem("wire-lang", a.getAttribute("data-set-lang")); } catch (err) {}
+  });
+</script>
+{%- endif %}
