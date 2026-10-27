@@ -92,7 +92,7 @@ layout: default
     {% if summarized.size > 0 %}
     <ul>
       {% for r in summarized %}
-      <li class="resource-{{ r.kind }}"><a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.label }}</a></li>
+      <li class="resource-{{ r.kind }}"><a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.label | rlabel }}</a></li>
       {% endfor %}
     </ul>
     {% endif %}

@@ -369,8 +369,17 @@ src/ccs/
   re-translate anything (hash is of the English only) — use `--force --only`.
 - `ccs translate --dry-run` is free. A full backfill is ~$11 at Sonnet 4.5
   rates, half that via the Batch API. Smoke-test with `--limit 1`.
-- Untranslated Spanish chrome to remember: resource labels ("Agenda (PDF)")
-  come from `resources.py` in English.
+- Static pages (`method`, `why`, `about`, `about/*`) are stored under
+  `_i18n/es/pages/<path under website/>` and translated by the same command
+  (`--pages` for just those; a scoped `--only`/`--since` run skips them). The
+  English is hashed with Liquid comments stripped, and the output must keep every
+  Liquid tag, kramdown `{: }` line and link target. `| relative_url` is rewritten
+  to `| loc | relative_url`. The backgrounders are generated, so `ccs summary`
+  followed by `ccs translate --pages` is the order.
+- Resource labels are English in the manifest; `rlabel` maps the fixed ones via
+  `resource_labels` in `es.yml`. A new fixed label in `resources.py` needs an entry.
+- `assets/og-card-es.png` is the English card with the tagline repainted (Georgia
+  Italic 40). Regenerate it if the card changes.
 
 ## What's NOT built
 

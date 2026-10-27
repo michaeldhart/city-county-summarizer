@@ -14,10 +14,14 @@ retroactively, re-run with `--force` (and `--only` to scope the cost).
   vote count, not a theory of the vote.
 - Sentence case for headings. `$` amounts, vote counts (`8-0`), percentages and
   ordinance/resolution numbers exactly as in the source.
+- Ordinals in a meeting schedule are words: *1st Tuesday* is *el primer martes*,
+  *3rd Monday* is *el tercer lunes*.
 - Dates in prose: *el 14 de septiembre*. Times: *4:30 p. m.*
 - Gender: follow the pronouns the English text already uses. Where it uses
   none, use neutral phrasing (*la alcaldía*, *el personal*, *la presidencia*).
   Never infer a person's gender from their name.
+- When the page speaks in the first person, never use a gendered noun for the
+  speaker (*creador*, *autor*): write around it (*quien creó*, *escribí*).
 - Quotes from speakers are translated; they stay in quotation marks.
 
 ## Keep in English

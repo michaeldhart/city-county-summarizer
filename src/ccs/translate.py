@@ -104,6 +104,143 @@ def estimate_cost(src: Source) -> float:
     return (toks_in * _PRICE_IN + toks_in * _OUT_PER_IN * _PRICE_OUT) / 1e6
 
 
+@dataclass
+class PageSource:
+    """A static English page: method, why, the about hub and the backgrounders."""
+    name: str            # path under website/: "about/bpd.md"
+    title: str
+    body: str            # Liquid comments already stripped
+
+    @property
+    def fingerprint(self) -> str:
+        blob = "\n\x1f".join([self.title, self.body])
+        return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:16]
+
+
+PAGE_NAMES = ("method.md", "why.md", "about.md")
+_LIQUID_COMMENT = re.compile(r"\{%-?\s*comment\s*-?%\}.*?\{%-?\s*endcomment\s*-?%\}\s*", re.S)
+
+
+def page_store_path(name: str) -> Path:
+    return STORE_DIR / "pages" / name
+
+
+def load_page_sources() -> list:
+    paths = [WEBSITE_DIR / n for n in PAGE_NAMES] + sorted((WEBSITE_DIR / "about").glob("*.md"))
+    out = []
+    for p in paths:
+        meta, body = split_front_matter(p.read_text())
+        body = _LIQUID_COMMENT.sub("", body).strip()
+        out.append(PageSource(name=str(p.relative_to(WEBSITE_DIR)), title=meta.get("title", ""), body=body))
+    return out
+
+
+def is_page_current(src: PageSource) -> bool:
+    p = page_store_path(src.name)
+    if not p.exists():
+        return False
+    meta, _ = split_front_matter(p.read_text())
+    return meta.get("es_source_hash") == src.fingerprint
+
+
+def estimate_page_cost(src: PageSource) -> float:
+    toks_in = len(src.body + src.title) / _CHARS_PER_TOKEN + 1500
+    return (toks_in * _PRICE_IN + toks_in * _OUT_PER_IN * _PRICE_OUT) / 1e6
+
+
+def translate_page(src: PageSource) -> Path:
+    """Like translate_meeting, for a static page. Writes the store file."""
+    prompt = _build_page_prompt(src)
+    problem = None
+    for _ in range(2):
+        raw = _call_claude(prompt if problem is None else
+                           prompt + f"\n\nYour previous attempt was rejected: {problem}\n"
+                                    "Translate again, fixing exactly that.\n")
+        parsed = _parse_page(raw)
+        problem = check_page(src.body, parsed["body"])
+        if problem is None:
+            return _write_page(src, parsed)
+    raise TranslationError(f"{src.name}: {problem}")
+
+
+def _build_page_prompt(src: PageSource) -> str:
+    glossary = GLOSSARY_PATH.read_text()
+    return f"""You are translating a page of The Belvidere Wire into Spanish. The Wire
+publishes machine-written accounts of the public meetings of local government in
+Boone County, Illinois. Your Spanish edition sits beside the English one; the
+English governs.
+
+Translate faithfully and completely. Do not add, omit, soften or sharpen
+anything. Every number, date, dollar amount, address, phone number and name must
+survive. Where the page speaks in the first person (the publisher's own voice),
+keep the first person.
+
+Keep the Markdown and HTML exactly as they are: the same headings, in the same
+order, the same bullets, tables, bold and line breaks. Leave every URL, every
+Liquid tag ({{{{ ... }}}} and {{% ... %}}) and every kramdown attribute line
+(`{{: ... }}`) character for character; translate only the words around them and
+the visible text of links. Keep HTML tags and their attributes unchanged, and
+translate only the text between them.
+
+Follow this glossary and style guide. It decides what stays in English, what is
+translated, and how.
+
+{glossary}
+
+Reply in exactly this format, with these two marker lines and nothing else
+before, between or after the sections:
+
+===TITLE===
+(the page title)
+===BODY===
+(the page, in Markdown)
+
+===TITLE===
+{src.title}
+===BODY===
+{src.body}
+"""
+
+
+def _parse_page(raw: str) -> dict:
+    parts = re.split(r"^===(TITLE|BODY)===[ \t]*$", raw, flags=re.M)
+    found = {parts[i]: parts[i + 1].strip() for i in range(1, len(parts) - 1, 2)}
+    if set(found) != {"TITLE", "BODY"} or not found["BODY"]:
+        raise TranslationError(f"reply did not have both sections: {sorted(found)}")
+    return {k.lower(): v for k, v in found.items()}
+
+
+_LIQUID = re.compile(r"\{\{.*?\}\}|\{%.*?%\}", re.S)
+_IAL = re.compile(r"^\{:.*\}\s*$", re.M)
+_URL = re.compile(r"\]\(([^)\s]+)|href=\"([^\"]+)\"")
+
+
+def check_page(english: str, spanish: str) -> str | None:
+    """check(), plus what only a page carries: Liquid, kramdown attributes, link targets."""
+    for pat, what in ((_LIQUID, "Liquid tags"), (_IAL, "kramdown attributes"), (_URL, "link targets")):
+        a, b = Counter(pat.findall(english)), Counter(pat.findall(spanish))
+        if a != b:
+            return f"{what} differ — missing: {sorted((a - b).elements())[:4]}, added: {sorted((b - a).elements())[:4]}"
+    return check(english, spanish)
+
+
+def _write_page(src: PageSource, parsed: dict) -> Path:
+    p = page_store_path(src.name)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    meta = {
+        "title": parsed["title"],
+        "es_source_hash": src.fingerprint,
+        "es_model": CLAUDE_MODEL,
+        "es_translated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+    }
+    fm = yaml.safe_dump(meta, sort_keys=False, allow_unicode=True, width=10_000)
+    # The reader is on /es/, so a link into the site should land on the Spanish
+    # twin where there is one; the `loc` filter falls back to the English URL.
+    body = parsed["body"].replace("| relative_url", "| loc | relative_url")
+    p.write_text(f"---\n{fm}---\n\n{body}\n")
+    return p
+
+
 def translate_meeting(src: Source) -> Path:
     """One Claude call (two if validation catches a dropped figure). Writes the store file."""
     prompt = _build_prompt(src)
@@ -173,8 +310,12 @@ def _parse(raw: str) -> dict:
 _NUM = re.compile(r"\d+(?:[.,]\d+)*")
 
 
+# "1st Tuesday" is "primer martes": the figure becomes a word, which is correct.
+_ORDINAL = re.compile(r"\b\d+(?:st|nd|rd|th)\b|\b\d+(?:\.?[ºª°]|\.er)(?!\w)")
+
+
 def _nums(text: str) -> Counter:
-    return Counter(_NUM.findall(text))
+    return Counter(_NUM.findall(_ORDINAL.sub(" ", text)))
 
 
 def check(english: str, spanish: str) -> str | None:

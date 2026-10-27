@@ -7,6 +7,7 @@ layout: default
   Pagefind indexes only what is inside a data-pagefind-body, which also keeps
   the site header, nav and footer out of every page's indexed text.
 {%- endcomment -%}
+{%- include translation-note.html -%}
 <div data-pagefind-body data-pagefind-filter="type:Reference">
   {{ content }}
 </div>

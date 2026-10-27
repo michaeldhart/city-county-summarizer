@@ -7,6 +7,7 @@
 #   - Pages marked `i18n: true` (beats, issues, search) are cloned under /es/ at
 #     build time. Any front matter key ending in _es replaces its English twin.
 #   - Bodies (beats) are always cloned, since they are structure, not prose.
+#   - Static pages (method, why, about/*) likewise, from _i18n/es/pages/.
 #   - Dispatches, issues and the front page are cloned only when the translation
 #     store has a file for them: website/_i18n/es/{meetings,front_pages}/<name>.md
 #     and website/_i18n/es/index.md. An untranslated dispatch simply has no
@@ -19,6 +20,7 @@
 #   {{ 'nav_beats' | t }}          UI string from _data/i18n/<lang>.yml (English if missing)
 #   {{ x | tx: 'title' }}          x.title_es on Spanish pages, falling back to x.title
 #   {{ url | loc | relative_url }} the Spanish twin of url on Spanish pages, if one exists
+#   {{ r.label | rlabel }}         a fixed resource label in the page's language
 #   {{ d | fdate: 'short' }}       "Sep 8, 2026" / "8 sep 2026" (also 'long')
 #   {{ nil | i18n_strings | jsonify }}  all UI strings, for inline scripts
 
@@ -65,6 +67,15 @@ module WireI18n
       path, rest = url.to_s.split(/(?=[#?])/, 2)
       twin = TWINS[path]
       twin ? "#{twin}#{rest}" : url
+    end
+
+    # Resource labels are written in English at ingest ("Agenda (PDF)"); the
+    # fixed ones are looked up in the `resource_labels` map, anything else (an
+    # attachment's own title) passes through.
+    def rlabel(label)
+      return label unless lang_now == 'es'
+
+      @context.registers[:site].data.dig('i18n', 'es', 'resource_labels', label) || label
     end
 
     def fdate(input, style = 'long')
@@ -131,6 +142,18 @@ module WireI18n
         pairs << [page, clone]
       end
 
+      # Static pages (method, why, the about hub and backgrounders) are stored
+      # translations keyed by their path under website/.
+      site.pages.each do |page|
+        next unless page.data['permalink']
+
+        stored = read_store(File.join(store, 'pages', page.relative_path)) or next
+        clone = stored_page(site, File.dirname(page.relative_path).sub(/\A\.\z/, ''), page.name,
+                            "/es#{page.data['permalink']}", nil, stored)
+        clones << clone
+        pairs << [page, clone]
+      end
+
       # Cloned pages go first: render order is array order, and the Spanish
       # feeds read other pages' rendered `content`, which only exists once those
       # pages have rendered.
@@ -188,7 +211,7 @@ module WireI18n
       page = Jekyll::PageWithoutAFile.new(site, site.source, File.join('es', dir), name)
       page.content = stored[:content]
       page.data.merge!(stored[:data])
-      page.data['layout'] = layout
+      page.data['layout'] = layout if layout
       page.data['permalink'] = permalink
       localize!(site, page.data)
       page
@@ -211,6 +234,10 @@ module WireI18n
         data[k.delete_suffix('_es')] = v unless v.nil? || v.to_s.strip.empty?
       end
       data['lang'] = 'es'
+      # The card is the one default carrying English text: the tagline is baked
+      # into the image, and its alt is set in _config.yml.
+      data['image'] = { 'path' => '/assets/og-card-es.png', 'width' => 1200, 'height' => 630,
+                        'alt' => site.data.dig('i18n', 'es', 'og_alt') }
       # seo-tag falls back to site.description, which is English.
       data['description'] ||= site.data.dig('i18n', 'es', 'site_description')
     end

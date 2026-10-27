@@ -80,3 +80,5 @@ search_nojs_a: "Search needs JavaScript."
 search_nojs_b: "Without it, browse by government from the"
 search_nojs_link: "beats page"
 search_nojs_c: " — every dispatch is listed under its beat."
+og_alt: "The Belvidere Wire — a first draft of the public record."
+resource_labels: {}

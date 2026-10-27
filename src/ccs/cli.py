@@ -14,6 +14,7 @@ Commands:
   ccs brief --since YYYY-MM-DD --only bccd
   ccs translate                         write Spanish translations for dispatches that lack one or whose
                                         English has changed (reads website/_meetings; no data/ needed)
+  ccs translate --pages                 only the static pages (method, why, backgrounders)
   ccs translate --dry-run               list what would be translated, with a cost estimate (no Claude calls)
   ccs translate --only bccd --limit 5   scope by body id, source or jurisdiction; cap the number translated
   ccs front-page                        rank briefs in a window and write the front page
@@ -87,6 +88,8 @@ def main(argv: list[str] | None = None) -> int:
                       help="Translate at most this many dispatches (newest first)")
     p_tr.add_argument("--force", action="store_true",
                       help="Re-translate even where the English is unchanged")
+    p_tr.add_argument("--pages", action="store_true",
+                      help="Only the static pages (method, why, backgrounders)")
     p_tr.add_argument("--dry-run", action="store_true",
                       help="List what would be translated and the estimated cost; call nothing")
 
@@ -133,7 +136,7 @@ def main(argv: list[str] | None = None) -> int:
         return _cmd_brief(args.since, _parse_only(args.only), args.force)
     if args.command == "translate":
         return _cmd_translate(args.since, _parse_only(args.only), args.limit,
-                              args.force, args.dry_run)
+                              args.force, args.dry_run, args.pages)
     if args.command == "front-page":
         return _cmd_front_page(args.count, args.window_days,
                                not args.no_rerank, args.list_briefs,
@@ -313,15 +316,25 @@ def _cmd_brief(since: date | None, only: set | None, force: bool) -> int:
 
 
 def _cmd_translate(since: date | None, only: set | None, limit: int | None,
-                   force: bool, dry_run: bool) -> int:
+                   force: bool, dry_run: bool, pages_only: bool = False) -> int:
     if _no_match(only):
         return 2
     wanted = {b.id for b in report.select_bodies(only)}
-    sources_ = [s for s in translate.load_sources()
-                if s.body_id in wanted and (since is None or s.date >= since.isoformat())]
-    todo = [s for s in sources_ if force or not translate.is_current(s)]
-    todo.sort(key=lambda s: s.date, reverse=True)
-    skipped = len(sources_) - len(todo)
+    # (label, source, translate, estimate): static pages first, then dispatches
+    # newest first. A scoped run (--only/--since) is about dispatches, so it
+    # leaves the pages alone.
+    jobs = []
+    if pages_only or (only is None and since is None):
+        jobs += [(f"page        {s.name}", s, translate.translate_page, translate.estimate_page_cost,
+                  force or not translate.is_page_current(s)) for s in translate.load_page_sources()]
+    if not pages_only:
+        meetings = [s for s in translate.load_sources()
+                    if s.body_id in wanted and (since is None or s.date >= since.isoformat())]
+        meetings.sort(key=lambda s: s.date, reverse=True)
+        jobs += [(f"{s.date}  {s.name}", s, translate.translate_meeting, translate.estimate_cost,
+                  force or not translate.is_current(s)) for s in meetings]
+    todo = [j for j in jobs if j[4]]
+    skipped = len(jobs) - len(todo)
     if limit is not None:
         todo = todo[:limit]
     if not todo:
@@ -329,19 +342,18 @@ def _cmd_translate(since: date | None, only: set | None, limit: int | None,
         return 0
 
     if dry_run:
-        for s in todo:
-            print(f"  {s.date}  {s.name}")
-        cost = sum(translate.estimate_cost(s) for s in todo)
+        for label, *_ in todo:
+            print(f"  {label}")
+        cost = sum(est(s) for _, s, _, est, _ in todo)
         print(f"\n{len(todo)} to translate, {skipped} current. Estimated ~${cost:.2f} "
               f"(~${cost / 2:.2f} via the Batch API). Nothing called.")
         return 0
 
-    print(f"Translating {len(todo)} dispatch(es); {skipped} already current\n")
+    print(f"Translating {len(todo)} item(s); {skipped} already current\n")
     done = failed = 0
-    for s in todo:
-        label = f"{s.date}  {s.name}"
+    for label, s, fn, _, _ in todo:
         try:
-            translate.translate_meeting(s)
+            fn(s)
         except translate.TranslationError as e:
             print(f"  {label}  — FAILED: {e}")
             failed += 1
