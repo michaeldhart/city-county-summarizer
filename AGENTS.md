@@ -340,7 +340,7 @@ src/ccs/
   general.py    `ccs summary` generator
   translate.py  Spanish translations → website/_i18n/es/ (ccs translate)
   cli.py        argparse entry (`summary` / `check` / `sync` / `ingest` /
-                `brief` / `front-page` / `build-site`)
+                `brief` / `translate` / `front-page` / `build-site`)
 ```
 
 - Adding a government means three things: a `Jurisdiction` (owns the YouTube
@@ -376,6 +376,13 @@ src/ccs/
   Liquid tag, kramdown `{: }` line and link target. `| relative_url` is rewritten
   to `| loc | relative_url`. The backgrounders are generated, so `ccs summary`
   followed by `ccs translate --pages` is the order.
+- Run order matters: `build-site` rewrites `_meetings/` from the manifest, and
+  `translate` reads it, so `sync` → `brief` → `build-site` → `translate`. The
+  Spanish front page/issues are not generated yet (phase 4); neither is the
+  Spanish Listmonk list, so `listmonk_lists.es` is unset.
+- `scripts/check_i18n.py` is not run by CI; run it before pushing UI string
+  changes. README's "The Spanish edition" and `/method/` describe this for
+  humans — keep all three in step when behavior changes.
 - Resource labels are English in the manifest; `rlabel` maps the fixed ones via
   `resource_labels` in `es.yml`. A new fixed label in `resources.py` needs an entry.
 - `assets/og-card-es.png` is the English card with the tagline repainted (Georgia
