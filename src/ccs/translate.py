@@ -440,7 +440,7 @@ def _parse(raw: str) -> dict:
 
 # A figure is compared by value, not spelling: "$600K" and "$600,000" are the
 # same figure, and so are "FY27" and "2027".
-_NUM = re.compile(r"(\d[\d,]*(?:\.\d+)?)([KkMm]\b| (?:million|millones|millón|thousand|mil)\b)?")
+_NUM = re.compile(r"(\d[\d,]*(?:\.\d+)?)([KkMm]\b| (?:billion|mil millones|million|millones|millón|thousand|mil)\b)?")
 _ORD_EN = re.compile(r"\b(\d+)(?:st|nd|rd|th)\b")
 # "1st Tuesday" is "primer martes": the figure becomes a word, which is correct.
 _ORD_ES = re.compile(r"\b\d+(?:\.?[ºª°]|\.er)(?!\w)")
@@ -459,7 +459,8 @@ def _norm(num: str, suffix: str | None) -> str:
     v = num.replace(",", "")
     if suffix:
         from decimal import Decimal
-        v = str(int(Decimal(v) * (1000 if suffix in ("K", "k", " thousand", " mil") else 1_000_000)))
+        v = str(int(Decimal(v) * {"K": 10**3, "k": 10**3, " thousand": 10**3, " mil": 10**3,
+                              " billion": 10**9, " mil millones": 10**9}.get(suffix, 10**6)))
     if re.fullmatch(r"20[2-3]\d", v):
         v = v[2:]
     return v
