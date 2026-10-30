@@ -386,9 +386,10 @@ src/ccs/
   `_front_pages/NNN.md` into `_i18n/es/front_pages/`; `_i18n/es/index.md` is
   derived from the live issue's translation by `translate.sync_index()` (free).
   The Spanish newsletter reads that store (`frontpage.newsletter_content_es`),
-  sends to `LISTMONK_LIST_ID_ES` and is skipped while it is unset (deferred on
-  purpose; enabling steps are in `ops/README.md`), so
-  `listmonk_lists.es` is also still unset until the list exists.
+  sends to `LISTMONK_LIST_ID_ES` (list 4) and is skipped while it is unset. Its
+  campaign template exists only in Listmonk (deliberately not committed),
+  selected by `LISTMONK_TEMPLATE_ID_ES`; keep it in step with the English
+  template when that changes. Server setup is in `ops/README.md`.
 - `scripts/check_i18n.py` is not run by CI; run it before pushing UI string
   changes. README's "The Spanish edition" and `/method/` describe this for
   humans — keep all three in step when behavior changes.

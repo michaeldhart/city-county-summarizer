@@ -300,10 +300,10 @@ Proper nouns stay in English; the register is formal US Spanish.
   has its hash. Run it before building; CI does not.
 - Spanish pages carry a machine-translation note linking the English original,
   which governs. Facebook posts stay English-only.
-- The Spanish mailing is deferred. The Spanish Listmonk list is not set up: `listmonk_lists.es` in
-  `_config.yml` and `LISTMONK_LIST_ID_ES` on the server are unset, so Spanish
-  pages subscribe to the English list and no Spanish mailing goes out. See
-  `ops/README.md`.
+- The Spanish mailing has its own Listmonk list (`listmonk_lists.es` in
+  `_config.yml`) and a campaign template that lives in Listmonk.
+  The weekly run mails it only once `LISTMONK_LIST_ID_ES` is set on the server;
+  see `ops/README.md`.
 
 ## Previewing the site locally
 

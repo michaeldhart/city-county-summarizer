@@ -92,20 +92,31 @@ the list's numeric id (`Lists` page, or `GET /api/lists`) — not the UUID the
 public subscription form uses, those are two different identifiers for the
 same list.
 
-**Spanish mailing — deferred, not set up.** The code is in place and inert: the
-run executes `notify-listmonk N --lang es`, which prints a skip and succeeds
-while `LISTMONK_LIST_ID_ES` is unset (so it needs no `LISTMONK_REQUIRED`
-exception), and Spanish pages subscribe to the English list. To turn it on:
+**Spanish mailing.** A second Listmonk list, "The Belvidere Wire (Español)"
+(public, single opt-in, numeric id 4), whose public UUID is `listmonk_lists.es`
+in `website/_config.yml`, so the signup form on `/es/` pages subscribes to it.
+The run executes `notify-listmonk N --lang es`, which sends the Spanish issue to
+`LISTMONK_LIST_ID_ES` and prints a skip, succeeding, while that is unset (so it
+needs no `LISTMONK_REQUIRED` exception). Two things live outside the repo:
 
-1. In Listmonk, create a second list (a public one, like the English list) and
-   note its numeric id and its public UUID.
-2. Add `LISTMONK_LIST_ID_ES=<numeric id>` to `/etc/belvidere-wire-listmonk.conf`
-   and run `sudo systemctl daemon-reload`.
-3. Set `listmonk_lists.es: <public UUID>` in `website/_config.yml`, so the
-   Spanish signup form subscribes people to it. Push.
-4. Dry-run it by hand against the latest issue before Monday:
-   `ccs notify-listmonk <N> --lang es` mails for real, so first point
-   `LISTMONK_LIST_ID_ES` at a list containing only yourself.
+- A Listmonk campaign template for the Spanish mailing, kept in Listmonk only,
+  not in this repo: a copy of the English template with the footer and
+  unsubscribe wording written in Spanish ("Cancelar la suscripción", "Ver en el
+  navegador") and `<html lang="es">`. Listmonk's own `L.T` strings follow its one
+  global language, so the Spanish template spells them out. Create it under
+  Campaigns → Templates (type: Campaign) and note its id.
+- Two lines in `/etc/belvidere-wire-listmonk.conf` on wally, then
+  `sudo systemctl daemon-reload`:
+
+      LISTMONK_LIST_ID_ES=4
+      LISTMONK_TEMPLATE_ID_ES=<the template's id>
+
+  `LISTMONK_TEMPLATE_ID_ES` is optional; without it the Spanish mail uses the
+  default template and an English footer.
+
+To test before a Monday run: subscribe your own address from the live `/es/`
+page, then `ccs notify-listmonk <N> --lang es` on wally. It mails the list for
+real, which holds only you until the first Spanish readers join.
 
 Existing English subscribers are not moved; Spanish readers have to subscribe
 from a Spanish page.

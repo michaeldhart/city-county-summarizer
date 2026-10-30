@@ -26,7 +26,8 @@ Commands:
   ccs notify-facebook 12                 post issue No. 12 to the Facebook page
                                           (no-op unless FACEBOOK_PAGE_ID/FACEBOOK_PAGE_TOKEN are set)
   ccs notify-listmonk 12                 mail issue No. 12 to the list via Listmonk
-  ccs notify-listmonk 12 --lang es       the Spanish edition, to LISTMONK_LIST_ID_ES (skipped while unset)
+  ccs notify-listmonk 12 --lang es       the Spanish edition, to LISTMONK_LIST_ID_ES (skipped while unset); LISTMONK_TEMPLATE_ID_ES
+                                          optionally picks its campaign template
                                           (no-op unless LISTMONK_API_URL/LISTMONK_API_USER/
                                           LISTMONK_API_TOKEN/LISTMONK_LIST_ID/LISTMONK_FROM_EMAIL are set)
 """
@@ -496,9 +497,14 @@ def _cmd_notify_listmonk(issue: int, lang: str = "en") -> int:
         return 1
 
     auth = {"Authorization": f"token {api_user}:{api_token}"}
+    # Listmonk's footer and unsubscribe wording come from the campaign template,
+    # which is English unless the Spanish list is given a template of its own.
+    template = ({"template_id": int(os.environ["LISTMONK_TEMPLATE_ID_ES"])}
+                if lang == "es" and os.environ.get("LISTMONK_TEMPLATE_ID_ES") else {})
     r = requests.post(
         f"{api_url}/api/campaigns", headers=auth,
         json={
+            **template,
             "name": f"Issue {issue}" + (" (es)" if lang == "es" else ""),
             "subject": subject,
             "lists": [int(list_id)],
