@@ -15,6 +15,20 @@ layout: default
 <a href="{{ '/' | loc | relative_url }}">{{ 'issue_banner_link' | t }}</a>{{ 'issue_banner_b' | t }}</p>
 {% endif %}
 
+{% if page.correction %}
+{%- comment -%}
+  Front matter, not the issue body: a back issue keeps the text it ran with, and
+  translate's fingerprint skips this field, so a note re-translates nothing. The
+  Spanish store carries its own copy.
+{%- endcomment -%}
+<aside class="issue-correction">
+{%- assign corrected = page.correction.date | fdate: 'long' -%}
+<strong>{{ 'correction_label' | t: corrected }}</strong>
+{{ page.correction.text }}
+<a href="{{ page.correction.link | loc | relative_url }}">{{ page.correction.link_text }}</a>.
+</aside>
+{% endif %}
+
 {{ content }}
 
 {%- include translation-note.html -%}

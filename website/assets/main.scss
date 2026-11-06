@@ -390,6 +390,14 @@ $heavy-rule: 3px double $text-color;
   @include relative-font-size(0.875);
 }
 
+.issue-correction {
+  padding: math.div($spacing-unit, 2);
+  margin-bottom: $spacing-unit;
+  border-left: 4px solid $text-color;
+  background-color: $grey-color-light;
+  @include relative-font-size(0.9375);
+}
+
 .issue-lead {
   font-style: italic;
   color: $grey-color-dark;
