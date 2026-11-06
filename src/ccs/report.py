@@ -87,8 +87,11 @@ def check_sources(since: date, today: date | None = None,
 
 
 def sync_meetings(since: date, today: date | None = None,
-                  only: set | None = None) -> list[SectionEntry]:
-    """Discover and ingest meetings between `since` and today, updating the manifest."""
+                  only: set | None = None) -> tuple[list[SectionEntry], list[str]]:
+    """Discover and ingest meetings between `since` and today, updating the manifest.
+
+    Also returns a line for each published document that could not be read.
+    """
     today = today or date.today()
     tracked = select_bodies(only)
     dil_by_source = _diligent_meetings(tracked, since, today)
@@ -127,10 +130,11 @@ def _pdf_index_meetings(tracked: list[Body]) -> dict[str, list]:
 def _collect_recap(dil_by_source: dict[str, list[diligent.MeetingRef]],
                    videos_by_jurisdiction: dict[str, list[youtube.YouTubeVideo]],
                    tracked: list[Body],
-                   since: date, today: date) -> list[SectionEntry]:
+                   since: date, today: date) -> tuple[list[SectionEntry], list[str]]:
     already = manifest.load()
     tracked_ids = {b.id for b in tracked}
     entries: list[SectionEntry] = []
+    unread: list[str] = []
 
     for source, meetings in dil_by_source.items():
         base = sources.diligent_base(source)
@@ -147,10 +151,15 @@ def _collect_recap(dil_by_source: dict[str, list[diligent.MeetingRef]],
                 entries.append(SectionEntry(body, m.date, m.title, already[mid]))
                 continue
             print(f"  ingesting {source}: {m.date} {m.title[:60]}")
-            record = summarize.ingest_diligent(
-                base, source, m, body,
-                videos=videos_by_jurisdiction.get(body.jurisdiction_id),
-            )
+            try:
+                record = summarize.ingest_diligent(
+                    base, source, m, body,
+                    videos=videos_by_jurisdiction.get(body.jurisdiction_id),
+                )
+            except summarize.NoUsableText as e:
+                # Not a failure: the county often posts its agenda late.
+                print(f"  skipped: {e}")
+                continue
             manifest.upsert(record)
             entries.append(SectionEntry(body, m.date, m.title, record))
 
@@ -170,15 +179,23 @@ def _collect_recap(dil_by_source: dict[str, list[diligent.MeetingRef]],
                 entries.append(SectionEntry(body, m.date, already[mid].title, already[mid]))
                 continue
             print(f"  ingesting {body.source}: {m.date}")
-            record = summarize.ingest_pdf_meeting(
-                body.source, m, body,
-                videos=videos_by_jurisdiction.get(body.jurisdiction_id),
-            )
+            try:
+                record = summarize.ingest_pdf_meeting(
+                    body.source, m, body,
+                    videos=videos_by_jurisdiction.get(body.jurisdiction_id),
+                )
+            except summarize.NoUsableText as e:
+                print(f"  skipped: {e}")
+                unread.append(str(e))
+                continue
+            kinds = {r.kind for r in record.resources}
+            if (m.agenda_url and "agenda" not in kinds) or (m.minutes_url and "minutes" not in kinds):
+                unread.append(f"{mid}: published without a document it could not read")
             manifest.upsert(record)
             entries.append(SectionEntry(body, m.date, record.title, record))
 
     entries.sort(key=lambda e: (e.meeting_date, e.body.id), reverse=True)
-    return entries
+    return entries, unread
 
 
 def list_videos_by_jurisdiction(

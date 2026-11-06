@@ -45,6 +45,10 @@ from . import (briefs, config, diligent, frontpage, general, manifest, report, s
 from .config import body_for_meeting, load_env, tracked_bodies
 
 
+# `sync --strict`: documents went unread. ops/wire-run.sh publishes anyway, then alerts.
+EXIT_UNREAD = 3
+
+
 def main(argv: list[str] | None = None) -> int:
     load_env()
     parser = argparse.ArgumentParser(prog="ccs", description="Boone County meeting monitor")
@@ -65,6 +69,8 @@ def main(argv: list[str] | None = None) -> int:
                         help="Window start (default: 35 days ago)")
     p_sync.add_argument("--only", default=None,
                         help="Comma-separated body ids, sources, or jurisdictions")
+    p_sync.add_argument("--strict", action="store_true",
+                        help=f"Exit {EXIT_UNREAD} if any published document could not be read")
 
     p_ingest = sub.add_parser("ingest", help="Force-ingest a specific meeting")
     p_ingest.add_argument("meeting_id", help="e.g. diligent:1622, bccd:20260420, swcd:20260701")
@@ -138,7 +144,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "check":
         return _cmd_check(args.since, _parse_only(args.only))
     if args.command == "sync":
-        return _cmd_sync(args.since, _parse_only(args.only))
+        return _cmd_sync(args.since, _parse_only(args.only), args.strict)
     if args.command == "ingest":
         return _cmd_ingest(args.meeting_id)
     if args.command == "brief":
@@ -202,7 +208,7 @@ def _print_check_table(rows: list[tuple[str, bool]]) -> None:
     print(border)
 
 
-def _cmd_sync(since: date | None, only: set | None) -> int:
+def _cmd_sync(since: date | None, only: set | None, strict: bool = False) -> int:
     today = date.today()
     since = since or (today - timedelta(days=35))
     if since > today:
@@ -214,9 +220,11 @@ def _cmd_sync(since: date | None, only: set | None) -> int:
     print(f"Syncing: {since} → {today}")
     print(f"Tracked bodies: {[b.id for b in report.select_bodies(only)]}")
 
-    entries = report.sync_meetings(since=since, today=today, only=only)
+    entries, unread = report.sync_meetings(since=since, today=today, only=only)
     print(f"\n{len(entries)} meeting(s) in window. Run `ccs build-site` to refresh the site.")
-    return 0
+    for line in unread:
+        print(f"UNREAD  {line}", file=sys.stderr)
+    return EXIT_UNREAD if strict and unread else 0
 
 
 def _cmd_ingest(meeting_id: str) -> int:
@@ -251,7 +259,11 @@ def _ingest_diligent(source: str, base: str, key: str) -> int:
         return 1
     print(f"Ingesting {ref.date} {ref.title} (body={body.id})")
     videos = report.list_videos_by_jurisdiction([body]).get(body.jurisdiction_id)
-    record = summarize.ingest_diligent(base, source, ref, body, videos=videos)
+    try:
+        record = summarize.ingest_diligent(base, source, ref, body, videos=videos)
+    except summarize.NoUsableText as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 1
     manifest.upsert(record)
     print(f"OK  transcript={record.has_transcript}  summary={record.summary_path}")
     return 0
@@ -278,7 +290,11 @@ def _ingest_pdf_meeting(source: str, key: str, lister) -> int:
         return 1
     print(f"Ingesting {source} meeting on {meeting.date} ({meeting.name or body.display_name})")
     videos = report.list_videos_by_jurisdiction([body]).get(body.jurisdiction_id)
-    record = summarize.ingest_pdf_meeting(source, meeting, body, videos=videos)
+    try:
+        record = summarize.ingest_pdf_meeting(source, meeting, body, videos=videos)
+    except summarize.NoUsableText as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 1
     manifest.upsert(record)
     print(f"OK  transcript={record.has_transcript}  summary={record.summary_path}")
     return 0

@@ -22,6 +22,12 @@ translate goes out with it, and the run still ends non-zero so the failure alert
 fires. A dispatch whose translation failed has no Spanish page until the next
 run retries it.
 
+`sync --strict` works the same way. A meeting whose documents yield no text gets
+no record and no page, and the next run retries it free of charge, while it stays
+inside the 35-day window. A meeting with one unreadable document is published
+without that document. Either way `sync` exits 3, the edition still goes out, and
+the run ends non-zero so the alert fires. Look for `UNREAD` in the journal.
+
 The Mac must not run this chain. `ccs front-page` takes its issue number from
 `max(existing) + 1` scanned from `_front_pages/`, so two publishers race and
 produce two issues with the same number.

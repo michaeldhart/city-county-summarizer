@@ -62,7 +62,8 @@ _HUBS = (
 # Only the combined Council/COW agenda hub actually mixes bodies, but a body
 # named in the text always wins over the hub's default.
 _BODY_HINTS = (
-    (re.compile(r"committee of the whole", re.I), "belvidere-cow"),
+    # The city also labels these "September 14, 2026 COW" and misspells "Commitee".
+    (re.compile(r"comm?itt?ee of the whole|\bCOW\b", re.I), "belvidere-cow"),
     (re.compile(r"city council", re.I), "belvidere-council"),
     (re.compile(r"planning\s*&?\s*zoning|\bPZC\b", re.I), "belvidere-pzc"),
     (re.compile(r"historic preservation|\bHPC\b", re.I), "belvidere-hpc"),
@@ -87,7 +88,7 @@ class BelvidereMeeting:
 
     @property
     def key(self) -> str:
-        """Body-qualified: Council and COW can meet on the same date (Apr 20, 2026)."""
+        """Body-qualified: one date can carry records for several bodies."""
         return f"{_BODY_SLUGS[self.body_id]}-{self.date.strftime('%Y%m%d')}"
 
     @property

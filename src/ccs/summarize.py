@@ -29,6 +29,11 @@ MAX_MINUTES_CHARS = 60_000
 MAX_TRANSCRIPT_CHARS = 120_000
 
 
+class NoUsableText(Exception):
+    """Nothing to summarize. Raised before the Claude call, so no record is
+    written and the next sync retries the meeting for free."""
+
+
 def _clip(text: str, limit: int, what: str) -> str:
     if len(text) <= limit:
         return text
@@ -75,6 +80,9 @@ def ingest_diligent(base: str, source: str, ref: diligent.MeetingRef, body: Body
             transcript = youtube.vtt_to_text(vtt)
             (outdir / "transcript.txt").write_text(transcript)
 
+    if not (agenda_text.strip() or transcript.strip()):
+        raise NoUsableText(f"{meeting_id}: no agenda text and no transcript")
+
     prompt = _build_diligent_prompt(body, meeting_data, ref, agenda_text, transcript)
     summary = _call_claude(prompt)
     (outdir / "summary.md").write_text(summary)
@@ -109,8 +117,8 @@ def ingest_pdf_meeting(source: str, meeting, body: Body,
     agenda_text = _download_and_extract(meeting.agenda_url, outdir / "agenda.pdf", outdir / "agenda.txt")
     minutes_text = _download_and_extract(meeting.minutes_url, outdir / "minutes.pdf", outdir / "minutes.txt")
 
-    # Belvidere's Committee of the Whole never publishes minutes, so for those
-    # meetings the transcript is the only record of what was actually said.
+    # Belvidere's Committee of the Whole rarely has minutes by the time it's
+    # ingested, so the transcript is often the only record of what was said.
     transcript = ""
     video_id: str | None = None
     if videos is not None:
@@ -121,6 +129,9 @@ def ingest_pdf_meeting(source: str, meeting, body: Body,
             if vtt is not None:
                 transcript = youtube.vtt_to_text(vtt)
                 (outdir / "transcript.txt").write_text(transcript)
+
+    if not (agenda_text or minutes_text or transcript.strip()):
+        raise NoUsableText(f"{meeting_id}: no text from its documents and no transcript")
 
     prompt = _build_pdf_meeting_prompt(body, meeting.date, agenda_text, minutes_text, transcript)
     summary = _call_claude(prompt)
@@ -136,8 +147,12 @@ def ingest_pdf_meeting(source: str, meeting, body: Body,
         video_id=video_id,
         has_transcript=bool(transcript),
         summary_path=str((outdir / "summary.md").relative_to(REPO_ROOT)),
+        # The byline is built from this list, so a document whose text never
+        # reached the prompt must not be on it.
         resources=resources.for_pdf_meeting(
-            meeting.agenda_url, meeting.minutes_url, video_id, bool(transcript),
+            meeting.agenda_url if agenda_text else None,
+            meeting.minutes_url if minutes_text else None,
+            video_id, bool(transcript),
         ),
     )
 
@@ -149,8 +164,13 @@ def _download_and_extract(url: str | None, pdf_dest: Path, txt_dest: Path) -> st
         pdftext.download_pdf(url, pdf_dest)
         text = pdftext.pdf_to_text(pdf_dest)
     except Exception as e:
-        return f"[Failed to extract from {url}: {e}]"
+        print(f"  WARN: could not read {url}: {e}")
+        return ""
     txt_dest.write_text(text)
+    # A failed OCR of a scan leaves only form feeds, which would count as text.
+    if not text.strip():
+        print(f"  WARN: no text extracted from {url}")
+        return ""
     return text
 
 

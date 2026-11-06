@@ -58,7 +58,13 @@ main() {
     fi
 
     echo "=== sync"
-    "$CCS" sync
+    # Exit 3 is the one failure the edition survives: a document could not be
+    # read, so its meeting was held back. Publish the rest and alert at the end.
+    local sync_status=0
+    "$CCS" sync --strict || sync_status=$?
+    if (( sync_status != 0 && sync_status != 3 )); then
+        exit "$sync_status"
+    fi
 
     echo "=== brief"
     "$CCS" brief
@@ -85,7 +91,7 @@ main() {
     git add -A website/
     if git diff --cached --quiet; then
         echo "=== no site changes — nothing to publish"
-        exit 0
+        exit "$sync_status"
     fi
 
     if (( dry_run )); then
@@ -96,7 +102,7 @@ main() {
         git restore --source=HEAD --staged --worktree -- website/
         git clean -fdq website/
         echo "=== dry run — website/ restored, nothing committed"
-        exit "$translate_status"
+        exit "$(( translate_status || sync_status ))"
     fi
 
     echo "=== publishing No. $issue"
@@ -127,6 +133,7 @@ main() {
     "$CCS" notify-listmonk "$issue" --lang es || status=1
 
     (( translate_status == 0 )) || { echo "error: some translations failed (see above)" >&2; status=1; }
+    (( sync_status == 0 )) || { echo "error: some documents could not be read (see UNREAD above)" >&2; status=1; }
     exit "$status"
 }
 

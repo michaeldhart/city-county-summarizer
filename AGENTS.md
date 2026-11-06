@@ -408,8 +408,15 @@ src/ccs/
   recap version is written. Not a bug, just an untidied artifact.
 - OCR is a soft dependency. `pdftext.pdf_to_text` routes anything under
   `MIN_CHARS_PER_PAGE` (150) through `ocrmypdf` and caches `*.ocr.pdf`
-  beside the original. If the binary is missing it warns and returns the
-  thin text rather than crashing.
+  beside the original. If the binary is missing or OCR fails, it warns and
+  returns the thin text rather than crashing.
+- **Nothing is summarized from nothing.** `summarize.NoUsableText` is raised
+  before the Claude call when a meeting has no agenda text, minutes text or
+  transcript, so no record is written and the next sync retries it free. A
+  document that yields no text is also left off `resources`, because the byline
+  claims whatever is listed there. `sync --strict` exits 3 when a published
+  document went unread; `wire-run.sh` treats that as publish-then-alert. A
+  Diligent meeting with no agenda yet is skipped without counting as a failure.
 
 ## Style rules
 
