@@ -409,7 +409,10 @@ src/ccs/
 - OCR is a soft dependency. `pdftext.pdf_to_text` routes anything under
   `MIN_CHARS_PER_PAGE` (150) through `ocrmypdf` and caches `*.ocr.pdf`
   beside the original. If the binary is missing or OCR fails, it warns and
-  returns the thin text rather than crashing.
+  returns the thin text rather than crashing. It passes `--output-type pdf`
+  because only the text is kept, and Ghostscript 10.6's PDF/A step corrupts
+  JPEGs: ocrmypdf then exits 4 ("generated PDF is INVALID"), which emptied seven
+  documents on wally while the same packets passed on the Mac (Ghostscript 10.08).
 - **Nothing is summarized from nothing.** `summarize.NoUsableText` is raised
   before the Claude call when a meeting has no agenda text, minutes text or
   transcript, so no record is written and the next sync retries it free. A

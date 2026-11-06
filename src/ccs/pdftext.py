@@ -50,7 +50,10 @@ def ensure_text_layer(path: Path) -> Path | None:
               f"(brew install ocrmypdf) — summarizing without it.")
         return None
     proc = subprocess.run(
-        ["ocrmypdf", "--skip-text", "--optimize", "0", "--quiet", str(path), str(dest)],
+        # --output-type pdf skips the PDF/A step: only the text is used, and
+        # Ghostscript 10.6 corrupts JPEGs there, which ocrmypdf reports as failure.
+        ["ocrmypdf", "--skip-text", "--optimize", "0", "--output-type", "pdf", "--quiet",
+         str(path), str(dest)],
         capture_output=True, text=True, check=False,
     )
     if proc.returncode != 0 or not dest.exists():
