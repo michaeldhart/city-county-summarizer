@@ -22,6 +22,13 @@ def _video(video_id: str | None, has_transcript: bool) -> list[Resource]:
     return [Resource("video", label, WATCH_URL.format(video_id))]
 
 
+def add_video(existing: list[Resource], video_id: str) -> list[Resource]:
+    """A late-matched video, linked without captions, ahead of any attachments."""
+    out = [r for r in existing if r.kind != "video"]
+    at = next((i for i, r in enumerate(out) if r.kind == "attachment"), len(out))
+    return out[:at] + _video(video_id, False) + out[at:]
+
+
 def for_diligent(base: str, meeting_id: int, agenda_html: str,
                  video_id: str | None, has_transcript: bool) -> list[Resource]:
     out = [Resource("portal", "Diligent meeting page",

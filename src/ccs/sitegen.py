@@ -117,6 +117,8 @@ def _write_meeting_doc(record: manifest.MeetingRecord) -> None:
     # the byline can only claim the video when the transcript was really used.
     if record.has_transcript:
         front_matter["has_transcript"] = True
+    if record.updated_at:
+        front_matter["updated"] = record.updated_at[:10]
     if record.resources:
         front_matter["resources"] = [asdict(r) for r in record.resources]
     _write_doc(MEETINGS_DIR / f"{slug}.md", front_matter, body_content)

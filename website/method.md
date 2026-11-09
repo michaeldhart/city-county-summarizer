@@ -51,6 +51,14 @@ the dispatch is labelled an **agenda preview** and describes only what a body
 was scheduled to take up. It will not tell you that anything was decided,
 because nothing in its sources says so.
 
+Materials often arrive after the first dispatch is filed — minutes a month
+later, a video the next day, captions a day after that. Every week the wire
+looks again at each meeting from the past year. When minutes, a video or its
+captions have turned up since, the dispatch is **written again from the fuller
+set** and replaces the first, and its byline says the date it was re-written.
+Nothing is appended to the old text: the new dispatch is a fresh summary of
+everything now available.
+
 ## What the front page is
 
 The front page is assembled from **briefs** — short items of one paragraph each,
@@ -119,7 +127,9 @@ from the Spanish site go to the English one instead.
 
 A new edition runs every Monday morning. It carries what had been filed by then,
 which is not the same as everything that met the week before: a meeting whose
-agenda or minutes arrive late appears in a later edition instead.
+agenda arrives late appears in a later edition instead. A dispatch that is
+re-written when minutes or captions arrive replaces the earlier one on its beat,
+but it is not run on the front page again.
 
 Each time the front page is rebuilt it is published as a numbered issue and kept
 at [/issues/]({{ '/issues/' | relative_url }}). Nothing is overwritten, so what
@@ -135,6 +145,12 @@ match the dispatch it links to. The dispatch is the one to trust.
 - **Agendas are not always published in advance.** The county sometimes posts
   one close to, or after, the meeting. A meeting can appear on video days
   before a dispatch exists for it.
+- **Late materials are not guaranteed to be picked up.** The weekly check
+  covers the past year only. A document that cannot be read — a scan the
+  character recognition fails on — is tried four times, then left alone and
+  listed as unread. A video whose captions have not appeared after four checks
+  stays a link and is not read. The Park District and the City keep only a year
+  or two on their public pages, so what they drop is no longer checked.
 - **Two bodies never appear.** The Local Emergency Planning Committee and the
   Veteran's Assistance Commission do not publish to any portal we can read.
   They are on the beat list and have never produced a dispatch.

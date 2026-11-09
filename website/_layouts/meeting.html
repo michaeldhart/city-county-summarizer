@@ -49,6 +49,10 @@ layout: default
       but have no usable captions, and the video is then a link we publish, not
       a source we read.
 
+      `updated` is set only on a dispatch that was re-written after the sync
+      found more of its sources. The sources named above are the ones the
+      current text was written from, so the clause says when, not what.
+
       data-pagefind-ignore keeps this identical block from landing in the
       search index 174 times over.
     {%- endcomment -%}
@@ -79,6 +83,10 @@ layout: default
         {{ " " }}{{ srcs[0] }}.
       {%- else -%}
         {{ " " }}{{ 'byline_none' | t }}
+      {%- endif -%}
+      {%- if page.updated -%}
+        {%- assign updated_on = page.updated | fdate: 'long' -%}
+        {{ " " }}{{ 'byline_updated' | t: updated_on }}
       {%- endif -%}
       {{ " " }}{{ 'byline_nohuman' | t }}
       <a href="{{ '/method/' | loc | relative_url }}">{{ 'byline_method' | t }}</a>

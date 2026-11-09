@@ -28,6 +28,11 @@ inside the 35-day window. A meeting with one unreadable document is published
 without that document. Either way `sync` exits 3, the edition still goes out, and
 the run ends non-zero so the alert fires. Look for `UNREAD` in the journal.
 
+`sync` also re-checks stored meetings, up to a year back, for minutes, video or
+captions posted since. That check is free; a re-write costs the same as a first
+summary. Minutes that are posted but unreadable raise `UNREAD` on each of four
+attempts and then stop. `ccs check --gaps` lists what the next run would touch.
+
 The Mac must not run this chain. `ccs front-page` takes its issue number from
 `max(existing) + 1` scanned from `_front_pages/`, so two publishers race and
 produce two issues with the same number.

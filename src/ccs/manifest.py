@@ -34,6 +34,8 @@ class MeetingRecord:
     has_transcript: bool = False
     summary_path: str | None = None
     ingested_at: str | None = None
+    updated_at: str | None = None     # last time a refresh rewrote the summary
+    refresh_attempts: int = 0         # refreshes that read the sources and found nothing new
     resources: list[Resource] = field(default_factory=list)
 
 
@@ -57,8 +59,19 @@ def save(records: dict[str, MeetingRecord]) -> None:
 
 
 def upsert(record: MeetingRecord) -> None:
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    # A refreshed record arrives with ingested_at carried over from the first
+    # publish; only a record that has never been stored gets stamped with it.
+    if record.ingested_at is None:
+        record.ingested_at = now
+    else:
+        record.updated_at = now
+    store(record)
+
+
+def store(record: MeetingRecord) -> None:
+    """Write a record as given, stamping nothing."""
     records = load()
-    record.ingested_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     records[record.id] = record
     save(records)
 

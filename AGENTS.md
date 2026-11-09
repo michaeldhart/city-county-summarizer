@@ -10,6 +10,10 @@ on" digest.
 - Every `ccs sync` on a fresh manifest costs real money. A busy month with
   ~15 new meetings is ~$1–$2 at Sonnet 4.5 rates; a full-year backfill across
   all five governments ran ~$25.
+- `ccs sync` also refreshes stored meetings (see "Refreshing stored meetings"),
+  so a sync after a long gap can spend on meetings from months ago. Run
+  `ccs check --gaps` first: it is free and lists exactly what would be re-read.
+  `--no-refresh` restricts a run to discovery.
 - Never run `ccs sync` "just to test." If you need to smoke-test the pipeline,
   either (a) use a narrow window that yields zero meetings, or (b) pre-seed
   `data/manifest.json` with a `MeetingRecord` pointing at an already-summarized
@@ -85,6 +89,13 @@ on" digest.
 - Adding a `title_re` means writing a pattern that names its own body without
   matching another's title: `board` is `boone county board meeting` spelled out
   so it does not swallow "Boone County Board of Health Meeting".
+- Diligent exposes no minutes. `meetingDocuments` returns only type 1 (the agenda,
+  docx or html) and type 4 (a PDF named exactly like the meeting — the agenda
+  rendition); `meetingData` has no minutes field. For Boone and District 100 the
+  video transcript is the only record of what was said.
+- District 100's `/api/videolink/{id}` is the tenant's own and is not always
+  trustworthy: `d100:942` (Jan 20) and `d100:945` (Feb 23) return the same video
+  id, which has no captions. Unexplained as of Nov 2026.
 - LEPC and Veteran's Assistance have `type_id=None` — no agendas on Diligent
   yet. They stay tracked but won't match. If you find where they publish, wire it.
 - The old BoardDocs URL (`go.boarddocs.com/il/boone`) still returns cached
@@ -139,6 +150,44 @@ on" digest.
   after the fact, and BPD and Belvidere index pages only show a year or two —
   anything older had dropped off the public site by then. Re-ingesting is the
   only way to do better, and that costs money.
+
+## Refreshing stored meetings
+
+A record used to be frozen at first ingest, so minutes, a video or captions
+posted later were never picked up. `report._refresh_existing` now runs at the top
+of every `sync`, before discovery, over every stored meeting still on its source's
+listing and inside `REFRESH_DAYS` (365). `ccs check --gaps` runs the same logic
+without ingesting.
+
+- **The check is free; the re-read is not.** `_refresh_reason` decides from
+  listings `sync` already fetched: minutes/agenda URL newly present on a PDF-index
+  listing, or a video matched (`youtube.find_video`, or Diligent's tenant link —
+  the one extra request) for a record with no transcript. Only then does it call
+  `ingest_*` with `previous=record`, which downloads, OCRs and pulls captions.
+- **`summarize.Unchanged` is raised before the Claude call** when the re-read is
+  no richer than the record: for a Diligent meeting only new captions count; for
+  a PDF meeting a newly readable agenda or minutes document, or new captions.
+  Detection is by sources, never by the summary's header — older summaries
+  predate "Agenda preview".
+- `MAX_REFRESH_ATTEMPTS` (4) caps empty re-reads, counted in
+  `MeetingRecord.refresh_attempts`; a rewrite resets it. A video that matches but
+  has no captions yet is attached as a "no captions" link (no Claude call) and
+  counts as an attempt. Posted-but-unreadable minutes/agenda go into the `UNREAD`
+  list on each attempt, so `--strict` alerts four times, then stops.
+- **`manifest.upsert` vs `store`.** `upsert` stamps `ingested_at` on a record that
+  has none and `updated_at` on one that has; `ingest_*` carries the old
+  `ingested_at` over when given `previous`. `store` stamps nothing and is for an
+  attempt that changed no text. A manual `ccs ingest` passes no `previous`, so
+  it still resets `ingested_at` and sets no `updated_at`.
+- `updated_at` becomes the `updated` front-matter key, which `meeting.html` turns
+  into "Re-written <date>…" in the byline (`byline_updated` in both i18n files).
+- **The rewrite has to reach the later stages.** `ccs brief` also selects records
+  whose `updated_at` is in the window, because its window is by meeting date and
+  would otherwise never re-brief an old dispatch; the fingerprint skips the rest.
+  `translate` re-translates on the English hash. The front page selects by meeting
+  date, so a re-written old dispatch is not re-run on an issue.
+- Records on a rolling index (BPD, Belvidere's pages) that has dropped them are
+  not visited — `_known_meetings` needs the meeting on the live listing.
 
 - **Never run two `ccs sync`/`ccs ingest` processes at once.** `manifest.upsert`
   is load-mutate-save with no locking, so concurrent runs silently drop each
@@ -217,6 +266,9 @@ every cached record for nothing.
   it's the whole basis of the thing. Its source list is built from
   `page.resources` plus `has_transcript`, so it can only claim materials that
   meeting actually had.
+- A re-written dispatch adds a "Re-written <date>" clause to the byline. It says
+  when, not what was added: the source list in the same byline is the authority
+  on what the current text was written from.
 - `has_transcript` is what licenses the "meeting video" clause, **not** the
   presence of a `video` resource. Some meetings are streamed but have no usable
   captions; the video is then a link we publish, not a source we read.

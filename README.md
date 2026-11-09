@@ -96,7 +96,12 @@ to see whether the run will produce anything worth paying for.
 ```bash
 ccs check                                   # default window: last 35 days
 ccs check --since 2026-04-01
+ccs check --gaps                            # stored meetings a sync would re-read, and why
 ```
+
+`--gaps` is the free preview of the refresh pass described under `ccs sync`:
+every meeting already in the manifest whose minutes, video or captions have
+appeared since it was written. Run it before a sync that follows a long gap.
 
 Sample output:
 
@@ -116,13 +121,18 @@ Cost: free — hits only the meeting-list endpoints.
 ### `ccs sync`
 
 Discovers meetings in the window and ingests any that aren't already in the
-manifest — summarizing each with Claude and recording it. Run `ccs build-site`
-afterward to publish newly-ingested meetings to the site.
+manifest — summarizing each with Claude and recording it. It then re-checks the
+meetings already stored, up to a year back, for sources posted since: minutes,
+a video, or captions that weren't there the first time. Where one is readable it
+re-writes the summary (the original `ingested_at` is kept, `updated_at` is set,
+and the dispatch's byline says when). Where nothing new can be read it counts
+the attempt, and gives up after four. Run `ccs build-site` afterward to publish.
 
 ```bash
 ccs sync                                    # default window: last 35 days
 ccs sync --since 2026-06-01
 ccs sync --only d100 --since 2026-01-01     # one jurisdiction, source, or body
+ccs sync --no-refresh                       # discovery only; leave stored meetings alone
 ```
 
 `--only` takes a comma-separated list of body ids, source names, or
@@ -131,8 +141,9 @@ government at once — which is rarely what you want, and never cheap.
 `ccs check` accepts the same flag for a free preview.
 
 Cost: ~$0.05–$0.15 per meeting summarized. A busy month with ~15 meetings
-runs ~$1–$2. Meetings already ingested are reused from the manifest —
-repeat runs are near-free.
+runs ~$1–$2. Checking stored meetings for late sources is free; only a refresh
+that finds something new calls Claude, so repeat runs are near-free unless a
+document or video has appeared since the last one.
 
 ### `ccs ingest <source:key>`
 
@@ -401,7 +412,8 @@ the site — only Claude's summary is.
 - **Agendas aren't always published in advance.** The county sometimes
   doesn't post an agenda to Diligent until close to (or right after) the
   meeting. If a meeting is on YouTube but missing after a sync, wait a
-  few days and re-run.
+  few days and re-run. Minutes, videos and captions that arrive after a
+  meeting is stored are picked up by later syncs (see `ccs sync`).
 - **LEPC and Veteran's Assistance aren't on Diligent.** Those bodies stay
   in the tracked list but never produce records. If we find where they
   publish, we'll add a scraper.

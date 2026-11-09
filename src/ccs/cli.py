@@ -4,7 +4,10 @@ Commands:
   ccs summary                           rebuild every government's About page
   ccs summary belvidere                 rebuild just one
   ccs check                             show which tracked bodies have records in a window (no Claude calls)
-  ccs sync                              discover + ingest new meetings into the manifest (default: last 35 days)
+  ccs check --gaps                      list stored meetings a sync would re-read because a source was posted since (no Claude calls)
+  ccs sync                              discover + ingest new meetings into the manifest (default: last 35 days),
+                                        and re-read stored meetings (up to a year back) whose minutes, video or captions arrived later
+  ccs sync --no-refresh                 discovery only; leave stored meetings alone
   ccs sync --since YYYY-MM-DD
   ccs sync --only d100 --since ...      limit to one jurisdiction, source, or body
   ccs ingest <source>:<key>             re-ingest a specific meeting, updating the manifest
@@ -63,12 +66,16 @@ def main(argv: list[str] | None = None) -> int:
                          help="Window start (default: 35 days ago)")
     p_check.add_argument("--only", default=None,
                          help="Comma-separated body ids, sources, or jurisdictions")
+    p_check.add_argument("--gaps", action="store_true",
+                         help="Instead, list stored meetings a sync would refresh, and why")
 
     p_sync = sub.add_parser("sync", help="Discover and ingest new meetings into the manifest")
     p_sync.add_argument("--since", type=_parse_date, default=None,
                         help="Window start (default: 35 days ago)")
     p_sync.add_argument("--only", default=None,
                         help="Comma-separated body ids, sources, or jurisdictions")
+    p_sync.add_argument("--no-refresh", action="store_true",
+                        help="Only discover new meetings; don't re-read stored ones for late sources")
     p_sync.add_argument("--strict", action="store_true",
                         help=f"Exit {EXIT_UNREAD} if any published document could not be read")
 
@@ -142,9 +149,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "summary":
         return _cmd_summary(args.jurisdiction)
     if args.command == "check":
-        return _cmd_check(args.since, _parse_only(args.only))
+        return _cmd_check(args.since, _parse_only(args.only), args.gaps)
     if args.command == "sync":
-        return _cmd_sync(args.since, _parse_only(args.only), args.strict)
+        return _cmd_sync(args.since, _parse_only(args.only), args.strict, not args.no_refresh)
     if args.command == "ingest":
         return _cmd_ingest(args.meeting_id)
     if args.command == "brief":
@@ -181,11 +188,17 @@ def _cmd_summary(jurisdiction: str | None) -> int:
     return 0
 
 
-def _cmd_check(since: date | None, only: set | None) -> int:
+def _cmd_check(since: date | None, only: set | None, gaps: bool = False) -> int:
     today = date.today()
     since = since or (today - timedelta(days=35))
     if _no_match(only):
         return 2
+    if gaps:
+        found = report.find_gaps(today, only=only)
+        for record, reason in sorted(found, key=lambda g: g[0].date):
+            print(f"{record.id:<32} {record.date}  {reason}")
+        print(f"\n{len(found)} stored meeting(s) a sync would refresh.")
+        return 0
     print(f"Checking sources for {since} → {today}...\n")
     rows = report.check_sources(since, today, only=only)
     _print_check_table(rows)
@@ -208,7 +221,8 @@ def _print_check_table(rows: list[tuple[str, bool]]) -> None:
     print(border)
 
 
-def _cmd_sync(since: date | None, only: set | None, strict: bool = False) -> int:
+def _cmd_sync(since: date | None, only: set | None, strict: bool = False,
+              refresh: bool = True) -> int:
     today = date.today()
     since = since or (today - timedelta(days=35))
     if since > today:
@@ -220,7 +234,8 @@ def _cmd_sync(since: date | None, only: set | None, strict: bool = False) -> int
     print(f"Syncing: {since} → {today}")
     print(f"Tracked bodies: {[b.id for b in report.select_bodies(only)]}")
 
-    entries, unread = report.sync_meetings(since=since, today=today, only=only)
+    entries, unread = report.sync_meetings(since=since, today=today, only=only,
+                                            refresh=refresh)
     print(f"\n{len(entries)} meeting(s) in window. Run `ccs build-site` to refresh the site.")
     for line in unread:
         print(f"UNREAD  {line}", file=sys.stderr)
@@ -305,8 +320,12 @@ def _cmd_brief(since: date | None, only: set | None, force: bool) -> int:
     if _no_match(only):
         return 2
     wanted = {b.id for b in report.select_bodies(only)}
+    # A refresh rewrites an old meeting's summary, so its brief is due even
+    # though the meeting itself is outside the window.
     records = [r for r in manifest.load().values()
-               if r.body_id in wanted and r.date >= since.isoformat()]
+               if r.body_id in wanted
+               and (r.date >= since.isoformat()
+                    or (r.updated_at or "") >= since.isoformat())]
     records.sort(key=lambda r: r.date)
     if not records:
         print(f"No ingested meetings on or after {since}. Nothing to brief.")

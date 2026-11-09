@@ -34,6 +34,24 @@ class NoUsableText(Exception):
     written and the next sync retries the meeting for free."""
 
 
+class Unchanged(Exception):
+    """A refresh read the sources and found nothing the record doesn't already
+    have. Raised before the Claude call, so it costs nothing. `video_id` is the
+    video the refresh matched, which may be newer than the record's (no captions
+    yet, so no new text, but the link is still worth publishing)."""
+
+    def __init__(self, meeting_id: str, video_id: str | None = None):
+        super().__init__(meeting_id)
+        self.video_id = video_id
+
+
+def _carry_over(record: manifest.MeetingRecord,
+                previous: manifest.MeetingRecord | None) -> manifest.MeetingRecord:
+    if previous is not None:
+        record.ingested_at = previous.ingested_at
+    return record
+
+
 def _clip(text: str, limit: int, what: str) -> str:
     if len(text) <= limit:
         return text
@@ -51,8 +69,13 @@ def _meeting_dir(meeting_id: str) -> Path:
 
 
 def ingest_diligent(base: str, source: str, ref: diligent.MeetingRef, body: Body,
-                    videos: list[youtube.YouTubeVideo] | None = None) -> manifest.MeetingRecord:
-    """Full recap pipeline: metadata, agenda HTML, video captions (if any), summary."""
+                    videos: list[youtube.YouTubeVideo] | None = None,
+                    previous: manifest.MeetingRecord | None = None) -> manifest.MeetingRecord:
+    """Full recap pipeline: metadata, agenda HTML, video captions (if any), summary.
+
+    With `previous`, this is a refresh: raises Unchanged unless the captions
+    arrived since the record was written.
+    """
     meeting_id = manifest.make_id(source, str(ref.id))
     outdir = _meeting_dir(meeting_id)
 
@@ -82,12 +105,14 @@ def ingest_diligent(base: str, source: str, ref: diligent.MeetingRef, body: Body
 
     if not (agenda_text.strip() or transcript.strip()):
         raise NoUsableText(f"{meeting_id}: no agenda text and no transcript")
+    if previous is not None and not (transcript.strip() and not previous.has_transcript):
+        raise Unchanged(meeting_id, video_id)
 
     prompt = _build_diligent_prompt(body, meeting_data, ref, agenda_text, transcript)
     summary = _call_claude(prompt)
     (outdir / "summary.md").write_text(summary)
 
-    return manifest.MeetingRecord(
+    return _carry_over(manifest.MeetingRecord(
         id=meeting_id,
         body_id=body.id,
         source=source,
@@ -101,15 +126,19 @@ def ingest_diligent(base: str, source: str, ref: diligent.MeetingRef, body: Body
             base, ref.id, agenda_doc.html if agenda_doc else "",
             video_id, bool(transcript),
         ),
-    )
+    ), previous)
 
 
 def ingest_pdf_meeting(source: str, meeting, body: Body,
-                       videos: list[youtube.YouTubeVideo] | None = None) -> manifest.MeetingRecord:
+                       videos: list[youtube.YouTubeVideo] | None = None,
+                       previous: manifest.MeetingRecord | None = None) -> manifest.MeetingRecord:
     """Recap for a site that posts agenda/minutes PDFs: download, extract, summarize.
 
     `meeting` is any object exposing `.date`, `.key`, `.name`, `.agenda_url`
     and `.minutes_url` — see sources.PdfIndexSource.
+
+    With `previous`, this is a refresh: raises Unchanged unless a document or
+    the captions were readable that the record doesn't already list.
     """
     meeting_id = manifest.make_id(source, meeting.key)
     outdir = _meeting_dir(meeting_id)
@@ -132,12 +161,18 @@ def ingest_pdf_meeting(source: str, meeting, body: Body,
 
     if not (agenda_text or minutes_text or transcript.strip()):
         raise NoUsableText(f"{meeting_id}: no text from its documents and no transcript")
+    if previous is not None:
+        had = {r.kind for r in previous.resources}
+        if not ((minutes_text and "minutes" not in had)
+                or (agenda_text and "agenda" not in had)
+                or (transcript.strip() and not previous.has_transcript)):
+            raise Unchanged(meeting_id, video_id)
 
     prompt = _build_pdf_meeting_prompt(body, meeting.date, agenda_text, minutes_text, transcript)
     summary = _call_claude(prompt)
     (outdir / "summary.md").write_text(summary)
 
-    return manifest.MeetingRecord(
+    return _carry_over(manifest.MeetingRecord(
         id=meeting_id,
         body_id=body.id,
         source=source,
@@ -154,7 +189,7 @@ def ingest_pdf_meeting(source: str, meeting, body: Body,
             meeting.minutes_url if minutes_text else None,
             video_id, bool(transcript),
         ),
-    )
+    ), previous)
 
 
 def _download_and_extract(url: str | None, pdf_dest: Path, txt_dest: Path) -> str:
