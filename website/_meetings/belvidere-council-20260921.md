@@ -21,93 +21,85 @@ resources:
 
 ## The lede
 
-- The City Council held its regular meeting on September 21, 2026, with nine members present and one absent.
-- Most public comment focused on concerns about a proposed data center project called "Project Hawkeye" near Genoa Road, with residents raising questions about property values, health impacts, water usage, and infrastructure strain.
-- The council honored code enforcement officer Cara Wetzel, who is retiring after 20 years with the city.
-- The council approved nearly $6 million in general and special fund expenditures, including pension payments and a $2 million certificate of deposit.
+- The Belvidere City Council approved nearly $6 million in general fund expenditures on September 21, driven largely by pension payments and a $2 million certificate of deposit purchase.
+- Six residents spoke against a proposed data center during public comment, citing concerns about property values, noise, health impacts, and environmental strain, though no formal action on the project appeared on the agenda.
+- The council voted to convert the intersection of East Perry Street and Webster Street from a two-way to a four-way stop.
+- Director of Buildings Craig Wilcox recognized code enforcement officer Cara Whetsel for 20 years of service as she prepares to retire.
 
 ## Decisions & votes
 
-**Four-way stop installation (Ordinance 783H) - Passed unanimously 9-0**
-The council approved converting the intersection of East Perry Street and Webster Street from a two-way stop to a four-way stop intersection.
+**Ordinance 783H (second reading) - Four-way stop at Perry and Webster**  
+Converts the intersection of East Perry Street and Webster Street from a two-way to four-way stop intersection.  
+**Vote:** 9-0 in favor (Fleury, Frank, Gramkowski, Hoiness, McGee, Peterson, Stevens, Albertini, Brereton)
 
-**Engineering proposal for Safe Routes to Schools - Passed unanimously 9-0**
-The council approved a proposal from CES, Inc. not to exceed $31,000 for preliminary and design engineering for the 2025 Safe Routes to Belvidere Schools project, to be paid from public benefit funds.
+**General & Special Fund expenditures - $5,972,955.49**  
+Approved expenditures including fire and police pension payments and opening of a $2 million CD. Discussion addressed $13,055 in Fire Engine 102 repairs (maintenance backlog, pump test, brake work, siren repair) and a $2,500 video gaming license refund to Speedway for duplicate payment.  
+**Vote:** 9-0 in favor (Albertini, Brereton, Fleury, Frank, Gramkowski, Hoiness, McGee, Peterson, Stevens)
 
-**Fiscal year 2026 audit - Passed unanimously 9-0**
-The council accepted and approved the audit presented by Sikich for the fiscal year ending April 30, 2026.
+**Water & Sewer Fund expenditures - $1,197,959.18**  
+**Vote:** 9-0 in favor (Brereton, Fleury, Frank, Gramkowski, Hoiness, McGee, Peterson, Stevens, Albertini)
 
-**City Hall flooring project - Passed unanimously 9-0**
-The council approved a proposal from Lonnie Carpet Max for $63,845 for interior flooring at City Hall, to be paid from impact fees.
+**CES Inc. engineering contract - $31,000**  
+Approved preliminary and design engineering for the 2025 Safe Routes to Belvidere Schools project, paid from public benefit funds.  
+**Vote:** 9-0 in favor (Frank, Gramkowski, Hoiness, McGee, Peterson, Stevens, Albertini, Brereton, Fleury)
 
-**Fire department open house helicopter landing - Passed unanimously 9-0**
-The council authorized closure of State Street from Meadow Street to the north side of State Street Bridge on Saturday, October 10, 2026 from 10:30 a.m. to 3:30 p.m., and authorized use of the State Street Bridge as a medical helicopter landing location for the fire department open house.
+**Audit approval for fiscal year ending April 30, 2026**  
+Accepted and approved audit presented by Sikich.  
+**Vote:** 9-0 in favor (Gramkowski, Hoiness, McGee, Peterson, Stevens, Albertini, Brereton, Fleury, Frank)
 
-**General and special fund expenditures - Passed unanimously 9-0**
-The council approved $5,972,955.49 in expenditures.
+**Lonnie's Carpet Max flooring contract - $63,845**  
+Approved interior flooring replacement at City Hall, paid from impact fees. Discussion noted Stateline Carpet was not contacted for a bid and Garry's Flooring did not submit a proposal.  
+**Vote:** 9-0 in favor (Hoiness, McGee, Peterson, Stevens, Albertini, Brereton, Fleury, Frank, Gramkowski)
 
-**Water and sewer fund expenditures - Passed unanimously 9-0**
-The council approved $1,197,959.18 in expenditures.
+**State Street closure and helicopter landing - October 10**  
+Authorized closure of State Street from Meadow Street to north side of State Street Bridge on Saturday, October 10, 2026, from 10:30 a.m. to 3:30 p.m., and authorized use of State Street Bridge for medical helicopter landing at Fire Department Open House. Fire Chief Shadle outlined safety protocols including 200-foot setback (increased from prior 150-foot standard), FAA guidelines compliance, and a due diligence checklist.  
+**Vote:** 9-0 in favor (McGee, Peterson, Stevens, Albertini, Brereton, Fleury, Frank, Gramkowski, Hoiness)
 
-**Meeting minutes - Passed (voice vote)**
-The council approved minutes from the September 8, 2026 regular meeting and the September 14, 2026 Committee of the Whole meeting.
+**First readings (no votes):**
+- Ordinance 784H: Special use permit for in-vehicle sales/service at 1862 Crystal Parkway
+- Ordinance 785H: Amendment to Chapter 151 Subdivisions Ordinance
+- Ordinance 786H: Designating Perry School (633 W. Perry Street) as local historic landmark
 
 ## Discussion items
 
-**Data center concerns:** Multiple residents raised questions about Project Hawkeye, a proposed data center development. Residents asked whether the project had been part of the mayor's campaign platform, requested a referendum vote, asked about annexation status and land purchases, and raised concerns about property values, noise pollution, health impacts from electromagnetic waves, water consumption, electricity demands, and traffic on Genoa Road. One resident suggested people file Freedom of Information Act requests to obtain more information.
+**Data center opposition:** Six residents spoke against a proposed data center project, though it was not formally on the agenda. Concerns raised included impacts on property values, noise from generators running 24/7, health risks (hearing loss, stress, insomnia, high blood pressure, electromagnetic wave exposure linked to childhood leukemia), water consumption straining municipal supplies, increased electricity demands, environmental impacts on farming and wildlife, diesel generator emissions, and proximity to schools. Speakers requested the issue be placed on a referendum ballot and urged residents to file FOIA requests for information. One speaker referenced the Planning and Zoning Commission minutes from September 8 showing opposition to "Project Hawkeye."
 
-**General fund expenditure inquiry:** Alderman Burton asked why the month's general and special fund expenditures totaled nearly $6 million, unusually high for a single month. Finance Director Turnipseed explained this included payments to fire and police pensions plus opening a $2 million certificate of deposit.
+**Fire Engine 102 repairs:** Alderman Peterson asked about the $13,055 repair bill. Chief Shadle explained it covered accumulated maintenance during the four-and-a-half months Engine 101 was out after an accident, including annual maintenance, pump test, brake work, siren repair, mirror replacement, cab seat replacement, air brake work, and door sensors.
 
-**Fire engine repairs:** Alderman Peterson asked about $13,055 in repairs to Engine 102. Fire Chief Shadel explained these were accumulated maintenance items that built up while Engine 101 was out of service for four and a half months following an accident, including regular annual maintenance, pump test, brake work, siren repair, mirror replacement, and cab seat replacement.
+**Flooring contract bidding:** Discussion addressed why Stateline Carpet was not contacted to bid (they were not among the four companies reached out to) and why Garry's Flooring did not submit a proposal (they were asked but declined).
 
-**Helicopter landing safety:** Discussion about safety protocols for landing a medical helicopter at the fire department open house. Fire Chief Shadel outlined FAA guidelines, explained the flight crew makes the final go/no-go decision, noted they only successfully land about a third of the time due to weather, and committed to a 200-foot setback (increased from the previous 150 feet) and a safety checklist that must be completed before the event.
-
-**City Hall flooring bids:** Alderman Burton asked why Stateline Flooring, which had done previous fire department work, was not included in bids. Staff explained they had reached out to four companies but Stateline did not submit a proposal. Alderwoman Gracowski asked about local companies; staff said they had asked one other local company (Gary's) but did not receive a proposal.
+**Helicopter landing safety:** Alderman Peterson raised safety concerns about landing a helicopter on the State Street Bridge. Chief Shadle explained FAA guidelines are followed, the flight crew makes the final go/no-go decision, the setback would increase from 150 to 200 feet, and a due diligence checklist would be completed before allowing the landing.
 
 ## Financial / operational notes
 
-The general and special fund expenditures of nearly $6 million included fire pension payment, police pension payment, and a $2 million certificate of deposit investment.
+The general fund expenditures of nearly $6 million were unusually high due to fire and police pension payments and the opening of a $2 million certificate of deposit, according to Finance Director Sarah Turnipseed.
 
-The Safe Routes to Schools engineering work will be paid from public benefit funds.
-
-The City Hall flooring project will be paid from impact fees. The winning bid of $63,845 was approximately $20,000-$30,000 lower than the other three bids received.
-
-Engine 102 repairs totaled $13,055, with the largest items being rear brakes ($3,800) and siren repair ($3,494).
-
-The city uses Legacy Fire for engine repairs because they are an authorized dealer for Alexus fire engines and have direct access to parts.
-
-The library reported issuing 166 new library cards during September (Library Card Signup Month).
-
-City Hall's front sidewalk on Day Street was torn up for cement replacement work, with doors closed temporarily. The work had been delayed because cement contractors were busy throughout the summer.
-
-The library's bookmobile shelter construction is complete and awaiting electrical work for security cameras and motion detector lights.
+The library's bookmobile shelter construction is complete, awaiting electrical work for security cameras and motion detector lights. The library's front sidewalk on Day Street was torn up for replacement and those doors are temporarily closed.
 
 ## Public comment
 
-**Jeff Holy (7272 Huber Road):** Asked what benefits the data center would provide to Belvidere, Boone County, and Spring Township. Said his property directly adjoins the proposed site and expressed concern about property values, lifestyle impacts, and traffic disruption on Genoa Road for five to eight years. Asked if the project could be placed on a referendum for the November ballot. Noted he did not get to vote for the mayor and didn't hear about the data center during campaign season. Encouraged residents to file Freedom of Information Act requests.
+Craig Wilcox recognized Cara Whetsel for 20 years of service as code enforcement officer and planning/zoning staff member, noting her retirement this Friday.
 
-**Kay Wilson (525 Appleton Road):** Said she has lived in Boone County for 87 years and is concerned about data center effects on family and community. Called for research on existing data centers before building more, including impacts on animals, wildlife, environment, air and water quality, noise, and economy. Noted concerns about AI dangers and referenced a Cherry Valley meeting where Microsoft showed a map indicating construction would start in 2027. Asked if annexation has already occurred and if Project Hawkeye has purchased land. Thanked the mayor for gathering facts and asked that the public be kept informed.
+Six residents spoke in opposition to a data center:
 
-**Doug Weir (4623 Fernwood Road):** Said he is 76 years old with all his money invested in his house and property. Expressed concern that property values will "drop like a rock" and nobody will want to buy his house if the data center is built. Suggested putting it in an industrial area like Route 20 near Cherry Valley instead. Questioned whether residents would get tax breaks, noting that data centers typically receive large tax incentives. Said his tax bill never went down when Walmart, a tollway gas station, General Mills, and other developments were built. Called the project "a total eyesore."
+**Jeff Hulsey** (7272 Huber Road) said his property adjoins the proposed data center site, expressed concerns about impacts on property values and Genoa Road traffic during construction, asked what benefits the city would provide to affected county residents, requested the issue be placed on the November ballot as a referendum, and urged residents to file FOIA requests.
 
-**Cheryl Buck (8635 Huber Road):** Asked how the center would benefit Belvidere and Boone County and how long before benefits are realized. Asked about tax decreases. Inquired whether there is a local law addressing buffer zones due to large generators running 24/7. Listed health concerns including hearing loss, stress, insomnia, high blood pressure, headaches, respiratory and heart risks, and childhood leukemia linked to electromagnetic waves. Noted schools are close to the proposed site. Raised concerns about farming impacts, wildlife habitat loss, decreased water availability, and increased electricity demands. Said she and her husband retired to live in the country and wants her grandchildren to experience the wildlife.
+**Kay Wilson** (525 Appleton Road, 87-year Boone County resident) said no more data centers should be built until research is conducted on existing facilities' effects on animals, wildlife, environment, air and water quality, noise impacts, and local economies. She said Microsoft announced at a Cherry Valley meeting they would start construction in 2027 and complete in 2028-29. She asked if annexation along Genoa Road has occurred and if Project Hawkeye has purchased land.
 
-**Ruth Hobstich:** Said she Googled information about AI and data centers, finding "systemic community" problems embedded throughout the entire system. Cited environmental and infrastructure concerns from hundreds of data centers operating or planned in Illinois (estimates vary from 164 to over 244 projects). Listed problems including massive energy consumption, high utility bills, grid upgrade costs shifted to residential customers, millions of gallons of daily water use, noise pollution from cooling fans, and diesel generator emissions producing odors and particulates. Referenced Thailand stopping 166 data centers after one leaked oil into city drains. Noted at least six counties and nine cities in Illinois have enacted temporary moratoriums. Criticized the mayor's statement about not having facts, saying representatives should research on their own. Criticized what she characterized as the mayor's unprofessional treatment of an alderman's question at the previous week's meeting.
+**Doug Weir** (4623 Fernhole Road) said at age 76 all his money is in his house and property, expressed concern property values would "drop like a rock" making his home unsellable, suggested locating data centers in areas with existing large industry like Route 20, questioned whether the project would receive tax breaks, and said he has never seen tax reductions from previous commercial development.
 
-**Teresa Stein:** Reiterated concerns expressed by previous speakers and asked the mayor why he is "bringing this to our attention" and trying to do "anything."
+**Cheryl Bock** (8635 Huber Road) asked how the center would benefit Belvidere and Boone County and when benefits would be realized, asked about buffer zone laws, cited health issues from 24/7 generator noise including hearing loss, stress, insomnia, high blood pressure, respiratory and heart risks, noted electromagnetic waves linked to childhood leukemia and proximity to schools, and raised concerns about impacts on farming, wildlife habitat, water availability, and electricity demands.
 
-One audience member also asked from the floor "Do you even hear us out here?" The mayor responded that he heard fine but that public comment is not a debate and the council has a meeting to run.
+**Ruth Haberstich** said she researched AI and data centers, cited "systematic community" problems embedded throughout systems, noted Illinois has 164-244 data centers with problems including massive energy consumption shifting infrastructure costs to residential customers, high water usage straining municipal supplies, noise pollution from cooling fans, and diesel generator emissions producing odors and particulates. She referenced Thailand stopping 166 data centers after one leaked oil, mentioned at least six Illinois counties and nine cities have enacted moratoriums, criticized the mayor for seeming to disagree unprofessionally with an alderman's question at the previous meeting, and asked why the mayor is pursuing this.
+
+**Teresa Stein** reiterated others' concerns and asked why the mayor is bringing this to the community.
+
+Mayor Morris did not respond substantively to the comments except to clarify this was public comment, not a debate.
 
 ## Notable moments
 
-Community Development Director Craig Wilcox announced the retirement of code enforcement officer Cara Wetzel after 20 years with the city. He praised her work as "so out of character" because she is kind and not confrontational, saying she "wins over" property owners "with her charm" and for those she fails to win over "she just meets them in court." The mayor agreed, calling hers "probably the toughest job in the city" because people don't always see rules the way they're written and enforced. The announcement received applause.
+During public comment on the data center, one resident asked from the audience "Do you even hear us out here?" Mayor Morris responded he could hear fine but noted "this isn't a debate" and that public comment had been provided.
 
-Ida Public Library Director Mindy Long and Assistant Director Daisy gave a presentation on library programs and services. Long reminded county residents they can get no-fee library cards for digital services and that children ages 3-18 in Boone County can get free cards. She brought treat bags for council members containing craft kits, pens, and chocolate from the "staff stress drawer" (the library keeps two chocolate drawers labeled "staff stress drawer" - one regular chocolate, one zero-sugar). Long joked about her retirement plans: "hopefully in a year. Maybe two years. It might end up being two years. I hope it's a year." She also reminded attendees that library events are free and no library card is required to attend.
+Ida Public Library Director Mindy Long announced she hopes to retire in one to two years and introduced Assistant Director Daisy Mechler as her likely successor. Long offered county residents no-fee digital library cards and youth ages 3-18 no-fee cards for materials, and staff distributed treat bags with crafts and chocolate from the "staff stress drawer."
 
-During discussion of a chess club, Alderman Burton noted Rockford Public Library has been promoting theirs. Long explained they tried a chess night for six months but got very low attendance of two to three people, though said "maybe we could try it again in the winter."
-
-Fire Chief Shadel explained extensive safety protocols for the helicopter landing at the open house, noting the helicopter only successfully lands about a third of the time due to weather restrictions and that "the only way to not have any risk is to not do anything." He committed to not allowing the landing if safety requirements couldn't be met, saying "The last thing I would want to do is take a risk for something that is a family fun community event and have it go against our mission of saving lives and property."
-
-The meeting opened with an invocation that prayed for military service members "heroes in the war against Iran in hopes of finally securing a safe future for America, the Middle East, and the entire world."
-
-The mayor noted at the end that he was still hopeful for an executive session on an unspecified matter but "progress is slow."
+The scheduled executive session on collective bargaining matters was not held. Mayor Morris said "progress is slow" but the council would be briefed when information is available.
