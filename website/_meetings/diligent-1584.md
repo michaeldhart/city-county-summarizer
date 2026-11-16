@@ -3,18 +3,20 @@ title: Boone County Board Meeting
 body_id: board
 date: '2026-02-19'
 permalink: /bodies/board/meetings/diligent-1584/
-description: The county board approved a $623,903 contract with M&M Concrete for the
-  North Boone School Road Bridge project, plus over $900,000 in highway department
-  equipment and construction contracts. Additional projects included $132,772 for
-  engineering work on Poplar Grove Road shoulders and a $165,608 truck body purchase
-  from Monroe Truck Equipment.
+description: Multiple residents urged the county board to install a four-way stop
+  at Orth and Calonia roads, citing recent crashes including a fatal accident. The
+  county engineer outlined recent safety improvements including flashing beacons and
+  brush clearing, and discussed future options ranging from a four-way stop to a roundabout
+  costing up to $1.5 million locally or $150,000 with federal funds over three years.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1584
+has_transcript: true
+updated: '2026-11-09'
 resources:
 - kind: portal
   label: Diligent meeting page
   url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1584
 - kind: video
-  label: Video recording (no captions)
+  label: Video recording
   url: https://www.youtube.com/watch?v=I4ftaq3a-pc
 - kind: attachment
   label: Public Comment Rules and Procedures - Amended 08222024.pdf (115 KB)
@@ -120,44 +122,73 @@ resources:
 
 ## The lede
 
-- Board approved sale of surplus county property at 706 Marquette Drive
-- Approved major infrastructure projects including North Boone School Road Bridge ($623,903) and multiple highway department equipment and construction contracts totaling over $900,000
-- Repealed outdated ordinance regarding instant assessment of improvements
-- Approved $39,900 security upgrade for access control doors at county buildings
-- Appointed Norman Stimes to Capron Rescue Squad
+- The board approved $623,903 for the North Boone School Road Bridge project and $165,608 for a truck body, among several road and equipment purchases
+- Multiple residents urged the board to install a four-way stop at the Orth and Calonia Road intersection, citing recent crashes including a fatal accident, while the county engineer outlined recent safety improvements and discussed future options including a roundabout
+- The board approved $39,900 for access control doors at county buildings and repealed an ordinance on instant assessment of improvements
+- The board appointed Norman Stimes to the Capron Rescue Squad
 
 ## Attendance & housekeeping
 
-Meeting held February 19, 2026 at 6:30 PM in the County Board Room, 1212 Logan Ave., Belvidere. Meeting was available via live stream on YouTube. Board members listed include Chairman Karl Johnson, Vice-Chair Rodney Riley, and members Ryan Curry, Brian Schneider, Dave Wiltse, Dave Cordray, Josh Shumaker, Tom Walberg, Alisa Patterson, Dana Logsdon, Matt Ragano, and Marion Thornberry. The board approved minutes from December 18, 2025 and January 15, 2026 Special County Board meetings, and January 22, 2026 County Board meeting.
+The meeting was called to order at 6:34 p.m. by Chairman Karl Johnson. All 12 board members were present: Karl Johnson, Josh Shumaker, Dave Cordray, Brian Schneider, Dave Wiltse, Ryan Curry, Alisa Patterson, Tom Walberg, Rodney Riley, Matt Ragano, Dana Logsdon, and Marion Thornberry. The board approved minutes from December 18, 2025, January 15, 2026, and January 22, 2026 meetings. The board approved the agenda as presented.
 
 ## Decisions & votes
 
-**Resolution 26-03: Sale of Surplus Property (03-28-278-007)** - Approved sale of county property at 706 Marquette Drive SW. No vote count or dissent recorded.
+**Resolution 26-03: Sale of surplus property at 706 Marquette Drive (03-28-278-007)**
+Approved by roll call vote, 12-0.
 
-**Ordinance 26-06: Repealing Instant Assessment of Improvements** - Approved repeal of Boone County Code Chapter 70, Article I, Section 70-5 regarding instant assessment of improvements. No vote count or dissent recorded.
+**Ordinance 26-06: Repealing instant assessment of improvements code provision (Chapter 70, Article I, Section 70-5)**
+Approved by roll call vote, 12-0.
 
-**Claims Approval: $920,677.23** - Approved with notation that Chairman Karl Johnson abstained from voting on claims presented by William Charles, Northern Illinois Service Co., Core & Main, all Boone County Highway Department claims, and county department claims regarding sewage, storm water, construction and excavation. No vote count recorded.
+**Claims totaling $920,677.23**
+Approved by roll call vote, 12-0. Chairman Johnson abstained from claims involving William Charles, Northern Illinois Service Co., Core & Main, all Highway Department claims, and county department claims regarding sewage, storm water, construction, and excavation.
 
-**Audio Engineering Security Proposal: $39,900** - Approved proposal for installing access control doors for PSB lower level and McKinley buildings. No vote count or dissent recorded.
+**Audio Engineering proposal for access control doors at PSB lower level and McKinley buildings: $39,900**
+Approved by roll call vote, 12-0. Administrator Becky noted the proposal excluded three garage doors deemed unnecessary.
 
-**Intergovernmental Agreement with Boone County Conservation District** - Approved IGA for temporary construction access on Woodstock Road. No vote count or dissent recorded.
+**Intergovernmental agreement with Boone County Conservation District for temporary construction access on Woodstock Road**
+Approved by roll call vote, 12-0.
 
-**Barricade Bid: $7,705.50** - Approved bid from RoadSafe Traffic Systems, Inc. No vote count or dissent recorded.
+**Barricade bid to RoadSafe Traffic Systems, Inc.: $7,705.50**
+Approved by roll call vote, 12-0.
 
-**North Boone School Road Bridge Project: $623,903.00** - Approved low bidder M&M Concrete for bridge project. No vote count or dissent recorded.
+**North Boone School Road Bridge project to low bidder M&M Concrete: $623,903**
+Approved by roll call vote, 12-0.
 
-**Truck Body Bid: $165,608.00** - Approved low bidder Monroe Truck Equipment. No vote count or dissent recorded.
+**Truck body bid to Monroe Truck Equipment: $165,608**
+Approved by roll call vote, 12-0.
 
-**Poplar Grove Road Phase I & II Agreement: $132,772.00** - Approved agreement with Willet Hoffmann and Associates for paved shoulders engineering. No vote count or dissent recorded.
+**Phase I & II engineering agreement for Poplar Grove Road paved shoulders to Willet Hoffmann and Associates: $132,772**
+Approved by roll call vote, 12-0.
+
+**General consent items (fund transfers, road projects, donations, raffle permits)**
+Approved by voice vote. Johnson noted a sizable donation to animal services from Alice Nelson.
 
 ## Discussion items (no vote)
 
-Reports were scheduled from Council on Aging, Growth Dimensions, Court Appointed Special Advocate (CASA), and Region 1 Planning Council (R1PC). Special committee reports were scheduled for Community Building, UCCI (United Counties Council of Illinois), CAA (Community Action Agency), 911 Board, Northern Illinois Land Bank Authority, and other committees. Executive session topics included litigation, personnel, collective bargaining, land acquisition, and sale of real estate.
+Highway Engineer Justin Cone provided an extensive update on safety improvements at the Orth and Calonia Road intersection. Recent work includes installing "cross traffic does not stop" signs on the back of stop signs (February 19), yellow flashing beacons (February 10), and brush clearing (February 6). Planned improvements include meeting with property owners for additional tree removal on south quadrants, adding a flashing beacon to the north "stop ahead" sign, installing high-friction surface treatment on the east approach, and potentially acquiring right-of-way for future geometric improvements.
+
+Cone explained he previously sent letters to adjacent property owners about rumble strips but received negative feedback due to noise concerns, though he indicated this remains under consideration. He discussed the feasibility of a roundabout, stating it could be completed within one year if paid for locally (approximately $1.5 million) or within three years if using federal Highway Safety Improvement Program funds covering 90% of costs (county share approximately $150,000-$200,000).
+
+Board members debated immediate versus long-term solutions. Riley emphasized the need for both short-term action and a long-term plan. Wiltse suggested a trial period with a four-way stop, 45 mph speed limit, and enforcement. Curry expressed frustration with delay and advocated for immediate action on a four-way stop. Walberg suggested allowing recent improvements time to take effect. Patterson asked about timelines for data collection from recent changes. Thornberry noted that roundabouts on Route 20 near Elgin have improved traffic flow despite initial skepticism.
+
+Cone addressed traffic data showing 3,150 vehicles per day westbound versus 1,650 eastbound, suggesting Candlewick traffic influences the pattern. He noted accident reports commonly cite drivers either running stop signs or believing the intersection was a four-way stop. He emphasized the need for a system-wide approach to road safety while acknowledging individual location concerns.
 
 ## Public comment
 
-Public comment period was scheduled with 30-minute time limit. Members of the public were encouraged to attend in person to provide comment. Written comments submitted to the Board would not be read aloud by the Board Chair. Comment slips available on county website or by contacting the Administration Office.
+Kelly Clark (12784 Vestus Place, Belvidere) thanked the board for recent improvements at Orth and Calonia but urged continued momentum, noting the issue was not on the agenda for a vote. She disputed that a four-way stop would significantly hinder traffic on Calonia, noting the road already has four subdivision entrances within one mile north of Orth, plus Dawson Lake's four-way stop, school zones, and additional developments.
+
+Juliet Kingston (12805 Prairie Meadow Lake) cited recent crashes at Orth and Calonia, including a January 16, 2026 crash sending two to the hospital, a December 31 accident with airbag deployment, a June 12 three-vehicle crash, and a May 24 three-vehicle crash. She said she has missed family events to attend board meetings advocating for a four-way stop.
+
+Bethany Marston (2975 Prairie Road, Belvidere) represented neighbors unable to attend. She thanked the board for acknowledging the problem but urged more immediate action beyond recent improvements. She noted crashes have drastically increased since 2022 and expressed concern that roundabout planning will take years. She described her anxiety crossing the intersection four times daily with her children and said her young sons know to be quiet when approaching "that scary intersection." She offered to help raise funds if cost is an issue.
 
 ## Notable moments
 
-The county received a 2025 Source Water Protection Award, noted in informational correspondence. Chairman Johnson's extensive list of abstentions on claims relating to his business interests was formally recorded in the claims approval motion.
+Johnson opened the meeting by incorrectly stating it was "219 p.m." and "February 219" before correcting to 6:34 p.m. on February 19.
+
+During discussion of the Orth-Calonia intersection, Cone acknowledged he is "not a passionate person, period" after suggesting his support for roundabouts may have seemed overly enthusiastic, drawing laughter from the board.
+
+Riley stated he spent 30 years doing accident investigations and expressed frustration with claims that drivers "thought it was a four-way stop," noting vehicle dynamics after crashes reveal whether drivers actually slowed down. He said such claims "don't hold a lot of water."
+
+Cone shared that his daughter was recently in a crash at a four-way stop when another driver ran through at high speed, totaling a new vehicle. He added, "I hope my wife isn't watching, but I kind of blame her because she should have seen them coming at a high rate of speed."
+
+The board discussed possibly holding an upcoming administration committee meeting at the McKinley building so members can tour the facility.

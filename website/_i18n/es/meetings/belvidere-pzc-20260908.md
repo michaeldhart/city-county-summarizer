@@ -1,45 +1,39 @@
 ---
 title: Planning & Zoning Commission
-description: Se programó que la Planning and Zoning Commission celebrara una audiencia pública sobre un permiso de uso especial para Build Holding Company para agregar carriles de servicio al auto en una nueva sucursal de BMO Bank en 1862 Crystal Parkway. La propuesta solicita tres carriles de servicio más un carril de desvío para el edificio de aproximadamente 4,120 pies cuadrados en un lote vacante.
-es_source_hash: b5ffc40e8056af3c
+description: Catorce residentes asistieron a la reunión de la Planning & Zoning Commission para oponerse a un posible centro de datos, aunque no había ningún caso de ese tipo ante la comisión. El comentario público se dio mientras la comisión consideraba enmiendas no relacionadas sobre un banco y subdivisiones, ambas aprobadas por unanimidad.
+es_source_hash: 4a591b00d9a3fbf0
 es_model: claude-sonnet-4-5
-es_translated_at: '2026-10-27T01:34:16+00:00'
+es_translated_at: '2026-11-16T12:21:13+00:00'
 ---
 
-## Adelanto de la agenda
-
 ## Lo principal
-- Audiencia pública programada para Build Holding Company para agregar carriles de servicio al auto en una nueva sucursal de BMO Bank en 1862 Crystal Parkway (aproximadamente 1.2 acres en un Planned Business District)
-- Se propuso enmienda de texto a la City Subdivision Ordinance que cubre el cumplimiento de la State Plat Act, tarifas de inspección y nuevo proceso de Plats of Consolidation
-- Ambos asuntos recibieron recomendaciones de aprobación del personal
-- La comisión revisará las actas de la reunión del 11 de agosto de 2026
 
-### Decisiones y votos
-_Sin contenido._
+- La Planning & Zoning Commission aprobó por unanimidad un permiso de uso especial para un banco con servicio de autoservicio que se construirá en 1862 Crystal Parkway, cerca del intercambio de la I-90
+- La comisión también aprobó por unanimidad cambios a las reglas de subdivisión de la ciudad para controlar mejor cómo se pueden dividir o combinar terrenos
+- El comentario público en la reunión se centró en preocupaciones sobre un posible centro de datos, aunque no había ningún caso de ese tipo en la agenda
+- Ambos casos irán al City Council para acción final
 
-### Asuntos discutidos
+## Decisiones y votos
 
-**Case 2026-19: Build Holding Company – 1862 Crystal Parkway Special Use**
-- Solicitud de permiso de uso especial para operar carriles de servicio al auto para una sucursal propuesta de BMO Bank de ~4,120 pies cuadrados
-- La propiedad es un lote vacante en Belvidere Retail Subdivision (anexada en 2022), zonificada como Planned Business District
-- El servicio al auto incluiría 3 carriles de servicio más un carril de desvío, ubicados detrás del edificio lejos de los puntos de acceso
-- La propiedad está ubicada a 1,200 pies de la residencia más cercana; el plano del sitio muestra que la fila está diseñada para prevenir el retroceso del tráfico
-- El informe consultivo del personal encuentra que la propuesta cumple con los seis criterios de Special Use y recomienda la aprobación con tres condiciones (cumplimiento con el plano del sitio presentado, se requiere plano del sitio sellado antes de los permisos de construcción, cumplimiento del código)
-- Boone County SWCD, Health Department y Fire Department presentaron sin comentarios/preocupaciones
+**Caso 2026-19: Banco con servicio de autoservicio en 1862 Crystal Parkway**
+- **Voto sobre hallazgos de hecho:** Aprobado 5–0 (Gnewuch/Engelman)
+- **Voto sobre recomendación:** Aprobado 5–0 (Cantrell/Druckrey) sujeto a tres condiciones: cumplimiento con el plano del sitio presentado, presentación de un plano del sitio sellado que muestre paisajismo e iluminación antes de que se emitan permisos, y cumplimiento con todos los códigos aplicables
 
-**Case 2026-20: City of Belvidere Text Amendment to Subdivision Ordinance**
-- Propone enmiendas a cinco secciones: Jurisdiction, Definitions, Final Plat Submittal, Consolidation Plat Required y Consolidation Plat Submittal
-- Los cambios clave incluyen: requerir cumplimiento de la ordenanza de zonificación para exenciones de la State Plat Act; reducir el lenguaje de tarifa de inspección de "cinco por ciento" a "tres por ciento"; crear nueva categoría de "Plat of Consolidation" para combinar lotes bajo propiedad común
-- Excluiría dos exenciones de la State Plat Act para prevenir la creación de lotes no conformes
-- El nuevo proceso de consolidación simplifica la combinación de lotes sin requerir el proceso completo de plano preliminar/final
-- El personal recomienda la aprobación
+**Caso 2026-20: Enmiendas al texto de la ordenanza de subdivisiones**
+- **Voto sobre hallazgos de hecho:** Aprobado 5–0 (Druckrey/Cantrell)
+- **Voto sobre recomendación:** Aprobado 5–0 (Cantrell/Druckrey)
 
-**Revisión de actas del 11 de agosto de 2026**
-- Las actas muestran dos casos escuchados: variación de zonificación para retroceso de garaje en 410 Highland Street (aprobada 7-0), y uso especial para juegos de video de 7-Eleven en 707 Logan Avenue (aprobado 6-1)
+**Actas de la reunión del 11 de agosto de 2026**
+- Aprobadas 5–0 (Cantrell/Druckrey)
 
-### Notas financieras y operativas
+## Asuntos discutidos
 
-- Se propone codificar la tarifa de inspección para mejoras públicas al tres por ciento del estimado aprobado del ingeniero (actualmente se cobra pero el código establece "cinco por ciento")
-- El cronograma de tarifas de plano de consolidación fue adoptado por el City Council (los montos específicos no se detallan en la agenda)
-- Se requiere una tarifa de reintegro del 100% si el plano de consolidación no se registra dentro de los 90 días y necesita volver a presentarse
-- El informe mensual muestra ocho planos de sitio y siete cartas de verificación de zonificación procesadas en agosto de 2026
+La comisión escuchó que Build Holding Company construirá una sucursal bancaria de aproximadamente 4,120 pies cuadrados con tres carriles de autoservicio más un carril de desvío en un lote de 1.2 acres en la Belvidere Retail Subdivision. El solicitante Evan Pomerance dijo que la construcción podría comenzar en la primavera de 2027, pero se negó a nombrar la marca bancaria nacional. El personal confirmó que la residencia más cercana está a 1,200 pies de distancia y que los faros del autoservicio apuntarán hacia el sur, hacia un dispensario existente. El sitio requerirá paisajismo bajo un sistema de puntos.
+
+Sobre los cambios a la ordenanza de subdivisiones, el personal explicó que las enmiendas cierran vacíos legales en las exenciones estatales que han permitido la creación de lotes no conformes, reducen las tarifas de inspección del cinco por ciento al tres por ciento de los costos de construcción, y crean un nuevo proceso de "plano de consolidación" para facilitar que los propietarios combinen formalmente lotes bajo propiedad común. El comisionado Paul Engelman confirmó que el proceso de consolidación ayudaría a prevenir brechas en las aceras que ocurren cuando los lotes se combinan solo para fines fiscales.
+
+Catorce residentes hablaron durante el comentario público oponiéndose a un posible centro de datos, aunque no había ningún caso de centro de datos en la agenda.
+
+## Notas financieras y operativas
+
+Las tarifas de inspección para mejoras públicas en nuevos desarrollos se establecerán en tres por ciento del estimado de costos aprobado por el ingeniero, una reducción del cinco por ciento, para coincidir con la práctica actual. Cualquier costo de inspección que supere el tres por ciento debe pagarse antes de que la ciudad acepte las mejoras.

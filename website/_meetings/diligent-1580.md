@@ -3,15 +3,21 @@ title: Committee of the Whole Meeting - Administration
 body_id: cotw-admin
 date: '2026-03-05'
 permalink: /bodies/cotw-admin/meetings/diligent-1580/
-description: The county board approved a special use permit for a solar installation
-  at a property on US Route 20. The application included extensive documentation such
-  as site plans, decommissioning plans, and construction details. Staff recommended
-  approval with conditions, though opposition letters were submitted.
+description: The Zoning Board of Appeals voted 5–0 against recommending approval for
+  a 5-megawatt solar farm on US Route 20, citing drainage concerns and proximity to
+  residential areas. About 15 residents opposed the project at public comment, raising
+  concerns about well contamination, property values, and tree removal. The county
+  board will vote at a future meeting.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1580
+has_transcript: true
+updated: '2026-11-09'
 resources:
 - kind: portal
   label: Diligent meeting page
   url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1580
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=R_AoHUYl798
 - kind: attachment
   label: corrections 71 Feb 2026.pdf (518 KB)
   url: https://boonecountyil.community.diligentoneplatform.com/document/7f45703e-14b4-4bad-8b84-114d16f9285b
@@ -172,40 +178,64 @@ resources:
 
 ## The lede
 
-- Board scheduled to approve $304,598.38 in county claims with abstentions noted for Chairman Johnson on specific highway and construction-related items
-- Courthouse renovation project Change Order #18 for $20,075.75 from Scandroli Construction on agenda for approval
-- Special use permit for solar installation at 6xx US Route 20 up for consideration with extensive documentation
-- Intergovernmental agreement for jurisdictional transfer of portion of Genoa Road between City of Belvidere and Boone County scheduled for vote
-- McKinley Parking Lot drainage infrastructure purchase from prior business brought forward for approval
+- The committee heard extended public comment on two major issues: a proposed solar farm near residential areas on US Route 20, and calls for a four-way stop at the intersection of North Road and Caledonia Road following recent accidents including a fatality.
+- The Zoning Board of Appeals had voted 5–0 against recommending approval of the solar farm special use permit, citing concerns about proximity to residential neighborhoods, drainage, and tree removal; the county board will vote on the application at a future meeting.
+- Highway Engineer Justin Krohn reported recent safety improvements at the North/Caledonia intersection including vegetation removal and flashing beacons, but several board members pressed for immediate installation of four-way stop signs as an interim measure before any long-term solution like a roundabout.
+- The committee approved $304,598.38 in claims and a $20,075.75 change order for the courthouse project, with further reductions expected on some line items.
 
 ## Attendance & housekeeping
 
-_No content._
+Chairman Karl Johnson called the meeting to order at 6:02 p.m. Roll call showed all members present except Alisa Patterson (arrived 6:25 p.m.) and Dave Wiltse (arrived 6:33 p.m.). The committee approved the agenda as presented. No minutes required approval.
 
-## Decisions & votes (each with vote count and notable discussion or dissent)
+## Decisions & votes
 
-**Agenda approval** (Item 3.1) — Standard motion to approve the meeting agenda.
+**Motion to approve claims totaling $304,598.38** (with Chairman Johnson abstaining from specified claims related to William Charles, Northern Illinois Service Co., Core & Main, Highway Department, and sewage/stormwater/construction claims)  
+**Vote:** Approved unanimously on roll call (11–0)
 
-**Claims approval** (Item 9.1) — Approval of $304,598.38 in claims with Chairman Karl Johnson abstaining from voting on claims presented by William Charles, Northern Illinois Service Co., Core & Main, all Boone County Highway Department claims, and any county department claims regarding sewage, storm water, construction and excavation.
-
-**Courthouse Change Order #18** (Item 9.2) — Approval of Change Order #18 from Scandroli Construction for $20,075.75 for the Courthouse Project.
-
-**Solar Special Use Permit SUP-01-2026** (Item 9.4) — Approval of special use permit for solar installation at 6xx US Route 20. Extensive supporting documentation including site plans, decommissioning plans, construction plans, and opposition letters included. Staff recommended conditions of approval provided.
-
-**Genoa Road Jurisdictional Transfer** (Item 9.5) — Approval of Intergovernmental Agreement (IGA) for jurisdictional transfer of a portion of Genoa Road between the City of Belvidere and Boone County.
-
-**McKinley Parking Lot Drainage** (Item 10.1) — Approval of purchase of inlet structures and pipe for the McKinley Parking Lot.
-
-**Raffle applications** (Item 12.1) — Staff recommended approval of raffle applications as presented.
+**Motion to approve Change Order #18 from Scandroli Construction for $20,075.75 for the courthouse project**  
+**Vote:** Approved unanimously on roll call (11–0)  
+**Discussion:** CCS representative Randy Darnell explained the change order includes code-required items, unforeseen conditions, and design issues, with some items offset by credits that will reduce the final amount by an estimated 10–25%. Item 10 ($8,713 for temporary power to the EOC) will allow the circuit clerk and state's attorney to move into space earlier, potentially saving $40,000 in general conditions by accelerating the schedule by up to two months.
 
 ## Discussion items (no vote)
 
-**Orth/Caledonia Intersection Discussion** (Item 9.3) — Scheduled discussion item with no supporting documentation provided in agenda.
+**North Road and Caledonia Road intersection safety (Item 9.3):**  
+Highway Engineer Justin Krohn reported recent improvements including substantial vegetation removal on the southwest corner, installation of a flashing beacon on the eastbound stop-ahead sign, and collection of speed data. He noted that while a temporary stop sign is not advisable (removing it later creates hazards), a four-way stop as an interim measure before another permanent solution would be acceptable. Board Member Rodney Riley requested the item be placed on the county board agenda for a vote, stating enforcement alone is insufficient and a four-way stop is needed until a long-term solution like a roundabout can be built. Multiple residents, including two middle school students, spoke during public comment about safety concerns at the intersection, citing a recent fatality, accidents, and difficulty judging safe gaps in traffic. Board members debated whether to allow recent improvements time to work versus installing stop signs immediately. Dave Wiltse advocated for a four-way stop with reduced speed limits (45 mph instead of 55 mph) and rumble strips. Marion Thornberry argued the county should follow Krohn's recommendation for a roundabout rather than stop signs. Highway department data showed more accidents from eastbound (not westbound) traffic. Krohn explained roundabouts are statistically safest but cost approximately $1.5 million if county-funded (available in one year) or could be 90% state-funded over three years. He also noted a high-pressure 10-inch gas line complicates roundabout construction, and the landowner on the south side of North Road is not inclined to sell right-of-way immediately.
+
+**Solar farm special use permit SUP-01-2026, 6xx US Route 20 (Item 9.4):**  
+Planner Mike [last name not provided] presented the application for a 5-megawatt solar farm on approximately 30 disturbed acres of a 106-acre property. The Zoning Board of Appeals voted 5–0 against recommending approval, citing concerns about runoff, watershed impact, soil erosion, drainage, and proximity to residential neighborhoods on three sides (north, east, west). The applicant revised site plans twice in response to county staff and conservation district concerns, moving panels away from old-growth oak trees to the southwest, increasing setbacks from a drainage greenbelt, and ultimately moving panels 150 feet from the northern property line (exceeding the required 50-foot setback) with additional screening vegetation. County planning staff recommended approval with 19 conditions; the Boone County Conservation District and Soil & Water Conservation District were satisfied with the revised layout but the Soil & Water board had an unfavorable opinion due to permanent displacement of prime farmland. 
+
+During public comment, approximately 12–15 residents of nearby subdivisions (Greenfield Drive, Shower Lane area) opposed the project, citing concerns about: well water contamination from herbicides and heavy metals; loss of rural character and property values; noise from inverters; glare; removal of trees affecting drainage; heat island effects; and lack of direct benefit to Boone County residents (power goes to ComEd grid, not local distribution). One resident questioned whether the applicant, listed at a Rockford address, actually resides in Florida. Jesse Fitch, family member of the landowner, supported the project as allowing the family to keep the farm rather than selling for subdivision development.
+
+Applicant's attorney Rick Porter argued Illinois statute (55 ILCS 5/5-12-120 and the Clean and Reliable Grid Affordability Act) prohibits counties from banning solar in agricultural zones or adopting restrictions more stringent than state law, and that the application meets all county code requirements. Developer Connor Sales of SolarStone described the company's experience (16 projects operating, 20 in development) and stated the 5-megawatt project would power approximately 1,100 homes annually, interconnect to ComEd's distribution grid, and include a signed power purchase agreement. The presentation was ongoing when the transcript ended.
+
+**Intergovernmental Agreement for jurisdictional transfer of Genoa Road (Item 9.5):**  
+Not discussed in detail; item listed on agenda.
+
+**McKinley parking lot drainage materials purchase (Item 10.1):**  
+Not discussed; item listed under Old Business.
 
 ## Public comment
 
-Public comment period scheduled (Item 5.1). Total public comment time limited to 30 minutes per meeting. Written comments submitted to the Board would not be read aloud by the Board Chair. Public comment slips available on county website, with accommodations available by calling 815-547-4770.
+Approximately 20 residents spoke during the public comment period.
 
-## Notable moments (anything colorful, tense, or unusual)
+**Trash on roadways:** Grant Austerberg of Garden Prairie Road reported garbage trucks traveling from Belvidere (likely to Winnebago landfill) are losing trash that litters fields and roads, creating safety concerns. He noted trucks have tarps with holes, travel 40–45 mph in 25–30 mph zones, and the trash tangles in farm equipment.
 
-_No content._
+**Solar farm opposition:** Don Ramold, Mike and Jen Glass, Gloria Pernachiaro, Perry and Deborah Gay, Mark Funson, Jerry Bernie, Deborah Greiner, Bethany Duna, Wade Malcolm, Michaela Tisdale [sic - likely meant to list Daryl Smith here], and Jesse Fitch (in support) addressed concerns detailed above in the discussion items section.
+
+**North/Caledonia intersection safety:** Michaela Tisdale (6th grader), Jessica Hayes, Nora Clark (middle school student), Julie Pinkston, and Michelle Landon urged installation of a four-way stop, describing near-misses, a recent fatality (Natasha Rosling in 2002, and another woman recently), difficulty judging traffic gaps, and fear for young/inexperienced drivers. Pinkston stated she will attend every meeting until stop signs are installed. Landon, an attorney, noted Boone County was previously sued over road conditions in a fatal accident and warned the county could face liability if it does not act on a known dangerous intersection.
+
+## Notable moments
+
+- Chairman Johnson opened public comment by asking speakers not to repeat identical testimony and to use best judgment, stating he would not limit speakers unless discussion became repetitive, though he reserved the right to ask groups to select a single spokesperson.
+
+- Highway Engineer Justin Krohn praised two young speakers (middle school students Michaela Tisdale and Nora Clark) for their testimony, saying he "definitely couldn't have done that at that age and I can't do it now either," and advised them to "be scared at all intersections" and practice defensive driving.
+
+- Board Member Rodney Riley joked about whether the county would save money on cold-weather construction costs given the warmer winter; the comment drew laughter.
+
+- Multiple board members emphasized trust in Highway Engineer Krohn's expertise while simultaneously advocating for solutions (four-way stops) different from his stated preference (roundabout), leading to pointed exchanges about the meaning of "trust." Marion Thornberry stated, "Everybody keeps saying we trust you. We trust you. But he recommended a roundabout and you guys are wanting stop sign... if we trust him, let him build a roundabout."
+
+- Krohn described himself as "a pretty strong engineer and I have very low personal feelings. So that's probably not good to say, but I'm very analytical."
+
+- Solar project attorney Rick Porter stated Illinois law makes it "illegal for counties to adopt zoning regulations that disallow permanently or temporarily solar energy facilities from being developed or operated in any district zoned to allow agricultural," arguing the legislature has determined alternative energy takes precedence over farmland preservation.
+
+- The meeting took a five-minute break before beginning the solar farm discussion due to the lengthy intersection debate and the size of the crowd.

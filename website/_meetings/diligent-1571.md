@@ -3,15 +3,21 @@ title: Committee of the Whole Meeting - Finance
 body_id: cotw-finance
 date: '2026-04-09'
 permalink: /bodies/cotw-finance/meetings/diligent-1571/
-description: The County Board discussed proposed adjustments to Health Department
-  fees for environmental health services, food inspections, and septic system permits.
-  The discussion also included revisions to the county's sewage disposal code. No
-  vote was scheduled, leaving the changes open for further review.
+description: The Health Department proposed a 25 percent increase for food permits
+  and 40 percent for well and septic permits, effective July 1, to cover program deficits
+  in state-mandated environmental health services. The Board of Health already voted
+  to recommend the increases. Committee members expressed general support but requested
+  more time to review details before voting.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1571
+has_transcript: true
+updated: '2026-11-09'
 resources:
 - kind: portal
   label: Diligent meeting page
   url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1571
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=oWr4M3rn7Y8
 - kind: attachment
   label: 2026-03 Treas Report.pdf (324 KB)
   url: https://boonecountyil.community.diligentoneplatform.com/document/ad5b6a57-c48f-45a7-b9b9-aa0fce3b0c77
@@ -92,42 +98,54 @@ resources:
 
 ## The lede
 
-- Committee considered multiple action items including a $4,186.99 courthouse change order and public transportation grant agreements
-- Discussion items included County Clerk and Treasurer salary adjustments, Health Department fee structure updates, and employee health insurance renewal with Blue Cross Blue Shield
-- County Board per diem compensation remained under discussion as old business
-- Executive session planned to address litigation, collective bargaining, personnel matters, and real estate transactions
+- The board discussed employee health insurance for plan year July 1, 2026 through June 30, 2027 with Blue Cross Blue Shield following withdrawal from IPBC, with an expected 2% premium increase versus the 20% increase if the county had stayed in the pool.
+- The Health Department proposed fee increases for food permits (25%) and well/septic permits (40%) effective July 1, 2026, to cover program deficits, with discussion about offsetting costs through a levy increase; the Board of Health had already voted to recommend these increases.
+- County Clerk Amy Olson and Treasurer Kurt Newport requested salary increases for their positions, with Olson proposing 3% annual increases over the next four-year term to align with union contracts, while Newport argued that elected salaries have fallen behind inflation by not keeping pace with the 54% increase in the consumer price index since 2008.
+- The board approved a courthouse change order for $4,186.99 from Scandroli Construction and multiple items related to the county's public transportation program operated through Senior Connections.
 
 ## Attendance & housekeeping
 
-_No content._
+**Present:** Ryan Curry, Brian Schneider, Dave Cordray, Dave Wiltse, Josh Shumaker, Tom Walberg, Alisa Patterson, Dana Logsdon (remote), Matt Ragano, Marion Thornberry  
+**Absent:** Karl Johnson (County Board Chairman), Rodney Riley (Vice-Chairman)
+
+The meeting was called to order at 6:04 p.m., delayed a few minutes due to technical difficulties. The board approved the agenda as amended to move item 7.9 (employee health insurance) to first order of business under new business. The board observed a moment to acknowledge the passing of former county board member Steve Shabacher on March 31, 2026, with visitation scheduled for April 10th from 4:00 to 7:00 p.m.
 
 ## Decisions & votes (each with vote count and notable discussion or dissent)
 
-Based on the agenda only, the following items were scheduled for action votes:
+**Agenda approval (as amended):** Motion by Ragano, second by Schneider. All in favor. The agenda was amended to move item 7.9 to the first item under new business.
 
-- **Approval of Agenda** - Standard procedural motion
-- **Courthouse Change Order #21** - $4,186.99 from Scandroli Construction
-- **Ordinance 26-10** - Public Transportation Applicant Ordinance
-- **Resolution 26-08** - Authorizing execution and amendment of Section 5311 Grant Agreement
-- **Acceptance of Special Warranty** - Details in attachment
-- **Purchase of Service Agreement** - Between Boone County and Senior Connections for public transportation operations for State Fiscal Year 2027
+**Courthouse Change Order #21 ($4,186.99):** Motion by Wiltse, second by Thornberry. All in favor. The change order addressed unforeseen issues where new construction meets old construction, specifically ductwork and sprinkler systems. Ragano expressed frustration that such issues weren't anticipated in planning when adapting old to new construction, though acknowledged the relatively small amount. Curry noted this is a recurring issue across the construction industry where engineers don't coordinate properly.
 
-_Vote counts and discussion details not available from agenda alone._
+**Ordinance 26-10 (Public Transportation Applicant Ordinance):** Motion by Shumaker, second by Schneider. All in favor. Part of annual required applications for 5311 grant funding.
+
+**Resolution 26-08 (Section 5311 Grant Agreement):** Motion by Shumaker, second by Schneider. All in favor. Required for grant application process.
+
+**Acceptance of Special Warranty:** Motion by Ragano, second by Schneider. All in favor. Part of grant application process.
+
+**Purchase of Service Agreement with Senior Connections for State Fiscal Year 2027:** Motion by Thornberry, second by Ragano. All in favor. Thornberry questioned when services would relocate from Senior Center to the new county building being constructed; staff confirmed that is the long-term plan pending future funding for the administrative buildout.
 
 ## Discussion items (no vote)
 
-- **County Clerk and Treasurer Salaries** - Review of elected officials' salaries with comparables and proposed 2027-2030 compensation for County Clerk
-- **Health Department Septic Code Update** - Revisions to Chapter 66 (Sewers and Sewage Disposal)
-- **Health Department Fee Analysis** - Proposed fee adjustments for environmental health services, food inspections, and septic system permits
-- **Employee Health Insurance** - Plan year July 1, 2026 through June 30, 2027 with Blue Cross Blue Shield, including employee contribution rates and HRA details
-- **County Board Per Diem** (Old Business) - Ongoing discussion of County Board and Chairman compensation options
+**Employee Health Insurance (Blue Cross Blue Shield):** The board discussed staying with Blue Cross Blue Shield on a fully insured plan with the county self-insuring a portion of the deductible through a health reimbursement arrangement administered by Envision Healthcare. Staff reported this would result in approximately a 2% increase versus the 20% increase if the county had stayed with IPBC. The arrangement would save over $350,000 compared to staying with IPBC. Wiltse asked about other market options; staff confirmed Blue Cross was very competitive. This will come back to county board for final approval next week.
+
+**County Clerk and Treasurer Salaries:** Newport argued that elected official salaries have increased only 41% since 2008 while the consumer price index increased 54% and the county's general fund appropriation increased 75%. He emphasized the need to attract qualified candidates and noted that freezing salaries for extended periods creates difficult catch-up situations. Olson highlighted her office's workload, including processing $1.6 million in tax redemptions in 2025 (projected $1.75 million in 2026), 5,700 land transaction recordings, and managing over 150 election workers. She proposed 3% annual increases over four years to align with union contracts. The board discussed the need for competitive salaries but postponed decision-making until more board members were present and additional comparable county data was available. Staff will draft an ordinance based on Olson's proposal for discussion at the next meeting.
+
+**Health Department Septic Code Update:** Allison O'Harn presented an overhaul of the septic code, which had been reviewed by IDPH, the state's attorney, and the Board of Health. Key changes included: updated definitions for accessory structures and waste water; requirements for accessible septic tank openings; provisions for alterations and new construction; future replacement area requirements; updated licensing requirements; removal of detailed soil requirements (now handled by licensed soil classifiers); three-year validity for soil borings; and drainage provisions. The board agreed to move the ordinance to full county board for approval.
+
+**Health Department Fee Analysis:** Amanda Mehl presented proposed fee increases: 25% for food permits and 40% for well and septic permits, effective July 1, 2026. The increases are meant to address program deficits in state-mandated environmental health programs that lack adequate grant funding. Staff noted the county waives fees for nonprofits (churches, civic groups), costing $17,595 to $35,190 annually. Walberg questioned whether a flat percentage increase was appropriate versus examining individual fees; staff explained uniform percentage increases are standard practice and easier to communicate. Patterson asked about Winnebago County's higher proposed sampling permit fee; staff explained it was set between averages of comparable counties. Thornberry warned against charging nonprofits, noting that when this was previously discussed, the board room filled with nonprofit representatives. The board expressed general support for some fee increase but wanted time to review the detailed information before voting. Staff requested direction on a levy increase range to help balance the budget; historically the board has combined modest fee increases with levy increases rather than closing the gap entirely with one or the other.
+
+**County Board Per Diem:** Listed on agenda but not discussed.
 
 ## Public comment
 
-The meeting allowed for public comment with a 30-minute time limit. Public comment slips were available online, and accommodations were available by contacting the Administration Office at 815-547-4770.
-
-_Specific comments not available from agenda alone._
+_No content._
 
 ## Notable moments (anything colorful, tense, or unusual)
 
-_No content._
+During opening technical difficulties, board members joked about who would sit in the chairman's seat and bantered while waiting to start. When Curry asked if a staff member was "ready to go," someone responded "come on, Dave. Quit chitchat. Let's go."
+
+Ragano expressed frustration about construction change orders for issues that should have been anticipated, saying, "it always drives me crazy when somebody is not prepared." Curry commiserated, saying he had "lived this for so many years in the construction industries" and calling the lack of coordination between engineers "the most maddening thing in the world."
+
+When discussing nonprofit fee waivers for food permits, Thornberry forcefully warned: "the last time we had this discussion on the board, there wasn't an empty seat in here. Every nonprofit organization filled this room... You're going to lose a lot of money. The fair alone supports this county more than the county supports itself... you're going to have a riot on your ass."
+
+The health department presentation ran extremely long with extensive back-and-forth on fee comparisons, prompting Walberg to note "there's a lot to absorb here" after receiving the detailed PowerPoint only shortly before the meeting.

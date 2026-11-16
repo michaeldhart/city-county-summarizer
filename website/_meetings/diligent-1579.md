@@ -3,16 +3,21 @@ title: Committee of the Whole Meeting - Finance
 body_id: cotw-finance
 date: '2026-03-12'
 permalink: /bodies/cotw-finance/meetings/diligent-1579/
-description: The Boone County Board discussed options for partially self-funding employee
-  health insurance at its March meeting. The presentation explored alternatives to
-  the county's current health insurance arrangement, though no decision was made.
-  Changes to employee health benefits could affect county costs and coverage for county
-  workers.
+description: The committee voted to withdraw from the Intergovernmental Personnel
+  Benefit Cooperative after facing a preliminary 19.9 percent rate increase and move
+  to a partially self-funded Blue Cross Blue Shield plan. The change is expected to
+  save approximately $745,000 in the current plan year while keeping employee benefits
+  unchanged. A withdrawal resolution will go to the full board next week.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1579
+has_transcript: true
+updated: '2026-11-09'
 resources:
 - kind: portal
   label: Diligent meeting page
   url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1579
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=XDKtVK8frZQ
 - kind: attachment
   label: 2026-02 Treas Report.pdf (324 KB)
   url: https://boonecountyil.community.diligentoneplatform.com/document/fea5e20b-d69e-41c9-bdf1-27c2446ff978
@@ -135,39 +140,63 @@ resources:
 
 ## The lede
 
-- Committee considered multiple capital improvement projects including $43,180 for PSB office windows (with City of Belvidere reimbursing $25,900) and $29,855 for courthouse electrical panel upgrades
-- Major infrastructure bids reviewed: $801,760 for Shattuck Road Bridge project and $147,964 for Edgewood Storm Sewer project, both recommended to low bidders
-- Discussion items included employee health insurance options (partial self-funding presentation), new GIS/County Clerk plotter/scanner, IT department intern proposal, and probation salary matters
-- Monthly financial reports presented by Treasurer and Administration
+- The committee voted to withdraw from the Intergovernmental Personnel Benefit Cooperative (IPBC) health insurance pool after facing a preliminary 19.9% rate increase (roughly $821,000), moving instead to a partially self-funded Blue Cross Blue Shield plan expected to save approximately $745,000 in the current plan year.
+- The board approved $801,760 for the Shattuck Road Bridge replacement (single-span box culvert with 4-foot shoulders) and $147,964 for Edgewood storm sewer improvements to address flooding on roads near the Winnebago County line.
+- The committee supported creating an intern position for the IT department to address rising workloads (over 2,200 help desk tickets projected this year) and approved mid-year salary increases for probation officers to match Winnebago County pay and prevent staff departures.
+- Chairman Johnson and the Belvidere mayor plan to revitalize the city-county coordinating committee with three members from each body to improve collaboration on development and shared projects.
 
 ## Attendance & housekeeping
 
-_No content._
+The meeting opened at 6:03 p.m. Present: Karl Johnson (chair), Brian Curry, Brian Schneider, Dave Cordray, Dave Wiltse, Josh Shoemaker, Tom Walberg, Alisa Patterson, Matt Ragano, Rodney Riley, and Marion Thornberry. Dana Logsdon notified the board he would not attend. The committee approved the agenda as presented with no minutes to review.
 
-## Decisions & votes (each with vote count and notable discussion or dissent)
+Chairman Johnson acknowledged the death of former Circuit Clerk Julie Cly, who worked for Boone County from January 1966 through January 2026, and presented a plaque from the Rock River Valley Blood Center thanking the board for supporting a blood donation bus with ARPA funds.
 
-_No content._
+## Decisions & votes
+
+**PCO #2 for PSB office windows – $43,179.81 (Ringland Johnson):** Approved unanimously to move to county board. The City of Belvidere will reimburse the county $25,900. Moved by Wiltse, seconded by Curry. Chairman Johnson publicly thanked the city for participating.
+
+**Change Order #19 for courthouse electrical panels – $29,855.26 (Scandroli Construction):** Approved unanimously to move to county board. This replaces three additional damaged electrical panels; three others were replaced previously. The on-site contractor (Miller) matched the price of the previous electrician and will do the work to avoid liability disputes. Moved by Ragano, seconded by Wiltse.
+
+**Credit card request for April Harnois (State's Attorney office manager):** Approved unanimously to move to county board. Office managers typically receive credit cards. Moved by Riley, seconded by Schneider.
+
+**Memorandum of Agreement for Community Law Enforcement Deputy:** Approved unanimously to move to county board. The agreement formalizes transfer of the position from Belvidere Police Department to the Sheriff's Department, reviewed by the Behavioral Health Task Force and Board of Health. Amanda Meal from the Health Department explained it will be more affordable and logistically easier. Moved by Riley, seconded by Ragano.
+
+**Shattuck Road Bridge bid – $801,760 (Civil Constructors/Helm Civil):** Approved to move to county board with one abstention (Chairman Johnson, due to customer relationship). The 79-foot single-span box culvert bridge will have no center pier and will add 4-foot shoulders on both sides. Two parcels have been acquired through the township. Moved by Schneider, seconded by Wiltse.
+
+**Edgewood storm sewer bid – $147,964 (DPI Construction):** Approved to move to county board with one abstention (Chairman Johnson, customer relationship). The project will install over 800 feet of curb, gutter, storm sewer structures, and pipe to address flooding in a subdivision south of State Street near the Winnebago County line. The Highway Department designed the project in-house. Moved by Wiltse, seconded by Schneider. (The agenda incorrectly listed the contractor as "DBI"; the correct name is DPI.)
+
+**Phase III construction inspection services – $100,000 (Willett Hoffman & Associates):** Approved unanimously to move to county board. Justin Coi explained the county has multiple bridge projects starting (North Boone School Road, Shattuck, Stone Quarry, and a five-bridge bundle) and needs assistance with inspections and closeouts on a time-and-material basis through the fiscal year, funded from the county bridge fund. Moved by Wiltse, seconded by Shoemaker.
+
+**Motion to enter executive session for litigation:** Approved unanimously on roll call vote. Johnson, Schneider, Cordray, Wiltse, Shoemaker, Walberg, Patterson, Ragano, Riley, and Thornberry all voted yes. Moved by Shoemaker, seconded by Cordray.
 
 ## Discussion items (no vote)
 
-**Bid Results for Brownfield USEPA Grant Professional Consulting Services** (Item 7.3) - Review of proposals for EPA brownfield grant consulting services.
+**Brownfield consulting services (Terracon):** Aaron Marshall and staff presented bid results for the $500,000 EPA brownfield grant. Five firms submitted proposals; Terracon scored highest on the evaluation metrics (not price alone). The consultant will conduct Phase I and Phase II environmental evaluations on the old St. Joseph's Hospital, a Garden Prairie property, 10 additional Phase I evaluations, five Phase II evaluations, three cleanup alternative analyses, a revitalization plan, and community meetings. The work is fully covered by the grant. The item will come to the board for approval next week.
 
-**New Plotter/Scanner for GIS and County Clerk and Recorder** (Item 7.4) - Discussion of Canon TX-4200 equipment acquisition for GIS and County Clerk offices.
+**New plotter/scanner for GIS and County Clerk/Recorder:** Tammy from GIS explained "Harry Potter," the 17-year-old plotter, is beyond repair; parts are too scarce. Staff recommend a Canon TX-4200 (same model the city uses) for $12,000 outright or $343/month on a 36-month lease. The two departments will share costs. Board members requested additional pricing comparisons be included in next week's board packet. Cloud-managed print services and maintenance were discussed as optional add-ons.
 
-**Probation Salaries** (Item 7.5) - Review of probation department salary matters.
+**Probation salaries:** Amy Galliano and Director Debbie Jarvis proposed mid-year salary increases totaling $12,000 after voucher reimbursements to bring Boone County probation officers to parity with Winnebago County. Boone officers currently earn $23.34/hour; Winnebago pays $25.57. The average among similar counties (Ogle, Jo Daviess, Stephenson) is $25.96. The Office of Statewide Pretrial pays $50,068–$58,586, creating recruitment risk. Chairman Johnson and Finance Chair Walberg supported the request despite reluctance for mid-year increases, citing the need to stay competitive within the 17th Judicial Circuit.
 
-**IT Department Intern** (Item 7.6) - Proposal to add an intern IT technician position; supporting documentation included ticket volume data and comparable position descriptions.
+**IT intern position:** Joe Shaden (remote) and Becky Tobin proposed hiring an intern at $20/hour to address rising IT workload (over 2,200 projected tickets this year, up from previous years). The department has missed some FOIAs and had a week-long outage at the elections office. The intern would assist until a full-time fourth IT position can be budgeted. Staff are also pursuing agreements with townships and District 2 Fire to offset costs. Josh Shoemaker strongly supported the proposal. The item will come to the board next week.
 
-**Boone County Employee Health Insurance** (Item 7.12) - Discussion of partial self-funding options for employee health insurance.
+**Boone County employee health insurance:** Aaron Ervin presented a proposal to withdraw from IPBC and move to a partially self-funded Blue Cross Blue Shield plan. IPBC's preliminary renewal came in at 19.9% ($821,000 increase, total $4.95 million). The partially self-funded model assumes risk between the employee deductible ($650) and a $3,500 threshold, with stop-loss coverage above that. Based on expected 50% utilization, the county would save approximately $745,000 and avoid a $286,889 required reserve replenishment. Employees would see no plan changes. Becky Tobin explained the county would use Envision as third-party administrator (TPA) for about $20,000. The model projects a 1.9% budget increase instead of 19.9%. A withdrawal resolution will come to the board next week; the final Blue Cross proposal will come in April for a July 1 start.
 
-**City/County Coordinating Committee** (Item 7.13) - Discussion of intergovernmental coordination matters.
-
-**Monthly Reports** - Treasurer's monthly report for February 2026 and Administration's monthly financial report presented.
+**City/county coordinating committee:** Chairman Johnson proposed revitalizing a defunct committee with three county board members (one per district) and three city council members, plus the mayor and board chairman as ex-officio members. The committee would meet quarterly to improve collaboration on development and shared projects. The board expressed support; Dave Wiltse volunteered based on his 20 years of city experience. Johnson will coordinate with the mayor.
 
 ## Public comment
 
-Public comment period scheduled with 30-minute time limit. Public could comment in person; written comments would not be read aloud by Board Chair. Comment slips available online and special accommodations available by calling 815-547-4770.
+Julie Kingston, 12805 Prairie Meadow Way, urged the board to install two stop signs and rumble strips at the intersection of Worth and Capron roads, citing safety concerns for her 72-year-old mother and rising accidents. She requested a unanimous vote at next week's meeting.
 
-## Notable moments (anything colorful, tense, or unusual)
+## Notable moments
 
-_No content._
+Chairman Johnson reminded the board of a legal issue from the last committee meeting: the board approved staff findings of fact supporting a solar farm on Route 20, then voted to deny the farm—contradictory actions that must be corrected at the full board meeting by either approving the solar farm or adopting different findings of fact.
+
+Treasurer Kurt Dimport reported the county borrowed bond funds last month (approximately $6 million increase in the investment pool) and that several high-interest CDs from prior years are maturing, lowering the weighted average rate from 4% to 3.9%. He noted a discrepancy in the Series 2026 bond fund display on the treasurer's report but assured the board the money is safe and accounted for. The audit fieldwork is complete.
+
+Becky Tobin introduced a new monthly capital fund report showing all building project revenues and expenditures now that ARPA funds are spent. Bond proceeds will be spent first, then replenished to the capital fund from bond reserves.
+
+Tammy from GIS named the 17-year-old plotter "Harry Potter." When asked if the new plotter would have a name, she said she was considering "Hermione."
+
+Chairman Johnson abstained from two votes due to customer relationships with the contractors (Civil Constructors and DPI Construction).
+
+Highway Engineer Justin Coi joked he would like the construction inspection help to start "tomorrow."

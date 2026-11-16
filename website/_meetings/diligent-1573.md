@@ -3,16 +3,21 @@ title: Committee of the Whole Meeting - Administration
 body_id: cotw-admin
 date: '2026-04-02'
 permalink: /bodies/cotw-admin/meetings/diligent-1573/
-description: The county board approved two major road construction contracts totaling
-  over $4.2 million. William Charles received $1.9 million for Hunter Road earthwork,
-  while Rock Road won $2.3 million for countywide resurfacing. Chairman Karl Johnson
-  abstained from voting on claims related to William Charles and all Highway Department
-  matters due to conflicts of interest.
+description: The board recommended approval of a special use permit for a 5-megawatt
+  solar farm on 38 acres at 114xx US Route 20, despite the applicant's absence from
+  the committee meeting. One board member questioned the developer's track record
+  after problems with a different solar project. Final approval is scheduled for April
+  16.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1573
+has_transcript: true
+updated: '2026-11-09'
 resources:
 - kind: portal
   label: Diligent meeting page
   url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1573
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=NBiKJ3U-iC8
 - kind: attachment
   label: sheriff 71 mar.pdf (552 KB)
   url: https://boonecountyil.community.diligentoneplatform.com/document/8387e14c-9a3f-4190-aa18-2c3856e93d4a
@@ -227,56 +232,77 @@ resources:
 
 ## The lede
 
-- **Major infrastructure spending approved:** County approved two significant road contracts totaling over $4.2 million, including $1.9M for Hunter Road earthwork and $2.3M for countywide road resurfacing
-- **Solar energy project approved:** Board approved a special use permit for a solar installation at 114xx US Route 20
-- **Planning and building fee discussions:** Energy planning and building fees were discussed, with draft fee schedules under consideration
-- **Routine approvals:** Claims totaling $374,823.25, rezoning application, and raffle licenses approved
+- The board approved two major road contracts totaling more than $4.2 million: a $1.9 million earthwork contract for Hunter Road to William Charles and a $2.3 million countywide asphalt resurfacing contract to Rock Road, with Chairman Johnson abstaining from both votes due to business conflicts.
+- A special use permit for a 5-megawatt solar farm on 38 acres of an 87-acre property at 114xx US Route 20 was recommended for approval by a divided vote, despite some board members objecting to the applicant's absence from the committee meeting.
+- The board declined to recommend approval of a rezoning request at 15xx Spring Creek Road (A-1 to RE) when the applicant failed to appear at the meeting, with most members voting no and stating they would reconsider at the full board meeting if the applicant attends.
+- Staff presented updates on a three-dimensional geologic mapping project that will help the county strategically protect groundwater supplies and manage stormwater, with data collection continuing through summer 2026.
+- The county's agreement with its animal shelter veterinarian was adjusted down to $1,500 per month after the clinic's corporate sale eliminated discounts and on-site services, forcing staff to seek alternative providers for some procedures.
 
 ## Attendance & housekeeping
 
-The meeting was scheduled for April 2, 2026 at 6:00 pm in the County Board Room at 1212 Logan Ave, Belvidere, IL. The meeting was available both in-person and via YouTube live stream. Members of record include Chairman Karl Johnson, Vice-Chairman Rodney Riley, and board members Ryan Curry, Brian Schneider, Dave Cordray, Dave Wiltse, Josh Shumaker, Tom Walberg, Alisa Patterson, Dana Logsdon, Matt Ragano, and Marion Thornberry. Specific attendance details are not available from the agenda.
+Members present: Karl Johnson (Chairman), Brian Schneider, Dave Wiltse, Josh Shoemaker, Tom Walberg, Dana Logsdon, Marion Thornberry. Alisa Patterson arrived at 6:08 p.m. Rodney Riley (Vice-Chairman) joined electronically and was permitted to participate by motion.
+
+Members absent: Ryan Curry, Dave Cordray, Matt Ragano.
+
+The meeting was called to order at 6:05 p.m. The board observed a moment of recognition for Steve Shabacker, longtime county building inspector and former board member, who passed away during the week. The agenda and minutes from February 5, 2026 (COTW-Administration) and February 12, 2026 (COTW-Finance) were approved.
 
 ## Decisions & votes
 
-**Claims approval - $374,823.25**
-Motion approved claims with Chairman Karl Johnson abstaining from voting on specific claims related to William Charles, Northern Illinois Service Co., Core & Main, Highway Department claims, and any claims regarding sewage, storm water, construction and excavation.
+**Claims approved: $374,823.25** (Schneider/Thornberry)  
+Vote by roll call: Johnson abstained (conflicts noted for William Charles, Northern Illinois Service Co., Core & Main, Highway Department claims, and sewage/storm water/construction/excavation claims); all others voted yes. Motion carried.
 
-**Hunter Road earthwork contract - $1,905,140.00**
-Approved contract to low bidder William Charles for Hunter Road earthwork.
+**Hunter Road earthwork contract: $1,905,140 to William Charles** (Thornberry/Shoemaker)  
+Vote by roll call after discussion: Johnson abstained (business conflict). All others voted yes. Motion carried with one abstention. Highway Engineer Justin Crowley explained the project will widen Hunter Road between McHenry County line and Illinois 76, adding 4-foot shoulders on each side, funded through bridge and matching funds rather than MFT to allow flexibility and cost savings (avoided $280,000 consultant fee by doing design in-house). IDOT contributing $300,000 for use of road as Illinois 173 detour. Project will let earthwork settle 1-2 years before paving.
 
-**Countywide HMA road resurfacing contract - $2,314,966.02**
-Approved contract to low bidder Rock Road for countywide road resurfacing.
+**Countywide HMA resurfacing: $2,314,966.02 to Rock Road** (Schneider/Walberg)  
+Vote: Johnson abstained (business conflict). All others voted yes. Motion carried with one abstention. Crowley noted this was the second consecutive year with only one bidder, price of $80/ton compared favorably to previous year ($74-77/ton). Project includes 24,000-25,000 tons covering Shaw Road (Riverside to Newburg), subdivision roads, township roads, and McKinley building parking lot ($49,000).
 
-**Map Amendment MA-03-2026**
-Approved rezoning of 15xx Spring Creek Road from A-1 to RE (Residential Estate).
+**Map amendment MA-03-2026, 15xx Spring Creek Road A-1 to RE** (Shoemaker/Thornberry)  
+Vote by roll call: Wiltse and Riley voted yes. Johnson, Schneider, Shoemaker, Walberg, Patterson, Logsdon, and Thornberry voted no. Motion failed in committee. Request was to rezone 5 acres of a 30-acre parcel for additional home. ZBA recommended approval 5-0, Regional Planning Commission found it consistent 3-0. Multiple board members objected to applicant's absence, stating they would reconsider at board meeting if applicant or representative attends. Final vote will be taken April 16.
 
-**Special Use Permit SUP-02-2026**
-Approved solar installation at 114xx US Route 20.
+**Special use permit SUP-02-2026, 114xx US Route 20 solar** (Wiltse/Thornberry)  
+Vote: Approved (vote count not specified in transcript, but indicated as passing). SunVest Solar project for 5-megawatt community solar on 38.53 acres of 87-acre parcel in Bonus Township. ZBA recommended approval 5-0 with 18 conditions including landscaping along north side after public concerns. Applicant testified project set back 760 feet from Route 20, 124 feet from nearest residence (exceeding 50-foot requirement), with vegetative screening. LESA score 79.2. Construction planned for fall 2026, operational 2027. Board member Walberg questioned company's track record after problems with different solar project sold to another company; applicant Bill French stated SunVest will own and operate this project. Final vote April 16.
 
-**Landfill #2 work agreement with Brownfield Environmental**
-Approved the 2026 work agreement for professional services at Landfill #2.
+**Energy planning and building fees** (Discussion only)  
+Staff presented proposed fee schedules: $5,000 per megawatt for solar/wind special use permits (capped at $125,000) and $5,000 per megawatt for building permits (capped at $75,000), based on new state legislation. Board consensus to bring forward for vote at April 16 meeting.
 
-**Raffle applications**
-Approved raffle applications for five organizations: Belvidere Youth Baseball, Belvidere Lions Club, Habitat for Humanity of Boone County, CASA, and Capron Elementary School.
+**2026 Brownfield Environmental agreement for Landfill #2: $43,800** (Thornberry/Schneider)  
+Vote: All in favor. Motion carried. Agreement for environmental consultant services at landfill, cost split 50/50 with City of Belvidere. $10,800 portion may not be needed if Highway Department can assist with monitoring well removal.
+
+**Raffle licenses** (consent)  
+Staff recommended approval for Belvidere Youth Baseball, Belvidere Lions Club, Habitat for Humanity of Boone County, CASA, and Capron Elementary School. (No separate vote recorded; treated as informational.)
+
+**Motion to adjourn** (Wiltse/Thornberry)  
+All in favor. Meeting adjourned at 7:40 p.m.
 
 ## Discussion items (no vote)
 
-**Energy Planning and Building Fees**
-Discussion held regarding draft fee schedules for energy planning and building fees related to solar and wind projects.
+**Highway Department monthly update:** Justin Crowley announced new battery recycling program starting in May (all batteries except liquid car batteries), 100% funded by manufacturers with 20-cent per pound rebate to county. McKinley Bend underground storage/drainage project starting Monday. Four-way stop installation delayed until contractor returns from winter layoff (estimated April 13) for rumble strip installation. IDOT pre-construction meeting scheduled for Belvidere Road at Logan paving project. Radar speed sign data report planned for next month.
 
-**Agreement for Veterinary Services for BCAS**
-Discussion regarding veterinary service agreement for Boone County Animal Services, with updated agreement documents provided.
+**Building Department report:** Drew Bliss reported first quarter permits lagging previous years but ramping up recently. Kathy Cornelius hired to replace retired permit technician Vicky Brockman. Katie Solviac hired to replace retiring Diane Zimmerman (started Monday, one month overlap planned). Damaged solar field cleanup underway after violation letters and threat of State's Attorney involvement.
 
-**Quarterly Department Presentations**
-Presentations provided by Administration, Building, GIS, and Planning departments, including a Water Resource Program Update by Dan Kane featuring Illinois State Geological Survey 3D Geologic Mapping Project and updates on solar areas and BESS (Battery Energy Storage System) projects and legislation.
+**GIS report:** Tammy reported new plotter arriving Wednesday or Thursday. Planning event for retiring employee Harry.
 
-**Monthly Presentations**
-Sheriff and Highway departments provided monthly updates with accompanying reports.
+**Administration Department quarterly report:** Edwynn reported circuit clerk's office moving to courthouse basement this afternoon and tomorrow for office renovation (emergency operations center and jury assembly completed). IT department moving to courthouse basement week of April 27; project still on schedule for November completion. Admin campus additions showing progress with steel structure visible. Struggled getting National Grid to adjust gas pressure for morgue generator. PSB renovations nearly complete, windows starting in coming weeks. Audit nearly complete, draft expected with board approval in May. Enterprise zone advisory committee meeting April 10 to discuss amendments and state renewal. Health insurance proposal with Blue Cross coming to Finance Committee, new plan year July 1. Boone County Transit RFP still delayed by IDOT (months after initial review), hoping for June bid release if lucky. New jail air conditioning units bid released with pre-construction meeting April 6. Courthouse tuck-pointing/brick repair RFP planned for April. Digital recording server rack solution found—will go in circuit clerk storage area instead of requiring separate room, avoiding potential $50,000 change order. Transit bus logo wraps should be visible within month to six weeks.
+
+**Planning Department quarterly report:** Dan Kane presented detailed update on three-dimensional geologic mapping project. State Geological Survey making progress with high-resolution data showing aquifer locations, bedrock valleys, shale aquitards. Showed cross-section profiles from ground-truthing at various elevations (750 ft, 650 ft, 500 ft above sea level). Summer 2026 field work planned for additional data collection. Next steps: install data loggers in wells for continuous monitoring, then three-dimensional groundwater modeling (seeking funding). Data will inform stormwater management plan updates and development review. Explained deep sandstone aquifer dropped 150-200 feet locally (as of 2014) versus 800 feet in Joliet area due to overuse and lack of recharge (shale layer prevents infiltration). Boone County can protect water supply through infiltration practices despite unable to stop lateral drainage toward Joliet. Posted three new Illinois State Water Survey links on county website including at-risk groundwater users map (2018). Travis Roberts reported stormwater technical committee meeting monthly. Unified Development Ordinance draft nearly complete; will post on website with updated zoning map within 1-2 weeks for public review before notifying townships. Tammy created solar project map showing constructed, awaiting determination, and approved-but-not-constructed projects with acreage and megawatt data. Presented battery energy storage system (BESS) legislation requiring county regulations by June 1, 2026; will keep separate from UDO to avoid confusion.
+
+**Animal shelter veterinary agreement:** Becky Topping reported State Street Veterinary Clinic sold to corporate entity, changing billing effective April 1. Discount reduced from 50% to 20%, Dr. Erin Wing can no longer provide on-site service at shelter (all services must be at clinic), previously unbilled services now charged. Dr. Wing agreed to reduce monthly retainer from $2,400 to $1,500. Staff exploring alternatives including other providers for spay/neuter services to reduce costs. May need budget adjustment next fiscal year.
 
 ## Public comment
 
-Public comment period was scheduled with a 30-minute time limit. Members of the public were encouraged to submit comment slips and could comment in person. Written comments were not to be read aloud by the Board Chair. Specific comments made are not available from the agenda.
+_No content._
 
 ## Notable moments
 
-Chairman Karl Johnson's extensive conflicts of interest requiring abstention from multiple categories of claims (William Charles, Northern Illinois Service Co., Core & Main, all Highway Department claims, and sewage/storm water/construction/excavation matters) is noteworthy, particularly given that William Charles was also awarded the $1.9 million Hunter Road contract.
+Chairman Johnson announced he will be traveling next week and Vice-Chairman Riley will run the April meeting, assuming no flight issues. Johnson will return for the April 16 board meeting.
+
+During the map amendment discussion (15xx Spring Creek), multiple board members stated a consistent policy that applicants or representatives must attend meetings for projects important to them. Chairman Johnson said, "If it's not important for them to be here, it's not important for me to vote in favor of this."
+
+Highway Engineer Crowley highlighted the unusual nature of the Hunter Road project, calling it the first embankment-building effort in "more than a couple decades" since Genoa Road, contrasting it with typical surface replacement work.
+
+During the geologic mapping presentation, board member Logsdon asked if water could be "routed" from areas with poor infiltration to better areas. Kane explained injection wells are risky due to contamination pathways and stressed surface stormwater management practices as the proper tool.
+
+Board member Walberg pressed solar applicant Bill French about SunVest's association with a problematic Garden Prairie solar project that took over a year to get cleaned up after storm damage. French explained SunVest developed and sold that project to Summit Ridge Energy in 2022 and was unaware of the maintenance issues until recently, but committed that SunVest will own and operate the Bonus Township project long-term as a local Chicago-based company.
+
+When discussing veterinary fees, board member Logsdon joked about retired veterinarian Bruce potentially "moonlighting" to help the county, and board member Riley quipped about "the actual retail price" in reference to "The Price is Right."

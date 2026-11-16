@@ -3,15 +3,20 @@ title: Committee of the Whole Meeting - Administration
 body_id: cotw-admin
 date: '2026-01-08'
 permalink: /bodies/cotw-admin/meetings/diligent-1594/
-description: The county board discussed an ongoing intergovernmental agreement for
-  IT services with the City of Belvidere. The county's most recent proposal called
-  for $120,000 annually with yearly increases tied to 3 percent or the consumer price
-  index, whichever is greater, over a four-year term. No vote was taken.
+description: The county's insurance pool is projecting a 21% premium increase for
+  the coming year, following a 15% increase the prior year. County staff met with
+  a former broker to explore market alternatives and determine whether to leave the
+  current pool and potentially switch from Blue Cross Blue Shield coverage.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1594
+has_transcript: true
+updated: '2026-11-09'
 resources:
 - kind: portal
   label: Diligent meeting page
   url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1594
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=ZTG_Ynh7TF8
 - kind: attachment
   label: Main Street Players.pdf (313 KB)
   url: https://boonecountyil.community.diligentoneplatform.com/document/2fb3b872-1278-49bd-a334-eb80c87751c9
@@ -106,40 +111,49 @@ resources:
 
 ## The lede
 
-- Committee reviewed and approved claims totaling $363,178.22 with specific abstentions by Chairman Johnson related to conflict of interest items
-- Board considered Ordinance 26-03 for property tax abatement of Alternate Bonds Series 2015A
-- Discussion continued on IT service agreement with City of Belvidere, with county's last proposal at $120,000 annually with 3% or CPI annual increases over 4 years
-- Approved raffle applications for four local organizations: Main Street Players, Belvidere Woman's Club, Belvidere USBC Association, and LeRoy Community Grange
-- Received quarterly reports from Administration, Building, GIS, and Planning departments, plus monthly updates from Sheriff and Highway departments
+- The board approved a compromise IT agreement with the City of Belvidere at $110,000 annually for three years, down from an earlier proposal of $120,000, to maintain shared technology services between the county and city.
+- Four sheriff's deputies were honored for outstanding DUI enforcement work in 2024, when Boone County ranked sixth in the state for total DUIs despite having only 40 officers and first among counties for DUI arrests per officer.
+- The board approved $363,178.22 in claims and an ordinance for property tax abatement related to bonds issued for the administration building.
+- County officials reported a potential 21% health insurance premium increase for the coming year, prompting exploration of alternatives to the current insurance pool.
 
 ## Attendance & housekeeping
 
-Meeting held at County Board Room, 1212 Logan Ave, Belvidere, IL at 6:00 pm with live stream option available. Agenda included approval of previous meeting minutes from Committee of the Whole - Administration (October 2, 2025) and COTW-Finance (October 9, 2025). Chairman Karl Johnson presided with Vice-Chairman Rodney Riley and 10 additional board members comprising the committee.
+Board members present: Karl Johnson (Chairman), Brian Schneider, Dave Cordray, Dave Wiltse, Josh Shumaker, Tom Walberg, Alisa Patterson, Matt Ragano, Rodney Riley (Vice-Chairman), and Marion Thornberry.
+
+Absent: Ryan Curry and Dana Logsdon.
+
+The board approved the agenda and minutes from the October 2, 2025 Committee of the Whole Administration meeting and the October 9, 2025 Finance meeting. One correction was requested to the October 2 minutes regarding vote tallies on a solar project (showing two ayes, two nays, and two abstentions with names listed).
 
 ## Decisions & votes
 
-**Approval of Agenda**: Motion to approve agenda as presented. _(Vote count not available from agenda-only materials)_
+**Raffle approvals:** The board approved raffle applications for Main Street Players, Belvidere Woman's Club, Belvidere USBC Association, and LeRoy Community Grange. No vote count recorded; approved without discussion.
 
-**Approval of Minutes**: Motion to approve COTW-Administration October 2, 2025 and COTW-Finance October 9, 2025 meeting minutes. _(Vote count not available)_
+**Claims approval:** Approved claims totaling $363,178.22, with Chairman Johnson abstaining from votes on claims from William Charles, Northern Illinois Service Co., Core & Main, all Boone County Highway Department claims, and county department claims related to sewage, storm water, construction, and excavation.  
+Vote: 10-0 (Johnson abstained on specified items).  
+Motion by Wiltse, second by Schneider.
 
-**Raffle Applications**: Staff recommended approval of raffle applications for Main Street Players, Belvidere Woman's Club, Belvidere USBC Association, and LeRoy Community Grange. _(Vote count not available)_
+**Property tax abatement ordinance:** Approved Ordinance 26-03 for property tax abatement of Alternate Bonds Series 2015A related to the administration building.  
+Vote: Unanimous on voice vote.  
+Motion by Wiltse, second by Cordray.
 
-**Claims Approval**: Motion to approve claims in the amount of $363,178.22 with Karl Johnson abstaining from voting on all claims presented by William Charles, Northern Illinois Service Co., Core & Main, all Highway Department claims, and any claims regarding sewage, storm water, construction and excavation. _(Vote count not available)_
-
-**Ordinance 26-03**: Motion to approve Ordinance 26-03 for Property Tax Abatement of Alternate Bonds Series 2015A. _(Vote count not available)_
+**Mileage reimbursement policy:** The board agreed without objection to change county board member mileage reimbursement from monthly to quarterly payments at the request of the County Clerk, who noted that processing checks for $2-$3 cost more than the reimbursement amount. No formal vote required as this was a policy change.
 
 ## Discussion items (no vote)
 
-**Mileage Reimbursement for County Board Members**: Discussion item with no specific details provided in agenda materials.
+**IT agreement with City of Belvidere:** Chairman Johnson presented a revised three-year agreement at $110,000 annually (down from a prior $120,000 proposal) with 3% annual increases or CPI, whichever is greater. Multiple board members expressed support, with Shumaker preferring to be "$30,000 short over three years" rather than "$12,000 short over one year" and not wanting to reopen the budget. Walberg and Riley emphasized the importance of city-county cooperation for economic development and community perception. Johnson noted he would inform the mayor of the board's support, with formal approval expected at the next county board meeting after the city acts on January 19.
 
-**IT Agreement with City of Belvidere**: Continued discussion of intergovernmental agreement. County's last proposal to the City included $120,000 annually with annual increases of 3% or CPI (whichever is greater) over a 4-year agreement term.
-
-**Executive Session Topics**: Agenda listed potential executive session discussions on litigation, collective bargaining, personnel, sale of real estate, and land acquisition matters.
+**Health insurance costs:** Administrator reported that the county's insurance pool (IPCC) is projecting a 21% premium increase for the coming year, following a 15% increase the prior year. Staff met with a former broker to explore market alternatives and determine whether the county should leave the pool and potentially Blue Cross Blue Shield coverage.
 
 ## Public comment
 
-Public comment period allocated with 30-minute time limit. In-person comments only; written comments submitted to the Board would not be read aloud. Public comment slips available on County Board website. Special accommodations available by calling 815-547-4770.
+_No content._
 
 ## Notable moments
 
-_No content._
+**K9 introduction:** Sheriff Yunk brought in the department's new K9, Doug, an 18-month-old German shepherd from Holland who began training with Deputy Bobby Tester in August 2025. The sheriff explained that the trainer matches dogs to handler personalities during an eight-week training process, after which ongoing training continues. Doug came into the meeting room and generated questions from board members about his age, origin, and training.
+
+**DUI enforcement recognition:** Sheriff Yunk presented certificates to four deputies—Robert Thomas, Pester Thomas Winger, Shane Laga, and Wyatt Sabine—for outstanding DUI enforcement in 2024. Yunk noted that despite having only 40 officers compared to top counties with 120-516 officers, Boone County ranked sixth in the state for total DUIs and first among all 102 counties for DUI arrest rate per officer at 3.28. The sheriff called DUI enforcement "a 100% preventable crime."
+
+**Building projects progress:** Administrator Trisha Beck encouraged board members to view the courthouse, saying "the transformation is amazing" with arches and cinder blocks up. She reported the morgue cooler installation has been problematic but the coroner should be able to move operations "either next Friday or the following Monday." The cold storage building at the highway department is coming in under budget with some work being done in-house.
+
+**Fatality numbers:** Sheriff Yunk reported another traffic fatality in December on Irene Road, bringing the likely total to 10 for 2025, which he said was at or near a record for the county.

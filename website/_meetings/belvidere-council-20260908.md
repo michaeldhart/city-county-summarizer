@@ -3,114 +3,119 @@ title: City Council
 body_id: belvidere-council
 date: '2026-09-08'
 permalink: /bodies/belvidere-council/meetings/belvidere-council-20260908/
-description: More than twenty residents filled council chambers and overflowed into
-  the hallway to voice opposition to a proposed data center, citing concerns about
-  water consumption, power grid stress, noise, and agricultural land loss. Mayor Morris
-  clarified no formal application has been submitted and emphasized any future action
-  would require public hearings and council approval.
+description: More than 17 residents spoke against a rumored data center development
+  near Genoa Road, citing water consumption, noise, environmental impact, and agricultural
+  land loss. Mayor Morris told the packed room no formal application has been received
+  and no action will occur without public notice and hearings, though preliminary
+  discussions with a developer occurred in late 2024 or early 2025.
 source_url: https://www.belvidereil.gov/wp-content/uploads/2026/09/09-08-26-City-Council-Agenda-Packet.pdf
 has_transcript: true
+updated: '2026-11-09'
 resources:
 - kind: agenda
   label: Agenda (PDF)
   url: https://www.belvidereil.gov/wp-content/uploads/2026/09/09-08-26-City-Council-Agenda-Packet.pdf
+- kind: minutes
+  label: Minutes (PDF)
+  url: https://www.belvidereil.gov/wp-content/uploads/2026/09/09-08-26-City-Council-Regular-Meeting-Minutes.pdf
 - kind: video
   label: Video recording
   url: https://www.youtube.com/watch?v=VSzWMft9Sjc
 ---
 
 ## The lede
-- City Council held first reading on ordinance to convert East Perry Street & Webster Street to 4-way stop after multiple residents requested it at previous meetings
-- Approved special use permit for 7-Eleven at 707 Logan Avenue to add video gaming area with alcohol consumption (6-0 with 2 abstentions)
-- Mayor addressed large crowd concerned about proposed data center project, clarifying no formal application has been submitted and no action is planned
-- Waived building permit fees for Phase I of YMCA renovations
+
+- The City Council passed a special use permit for indoor commercial entertainment at 707 Logan Avenue (7-Eleven), allowing video gaming with alcohol consumption in a partitioned area, with two aldermen abstaining from the 6-0 vote.
+- Mayor Morris addressed a packed room about a potential data center development, stating no formal application has been received and no public action will occur without proper notice, though preliminary discussions with developers have taken place.
+- More than 17 residents spoke during public comment, most opposing a rumored data center project ("Project Hawkeye") near Genoa Road, citing concerns about water consumption, noise, environmental impact, and agricultural land loss.
+- The council waived building permit fees for Phase I renovations of the Belvidere YMCA and approved amendments to liquor licensing fees for caterer retail licenses.
 
 ## Decisions & votes
 
-**Ordinance #781H (Liquor License Catering Provisions)** – Second Reading  
-Motion to pass: **Approved 8-0**  
-(Albertini, Breton, Frank, Gramkowski, Hoiness, McGee, Peterson, Stevens voting aye)
+**Ordinance #782H (Special Use - 707 Logan Avenue)**: Passed 6-0-2. Grants special use for indoor commercial entertainment (video gaming and alcohol consumption) at 7-Eleven store. Albertini, Frank, Hoiness, McGee, Peterson, and Stevens voted yes; Brereton and Gramkowski abstained. The gaming area will be separated by a four-foot wall barrier with restricted access.
 
-**Ordinance #782H (Special Use for 7-Eleven Video Gaming)** – Second Reading  
-Motion to pass: **Approved 6-0** with 2 abstentions  
-(Albertini, Frank, Hoiness, McGee, Peterson, Stevens voting aye; Breton and Gramkowski abstaining)
+**Ordinance #781H (Liquor License Amendments)**: Passed 8-0. Amends Section 10-67 of the Municipal Code regarding licenses, classes and fees, specifically modifying language in sections 5A and adding language in 6D related to caterer retailer licenses.
 
-**Waive Building Permit Fees for YMCA Phase I Renovations**  
-Motion from Committee of the Whole: **Approved 8-0**  
-(All present voting aye)
+**YMCA Building Permit Fee Waiver**: Passed 8-0. Waives building permit fees for Phase I of Belvidere YMCA renovations.
 
-**Ordinance #783H (4-Way Stop at Perry & Webster)** – First Reading  
-First reading only; no action taken
+**Minutes Approval (August 17, 2026)**: Passed by voice vote.
 
-**Minutes Approvals**  
-- August 17, 2026 Council minutes: **Approved by voice vote**
-- August 24, 2026 Committee of the Whole minutes: **Approved by voice vote**
+**Committee Minutes Approval (August 24, 2026)**: Passed by voice vote.
 
 ## Discussion items
 
-**7-Eleven Video Gaming Special Use (707 Logan Avenue):**  
-- Alderman Gramkowski expressed concern about shared restroom facilities between gaming area and general store patrons, especially children
-- Applicant's representative (Matt Jones, Exel Entertainment) explained the gaming area will have 8-foot frosted aluminum walls, buzzer entry system requiring ID verification, and limited alcohol consumption (typically charging $8/beer to discourage consumption)
-- City Attorney clarified that state law requires alcohol availability for video gaming but doesn't mandate consumption levels
+**Ordinance #783H (First Reading)**: An ordinance to change the intersection of East Perry Street and Webster Street from a two-way stop to a four-way stop. No action taken; will return for second reading.
 
-**Data Center Concerns:**  
-Mayor Morris delivered extensive statement clarifying the city's position on a proposed data center project, emphasizing:
-- Only preliminary discussions have occurred; no formal applications received
-- City has not begun negotiations on annexation or development agreements
-- Developer agreed to reimburse city costs for any studies (engineering, environmental, legal) so taxpayers bear no burden
-- Any future action would require public notice, hearings, and council approval
-- Mayor stated he has taken no campaign contributions, no pension, and no benefits to maintain independence in decision-making
+**Data Center Discussion**: Mayor Morris delivered an extensive statement clarifying that no formal application for a data center has been received. He explained that preliminary discussions with a developer occurred in late 2024 or early 2025 about potential development including a data center, but no annexation or development agreements have been negotiated. The developer agreed to pay city costs for any future reviews without obligating the city to approve anything. Morris stated he has not signed any non-disclosure agreements, has taken no campaign contributions, and declined pension and benefits as mayor. He emphasized any project must demonstrate benefits outweigh negative impacts and will require public notice and hearings before any action.
 
-**Public Comments on Data Center (21+ speakers):**  
-Residents raised concerns about:
-- Water consumption (250-500 million gallons/day cited)
-- Power grid stress (3 gigawatts vs. 0.039 gigawatts current city usage)
-- Noise pollution affecting livestock and wildlife
-- Property devaluation and forced annexation of Genoa Road properties
-- Temporary construction jobs vs. minimal long-term employment
-- Agricultural land loss and impact on Boone County Fair
-- Companies abandoning facilities after tax incentives expire
+**7-Eleven Gaming Area**: Discussion addressed concerns about children accessing areas where alcohol is consumed and gaming occurs. The applicant's representative explained the gaming area will have an 8-foot anodized aluminum wall with frosted panels, a buzzer entry system requiring ID verification, and minimal alcohol consumption due to pricing ($8 per beer on the consumption menu). The area is approximately 100 square feet, less than 5% of total building space.
 
-**Infrastructure Concerns:**  
-- Carolyn Baski raised issues about deteriorating sidewalks, overgrown grass on walkways, and speeding/stop sign violations, particularly near schools
-- Chief Woody mentioned possibility of speed trailer deployment
+**Sidewalks and Streets**: Carolyn Baaske raised concerns about deteriorating sidewalks and streets, noting they are unsafe for running, biking, or rollerblading, and requested the city address infrastructure and traffic enforcement issues.
 
 ## Financial / operational notes
 
-- General & Special Fund Expenditures: _Not listed for this meeting_
-- Water & Sewer Fund Expenditures: _Not listed for this meeting_
-- YMCA building permit fee waiver approved for Phase I renovations (amount not specified)
-- Mayor noted city faces $87.5 million wastewater treatment plant infrastructure project with 84% being unfunded mandates
-- Developer reimbursement agreement in place for any data center-related study costs (no taxpayer funds committed)
-- Mayor emphasized Chrysler/Stellantis is second-largest water user, helping keep Belvidere water rates lowest in northern Illinois
+The developer of the potential data center agreed to reimburse the city for costs incurred in considering the development, ensuring taxpayers do not bear expenses for engineering, environmental studies, or legal costs related to reviewing any future proposal.
+
+Building permit fees waived for Belvidere YMCA Phase I renovations; amount not specified.
+
+Mayor Morris noted the city has an $87.5 million wastewater treatment plant infrastructure project, with 84% of costs from unfunded mandates.
+
+The 7-Eleven at 707 Logan Avenue already holds a Class M liquor license permitting on-premises consumption, which state law requires for video gaming establishments.
 
 ## Public comment
 
-**Constitution Week Proclamation:**  
-Kathy Hughes, Regent of the Asa Cattrell Chapter, Daughters of the American Revolution, accepted proclamation designating September 17-23 as Constitution Week
+Seventeen residents spoke or registered appearances during public comment:
 
-**Infrastructure:**  
-- Carolyn Baski (resident, 4 months) requested focus on sidewalk/street repairs, noting inability to safely run or bike on current infrastructure
+**Carolyn Baaske** (new resident, 4 months) requested improvements to sidewalks and streets, citing safety concerns for pedestrians and traffic violations near schools.
 
-**Data Center Opposition (multiple speakers):**  
-- Michael Novak: Lives on property potentially subject to forced annexation; expressed concern about loss of farm and wedding venue
-- Rhonda Settle (733 W. Locust): Cited concerns about water depletion, heat, noise, water pollution
-- Carter Huff (23 years old, lifelong resident): Warned of "irreversible damage" to agricultural ecosystem, mass exodus if built
-- Teresa Stein: Wheelchair user concerned about water consumption and noise
-- John Ratcliffe: Farmer concerned about agricultural land loss and impact on Boone County Fair; requested committee to work with Monday family dairy farm
-- Lloyd Roberts: Calculated data center would use 100+ times the power of entire city (26,000 people)
-- Multiple speakers emphasized bipartisan opposition to project
+**Michael Novak** (Genoa Road) stated his family's farm and home are targeted for annexation and data center development without their consent or any contact from the city. He disputed claims of transparency, noting surveying work is occurring on surrounding land.
 
-**Perry Street/Webster Street Intersection:**  
-Four speakers at previous meeting (August 24) supported 4-way stop installation
+**Rhonda Settle** (733 W. Locust) opposed data centers generally, citing water consumption concerns (potential impact on fire suppression and drinking water), noise, heat, pollution, temporary employment, and risk of abandonment.
+
+**Carter Huff** (7946 More Hill Court, age 23) expressed disappointment in city leadership and detailed potential impacts: noise pollution affecting wildlife and livestock, heat signatures, freshwater contamination with microplastics, increased energy costs, and local economic downturn after construction. He warned of a "mass exodus" if the project proceeds.
+
+**Teresa Stein** (20-year resident) opposed the data center, citing concerns about water consumption, noise, and impact on quality of life in retirement.
+
+**Deborah Silvers** (resident since 1990s) expressed general opposition and hope that council heard residents' concerns.
+
+**John Ratcliffe** (farmer) focused on agricultural impacts, warning that losing farmland would affect food production and the Boone County Fair. He specifically mentioned a family with a $4 million dairy operation on Genoa Road and requested the mayor develop a plan to protect them.
+
+**Donna Bunn** (2059 Derby Lane, 13-year resident) emphasized bipartisan opposition among residents ("we the people") and asked council to listen.
+
+**William August** (1031 Whitney, 32-year resident) cited water depletion, noise, stress on livestock reproduction, and distrust of data center companies. He questioned whether the mayor signed a non-disclosure agreement.
+
+**Kathy Cadie and Steve Cadie** registered appearances in opposition but did not speak.
+
+**Lloyd Roberts** (719 Pearl Street, lifelong resident) provided calculations: data centers use 250-500 million gallons of water per day (equivalent to what the whole city uses in a month); Project Hawkeye would use 3 gigawatts of power compared to the city's 0.039 gigawatts (over 100 times current usage). He warned this would prevent other companies from locating in Belvidere.
+
+**Rosa Martinez** (121 N. State Street, resident since 1990s) researched the timeline of Project Hawkeye proposal and expressed concerns about bankruptcy risks, environmental impacts, and community safety.
+
+**Miguel Fajardo** submitted a written statement (content not specified in transcript).
+
+**Chelsea Sturm** (418 N. State Street, lifelong Boone County resident) characterized opposition as bipartisan and praised the turnout.
+
+**Brandon Looper** (1536 Belvidere Road) asked who would pay for well replacement if water levels drop, and who would cover costs ($10,000) to connect to city water if annexed. He also questioned who would pay for power system upgrades in 10 years.
+
+**Tracy Rangel** (12036 Galloway Lane, Caledonia, 33-year resident) compared the situation to Stellantis, warning against tax incentives for companies that eventually leave, and urged thinking "big picture" rather than short-term revenue.
+
+Multiple speakers cited concerns about a project called "Project Hawkeye" by Datawatt Energy, referencing information from the company's website and social media.
 
 ## Notable moments
 
-- Meeting drew standing-room-only crowd with overflow into hallway, many believing data center was on agenda despite it not being listed
-- Mayor clarified year-old letter (May 22, 2025) recently circulated on Facebook created confusion about timeline
-- Fire code capacity prevented additional people from entering council chambers
-- Mayor disclosed he has never accepted campaign contributions, waived mayoral pension, and declined all benefits (medical, dental, insurance) to maintain independence
-- Mayor stated: "I ran as an independent so that I wasn't caught up as a partisan politician"
-- Speakers included 23-year-old representing "future generation" and longtime residents spanning multiple decades
-- Multiple residents cited specific water consumption data (250-500M gallons/day) and power usage figures (3 gigawatts)
-- Meeting adjourned at 7:29 p.m.
+Mayor Morris opened the meeting by announcing "there is nothing on the agenda regarding Data Centers" before public comment began, addressing misinformation circulating on social media about the meeting's purpose.
+
+The council chambers reached capacity with additional residents in the hallway unable to enter due to fire code restrictions. A resident complained that people in the hallway could not hear proceedings or sign up for public comment.
+
+Mayor Morris moved two agenda items (Constitution Week Proclamation and the 7-Eleven special use ordinance) ahead of public comment to accommodate those presenters.
+
+The mayor read a lengthy prepared statement clarifying the status of data center discussions, explicitly stating: "I don't have the facts. I don't know anything. I don't know enough about it. I don't have the facts and I don't have the data." He emphasized he has signed no non-disclosure agreement, has taken no campaign contributions, and declined his mayoral pension and benefits.
+
+When questioned about a referendum on the data center, Mayor Morris stated he did not know if one would be required and did not have an answer.
+
+Mayor Morris defended the need for large water users like Stellantis, stating they enable the city to maintain "the lowest [water] rates in northern Illinois" and warned residents would "feel the impact" on rates if major users left.
+
+The meeting included an unscheduled 10-minute recess to allow the room to clear after public comment concluded.
+
+John Ratcliffe, a farmer, referenced previous positive work with Mayor Morris and appealed to him personally to investigate impacts on agricultural families, specifically naming the Monday family dairy operation.
+
+Executive session for collective bargaining was listed on the agenda but not held; Mayor Morris stated he hopes to schedule it in two weeks after further consultation with bargaining units.

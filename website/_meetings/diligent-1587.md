@@ -3,15 +3,21 @@ title: Committee of the Whole Meeting - Administration
 body_id: cotw-admin
 date: '2026-02-05'
 permalink: /bodies/cotw-admin/meetings/diligent-1587/
-description: The board scheduled consideration of an ordinance to repeal a section
-  of county code governing instant assessment of improvements. Ordinance 26-06 would
-  eliminate Section 70-5 from the Boone County Code, though the agenda provided no
-  explanation for the proposed change or its impact on property owners.
+description: The county engineer presented options to address 14 crashes since May
+  2024 at Caledonia and Orth roads, where poor geometry and increased traffic have
+  created safety concerns. Options range from low-cost four-way stops to a $1.5 million
+  roundabout that would likely receive 90 percent federal grant funding. The board
+  supported pursuing interim measures while working toward a roundabout.
 source_url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1587
+has_transcript: true
+updated: '2026-11-09'
 resources:
 - kind: portal
   label: Diligent meeting page
   url: https://boonecountyil.community.diligentoneplatform.com/Portal/MeetingInformation.aspx?Org=Cal&Id=1587
+- kind: video
+  label: Video recording
+  url: https://www.youtube.com/watch?v=UrcbSvsMZ9s
 - kind: attachment
   label: jail report Jan 2026.pdf (581 KB)
   url: https://boonecountyil.community.diligentoneplatform.com/document/5aa39f77-d821-4082-8162-ed40d4d3b16f
@@ -107,38 +113,39 @@ resources:
 
 ## The lede
 
-- Committee scheduled to approve $256,886.87 in claims with specific abstentions by Chairman Johnson
-- Ordinance 26-06 to repeal Boone County Code Section 70-5 regarding Instant Assessment of Improvements on the agenda
-- Quarterly presentations scheduled from State's Attorney, Public Defender, Probation, and Circuit Court
-- Five raffle applications from local organizations up for approval
-- Executive session topics included litigation, personnel, and sale of real estate
+- The board heard a detailed presentation on safety concerns at the Caledonia Road and Orth Road intersection, where 14 crashes have occurred since May 2024, with county engineer Justin Chrome presenting multiple improvement options ranging from low-cost countermeasures to a $1.5 million roundabout.
+- Chrome recommended pursuing a roundabout as the long-term solution, noting the state plans roundabouts at both Highway 76 and Highway 173 on Caledonia Road and that such projects are typically 90% federally funded through highway safety grants.
+- The sheriff's office announced multiple promotions following recent retirements, including Kevin Smite to chief deputy, and reported moving operations into newly renovated basement space at the public safety building.
+- The board approved $256,886.87 in claims and repealed a 1974 ordinance on instant assessment of improvements that conflicted with state statute.
 
 ## Attendance & housekeeping
 
-_No content._
+Roll call showed Ryan Curry absent. The board approved a motion allowing Tom Walberg to participate electronically. The meeting began at 6:03 p.m. The board approved the agenda and minutes from December 4, 2025 (regular and executive sessions) and January 8, 2026 (regular and executive sessions).
 
-## Decisions & votes (each with vote count and notable discussion or dissent)
+## Decisions & votes
 
-_No content._
+**Claims approval ($256,886.87):** Approved on roll call vote with all present members voting yes. Chairman Karl Johnson abstained from voting on claims presented by William Charles, Northern Illinois Service Company, Core & Main, all Boone County Highway Department claims, and any county department claims regarding sewage, storm water, construction and excavation.
+
+**Ordinance 26-06 (repealing instant assessment ordinance):** Approved unanimously by voice vote. The ordinance repeals Boone County Code Chapter 70, Article I, Section 70-5 from 1974. State's Attorney Trisha Mueller explained the 1974 ordinance could conflict with or be more restrictive than current state statute, and repealing it allows the office to simply follow state law.
+
+**Executive session:** Approved unanimously on roll call vote for pending litigation and sale of real estate.
 
 ## Discussion items (no vote)
 
-**Caledonia Road and Orth Road Intersection** - Discussion item scheduled with no supporting documentation provided in the agenda.
-
-**Quarterly Department Presentations:**
-- State's Attorney office update
-- Public Defender services rendered for November and December 2025
-- Probation department report including claims for January paid in February 2026
-- Circuit Court update including fines and fees to General Fund and 2024 vs 2025 cases filed comparison
-
-**Monthly Presentations:**
-- Sheriff's Department (jail report and reports for corrections, public service bureau, and sheriff's office for January 2026)
-- Highway Department monthly update
+**Caledonia Road and Orth Road intersection safety:** County Engineer Justin Chrome presented a comprehensive analysis showing 14 crashes at the intersection since May 2024, with right-angle collisions accounting for 63% and rear-end accidents 16%. Chrome noted the intersection has concerning geometric issues including a 23-degree angle (not orthogonal) and a 6.3% slope on the east leg of Orth Road (above the recommended 6% maximum). Traffic on the west leg of Orth Road has increased 50% in 10 years. Chrome presented options ranging from additional countermeasures and four-way stops (low cost, quick implementation) to traffic signals ($500,000, 18 months), geometric improvements ($750,000, 24 months), roundabouts ($1.5 million, 36 months, likely 90% grant-funded), and overpasses ($15 million, 10+ years). Chrome recommended ultimately installing a roundabout, noting the state plans roundabouts at Highway 76 and Highway 173 intersections with Caledonia Road within five years. Multiple board members expressed support for interim measures like four-way stops with flashing red lights while pursuing a roundabout. Board member Brian Schneider raised concerns about farm equipment navigating roundabouts. Board member Alisa Patterson asked about removing vegetation blocking sight lines, which Chrome said the county can address through its sight triangle ordinance. Discussion included concerns about driver behavior, enforcement limitations, and whether reduced speed limits would be effective.
 
 ## Public comment
 
-Public comment period scheduled with 30-minute time limit. Members of the public encouraged to submit comments in person. Written comments submitted to the Board would not be read aloud. Public comment slips available on the County Board website.
-
-## Notable moments (anything colorful, tense, or unusual)
-
 _No content._
+
+## Notable moments
+
+Sheriff reported his department executed the county's first firearms restraining order with assistance from the detective bureau and SWAT team, calling it "a lot of work" that "went well" with cooperation from the state's attorney's office. He expressed gratitude for SWAT training investments, saying "it's a huge expense, but it's definitely needed."
+
+The sheriff thanked the board extensively for the newly renovated basement space at the public safety building, saying "I cannot thank you enough. It looks fabulous" and noting the importance of bringing detective division, command staff, and patrol "back together" for communication and morale.
+
+Chrome expressed frustration that a radar speed sign installed on Caledonia Road shortly before a recent fatality "was very disheartening" and "not a good indication."
+
+Board members engaged in extensive debate about driver responsibility, with one member stating "we cannot legislate stupid" and another noting Illinois has "the worst drivers in the world." Chairman Karl Johnson said his son learned "you may be dead right" if you assume other drivers will follow traffic laws.
+
+Chrome acknowledged the difficulty of his job, saying calculating bridge loads "is easy" but predicting "if they're going to run that stop sign or not, that's a tough answer. This is the hardest part of my job—to improve safety when you have human elements involved."

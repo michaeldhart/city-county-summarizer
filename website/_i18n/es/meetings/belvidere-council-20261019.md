@@ -1,46 +1,56 @@
 ---
 title: City Council
-description: El City Council tenía programado votar sobre un proyecto de $244,500 para reemplazar juntas de expansión en el puente de Main Street, con financiamiento de fondos del Motor Fuel Tax. El concejo también iba a aprobar un contrato relacionado de ingeniería de construcción por hasta $22,560 con Hampton, Lenzini & Renwick.
-es_source_hash: 7f6da9228154bcaf
+description: Siete residentes se dirigieron al City Council en oposición a un centro de datos propuesto denominado Project Hawkeye, continuando las objeciones públicas que comenzaron en la reunión del 5 de octubre. El concejo no tomó ninguna medida sobre el proyecto durante la reunión. No se proporcionaron más detalles sobre la propuesta o el cronograma.
+es_source_hash: 3f71e16fa3786c3b
 es_model: claude-sonnet-4-5
-es_translated_at: '2026-11-09T12:08:52+00:00'
+es_translated_at: '2026-11-16T12:16:47+00:00'
 ---
 
-## Adelanto de la agenda
-
 ## Lo principal
-- El City Council considerará aprobar aproximadamente $2.65 millones en gastos a través de todos los fondos, incluyendo $1.99 millones para fondos generales y especiales y $659,805 para operaciones de agua y alcantarillado.
-- El concejo votará sobre un proyecto de reparación de puente de $244,500 para juntas de expansión de Main Street, que se financiará mediante fondos del Motor Fuel Tax.
-- La agenda incluye múltiples proyectos de infraestructura remitidos desde el comité, incluyendo un contrato de $121,226 para el proyecto Allen Street Pond Outlet y servicios de ingeniería de construcción para reparaciones de puente.
+- El City Council aprobó casi $2.65 millones en gastos, incluyendo $1.99 millones para los General and Special Funds y $659,805 para el Water & Sewer Fund.
+- El concejo aprobó por unanimidad tres contratos por un total de aproximadamente $388,286 para el reemplazo de juntas de expansión del Main Street Bridge y el proyecto de salida del Allen Street Pond, ambos destinados a la reparación de infraestructura y mitigación de inundaciones.
+- Durante el comentario público, siete residentes hablaron en oposición a un proyecto de centro de datos propuesto (denominado "Project Hawkeye"), continuando las preocupaciones planteadas en la reunión del 5 de octubre.
+- El concejo aceptó una donación de $750 de Townhomes of Cedar Village para suministros de la K9 Unit.
 
 ## Decisiones y votos
 
-El concejo considerará:
+**Resolución #2026-23** – Una resolución para mejoras bajo el Illinois Highway Code para el reemplazo de juntas de expansión del Main Street Bridge ($244,500 de fondos MFT).  
+Votación: 9-0 (Albertini, Brereton, Fleury, Frank, Hoiness, McGee, Montalbano, Peterson, Stevens votando a favor; Gramkowski ausente)
 
-- **Resolución #2026-23**: Aprobar el reemplazo de juntas de expansión del puente de Main Street bajo el Illinois Highway Code por $244,500, pagado con fondos del Motor Fuel Tax.
+**Contrato de servicios de construcción con CES Inc.** – Hasta $121,226 para servicios de construcción para el Allen Street Pond Outlet to River Project, pagado de los Capital Funds. El proyecto es parte de los esfuerzos continuos para reducir las inundaciones en el lado sur de la ciudad.  
+Votación: 9-0 a favor
 
-**Mociones remitidas desde el Committee of the Whole (Public Works):**
-- Aprobar un contrato con CES, Inc. por hasta $121,226 para servicios de construcción en el Allen Street Pond Outlet to River Project, pagado con fondos de capital.
-- Aprobar la oferta más baja de Path Construction Company por $244,500 para el Main Street Bridge Expansion Joint Replacement Project.
-- Aprobar un acuerdo de ingeniería de construcción con Hampton, Lenzini & Renwick por hasta $22,560 para ingeniería de construcción en el proyecto del puente de Main Street, pagado con fondos del Motor Fuel Tax.
+**Contrato con Path Construction Company** – Oferta más baja de $244,500 para el proyecto de reemplazo de juntas de expansión del Main Street Bridge.  
+Votación: 9-0 a favor
 
-**Mociones remitidas desde el Committee of the Whole (Public Safety):**
-- Aceptar una donación de $750 de Townhomes of Cedar Village para suministros y equipo del K9 Unit.
+**Acuerdo de ingeniería con Hampton, Lenzini & Renwick** – Hasta $22,560 para ingeniería de construcción para el proyecto de reparación de juntas de expansión del Main Street Bridge, pagado de fondos MFT.  
+Votación: 9-0 a favor
+
+**Aceptación de donación** – $750 de Townhomes of Cedar Village para suministros/equipo de la K9 Unit.  
+Votación: 9-0 a favor
+
+**Gastos de General & Special Fund** – $1,989,555.17  
+Votación: 9-0 a favor
+
+**Gastos de Water & Sewer Fund** – $659,804.88  
+Votación: 9-0 a favor
+
+**Sesión ejecutiva** – El concejo entró en sesión cerrada a las 6:58 p. m. para discutir negociaciones colectivas y litigios pendientes, regresando a sesión abierta a las 7:20 p. m.  
+Votación para entrar: 9-0 a favor  
+Votación para salir: 9-0 a favor
+
+El concejo también aprobó las actas de la reunión del 5 de octubre de 2026 y de la reunión del Committee of the Whole del 12 de octubre de 2026.
 
 ## Asuntos discutidos
 
-- **Comentario público**: Los residentes pueden registrarse con el City Clerk para hablar.
-- **Mensajes especiales**: La Ida Public Library hará una presentación.
-- **Informes mensuales**: El concejo recibirá informes de septiembre de 2026 del Police Department (tiempo extra), Fire Department (tiempo extra), Community Development/Planning, Building Department (ingresos, permisos, informes de casos), e informes financieros para operaciones del fondo general y agua/alcantarillado.
-- **Sesión ejecutiva**: Planeada para discutir asuntos de negociación colectiva y litigio pendiente, probable o inminente.
+La subdirectora de biblioteca Daisy Mechler proporcionó una actualización sobre la Ida Public Library.
+
+El concejo discutió el Allen Street Pond Outlet to River Project durante la votación sobre el contrato con CES Inc., señalando que es parte de un plan continuo para reducir las inundaciones en el lado sur de la ciudad.
 
 ## Notas financieras y operativas
 
-- **Gastos totales**: $2,649,360.05 a través de todos los fondos
-  - Fondo general: $1,528,545.71
-  - Fondos especiales: $4,450.48 (Farmington Ponds SSA #2); $962.37 (Farmington Ponds SSA #3)
-  - Capital: $455,596.61
-  - Agua/Alcantarillado: $659,804.88
-- **No se reportaron donaciones** para septiembre de 2026.
-- Se revisarán las actas de la Planning and Zoning Commission (13 de octubre de 2026) y del Committee of the Whole—Building, Planning and Zoning and Public Works (12 de octubre de 2026).
-- La reunión será presidida por Alderperson Rory Peterson.
+Los informes mensuales se archivaron para septiembre de 2026, incluyendo horas extras del Police Department, horas extras del Fire Department, actividad del Community Development/Planning Department, ingresos y permisos del Building Department, el Financial Report, General Fund Report y Water/Sewer Report. No se reportaron donaciones para septiembre de 2026.
+
+Las actas de la reunión del 13 de octubre de 2026 de la Planning and Zoning Commission se archivaron.
+
+El concejal Gramkowski estuvo ausente de la reunión.
